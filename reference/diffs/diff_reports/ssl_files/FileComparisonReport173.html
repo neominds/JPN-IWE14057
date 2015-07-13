@@ -1,0 +1,5626 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mg="http://www.araxis.com/2002/Merge/Reporting" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<!--The layout and design of this report is Copyright © 2003-2009 Araxis Ltd. All rights reserved.-->
+<!--The copyright of the data content of this report belongs to the relevant copyright holders.-->
+<title>173. Araxis Merge File Comparison Report</title>
+<style type="text/css">
+body { background: #fff;  color: #000; margin: 0px 14px 14px 14px; }
+h1, h2, h3, h4, h5 {
+	padding: 0em;
+	margin: 1.5em 0em .25em 0em;
+	text-align: left;
+	font-weight: normal;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 70%;
+	max-width: 55em;
+}
+body, h4, h5, p, ol, ul, li, td, th { font-family: Verdana, Arial, Helvetica, sans-serif; text-align: left; }
+
+h4, h5, p, ol, ul, li { font-size: 70%; }
+input {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 120%;
+}
+
+h1 { margin: 14px 0em 1.2em 0em; font-size: 112%; line-height: 130%;}
+h2 { font-size: 125%; line-height: 84%;}
+h3 { margin-top: 1.4em; font-size: 81%; }
+h4 { margin-top: 1em; font-size: 70%; }
+h5 { margin-top: 1em; font-size: 100%; font-style: italic;}
+h1 strong, h2 strong, h3 strong, h4 strong { font-weight: bold; }
+
+p { margin: 6px 0em 6px 0em; max-width: 55em;}
+p.code, code {}
+p { font-size: 70%; line-height: 125%; }
+table { font-size: 70%;}
+
+p.copyright, .small { font-size: 60%; line-height: 120%; }
+p.copyright { margin: 3px 0px 0px 0px; padding: 0px; text-align: left; }
+acronym { font-variant: small-caps; }
+div.pad { padding: 3px; }
+span.lineEndings { color: red; font-size: 70%; }
+
+table.mgRowGroup, table.mgRowGroupFolder { border: 1px solid #a0a0a0; margin: 10px 0px 10px 0px; width: 100%; table-layout: fixed; border-collapse: collapse; }
+table.mgRowGroup td { vertical-align: top; padding: 0; }
+table.mgRowGroupFolder td { vertical-align: top; padding: 1px 0 1px 0; }
+div.IP { width: 2px; height: 1em; float: left; }
+
+img.mgFldrIcon {float: left; text-align: left; margin: -1px 2px 0px 0px;  height: 16px; width: 16px; border: none; vertical-align: top; background-color: transparent;}
+div.mgFldrIcon {float: left; width: auto;}
+span.left {float: left;width: auto;}
+span.right {float: right;width: auto;}
+
+table.bordered { border-collapse: collapse; border: 1px solid #a0a0a0; margin: 10px 0px 10px 0px;}
+table.bordered th, table.bordered td { vertical-align: top; padding: 3px; border: 1px solid #a0a0a0;}
+table.bordered th { background-color: #e5e5e5; }
+table.bordered td.group { background-color: #f5f5f5; }
+span.disabledNavigation { color: #a0a0a0; }
+div.navigation { margin-top: 14px; font-size: 70%; }
+div.comment { font-weight: normal; color: #000; font-family: Verdana, Arial, Helvetica, sans-serif; background-color: #fcfed8; padding: 2px 5px 2px 5px; border: 1px solid #E3E5C3; margin: 1px 2px 3px 2px; -moz-border-radius: 7px; border-radius: 7px; }
+
+                span.U1, span.U1 a {float: left; width: auto;color: #000000; background-color: #FFFFFF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.U1 a {text-decoration: underline;}
+td.U1 {color: #000000; background-color: #FFFFFF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.R1, span.R1 a {float: left; width: auto;color: #800000; background-color: #F3E6D8; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.R1 a {text-decoration: underline;}
+td.R1 {color: #800000; background-color: #F3E6D8; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.I1, span.I1 a {float: left; width: auto;color: #800000; background-color: #D1E8CF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.I1 a {text-decoration: underline;}
+td.I1 {color: #800000; background-color: #D1E8CF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.C1, span.C1 a {float: left; width: auto;color: #800000; background-color: #DACDE6; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.C1 a {text-decoration: underline;}
+td.C1 {color: #800000; background-color: #DACDE6; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+td.nbgC1 {color: #800000; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; background-color: #FFFFFF; }
+span.U2, span.U2 a {float: left; width: auto;color: #000000; background-color: #FFFFFF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.U2 a {text-decoration: underline;}
+td.U2 {color: #000000; background-color: #FFFFFF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.R2, span.R2 a {float: left; width: auto;color: #800000; background-color: #F3E6D8; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.R2 a {text-decoration: underline;}
+td.R2 {color: #800000; background-color: #F3E6D8; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.I2, span.I2 a {float: left; width: auto;color: #800000; background-color: #D1E8CF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.I2 a {text-decoration: underline;}
+td.I2 {color: #800000; background-color: #D1E8CF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.C2, span.C2 a {float: left; width: auto;color: #800000; background-color: #DACDE6; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.C2 a {text-decoration: underline;}
+td.C2 {color: #800000; background-color: #DACDE6; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+td.nbgC2 {color: #800000; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; background-color: #FFFFFF; }
+
+span.selected {background-color: #3d80df; color: #fff;}
+span.selected a {background-color: #3d80df; color: #fff; text-decoration: underline;}
+span.symbol {cursor: pointer;}
+			</style>
+</head>
+<body>
+<h1><strong>173. Araxis Merge File Comparison Report</strong></h1>
+<p>Produced by <strong>Araxis Merge</strong> on <strong>Sat Jul 11 14:47:54 2015 UTC</strong>. See <a href="http://www.araxis.com/" title="Link to the Araxis corporate web site">www.araxis.com</a> for information about Merge. This report uses XHTML and CSS2, and is best viewed with a reasonably standards compliant browser such as the latest version of <a href="http://www.mozilla.org/products/firefox/" title="Link to the Firefox page on the Mozilla website">Firefox</a> or <a href="http://www.microsoft.com/ie/" title="Link to the Microsoft website">Internet Explorer</a>. For optimum results when printing this report, use landscape orientation and enable printing of background images and colours in your browser.</p>
+<h3><strong>173.1&nbsp;Files compared</strong></h3>
+<table class="bordered">
+<tr>
+<th>#</th>
+<th>Location</th>
+<th>File</th>
+<th>Last Modified</th>
+</tr>
+<tr>
+<td>1</td>
+<td>C:\Users\neominds\Desktop\WRSSL_OPSSL\work\OpenSSL_1.0.1\openssl-1.0.1o_WR_DIR_STRUCTURE\ssl\openssl\doc\apps</td>
+<td>ocsp.pod</td>
+<td>Fri Jun 12 15:17:52 2015 UTC</td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td></td>
+<td>Sat Jul 11 14:47:54 2015 UTC</td>
+</tr>
+</table>
+<h3><strong>173.2&nbsp;Comparison summary</strong></h3>
+<table class="bordered">
+<tr>
+<th rowspan="2" style="vertical-align: bottom;">Description</th>
+<th colspan="2">Between<br />Files 1 and 2</th>
+</tr>
+<tr>
+<th style="text-align: right;">Text Blocks</th>
+<th style="text-align: right;">Lines</th>
+</tr>
+<tr>
+<td>Unchanged</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Changed</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Inserted</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Removed</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">392</td>
+</tr>
+</table>
+<h3><strong>173.3&nbsp;Comparison options</strong></h3>
+<table class="bordered" style="width: 55em;">
+<tr>
+<th>Whitespace</th>
+<td></td>
+</tr>
+<tr>
+<th>Character case</th>
+<td>Differences in character case are significant</td>
+</tr>
+<tr>
+<th>Line endings</th>
+<td>Differences in line endings (<code>CR</code> and <code>LF</code> characters) are ignored</td>
+</tr>
+<tr>
+<th>CR/LF characters</th>
+<td>Not shown in the comparison detail</td>
+</tr>
+</table>
+<h3><strong>173.4&nbsp;Active regular expressions</strong></h3>
+<p>No regular expressions were active.</p>
+<h3><strong>173.5&nbsp;Comparison detail</strong></h3>
+<table class="mgRowGroup">
+<col style="width: 5em;" />
+<col style="width: 1em;" />
+<col width="*" />
+<col style="width: 1em;" />
+<col style="width: 5em;" />
+<col style="width: 1em;" />
+<col width="*" />
+<tr>
+<td class="R1" style="text-align: right;">1</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=pod</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">2</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">3</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=head1&nbsp;NAM</span>
+<span class="R1">E</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">4</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">5</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">ocsp&nbsp;-&nbsp;Onl</span>
+<span class="R1">ine&nbsp;Certif</span>
+<span class="R1">icate&nbsp;Stat</span>
+<span class="R1">us&nbsp;Protoco</span>
+<span class="R1">l&nbsp;utility</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">6</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">7</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=head1&nbsp;SYN</span>
+<span class="R1">OPSIS</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">8</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">9</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">B&lt;openssl&gt;</span>
+<span class="R1">&nbsp;B&lt;ocsp&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">10</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-out&nbsp;fi</span>
+<span class="R1">le&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">11</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-issuer</span>
+<span class="R1">&nbsp;file&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">12</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-cert&nbsp;f</span>
+<span class="R1">ile&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">13</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-serial</span>
+<span class="R1">&nbsp;n&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">14</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-signer</span>
+<span class="R1">&nbsp;file&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">15</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-signke</span>
+<span class="R1">y&nbsp;file&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">16</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-sign_o</span>
+<span class="R1">ther&nbsp;file&gt;</span>
+<span class="R1">]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">17</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-no_cer</span>
+<span class="R1">ts&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">18</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-req_te</span>
+<span class="R1">xt&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">19</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-resp_t</span>
+<span class="R1">ext&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">20</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-text&gt;]</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">21</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-reqout</span>
+<span class="R1">&nbsp;file&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">22</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-respou</span>
+<span class="R1">t&nbsp;file&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">23</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-reqin&nbsp;</span>
+<span class="R1">file&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">24</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-respin</span>
+<span class="R1">&nbsp;file&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">25</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-nonce&gt;</span>
+<span class="R1">]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">26</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-no_non</span>
+<span class="R1">ce&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">27</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-url&nbsp;UR</span>
+<span class="R1">L&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">28</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-host&nbsp;h</span>
+<span class="R1">ost:n&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">29</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-path&gt;]</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">30</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-CApath</span>
+<span class="R1">&nbsp;dir&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">31</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-CAfile</span>
+<span class="R1">&nbsp;file&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">32</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-no_alt</span>
+<span class="R1">_chains&gt;]]</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">33</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-VAfile</span>
+<span class="R1">&nbsp;file&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">34</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-validi</span>
+<span class="R1">ty_period&nbsp;</span>
+<span class="R1">n&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">35</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-status</span>
+<span class="R1">_age&nbsp;n&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">36</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-noveri</span>
+<span class="R1">fy&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">37</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-verify</span>
+<span class="R1">_other&nbsp;fil</span>
+<span class="R1">e&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">38</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-trust_</span>
+<span class="R1">other&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">39</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-no_int</span>
+<span class="R1">ern&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">40</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-no_sig</span>
+<span class="R1">nature_ver</span>
+<span class="R1">ify&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">41</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-no_cer</span>
+<span class="R1">t_verify&gt;]</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">42</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-no_cha</span>
+<span class="R1">in&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">43</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-no_cer</span>
+<span class="R1">t_checks&gt;]</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">44</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-no_exp</span>
+<span class="R1">licit&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">45</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-port&nbsp;n</span>
+<span class="R1">um&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">46</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-index&nbsp;</span>
+<span class="R1">file&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">47</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-CA&nbsp;fil</span>
+<span class="R1">e&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">48</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-rsigne</span>
+<span class="R1">r&nbsp;file&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">49</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-rkey&nbsp;f</span>
+<span class="R1">ile&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">50</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-rother</span>
+<span class="R1">&nbsp;file&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">51</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-resp_n</span>
+<span class="R1">o_certs&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">52</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-nmin&nbsp;n</span>
+<span class="R1">&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">53</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-ndays&nbsp;</span>
+<span class="R1">n&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">54</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-resp_k</span>
+<span class="R1">ey_id&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">55</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-nreque</span>
+<span class="R1">st&nbsp;n&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">56</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">[B&lt;-md5|-s</span>
+<span class="R1">ha1|...&gt;]</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">57</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">58</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=head1&nbsp;DES</span>
+<span class="R1">CRIPTION</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">59</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">60</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">The&nbsp;Online</span>
+<span class="R1">&nbsp;Certifica</span>
+<span class="R1">te&nbsp;Status&nbsp;</span>
+<span class="R1">Protocol&nbsp;(</span>
+<span class="R1">OCSP)&nbsp;enab</span>
+<span class="R1">les&nbsp;applic</span>
+<span class="R1">ations&nbsp;to</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">61</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">determine&nbsp;</span>
+<span class="R1">the&nbsp;(revoc</span>
+<span class="R1">ation)&nbsp;sta</span>
+<span class="R1">te&nbsp;of&nbsp;an&nbsp;i</span>
+<span class="R1">dentified&nbsp;</span>
+<span class="R1">certificat</span>
+<span class="R1">e&nbsp;(RFC&nbsp;256</span>
+<span class="R1">0).</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">62</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">63</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">The&nbsp;B&lt;ocsp</span>
+<span class="R1">&gt;&nbsp;command&nbsp;</span>
+<span class="R1">performs&nbsp;m</span>
+<span class="R1">any&nbsp;common</span>
+<span class="R1">&nbsp;OCSP&nbsp;task</span>
+<span class="R1">s.&nbsp;It&nbsp;can&nbsp;</span>
+<span class="R1">be&nbsp;used</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">64</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">to&nbsp;print&nbsp;o</span>
+<span class="R1">ut&nbsp;request</span>
+<span class="R1">s&nbsp;and&nbsp;resp</span>
+<span class="R1">onses,&nbsp;cre</span>
+<span class="R1">ate&nbsp;reques</span>
+<span class="R1">ts&nbsp;and&nbsp;sen</span>
+<span class="R1">d&nbsp;queries</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">65</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">to&nbsp;an&nbsp;OCSP</span>
+<span class="R1">&nbsp;responder</span>
+<span class="R1">&nbsp;and&nbsp;behav</span>
+<span class="R1">e&nbsp;like&nbsp;a&nbsp;m</span>
+<span class="R1">ini&nbsp;OCSP&nbsp;s</span>
+<span class="R1">erver&nbsp;itse</span>
+<span class="R1">lf.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">66</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">67</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=head1&nbsp;OCS</span>
+<span class="R1">P&nbsp;CLIENT&nbsp;O</span>
+<span class="R1">PTIONS</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">68</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">69</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=over&nbsp;4</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">70</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">71</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-o</span>
+<span class="R1">ut&nbsp;filenam</span>
+<span class="R1">e&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">72</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">73</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">specify&nbsp;ou</span>
+<span class="R1">tput&nbsp;filen</span>
+<span class="R1">ame,&nbsp;defau</span>
+<span class="R1">lt&nbsp;is&nbsp;stan</span>
+<span class="R1">dard&nbsp;outpu</span>
+<span class="R1">t.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">74</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">75</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-i</span>
+<span class="R1">ssuer&nbsp;file</span>
+<span class="R1">name&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">76</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">77</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">This&nbsp;speci</span>
+<span class="R1">fies&nbsp;the&nbsp;c</span>
+<span class="R1">urrent&nbsp;iss</span>
+<span class="R1">uer&nbsp;certif</span>
+<span class="R1">icate.&nbsp;Thi</span>
+<span class="R1">s&nbsp;option&nbsp;c</span>
+<span class="R1">an&nbsp;be&nbsp;used</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">78</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">multiple&nbsp;t</span>
+<span class="R1">imes.&nbsp;The&nbsp;</span>
+<span class="R1">certificat</span>
+<span class="R1">e&nbsp;specifie</span>
+<span class="R1">d&nbsp;in&nbsp;B&lt;fil</span>
+<span class="R1">ename&gt;&nbsp;mus</span>
+<span class="R1">t&nbsp;be&nbsp;in</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">79</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">PEM&nbsp;format</span>
+<span class="R1">.&nbsp;This&nbsp;opt</span>
+<span class="R1">ion&nbsp;B&lt;MUST</span>
+<span class="R1">&gt;&nbsp;come&nbsp;bef</span>
+<span class="R1">ore&nbsp;any&nbsp;B&lt;</span>
+<span class="R1">-cert&gt;&nbsp;opt</span>
+<span class="R1">ions.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">80</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">81</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-c</span>
+<span class="R1">ert&nbsp;filena</span>
+<span class="R1">me&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">82</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">83</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Add&nbsp;the&nbsp;ce</span>
+<span class="R1">rtificate&nbsp;</span>
+<span class="R1">B&lt;filename</span>
+<span class="R1">&gt;&nbsp;to&nbsp;the&nbsp;r</span>
+<span class="R1">equest.&nbsp;Th</span>
+<span class="R1">e&nbsp;issuer&nbsp;c</span>
+<span class="R1">ertificate</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">84</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">is&nbsp;taken&nbsp;f</span>
+<span class="R1">rom&nbsp;the&nbsp;pr</span>
+<span class="R1">evious&nbsp;B&lt;i</span>
+<span class="R1">ssuer&gt;&nbsp;opt</span>
+<span class="R1">ion,&nbsp;or&nbsp;an</span>
+<span class="R1">&nbsp;error&nbsp;occ</span>
+<span class="R1">urs&nbsp;if&nbsp;no</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">85</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">issuer&nbsp;cer</span>
+<span class="R1">tificate&nbsp;i</span>
+<span class="R1">s&nbsp;specifie</span>
+<span class="R1">d.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">86</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">87</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-s</span>
+<span class="R1">erial&nbsp;num&gt;</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">88</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">89</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Same&nbsp;as&nbsp;th</span>
+<span class="R1">e&nbsp;B&lt;cert&gt;&nbsp;</span>
+<span class="R1">option&nbsp;exc</span>
+<span class="R1">ept&nbsp;the&nbsp;ce</span>
+<span class="R1">rtificate&nbsp;</span>
+<span class="R1">with&nbsp;seria</span>
+<span class="R1">l&nbsp;number</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">90</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">B&lt;num&gt;&nbsp;is&nbsp;</span>
+<span class="R1">added&nbsp;to&nbsp;t</span>
+<span class="R1">he&nbsp;request</span>
+<span class="R1">.&nbsp;The&nbsp;seri</span>
+<span class="R1">al&nbsp;number&nbsp;</span>
+<span class="R1">is&nbsp;interpr</span>
+<span class="R1">eted&nbsp;as&nbsp;a</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">91</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">decimal&nbsp;in</span>
+<span class="R1">teger&nbsp;unle</span>
+<span class="R1">ss&nbsp;precede</span>
+<span class="R1">d&nbsp;by&nbsp;B&lt;0x&gt;</span>
+<span class="R1">.&nbsp;Negative</span>
+<span class="R1">&nbsp;integers&nbsp;</span>
+<span class="R1">can&nbsp;also</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">92</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">be&nbsp;specifi</span>
+<span class="R1">ed&nbsp;by&nbsp;prec</span>
+<span class="R1">eding&nbsp;the&nbsp;</span>
+<span class="R1">value&nbsp;by&nbsp;a</span>
+<span class="R1">&nbsp;B&lt;-&gt;&nbsp;sign</span>
+<span class="R1">.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">93</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">94</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-s</span>
+<span class="R1">igner&nbsp;file</span>
+<span class="R1">name&gt;,&nbsp;B&lt;-</span>
+<span class="R1">signkey&nbsp;fi</span>
+<span class="R1">lename&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">95</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">96</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Sign&nbsp;the&nbsp;O</span>
+<span class="R1">CSP&nbsp;reques</span>
+<span class="R1">t&nbsp;using&nbsp;th</span>
+<span class="R1">e&nbsp;certific</span>
+<span class="R1">ate&nbsp;specif</span>
+<span class="R1">ied&nbsp;in&nbsp;the</span>
+<span class="R1">&nbsp;B&lt;signer&gt;</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">97</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">option&nbsp;and</span>
+<span class="R1">&nbsp;the&nbsp;priva</span>
+<span class="R1">te&nbsp;key&nbsp;spe</span>
+<span class="R1">cified&nbsp;by&nbsp;</span>
+<span class="R1">the&nbsp;B&lt;sign</span>
+<span class="R1">key&gt;&nbsp;optio</span>
+<span class="R1">n.&nbsp;If</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">98</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">the&nbsp;B&lt;sign</span>
+<span class="R1">key&gt;&nbsp;optio</span>
+<span class="R1">n&nbsp;is&nbsp;not&nbsp;p</span>
+<span class="R1">resent&nbsp;the</span>
+<span class="R1">n&nbsp;the&nbsp;priv</span>
+<span class="R1">ate&nbsp;key&nbsp;is</span>
+<span class="R1">&nbsp;read</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">99</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">from&nbsp;the&nbsp;s</span>
+<span class="R1">ame&nbsp;file&nbsp;a</span>
+<span class="R1">s&nbsp;the&nbsp;cert</span>
+<span class="R1">ificate.&nbsp;I</span>
+<span class="R1">f&nbsp;neither&nbsp;</span>
+<span class="R1">option&nbsp;is&nbsp;</span>
+<span class="R1">specified&nbsp;</span>
+<span class="R1">then</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">100</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">the&nbsp;OCSP&nbsp;r</span>
+<span class="R1">equest&nbsp;is&nbsp;</span>
+<span class="R1">not&nbsp;signed</span>
+<span class="R1">.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">101</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">102</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-s</span>
+<span class="R1">ign_other&nbsp;</span>
+<span class="R1">filename&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">103</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">104</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Additional</span>
+<span class="R1">&nbsp;certifica</span>
+<span class="R1">tes&nbsp;to&nbsp;inc</span>
+<span class="R1">lude&nbsp;in&nbsp;th</span>
+<span class="R1">e&nbsp;signed&nbsp;r</span>
+<span class="R1">equest.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">105</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">106</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-n</span>
+<span class="R1">once&gt;,&nbsp;B&lt;-</span>
+<span class="R1">no_nonce&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">107</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">108</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Add&nbsp;an&nbsp;OCS</span>
+<span class="R1">P&nbsp;nonce&nbsp;ex</span>
+<span class="R1">tension&nbsp;to</span>
+<span class="R1">&nbsp;a&nbsp;request</span>
+<span class="R1">&nbsp;or&nbsp;disabl</span>
+<span class="R1">e&nbsp;OCSP&nbsp;non</span>
+<span class="R1">ce&nbsp;additio</span>
+<span class="R1">n.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">109</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Normally&nbsp;i</span>
+<span class="R1">f&nbsp;an&nbsp;OCSP&nbsp;</span>
+<span class="R1">request&nbsp;is</span>
+<span class="R1">&nbsp;input&nbsp;usi</span>
+<span class="R1">ng&nbsp;the&nbsp;B&lt;r</span>
+<span class="R1">espin&gt;&nbsp;opt</span>
+<span class="R1">ion&nbsp;no</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">110</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">nonce&nbsp;is&nbsp;a</span>
+<span class="R1">dded:&nbsp;usin</span>
+<span class="R1">g&nbsp;the&nbsp;B&lt;no</span>
+<span class="R1">nce&gt;&nbsp;optio</span>
+<span class="R1">n&nbsp;will&nbsp;for</span>
+<span class="R1">ce&nbsp;additio</span>
+<span class="R1">n&nbsp;of&nbsp;a&nbsp;non</span>
+<span class="R1">ce.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">111</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">If&nbsp;an&nbsp;OCSP</span>
+<span class="R1">&nbsp;request&nbsp;i</span>
+<span class="R1">s&nbsp;being&nbsp;cr</span>
+<span class="R1">eated&nbsp;(usi</span>
+<span class="R1">ng&nbsp;B&lt;cert&gt;</span>
+<span class="R1">&nbsp;and&nbsp;B&lt;ser</span>
+<span class="R1">ial&gt;&nbsp;optio</span>
+<span class="R1">ns)</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">112</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">a&nbsp;nonce&nbsp;is</span>
+<span class="R1">&nbsp;automatic</span>
+<span class="R1">ally&nbsp;added</span>
+<span class="R1">&nbsp;specifyin</span>
+<span class="R1">g&nbsp;B&lt;no_non</span>
+<span class="R1">ce&gt;&nbsp;overri</span>
+<span class="R1">des&nbsp;this.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">113</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">114</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-r</span>
+<span class="R1">eq_text&gt;,&nbsp;</span>
+<span class="R1">B&lt;-resp_te</span>
+<span class="R1">xt&gt;,&nbsp;B&lt;-te</span>
+<span class="R1">xt&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">115</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">116</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">print&nbsp;out&nbsp;</span>
+<span class="R1">the&nbsp;text&nbsp;f</span>
+<span class="R1">orm&nbsp;of&nbsp;the</span>
+<span class="R1">&nbsp;OCSP&nbsp;requ</span>
+<span class="R1">est,&nbsp;respo</span>
+<span class="R1">nse&nbsp;or&nbsp;bot</span>
+<span class="R1">h&nbsp;respecti</span>
+<span class="R1">vely.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">117</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">118</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-r</span>
+<span class="R1">eqout&nbsp;file</span>
+<span class="R1">&gt;,&nbsp;B&lt;-resp</span>
+<span class="R1">out&nbsp;file&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">119</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">120</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">write&nbsp;out&nbsp;</span>
+<span class="R1">the&nbsp;DER&nbsp;en</span>
+<span class="R1">coded&nbsp;cert</span>
+<span class="R1">ificate&nbsp;re</span>
+<span class="R1">quest&nbsp;or&nbsp;r</span>
+<span class="R1">esponse&nbsp;to</span>
+<span class="R1">&nbsp;B&lt;file&gt;.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">121</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">122</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-r</span>
+<span class="R1">eqin&nbsp;file&gt;</span>
+<span class="R1">,&nbsp;B&lt;-respi</span>
+<span class="R1">n&nbsp;file&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">123</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">124</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">read&nbsp;OCSP&nbsp;</span>
+<span class="R1">request&nbsp;or</span>
+<span class="R1">&nbsp;response&nbsp;</span>
+<span class="R1">file&nbsp;from&nbsp;</span>
+<span class="R1">B&lt;file&gt;.&nbsp;T</span>
+<span class="R1">hese&nbsp;optio</span>
+<span class="R1">n&nbsp;are&nbsp;igno</span>
+<span class="R1">red</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">125</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">if&nbsp;OCSP&nbsp;re</span>
+<span class="R1">quest&nbsp;or&nbsp;r</span>
+<span class="R1">esponse&nbsp;cr</span>
+<span class="R1">eation&nbsp;is&nbsp;</span>
+<span class="R1">implied&nbsp;by</span>
+<span class="R1">&nbsp;other&nbsp;opt</span>
+<span class="R1">ions&nbsp;(for&nbsp;</span>
+<span class="R1">example</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">126</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">with&nbsp;B&lt;ser</span>
+<span class="R1">ial&gt;,&nbsp;B&lt;ce</span>
+<span class="R1">rt&gt;&nbsp;and&nbsp;B&lt;</span>
+<span class="R1">host&gt;&nbsp;opti</span>
+<span class="R1">ons).</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">127</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">128</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-u</span>
+<span class="R1">rl&nbsp;respond</span>
+<span class="R1">er_url&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">129</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">130</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">specify&nbsp;th</span>
+<span class="R1">e&nbsp;responde</span>
+<span class="R1">r&nbsp;URL.&nbsp;Bot</span>
+<span class="R1">h&nbsp;HTTP&nbsp;and</span>
+<span class="R1">&nbsp;HTTPS&nbsp;(SS</span>
+<span class="R1">L/TLS)&nbsp;URL</span>
+<span class="R1">s&nbsp;can&nbsp;be&nbsp;s</span>
+<span class="R1">pecified.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">131</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">132</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-h</span>
+<span class="R1">ost&nbsp;hostna</span>
+<span class="R1">me:port&gt;,&nbsp;</span>
+<span class="R1">B&lt;-path&nbsp;pa</span>
+<span class="R1">thname&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">133</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">134</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">if&nbsp;the&nbsp;B&lt;h</span>
+<span class="R1">ost&gt;&nbsp;optio</span>
+<span class="R1">n&nbsp;is&nbsp;prese</span>
+<span class="R1">nt&nbsp;then&nbsp;th</span>
+<span class="R1">e&nbsp;OCSP&nbsp;req</span>
+<span class="R1">uest&nbsp;is&nbsp;se</span>
+<span class="R1">nt&nbsp;to&nbsp;the&nbsp;</span>
+<span class="R1">host</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">135</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">B&lt;hostname</span>
+<span class="R1">&gt;&nbsp;on&nbsp;port&nbsp;</span>
+<span class="R1">B&lt;port&gt;.&nbsp;B</span>
+<span class="R1">&lt;path&gt;&nbsp;spe</span>
+<span class="R1">cifies&nbsp;the</span>
+<span class="R1">&nbsp;HTTP&nbsp;path</span>
+<span class="R1">&nbsp;name&nbsp;to&nbsp;u</span>
+<span class="R1">se</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">136</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">or&nbsp;"/"&nbsp;by&nbsp;</span>
+<span class="R1">default.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">137</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">138</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-t</span>
+<span class="R1">imeout&nbsp;sec</span>
+<span class="R1">onds&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">139</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">140</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">connection</span>
+<span class="R1">&nbsp;timeout&nbsp;t</span>
+<span class="R1">o&nbsp;the&nbsp;OCSP</span>
+<span class="R1">&nbsp;responder</span>
+<span class="R1">&nbsp;in&nbsp;second</span>
+<span class="R1">s</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">141</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">142</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-C</span>
+<span class="R1">Afile&nbsp;file</span>
+<span class="R1">&gt;,&nbsp;B&lt;-CApa</span>
+<span class="R1">th&nbsp;pathnam</span>
+<span class="R1">e&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">143</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">144</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">file&nbsp;or&nbsp;pa</span>
+<span class="R1">thname&nbsp;con</span>
+<span class="R1">taining&nbsp;tr</span>
+<span class="R1">usted&nbsp;CA&nbsp;c</span>
+<span class="R1">ertificate</span>
+<span class="R1">s.&nbsp;These&nbsp;a</span>
+<span class="R1">re&nbsp;used&nbsp;to</span>
+<span class="R1">&nbsp;verify</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">145</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">the&nbsp;signat</span>
+<span class="R1">ure&nbsp;on&nbsp;the</span>
+<span class="R1">&nbsp;OCSP&nbsp;resp</span>
+<span class="R1">onse.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">146</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">147</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-n</span>
+<span class="R1">o_alt_chai</span>
+<span class="R1">ns&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">148</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">149</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">See&nbsp;L&lt;B&lt;ve</span>
+<span class="R1">rify&gt;|veri</span>
+<span class="R1">fy(1)&gt;&nbsp;man</span>
+<span class="R1">ual&nbsp;page&nbsp;f</span>
+<span class="R1">or&nbsp;details</span>
+<span class="R1">.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">150</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">151</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-v</span>
+<span class="R1">erify_othe</span>
+<span class="R1">r&nbsp;file&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">152</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">153</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">file&nbsp;conta</span>
+<span class="R1">ining&nbsp;addi</span>
+<span class="R1">tional&nbsp;cer</span>
+<span class="R1">tificates&nbsp;</span>
+<span class="R1">to&nbsp;search&nbsp;</span>
+<span class="R1">when&nbsp;attem</span>
+<span class="R1">pting&nbsp;to&nbsp;l</span>
+<span class="R1">ocate</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">154</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">the&nbsp;OCSP&nbsp;r</span>
+<span class="R1">esponse&nbsp;si</span>
+<span class="R1">gning&nbsp;cert</span>
+<span class="R1">ificate.&nbsp;S</span>
+<span class="R1">ome&nbsp;respon</span>
+<span class="R1">ders&nbsp;omit&nbsp;</span>
+<span class="R1">the&nbsp;actual</span>
+<span class="R1">&nbsp;signer's</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">155</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">certificat</span>
+<span class="R1">e&nbsp;from&nbsp;the</span>
+<span class="R1">&nbsp;response:</span>
+<span class="R1">&nbsp;this&nbsp;opti</span>
+<span class="R1">on&nbsp;can&nbsp;be&nbsp;</span>
+<span class="R1">used&nbsp;to&nbsp;su</span>
+<span class="R1">pply&nbsp;the&nbsp;n</span>
+<span class="R1">ecessary</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">156</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">certificat</span>
+<span class="R1">e&nbsp;in&nbsp;such&nbsp;</span>
+<span class="R1">cases.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">157</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">158</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-t</span>
+<span class="R1">rust_other</span>
+<span class="R1">&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">159</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">160</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">the&nbsp;certif</span>
+<span class="R1">icates&nbsp;spe</span>
+<span class="R1">cified&nbsp;by&nbsp;</span>
+<span class="R1">the&nbsp;B&lt;-ver</span>
+<span class="R1">ify_other&gt;</span>
+<span class="R1">&nbsp;option&nbsp;sh</span>
+<span class="R1">ould&nbsp;be&nbsp;ex</span>
+<span class="R1">plicitly</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">161</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">trusted&nbsp;an</span>
+<span class="R1">d&nbsp;no&nbsp;addit</span>
+<span class="R1">ional&nbsp;chec</span>
+<span class="R1">ks&nbsp;will&nbsp;be</span>
+<span class="R1">&nbsp;performed</span>
+<span class="R1">&nbsp;on&nbsp;them.&nbsp;</span>
+<span class="R1">This&nbsp;is&nbsp;us</span>
+<span class="R1">eful</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">162</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">when&nbsp;the&nbsp;c</span>
+<span class="R1">omplete&nbsp;re</span>
+<span class="R1">sponder&nbsp;ce</span>
+<span class="R1">rtificate&nbsp;</span>
+<span class="R1">chain&nbsp;is&nbsp;n</span>
+<span class="R1">ot&nbsp;availab</span>
+<span class="R1">le&nbsp;or&nbsp;trus</span>
+<span class="R1">ting&nbsp;a</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">163</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">root&nbsp;CA&nbsp;is</span>
+<span class="R1">&nbsp;not&nbsp;appro</span>
+<span class="R1">priate.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">164</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">165</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-V</span>
+<span class="R1">Afile&nbsp;file</span>
+<span class="R1">&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">166</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">167</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">file&nbsp;conta</span>
+<span class="R1">ining&nbsp;expl</span>
+<span class="R1">icitly&nbsp;tru</span>
+<span class="R1">sted&nbsp;respo</span>
+<span class="R1">nder&nbsp;certi</span>
+<span class="R1">ficates.&nbsp;E</span>
+<span class="R1">quivalent&nbsp;</span>
+<span class="R1">to&nbsp;the</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">168</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">B&lt;-verify_</span>
+<span class="R1">other&gt;&nbsp;and</span>
+<span class="R1">&nbsp;B&lt;-trust_</span>
+<span class="R1">other&gt;&nbsp;opt</span>
+<span class="R1">ions.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">169</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">170</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-n</span>
+<span class="R1">overify&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">171</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">172</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">don't&nbsp;atte</span>
+<span class="R1">mpt&nbsp;to&nbsp;ver</span>
+<span class="R1">ify&nbsp;the&nbsp;OC</span>
+<span class="R1">SP&nbsp;respons</span>
+<span class="R1">e&nbsp;signatur</span>
+<span class="R1">e&nbsp;or&nbsp;the&nbsp;n</span>
+<span class="R1">once&nbsp;value</span>
+<span class="R1">s.&nbsp;This</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">173</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">option&nbsp;wil</span>
+<span class="R1">l&nbsp;normally</span>
+<span class="R1">&nbsp;only&nbsp;be&nbsp;u</span>
+<span class="R1">sed&nbsp;for&nbsp;de</span>
+<span class="R1">bugging&nbsp;si</span>
+<span class="R1">nce&nbsp;it&nbsp;dis</span>
+<span class="R1">ables&nbsp;all&nbsp;</span>
+<span class="R1">verificati</span>
+<span class="R1">on</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">174</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">of&nbsp;the&nbsp;res</span>
+<span class="R1">ponders&nbsp;ce</span>
+<span class="R1">rtificate.</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">175</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">176</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-n</span>
+<span class="R1">o_intern&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">177</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">178</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">ignore&nbsp;cer</span>
+<span class="R1">tificates&nbsp;</span>
+<span class="R1">contained&nbsp;</span>
+<span class="R1">in&nbsp;the&nbsp;OCS</span>
+<span class="R1">P&nbsp;response</span>
+<span class="R1">&nbsp;when&nbsp;sear</span>
+<span class="R1">ching&nbsp;for&nbsp;</span>
+<span class="R1">the</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">179</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">signers&nbsp;ce</span>
+<span class="R1">rtificate.</span>
+<span class="R1">&nbsp;With&nbsp;this</span>
+<span class="R1">&nbsp;option&nbsp;th</span>
+<span class="R1">e&nbsp;signers&nbsp;</span>
+<span class="R1">certificat</span>
+<span class="R1">e&nbsp;must&nbsp;be&nbsp;</span>
+<span class="R1">specified</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">180</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">with&nbsp;eithe</span>
+<span class="R1">r&nbsp;the&nbsp;B&lt;-v</span>
+<span class="R1">erify_othe</span>
+<span class="R1">r&gt;&nbsp;or&nbsp;B&lt;-V</span>
+<span class="R1">Afile&gt;&nbsp;opt</span>
+<span class="R1">ions.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">181</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">182</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-n</span>
+<span class="R1">o_signatur</span>
+<span class="R1">e_verify&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">183</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">184</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">don't&nbsp;chec</span>
+<span class="R1">k&nbsp;the&nbsp;sign</span>
+<span class="R1">ature&nbsp;on&nbsp;t</span>
+<span class="R1">he&nbsp;OCSP&nbsp;re</span>
+<span class="R1">sponse.&nbsp;Si</span>
+<span class="R1">nce&nbsp;this&nbsp;o</span>
+<span class="R1">ption&nbsp;tole</span>
+<span class="R1">rates&nbsp;inva</span>
+<span class="R1">lid</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">185</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">signatures</span>
+<span class="R1">&nbsp;on&nbsp;OCSP&nbsp;r</span>
+<span class="R1">esponses&nbsp;i</span>
+<span class="R1">t&nbsp;will&nbsp;nor</span>
+<span class="R1">mally&nbsp;only</span>
+<span class="R1">&nbsp;be&nbsp;used&nbsp;f</span>
+<span class="R1">or&nbsp;testing</span>
+<span class="R1">&nbsp;purposes.</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">186</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">187</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-n</span>
+<span class="R1">o_cert_ver</span>
+<span class="R1">ify&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">188</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">189</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">don't&nbsp;veri</span>
+<span class="R1">fy&nbsp;the&nbsp;OCS</span>
+<span class="R1">P&nbsp;response</span>
+<span class="R1">&nbsp;signers&nbsp;c</span>
+<span class="R1">ertificate</span>
+<span class="R1">&nbsp;at&nbsp;all.&nbsp;S</span>
+<span class="R1">ince&nbsp;this&nbsp;</span>
+<span class="R1">option&nbsp;all</span>
+<span class="R1">ows</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">190</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">the&nbsp;OCSP&nbsp;r</span>
+<span class="R1">esponse&nbsp;to</span>
+<span class="R1">&nbsp;be&nbsp;signed</span>
+<span class="R1">&nbsp;by&nbsp;any&nbsp;ce</span>
+<span class="R1">rtificate&nbsp;</span>
+<span class="R1">it&nbsp;should&nbsp;</span>
+<span class="R1">only&nbsp;be&nbsp;us</span>
+<span class="R1">ed&nbsp;for</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">191</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">testing&nbsp;pu</span>
+<span class="R1">rposes.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">192</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">193</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-n</span>
+<span class="R1">o_chain&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">194</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">195</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">do&nbsp;not&nbsp;use</span>
+<span class="R1">&nbsp;certifica</span>
+<span class="R1">tes&nbsp;in&nbsp;the</span>
+<span class="R1">&nbsp;response&nbsp;</span>
+<span class="R1">as&nbsp;additio</span>
+<span class="R1">nal&nbsp;untrus</span>
+<span class="R1">ted&nbsp;CA</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">196</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">certificat</span>
+<span class="R1">es.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">197</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">198</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-n</span>
+<span class="R1">o_explicit</span>
+<span class="R1">&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">199</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">200</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">do&nbsp;not&nbsp;exp</span>
+<span class="R1">licitly&nbsp;tr</span>
+<span class="R1">ust&nbsp;the&nbsp;ro</span>
+<span class="R1">ot&nbsp;CA&nbsp;if&nbsp;i</span>
+<span class="R1">t&nbsp;is&nbsp;set&nbsp;t</span>
+<span class="R1">o&nbsp;be&nbsp;trust</span>
+<span class="R1">ed&nbsp;for&nbsp;OCS</span>
+<span class="R1">P&nbsp;signing.</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">201</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">202</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-n</span>
+<span class="R1">o_cert_che</span>
+<span class="R1">cks&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">203</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">204</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">don't&nbsp;perf</span>
+<span class="R1">orm&nbsp;any&nbsp;ad</span>
+<span class="R1">ditional&nbsp;c</span>
+<span class="R1">hecks&nbsp;on&nbsp;t</span>
+<span class="R1">he&nbsp;OCSP&nbsp;re</span>
+<span class="R1">sponse&nbsp;sig</span>
+<span class="R1">ners&nbsp;certi</span>
+<span class="R1">ficate.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">205</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">That&nbsp;is&nbsp;do</span>
+<span class="R1">&nbsp;not&nbsp;make&nbsp;</span>
+<span class="R1">any&nbsp;checks</span>
+<span class="R1">&nbsp;to&nbsp;see&nbsp;if</span>
+<span class="R1">&nbsp;the&nbsp;signe</span>
+<span class="R1">rs&nbsp;certifi</span>
+<span class="R1">cate&nbsp;is&nbsp;au</span>
+<span class="R1">thorised</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">206</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">to&nbsp;provide</span>
+<span class="R1">&nbsp;the&nbsp;neces</span>
+<span class="R1">sary&nbsp;statu</span>
+<span class="R1">s&nbsp;informat</span>
+<span class="R1">ion:&nbsp;as&nbsp;a&nbsp;</span>
+<span class="R1">result&nbsp;thi</span>
+<span class="R1">s&nbsp;option&nbsp;s</span>
+<span class="R1">hould</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">207</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">only&nbsp;be&nbsp;us</span>
+<span class="R1">ed&nbsp;for&nbsp;tes</span>
+<span class="R1">ting&nbsp;purpo</span>
+<span class="R1">ses.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">208</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">209</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-v</span>
+<span class="R1">alidity_pe</span>
+<span class="R1">riod&nbsp;nsec&gt;</span>
+<span class="R1">,&nbsp;B&lt;-statu</span>
+<span class="R1">s_age&nbsp;age&gt;</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">210</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">211</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">these&nbsp;opti</span>
+<span class="R1">ons&nbsp;specif</span>
+<span class="R1">y&nbsp;the&nbsp;rang</span>
+<span class="R1">e&nbsp;of&nbsp;times</span>
+<span class="R1">,&nbsp;in&nbsp;secon</span>
+<span class="R1">ds,&nbsp;which&nbsp;</span>
+<span class="R1">will&nbsp;be&nbsp;to</span>
+<span class="R1">lerated</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">212</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">in&nbsp;an&nbsp;OCSP</span>
+<span class="R1">&nbsp;response.</span>
+<span class="R1">&nbsp;Each&nbsp;cert</span>
+<span class="R1">ificate&nbsp;st</span>
+<span class="R1">atus&nbsp;respo</span>
+<span class="R1">nse&nbsp;includ</span>
+<span class="R1">es&nbsp;a&nbsp;B&lt;not</span>
+<span class="R1">Before&gt;&nbsp;ti</span>
+<span class="R1">me&nbsp;and</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">213</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">an&nbsp;optiona</span>
+<span class="R1">l&nbsp;B&lt;notAft</span>
+<span class="R1">er&gt;&nbsp;time.&nbsp;</span>
+<span class="R1">The&nbsp;curren</span>
+<span class="R1">t&nbsp;time&nbsp;sho</span>
+<span class="R1">uld&nbsp;fall&nbsp;b</span>
+<span class="R1">etween&nbsp;the</span>
+<span class="R1">se&nbsp;two&nbsp;val</span>
+<span class="R1">ues,&nbsp;but</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">214</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">the&nbsp;interv</span>
+<span class="R1">al&nbsp;between</span>
+<span class="R1">&nbsp;the&nbsp;two&nbsp;t</span>
+<span class="R1">imes&nbsp;may&nbsp;b</span>
+<span class="R1">e&nbsp;only&nbsp;a&nbsp;f</span>
+<span class="R1">ew&nbsp;seconds</span>
+<span class="R1">.&nbsp;In&nbsp;pract</span>
+<span class="R1">ice&nbsp;the&nbsp;OC</span>
+<span class="R1">SP</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">215</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">responder&nbsp;</span>
+<span class="R1">and&nbsp;client</span>
+<span class="R1">s&nbsp;clocks&nbsp;m</span>
+<span class="R1">ay&nbsp;not&nbsp;be&nbsp;</span>
+<span class="R1">precisely&nbsp;</span>
+<span class="R1">synchronis</span>
+<span class="R1">ed&nbsp;and&nbsp;so&nbsp;</span>
+<span class="R1">such&nbsp;a&nbsp;che</span>
+<span class="R1">ck</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">216</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">may&nbsp;fail.&nbsp;</span>
+<span class="R1">To&nbsp;avoid&nbsp;t</span>
+<span class="R1">his&nbsp;the&nbsp;B&lt;</span>
+<span class="R1">-validity_</span>
+<span class="R1">period&gt;&nbsp;op</span>
+<span class="R1">tion&nbsp;can&nbsp;b</span>
+<span class="R1">e&nbsp;used&nbsp;to&nbsp;</span>
+<span class="R1">specify&nbsp;an</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">217</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">acceptable</span>
+<span class="R1">&nbsp;error&nbsp;ran</span>
+<span class="R1">ge&nbsp;in&nbsp;seco</span>
+<span class="R1">nds,&nbsp;the&nbsp;d</span>
+<span class="R1">efault&nbsp;val</span>
+<span class="R1">ue&nbsp;is&nbsp;5&nbsp;mi</span>
+<span class="R1">nutes.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">218</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">219</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">If&nbsp;the&nbsp;B&lt;n</span>
+<span class="R1">otAfter&gt;&nbsp;t</span>
+<span class="R1">ime&nbsp;is&nbsp;omi</span>
+<span class="R1">tted&nbsp;from&nbsp;</span>
+<span class="R1">a&nbsp;response</span>
+<span class="R1">&nbsp;then&nbsp;this</span>
+<span class="R1">&nbsp;means&nbsp;tha</span>
+<span class="R1">t&nbsp;new&nbsp;stat</span>
+<span class="R1">us</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">220</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">informatio</span>
+<span class="R1">n&nbsp;is&nbsp;immed</span>
+<span class="R1">iately&nbsp;ava</span>
+<span class="R1">ilable.&nbsp;In</span>
+<span class="R1">&nbsp;this&nbsp;case</span>
+<span class="R1">&nbsp;the&nbsp;age&nbsp;o</span>
+<span class="R1">f&nbsp;the&nbsp;B&lt;no</span>
+<span class="R1">tBefore&gt;&nbsp;f</span>
+<span class="R1">ield</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">221</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">is&nbsp;checked</span>
+<span class="R1">&nbsp;to&nbsp;see&nbsp;it</span>
+<span class="R1">&nbsp;is&nbsp;not&nbsp;ol</span>
+<span class="R1">der&nbsp;than&nbsp;B</span>
+<span class="R1">&lt;age&gt;&nbsp;seco</span>
+<span class="R1">nds&nbsp;old.&nbsp;B</span>
+<span class="R1">y&nbsp;default&nbsp;</span>
+<span class="R1">this&nbsp;addit</span>
+<span class="R1">ional</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">222</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">check&nbsp;is&nbsp;n</span>
+<span class="R1">ot&nbsp;perform</span>
+<span class="R1">ed.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">223</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">224</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-m</span>
+<span class="R1">d5|-sha1|-</span>
+<span class="R1">sha256|-ri</span>
+<span class="R1">pemod160|.</span>
+<span class="R1">..&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">225</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">226</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">this&nbsp;optio</span>
+<span class="R1">n&nbsp;sets&nbsp;dig</span>
+<span class="R1">est&nbsp;algori</span>
+<span class="R1">thm&nbsp;to&nbsp;use</span>
+<span class="R1">&nbsp;for&nbsp;certi</span>
+<span class="R1">ficate&nbsp;ide</span>
+<span class="R1">ntificatio</span>
+<span class="R1">n</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">227</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">in&nbsp;the&nbsp;OCS</span>
+<span class="R1">P&nbsp;request.</span>
+<span class="R1">&nbsp;By&nbsp;defaul</span>
+<span class="R1">t&nbsp;SHA-1&nbsp;is</span>
+<span class="R1">&nbsp;used.&nbsp;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">228</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">229</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=back</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">230</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">231</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=head1&nbsp;OCS</span>
+<span class="R1">P&nbsp;SERVER&nbsp;O</span>
+<span class="R1">PTIONS</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">232</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">233</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=over&nbsp;4</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">234</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">235</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-i</span>
+<span class="R1">ndex&nbsp;index</span>
+<span class="R1">file&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">236</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">237</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">B&lt;indexfil</span>
+<span class="R1">e&gt;&nbsp;is&nbsp;a&nbsp;te</span>
+<span class="R1">xt&nbsp;index&nbsp;f</span>
+<span class="R1">ile&nbsp;in&nbsp;B&lt;c</span>
+<span class="R1">a&gt;&nbsp;format&nbsp;</span>
+<span class="R1">containing</span>
+<span class="R1">&nbsp;certifica</span>
+<span class="R1">te&nbsp;revocat</span>
+<span class="R1">ion</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">238</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">informatio</span>
+<span class="R1">n.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">239</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">240</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">If&nbsp;the&nbsp;B&lt;i</span>
+<span class="R1">ndex&gt;&nbsp;opti</span>
+<span class="R1">on&nbsp;is&nbsp;spec</span>
+<span class="R1">ified&nbsp;the&nbsp;</span>
+<span class="R1">B&lt;ocsp&gt;&nbsp;ut</span>
+<span class="R1">ility&nbsp;is&nbsp;i</span>
+<span class="R1">n&nbsp;responde</span>
+<span class="R1">r&nbsp;mode,&nbsp;ot</span>
+<span class="R1">herwise</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">241</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">it&nbsp;is&nbsp;in&nbsp;c</span>
+<span class="R1">lient&nbsp;mode</span>
+<span class="R1">.&nbsp;The&nbsp;requ</span>
+<span class="R1">est(s)&nbsp;the</span>
+<span class="R1">&nbsp;responder</span>
+<span class="R1">&nbsp;processes</span>
+<span class="R1">&nbsp;can&nbsp;be&nbsp;ei</span>
+<span class="R1">ther&nbsp;speci</span>
+<span class="R1">fied&nbsp;on</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">242</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">the&nbsp;comman</span>
+<span class="R1">d&nbsp;line&nbsp;(us</span>
+<span class="R1">ing&nbsp;B&lt;issu</span>
+<span class="R1">er&gt;&nbsp;and&nbsp;B&lt;</span>
+<span class="R1">serial&gt;&nbsp;op</span>
+<span class="R1">tions),&nbsp;su</span>
+<span class="R1">pplied&nbsp;in&nbsp;</span>
+<span class="R1">a&nbsp;file&nbsp;(us</span>
+<span class="R1">ing&nbsp;the</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">243</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">B&lt;respin&gt;&nbsp;</span>
+<span class="R1">option)&nbsp;or</span>
+<span class="R1">&nbsp;via&nbsp;exter</span>
+<span class="R1">nal&nbsp;OCSP&nbsp;c</span>
+<span class="R1">lients&nbsp;(if</span>
+<span class="R1">&nbsp;B&lt;port&gt;&nbsp;o</span>
+<span class="R1">r&nbsp;B&lt;url&gt;&nbsp;i</span>
+<span class="R1">s&nbsp;specifie</span>
+<span class="R1">d).</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">244</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">245</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">If&nbsp;the&nbsp;B&lt;i</span>
+<span class="R1">ndex&gt;&nbsp;opti</span>
+<span class="R1">on&nbsp;is&nbsp;pres</span>
+<span class="R1">ent&nbsp;then&nbsp;t</span>
+<span class="R1">he&nbsp;B&lt;CA&gt;&nbsp;a</span>
+<span class="R1">nd&nbsp;B&lt;rsign</span>
+<span class="R1">er&gt;&nbsp;option</span>
+<span class="R1">s&nbsp;must&nbsp;als</span>
+<span class="R1">o&nbsp;be</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">246</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">present.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">247</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">248</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-C</span>
+<span class="R1">A&nbsp;file&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">249</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">250</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">CA&nbsp;certifi</span>
+<span class="R1">cate&nbsp;corre</span>
+<span class="R1">sponding&nbsp;t</span>
+<span class="R1">o&nbsp;the&nbsp;revo</span>
+<span class="R1">cation&nbsp;inf</span>
+<span class="R1">ormation&nbsp;i</span>
+<span class="R1">n&nbsp;B&lt;indexf</span>
+<span class="R1">ile&gt;.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">251</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">252</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-r</span>
+<span class="R1">signer&nbsp;fil</span>
+<span class="R1">e&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">253</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">254</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">The&nbsp;certif</span>
+<span class="R1">icate&nbsp;to&nbsp;s</span>
+<span class="R1">ign&nbsp;OCSP&nbsp;r</span>
+<span class="R1">esponses&nbsp;w</span>
+<span class="R1">ith.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">255</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">256</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-r</span>
+<span class="R1">other&nbsp;file</span>
+<span class="R1">&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">257</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">258</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Additional</span>
+<span class="R1">&nbsp;certifica</span>
+<span class="R1">tes&nbsp;to&nbsp;inc</span>
+<span class="R1">lude&nbsp;in&nbsp;th</span>
+<span class="R1">e&nbsp;OCSP&nbsp;res</span>
+<span class="R1">ponse.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">259</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">260</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-r</span>
+<span class="R1">esp_no_cer</span>
+<span class="R1">ts&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">261</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">262</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Don't&nbsp;incl</span>
+<span class="R1">ude&nbsp;any&nbsp;ce</span>
+<span class="R1">rtificates</span>
+<span class="R1">&nbsp;in&nbsp;the&nbsp;OC</span>
+<span class="R1">SP&nbsp;respons</span>
+<span class="R1">e.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">263</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">264</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-r</span>
+<span class="R1">esp_key_id</span>
+<span class="R1">&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">265</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">266</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Identify&nbsp;t</span>
+<span class="R1">he&nbsp;signer&nbsp;</span>
+<span class="R1">certificat</span>
+<span class="R1">e&nbsp;using&nbsp;th</span>
+<span class="R1">e&nbsp;key&nbsp;ID,&nbsp;</span>
+<span class="R1">default&nbsp;is</span>
+<span class="R1">&nbsp;to&nbsp;use&nbsp;th</span>
+<span class="R1">e&nbsp;subject&nbsp;</span>
+<span class="R1">name.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">267</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">268</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-r</span>
+<span class="R1">key&nbsp;file&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">269</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">270</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">The&nbsp;privat</span>
+<span class="R1">e&nbsp;key&nbsp;to&nbsp;s</span>
+<span class="R1">ign&nbsp;OCSP&nbsp;r</span>
+<span class="R1">esponses&nbsp;w</span>
+<span class="R1">ith:&nbsp;if&nbsp;no</span>
+<span class="R1">t&nbsp;present&nbsp;</span>
+<span class="R1">the&nbsp;file&nbsp;s</span>
+<span class="R1">pecified&nbsp;i</span>
+<span class="R1">n&nbsp;the</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">271</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">B&lt;rsigner&gt;</span>
+<span class="R1">&nbsp;option&nbsp;is</span>
+<span class="R1">&nbsp;used.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">272</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">273</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-p</span>
+<span class="R1">ort&nbsp;portnu</span>
+<span class="R1">m&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">274</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">275</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Port&nbsp;to&nbsp;li</span>
+<span class="R1">sten&nbsp;for&nbsp;O</span>
+<span class="R1">CSP&nbsp;reques</span>
+<span class="R1">ts&nbsp;on.&nbsp;The</span>
+<span class="R1">&nbsp;port&nbsp;may&nbsp;</span>
+<span class="R1">also&nbsp;be&nbsp;sp</span>
+<span class="R1">ecified&nbsp;us</span>
+<span class="R1">ing&nbsp;the&nbsp;B&lt;</span>
+<span class="R1">url&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">276</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">option.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">277</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">278</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-n</span>
+<span class="R1">request&nbsp;nu</span>
+<span class="R1">mber&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">279</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">280</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">The&nbsp;OCSP&nbsp;s</span>
+<span class="R1">erver&nbsp;will</span>
+<span class="R1">&nbsp;exit&nbsp;afte</span>
+<span class="R1">r&nbsp;receivin</span>
+<span class="R1">g&nbsp;B&lt;number</span>
+<span class="R1">&gt;&nbsp;requests</span>
+<span class="R1">,&nbsp;default&nbsp;</span>
+<span class="R1">unlimited.</span>
+<span class="R1">&nbsp;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">281</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">282</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=item&nbsp;B&lt;-n</span>
+<span class="R1">min&nbsp;minute</span>
+<span class="R1">s&gt;,&nbsp;B&lt;-nda</span>
+<span class="R1">ys&nbsp;days&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">283</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">284</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Number&nbsp;of&nbsp;</span>
+<span class="R1">minutes&nbsp;or</span>
+<span class="R1">&nbsp;days&nbsp;when</span>
+<span class="R1">&nbsp;fresh&nbsp;rev</span>
+<span class="R1">ocation&nbsp;in</span>
+<span class="R1">formation&nbsp;</span>
+<span class="R1">is&nbsp;availab</span>
+<span class="R1">le:&nbsp;used&nbsp;i</span>
+<span class="R1">n&nbsp;the</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">285</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">B&lt;nextUpda</span>
+<span class="R1">te&gt;&nbsp;field.</span>
+<span class="R1">&nbsp;If&nbsp;neithe</span>
+<span class="R1">r&nbsp;option&nbsp;i</span>
+<span class="R1">s&nbsp;present&nbsp;</span>
+<span class="R1">then&nbsp;the&nbsp;B</span>
+<span class="R1">&lt;nextUpdat</span>
+<span class="R1">e&gt;&nbsp;field&nbsp;i</span>
+<span class="R1">s&nbsp;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">286</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">omitted&nbsp;me</span>
+<span class="R1">aning&nbsp;fres</span>
+<span class="R1">h&nbsp;revocati</span>
+<span class="R1">on&nbsp;informa</span>
+<span class="R1">tion&nbsp;is&nbsp;im</span>
+<span class="R1">mediately&nbsp;</span>
+<span class="R1">available.</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">287</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">288</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=back</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">289</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">290</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=head1&nbsp;OCS</span>
+<span class="R1">P&nbsp;Response</span>
+<span class="R1">&nbsp;verificat</span>
+<span class="R1">ion.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">291</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">292</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">OCSP&nbsp;Respo</span>
+<span class="R1">nse&nbsp;follow</span>
+<span class="R1">s&nbsp;the&nbsp;rule</span>
+<span class="R1">s&nbsp;specifie</span>
+<span class="R1">d&nbsp;in&nbsp;RFC25</span>
+<span class="R1">60.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">293</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">294</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Initially&nbsp;</span>
+<span class="R1">the&nbsp;OCSP&nbsp;r</span>
+<span class="R1">esponder&nbsp;c</span>
+<span class="R1">ertificate</span>
+<span class="R1">&nbsp;is&nbsp;locate</span>
+<span class="R1">d&nbsp;and&nbsp;the&nbsp;</span>
+<span class="R1">signature&nbsp;</span>
+<span class="R1">on</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">295</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">the&nbsp;OCSP&nbsp;r</span>
+<span class="R1">equest&nbsp;che</span>
+<span class="R1">cked&nbsp;using</span>
+<span class="R1">&nbsp;the&nbsp;respo</span>
+<span class="R1">nder&nbsp;certi</span>
+<span class="R1">ficate's&nbsp;p</span>
+<span class="R1">ublic&nbsp;key.</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">296</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">297</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Then&nbsp;a&nbsp;nor</span>
+<span class="R1">mal&nbsp;certif</span>
+<span class="R1">icate&nbsp;veri</span>
+<span class="R1">fy&nbsp;is&nbsp;perf</span>
+<span class="R1">ormed&nbsp;on&nbsp;t</span>
+<span class="R1">he&nbsp;OCSP&nbsp;re</span>
+<span class="R1">sponder&nbsp;ce</span>
+<span class="R1">rtificate</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">298</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">building&nbsp;u</span>
+<span class="R1">p&nbsp;a&nbsp;certif</span>
+<span class="R1">icate&nbsp;chai</span>
+<span class="R1">n&nbsp;in&nbsp;the&nbsp;p</span>
+<span class="R1">rocess.&nbsp;Th</span>
+<span class="R1">e&nbsp;location</span>
+<span class="R1">s&nbsp;of&nbsp;the&nbsp;t</span>
+<span class="R1">rusted</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">299</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">certificat</span>
+<span class="R1">es&nbsp;used&nbsp;to</span>
+<span class="R1">&nbsp;build&nbsp;the</span>
+<span class="R1">&nbsp;chain&nbsp;can</span>
+<span class="R1">&nbsp;be&nbsp;specif</span>
+<span class="R1">ied&nbsp;by&nbsp;the</span>
+<span class="R1">&nbsp;B&lt;CAfile&gt;</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">300</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">and&nbsp;B&lt;CApa</span>
+<span class="R1">th&gt;&nbsp;option</span>
+<span class="R1">s&nbsp;or&nbsp;they&nbsp;</span>
+<span class="R1">will&nbsp;be&nbsp;lo</span>
+<span class="R1">oked&nbsp;for&nbsp;i</span>
+<span class="R1">n&nbsp;the&nbsp;stan</span>
+<span class="R1">dard&nbsp;OpenS</span>
+<span class="R1">SL</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">301</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">certificat</span>
+<span class="R1">es&nbsp;directo</span>
+<span class="R1">ry.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">302</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">303</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">If&nbsp;the&nbsp;ini</span>
+<span class="R1">tial&nbsp;verif</span>
+<span class="R1">y&nbsp;fails&nbsp;th</span>
+<span class="R1">en&nbsp;the&nbsp;OCS</span>
+<span class="R1">P&nbsp;verify&nbsp;p</span>
+<span class="R1">rocess&nbsp;hal</span>
+<span class="R1">ts&nbsp;with&nbsp;an</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">304</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">error.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">305</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">306</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Otherwise&nbsp;</span>
+<span class="R1">the&nbsp;issuin</span>
+<span class="R1">g&nbsp;CA&nbsp;certi</span>
+<span class="R1">ficate&nbsp;in&nbsp;</span>
+<span class="R1">the&nbsp;reques</span>
+<span class="R1">t&nbsp;is&nbsp;compa</span>
+<span class="R1">red&nbsp;to&nbsp;the</span>
+<span class="R1">&nbsp;OCSP</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">307</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">responder&nbsp;</span>
+<span class="R1">certificat</span>
+<span class="R1">e:&nbsp;if&nbsp;ther</span>
+<span class="R1">e&nbsp;is&nbsp;a&nbsp;mat</span>
+<span class="R1">ch&nbsp;then&nbsp;th</span>
+<span class="R1">e&nbsp;OCSP&nbsp;ver</span>
+<span class="R1">ify&nbsp;succee</span>
+<span class="R1">ds.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">308</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">309</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Otherwise&nbsp;</span>
+<span class="R1">the&nbsp;OCSP&nbsp;r</span>
+<span class="R1">esponder&nbsp;c</span>
+<span class="R1">ertificate</span>
+<span class="R1">'s&nbsp;CA&nbsp;is&nbsp;c</span>
+<span class="R1">hecked&nbsp;aga</span>
+<span class="R1">inst&nbsp;the&nbsp;i</span>
+<span class="R1">ssuing</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">310</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">CA&nbsp;certifi</span>
+<span class="R1">cate&nbsp;in&nbsp;th</span>
+<span class="R1">e&nbsp;request.</span>
+<span class="R1">&nbsp;If&nbsp;there&nbsp;</span>
+<span class="R1">is&nbsp;a&nbsp;match</span>
+<span class="R1">&nbsp;and&nbsp;the&nbsp;O</span>
+<span class="R1">CSPSigning</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">311</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">extended&nbsp;k</span>
+<span class="R1">ey&nbsp;usage&nbsp;i</span>
+<span class="R1">s&nbsp;present&nbsp;</span>
+<span class="R1">in&nbsp;the&nbsp;OCS</span>
+<span class="R1">P&nbsp;responde</span>
+<span class="R1">r&nbsp;certific</span>
+<span class="R1">ate&nbsp;then&nbsp;t</span>
+<span class="R1">he</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">312</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">OCSP&nbsp;verif</span>
+<span class="R1">y&nbsp;succeeds</span>
+<span class="R1">.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">313</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">314</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Otherwise,</span>
+<span class="R1">&nbsp;if&nbsp;B&lt;-no_</span>
+<span class="R1">explicit&gt;&nbsp;</span>
+<span class="R1">is&nbsp;B&lt;not&gt;&nbsp;</span>
+<span class="R1">set&nbsp;the&nbsp;ro</span>
+<span class="R1">ot&nbsp;CA&nbsp;of&nbsp;t</span>
+<span class="R1">he&nbsp;OCSP&nbsp;re</span>
+<span class="R1">sponders</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">315</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">CA&nbsp;is&nbsp;chec</span>
+<span class="R1">ked&nbsp;to&nbsp;see</span>
+<span class="R1">&nbsp;if&nbsp;it&nbsp;is&nbsp;</span>
+<span class="R1">trusted&nbsp;fo</span>
+<span class="R1">r&nbsp;OCSP&nbsp;sig</span>
+<span class="R1">ning.&nbsp;If&nbsp;i</span>
+<span class="R1">t&nbsp;is&nbsp;the&nbsp;O</span>
+<span class="R1">CSP</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">316</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">verify&nbsp;suc</span>
+<span class="R1">ceeds.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">317</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">318</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">If&nbsp;none&nbsp;of</span>
+<span class="R1">&nbsp;these&nbsp;che</span>
+<span class="R1">cks&nbsp;is&nbsp;suc</span>
+<span class="R1">cessful&nbsp;th</span>
+<span class="R1">en&nbsp;the&nbsp;OCS</span>
+<span class="R1">P&nbsp;verify&nbsp;f</span>
+<span class="R1">ails.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">319</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">320</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">What&nbsp;this&nbsp;</span>
+<span class="R1">effectivel</span>
+<span class="R1">y&nbsp;means&nbsp;if</span>
+<span class="R1">&nbsp;that&nbsp;if&nbsp;t</span>
+<span class="R1">he&nbsp;OCSP&nbsp;re</span>
+<span class="R1">sponder&nbsp;ce</span>
+<span class="R1">rtificate&nbsp;</span>
+<span class="R1">is</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">321</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">authorised</span>
+<span class="R1">&nbsp;directly&nbsp;</span>
+<span class="R1">by&nbsp;the&nbsp;CA&nbsp;</span>
+<span class="R1">it&nbsp;is&nbsp;issu</span>
+<span class="R1">ing&nbsp;revoca</span>
+<span class="R1">tion&nbsp;infor</span>
+<span class="R1">mation&nbsp;abo</span>
+<span class="R1">ut</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">322</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">(and&nbsp;it&nbsp;is</span>
+<span class="R1">&nbsp;correctly</span>
+<span class="R1">&nbsp;configure</span>
+<span class="R1">d)&nbsp;then&nbsp;ve</span>
+<span class="R1">rification</span>
+<span class="R1">&nbsp;will&nbsp;succ</span>
+<span class="R1">eed.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">323</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">324</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">If&nbsp;the&nbsp;OCS</span>
+<span class="R1">P&nbsp;responde</span>
+<span class="R1">r&nbsp;is&nbsp;a&nbsp;"gl</span>
+<span class="R1">obal&nbsp;respo</span>
+<span class="R1">nder"&nbsp;whic</span>
+<span class="R1">h&nbsp;can&nbsp;give</span>
+<span class="R1">&nbsp;details&nbsp;a</span>
+<span class="R1">bout</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">325</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">multiple&nbsp;C</span>
+<span class="R1">As&nbsp;and&nbsp;has</span>
+<span class="R1">&nbsp;its&nbsp;own&nbsp;s</span>
+<span class="R1">eparate&nbsp;ce</span>
+<span class="R1">rtificate&nbsp;</span>
+<span class="R1">chain&nbsp;then</span>
+<span class="R1">&nbsp;its&nbsp;root</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">326</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">CA&nbsp;can&nbsp;be&nbsp;</span>
+<span class="R1">trusted&nbsp;fo</span>
+<span class="R1">r&nbsp;OCSP&nbsp;sig</span>
+<span class="R1">ning.&nbsp;For&nbsp;</span>
+<span class="R1">example:</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">327</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">328</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;openssl&nbsp;x</span>
+<span class="R1">509&nbsp;-in&nbsp;oc</span>
+<span class="R1">spCA.pem&nbsp;-</span>
+<span class="R1">addtrust&nbsp;O</span>
+<span class="R1">CSPSigning</span>
+<span class="R1">&nbsp;-out&nbsp;trus</span>
+<span class="R1">tedCA.pem</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">329</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">330</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Alternativ</span>
+<span class="R1">ely&nbsp;the&nbsp;re</span>
+<span class="R1">sponder&nbsp;ce</span>
+<span class="R1">rtificate&nbsp;</span>
+<span class="R1">itself&nbsp;can</span>
+<span class="R1">&nbsp;be&nbsp;explic</span>
+<span class="R1">itly&nbsp;trust</span>
+<span class="R1">ed</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">331</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">with&nbsp;the&nbsp;B</span>
+<span class="R1">&lt;-VAfile&gt;&nbsp;</span>
+<span class="R1">option.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">332</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">333</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=head1&nbsp;NOT</span>
+<span class="R1">ES</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">334</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">335</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">As&nbsp;noted,&nbsp;</span>
+<span class="R1">most&nbsp;of&nbsp;th</span>
+<span class="R1">e&nbsp;verify&nbsp;o</span>
+<span class="R1">ptions&nbsp;are</span>
+<span class="R1">&nbsp;for&nbsp;testi</span>
+<span class="R1">ng&nbsp;or&nbsp;debu</span>
+<span class="R1">gging&nbsp;purp</span>
+<span class="R1">oses.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">336</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Normally&nbsp;o</span>
+<span class="R1">nly&nbsp;the&nbsp;B&lt;</span>
+<span class="R1">-CApath&gt;,&nbsp;</span>
+<span class="R1">B&lt;-CAfile&gt;</span>
+<span class="R1">&nbsp;and&nbsp;(if&nbsp;t</span>
+<span class="R1">he&nbsp;respond</span>
+<span class="R1">er&nbsp;is&nbsp;a&nbsp;'g</span>
+<span class="R1">lobal</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">337</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">VA')&nbsp;B&lt;-VA</span>
+<span class="R1">file&gt;&nbsp;opti</span>
+<span class="R1">ons&nbsp;need&nbsp;t</span>
+<span class="R1">o&nbsp;be&nbsp;used.</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">338</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">339</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">The&nbsp;OCSP&nbsp;s</span>
+<span class="R1">erver&nbsp;is&nbsp;o</span>
+<span class="R1">nly&nbsp;useful</span>
+<span class="R1">&nbsp;for&nbsp;test&nbsp;</span>
+<span class="R1">and&nbsp;demons</span>
+<span class="R1">tration&nbsp;pu</span>
+<span class="R1">rposes:&nbsp;it</span>
+<span class="R1">&nbsp;is</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">340</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">not&nbsp;really</span>
+<span class="R1">&nbsp;usable&nbsp;as</span>
+<span class="R1">&nbsp;a&nbsp;full&nbsp;OC</span>
+<span class="R1">SP&nbsp;respond</span>
+<span class="R1">er.&nbsp;It&nbsp;con</span>
+<span class="R1">tains&nbsp;only</span>
+<span class="R1">&nbsp;a&nbsp;very</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">341</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">simple&nbsp;HTT</span>
+<span class="R1">P&nbsp;request&nbsp;</span>
+<span class="R1">handling&nbsp;a</span>
+<span class="R1">nd&nbsp;can&nbsp;onl</span>
+<span class="R1">y&nbsp;handle&nbsp;t</span>
+<span class="R1">he&nbsp;POST&nbsp;fo</span>
+<span class="R1">rm&nbsp;of&nbsp;OCSP</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">342</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">queries.&nbsp;I</span>
+<span class="R1">t&nbsp;also&nbsp;han</span>
+<span class="R1">dles&nbsp;reque</span>
+<span class="R1">sts&nbsp;serial</span>
+<span class="R1">ly&nbsp;meaning</span>
+<span class="R1">&nbsp;it&nbsp;cannot</span>
+<span class="R1">&nbsp;respond&nbsp;t</span>
+<span class="R1">o</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">343</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">new&nbsp;reques</span>
+<span class="R1">ts&nbsp;until&nbsp;i</span>
+<span class="R1">t&nbsp;has&nbsp;proc</span>
+<span class="R1">essed&nbsp;the&nbsp;</span>
+<span class="R1">current&nbsp;on</span>
+<span class="R1">e.&nbsp;The&nbsp;tex</span>
+<span class="R1">t&nbsp;index&nbsp;fi</span>
+<span class="R1">le</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">344</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">format&nbsp;of&nbsp;</span>
+<span class="R1">revocation</span>
+<span class="R1">&nbsp;is&nbsp;also&nbsp;i</span>
+<span class="R1">nefficient</span>
+<span class="R1">&nbsp;for&nbsp;large</span>
+<span class="R1">&nbsp;quantitie</span>
+<span class="R1">s&nbsp;of&nbsp;revoc</span>
+<span class="R1">ation</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">345</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">data.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">346</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">347</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">It&nbsp;is&nbsp;poss</span>
+<span class="R1">ible&nbsp;to&nbsp;ru</span>
+<span class="R1">n&nbsp;the&nbsp;B&lt;oc</span>
+<span class="R1">sp&gt;&nbsp;applic</span>
+<span class="R1">ation&nbsp;in&nbsp;r</span>
+<span class="R1">esponder&nbsp;m</span>
+<span class="R1">ode&nbsp;via&nbsp;a&nbsp;</span>
+<span class="R1">CGI</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">348</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">script&nbsp;usi</span>
+<span class="R1">ng&nbsp;the&nbsp;B&lt;r</span>
+<span class="R1">espin&gt;&nbsp;and</span>
+<span class="R1">&nbsp;B&lt;respout</span>
+<span class="R1">&gt;&nbsp;options.</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">349</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">350</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=head1&nbsp;EXA</span>
+<span class="R1">MPLES</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">351</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">352</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Create&nbsp;an&nbsp;</span>
+<span class="R1">OCSP&nbsp;reque</span>
+<span class="R1">st&nbsp;and&nbsp;wri</span>
+<span class="R1">te&nbsp;it&nbsp;to&nbsp;a</span>
+<span class="R1">&nbsp;file:</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">353</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">354</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;openssl&nbsp;o</span>
+<span class="R1">csp&nbsp;-issue</span>
+<span class="R1">r&nbsp;issuer.p</span>
+<span class="R1">em&nbsp;-cert&nbsp;c</span>
+<span class="R1">1.pem&nbsp;-cer</span>
+<span class="R1">t&nbsp;c2.pem&nbsp;-</span>
+<span class="R1">reqout&nbsp;req</span>
+<span class="R1">.der</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">355</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">356</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Send&nbsp;a&nbsp;que</span>
+<span class="R1">ry&nbsp;to&nbsp;an&nbsp;O</span>
+<span class="R1">CSP&nbsp;respon</span>
+<span class="R1">der&nbsp;with&nbsp;U</span>
+<span class="R1">RL&nbsp;http://</span>
+<span class="R1">ocsp.myhos</span>
+<span class="R1">t.com/&nbsp;sav</span>
+<span class="R1">e&nbsp;the&nbsp;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">357</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">response&nbsp;t</span>
+<span class="R1">o&nbsp;a&nbsp;file&nbsp;a</span>
+<span class="R1">nd&nbsp;print&nbsp;i</span>
+<span class="R1">t&nbsp;out&nbsp;in&nbsp;t</span>
+<span class="R1">ext&nbsp;form</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">358</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">359</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;openssl&nbsp;o</span>
+<span class="R1">csp&nbsp;-issue</span>
+<span class="R1">r&nbsp;issuer.p</span>
+<span class="R1">em&nbsp;-cert&nbsp;c</span>
+<span class="R1">1.pem&nbsp;-cer</span>
+<span class="R1">t&nbsp;c2.pem&nbsp;\</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">360</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-url&nbsp;</span>
+<span class="R1">http://ocs</span>
+<span class="R1">p.myhost.c</span>
+<span class="R1">om/&nbsp;-resp_</span>
+<span class="R1">text&nbsp;-resp</span>
+<span class="R1">out&nbsp;resp.d</span>
+<span class="R1">er</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">361</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">362</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Read&nbsp;in&nbsp;an</span>
+<span class="R1">&nbsp;OCSP&nbsp;resp</span>
+<span class="R1">onse&nbsp;and&nbsp;p</span>
+<span class="R1">rint&nbsp;out&nbsp;t</span>
+<span class="R1">ext&nbsp;form:</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">363</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">364</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;openssl&nbsp;o</span>
+<span class="R1">csp&nbsp;-respi</span>
+<span class="R1">n&nbsp;resp.der</span>
+<span class="R1">&nbsp;-text</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">365</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">366</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">OCSP&nbsp;serve</span>
+<span class="R1">r&nbsp;on&nbsp;port&nbsp;</span>
+<span class="R1">8888&nbsp;using</span>
+<span class="R1">&nbsp;a&nbsp;standar</span>
+<span class="R1">d&nbsp;B&lt;ca&gt;&nbsp;co</span>
+<span class="R1">nfiguratio</span>
+<span class="R1">n,&nbsp;and&nbsp;a&nbsp;s</span>
+<span class="R1">eparate</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">367</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">responder&nbsp;</span>
+<span class="R1">certificat</span>
+<span class="R1">e.&nbsp;All&nbsp;req</span>
+<span class="R1">uests&nbsp;and&nbsp;</span>
+<span class="R1">responses&nbsp;</span>
+<span class="R1">are&nbsp;printe</span>
+<span class="R1">d&nbsp;to&nbsp;a&nbsp;fil</span>
+<span class="R1">e.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">368</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">369</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;openssl&nbsp;o</span>
+<span class="R1">csp&nbsp;-index</span>
+<span class="R1">&nbsp;demoCA/in</span>
+<span class="R1">dex.txt&nbsp;-p</span>
+<span class="R1">ort&nbsp;8888&nbsp;-</span>
+<span class="R1">rsigner&nbsp;rc</span>
+<span class="R1">ert.pem&nbsp;-C</span>
+<span class="R1">A&nbsp;demoCA/c</span>
+<span class="R1">acert.pem</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">370</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-t</span>
+<span class="R1">ext&nbsp;-out&nbsp;l</span>
+<span class="R1">og.txt</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">371</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">372</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">As&nbsp;above&nbsp;b</span>
+<span class="R1">ut&nbsp;exit&nbsp;af</span>
+<span class="R1">ter&nbsp;proces</span>
+<span class="R1">sing&nbsp;one&nbsp;r</span>
+<span class="R1">equest:</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">373</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">374</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;openssl&nbsp;o</span>
+<span class="R1">csp&nbsp;-index</span>
+<span class="R1">&nbsp;demoCA/in</span>
+<span class="R1">dex.txt&nbsp;-p</span>
+<span class="R1">ort&nbsp;8888&nbsp;-</span>
+<span class="R1">rsigner&nbsp;rc</span>
+<span class="R1">ert.pem&nbsp;-C</span>
+<span class="R1">A&nbsp;demoCA/c</span>
+<span class="R1">acert.pem</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">375</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-nreq</span>
+<span class="R1">uest&nbsp;1</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">376</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">377</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Query&nbsp;stat</span>
+<span class="R1">us&nbsp;informa</span>
+<span class="R1">tion&nbsp;using</span>
+<span class="R1">&nbsp;internall</span>
+<span class="R1">y&nbsp;generate</span>
+<span class="R1">d&nbsp;request:</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">378</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">379</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;openssl&nbsp;o</span>
+<span class="R1">csp&nbsp;-index</span>
+<span class="R1">&nbsp;demoCA/in</span>
+<span class="R1">dex.txt&nbsp;-r</span>
+<span class="R1">signer&nbsp;rce</span>
+<span class="R1">rt.pem&nbsp;-CA</span>
+<span class="R1">&nbsp;demoCA/ca</span>
+<span class="R1">cert.pem</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">380</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-issu</span>
+<span class="R1">er&nbsp;demoCA/</span>
+<span class="R1">cacert.pem</span>
+<span class="R1">&nbsp;-serial&nbsp;1</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">381</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">382</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Query&nbsp;stat</span>
+<span class="R1">us&nbsp;informa</span>
+<span class="R1">tion&nbsp;using</span>
+<span class="R1">&nbsp;request&nbsp;r</span>
+<span class="R1">ead&nbsp;from&nbsp;a</span>
+<span class="R1">&nbsp;file,&nbsp;wri</span>
+<span class="R1">te&nbsp;respons</span>
+<span class="R1">e&nbsp;to&nbsp;a</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">383</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">second&nbsp;fil</span>
+<span class="R1">e.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">384</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">385</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;openssl&nbsp;o</span>
+<span class="R1">csp&nbsp;-index</span>
+<span class="R1">&nbsp;demoCA/in</span>
+<span class="R1">dex.txt&nbsp;-r</span>
+<span class="R1">signer&nbsp;rce</span>
+<span class="R1">rt.pem&nbsp;-CA</span>
+<span class="R1">&nbsp;demoCA/ca</span>
+<span class="R1">cert.pem</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">386</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-reqi</span>
+<span class="R1">n&nbsp;req.der&nbsp;</span>
+<span class="R1">-respout&nbsp;r</span>
+<span class="R1">esp.der</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">387</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">388</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=head1&nbsp;HIS</span>
+<span class="R1">TORY</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">389</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">390</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">The&nbsp;-no_al</span>
+<span class="R1">t_chains&nbsp;o</span>
+<span class="R1">ptions&nbsp;was</span>
+<span class="R1">&nbsp;first&nbsp;add</span>
+<span class="R1">ed&nbsp;to&nbsp;Open</span>
+<span class="R1">SSL&nbsp;1.0.1n</span>
+<span class="R1">&nbsp;and&nbsp;1.0.2</span>
+<span class="R1">b.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">391</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">392</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">=cut</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+</table>
+<p class="copyright" style="margin-top: 25px; padding-top: 2px; border-top: solid #a0a0a0 1px; max-width: none;">Araxis Merge (but not the data content of this report) is Copyright  &copy; 1993-2009 Araxis Ltd (<a href="http://www.araxis.com/" title="Link to the Araxis corporate web site">www.araxis.com</a>). All rights reserved.</p>
+</body>
+</html>

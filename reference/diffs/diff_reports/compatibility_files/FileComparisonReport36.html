@@ -1,0 +1,4480 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mg="http://www.araxis.com/2002/Merge/Reporting" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<!--The layout and design of this report is Copyright © 2003-2009 Araxis Ltd. All rights reserved.-->
+<!--The copyright of the data content of this report belongs to the relevant copyright holders.-->
+<title>36. Araxis Merge File Comparison Report</title>
+<style type="text/css">
+body { background: #fff;  color: #000; margin: 0px 14px 14px 14px; }
+h1, h2, h3, h4, h5 {
+	padding: 0em;
+	margin: 1.5em 0em .25em 0em;
+	text-align: left;
+	font-weight: normal;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 70%;
+	max-width: 55em;
+}
+body, h4, h5, p, ol, ul, li, td, th { font-family: Verdana, Arial, Helvetica, sans-serif; text-align: left; }
+
+h4, h5, p, ol, ul, li { font-size: 70%; }
+input {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 120%;
+}
+
+h1 { margin: 14px 0em 1.2em 0em; font-size: 112%; line-height: 130%;}
+h2 { font-size: 125%; line-height: 84%;}
+h3 { margin-top: 1.4em; font-size: 81%; }
+h4 { margin-top: 1em; font-size: 70%; }
+h5 { margin-top: 1em; font-size: 100%; font-style: italic;}
+h1 strong, h2 strong, h3 strong, h4 strong { font-weight: bold; }
+
+p { margin: 6px 0em 6px 0em; max-width: 55em;}
+p.code, code {}
+p { font-size: 70%; line-height: 125%; }
+table { font-size: 70%;}
+
+p.copyright, .small { font-size: 60%; line-height: 120%; }
+p.copyright { margin: 3px 0px 0px 0px; padding: 0px; text-align: left; }
+acronym { font-variant: small-caps; }
+div.pad { padding: 3px; }
+span.lineEndings { color: red; font-size: 70%; }
+
+table.mgRowGroup, table.mgRowGroupFolder { border: 1px solid #a0a0a0; margin: 10px 0px 10px 0px; width: 100%; table-layout: fixed; border-collapse: collapse; }
+table.mgRowGroup td { vertical-align: top; padding: 0; }
+table.mgRowGroupFolder td { vertical-align: top; padding: 1px 0 1px 0; }
+div.IP { width: 2px; height: 1em; float: left; }
+
+img.mgFldrIcon {float: left; text-align: left; margin: -1px 2px 0px 0px;  height: 16px; width: 16px; border: none; vertical-align: top; background-color: transparent;}
+div.mgFldrIcon {float: left; width: auto;}
+span.left {float: left;width: auto;}
+span.right {float: right;width: auto;}
+
+table.bordered { border-collapse: collapse; border: 1px solid #a0a0a0; margin: 10px 0px 10px 0px;}
+table.bordered th, table.bordered td { vertical-align: top; padding: 3px; border: 1px solid #a0a0a0;}
+table.bordered th { background-color: #e5e5e5; }
+table.bordered td.group { background-color: #f5f5f5; }
+span.disabledNavigation { color: #a0a0a0; }
+div.navigation { margin-top: 14px; font-size: 70%; }
+div.comment { font-weight: normal; color: #000; font-family: Verdana, Arial, Helvetica, sans-serif; background-color: #fcfed8; padding: 2px 5px 2px 5px; border: 1px solid #E3E5C3; margin: 1px 2px 3px 2px; -moz-border-radius: 7px; border-radius: 7px; }
+
+                span.U1, span.U1 a {float: left; width: auto;color: #000000; background-color: #FFFFFF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.U1 a {text-decoration: underline;}
+td.U1 {color: #000000; background-color: #FFFFFF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.R1, span.R1 a {float: left; width: auto;color: #800000; background-color: #F3E6D8; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.R1 a {text-decoration: underline;}
+td.R1 {color: #800000; background-color: #F3E6D8; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.I1, span.I1 a {float: left; width: auto;color: #800000; background-color: #D1E8CF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.I1 a {text-decoration: underline;}
+td.I1 {color: #800000; background-color: #D1E8CF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.C1, span.C1 a {float: left; width: auto;color: #800000; background-color: #DACDE6; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.C1 a {text-decoration: underline;}
+td.C1 {color: #800000; background-color: #DACDE6; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+td.nbgC1 {color: #800000; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; background-color: #FFFFFF; }
+span.U2, span.U2 a {float: left; width: auto;color: #000000; background-color: #FFFFFF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.U2 a {text-decoration: underline;}
+td.U2 {color: #000000; background-color: #FFFFFF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.R2, span.R2 a {float: left; width: auto;color: #800000; background-color: #F3E6D8; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.R2 a {text-decoration: underline;}
+td.R2 {color: #800000; background-color: #F3E6D8; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.I2, span.I2 a {float: left; width: auto;color: #800000; background-color: #D1E8CF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.I2 a {text-decoration: underline;}
+td.I2 {color: #800000; background-color: #D1E8CF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.C2, span.C2 a {float: left; width: auto;color: #800000; background-color: #DACDE6; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.C2 a {text-decoration: underline;}
+td.C2 {color: #800000; background-color: #DACDE6; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+td.nbgC2 {color: #800000; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; background-color: #FFFFFF; }
+
+span.selected {background-color: #3d80df; color: #fff;}
+span.selected a {background-color: #3d80df; color: #fff; text-decoration: underline;}
+span.symbol {cursor: pointer;}
+			</style>
+</head>
+<body>
+<h1><strong>36. Araxis Merge File Comparison Report</strong></h1>
+<p>Produced by <strong>Araxis Merge</strong> on <strong>Sat Jul 11 14:43:25 2015 UTC</strong>. See <a href="http://www.araxis.com/" title="Link to the Araxis corporate web site">www.araxis.com</a> for information about Merge. This report uses XHTML and CSS2, and is best viewed with a reasonably standards compliant browser such as the latest version of <a href="http://www.mozilla.org/products/firefox/" title="Link to the Firefox page on the Mozilla website">Firefox</a> or <a href="http://www.microsoft.com/ie/" title="Link to the Microsoft website">Internet Explorer</a>. For optimum results when printing this report, use landscape orientation and enable printing of background images and colours in your browser.</p>
+<h3><strong>36.1&nbsp;Files compared</strong></h3>
+<table class="bordered">
+<tr>
+<th>#</th>
+<th>Location</th>
+<th>File</th>
+<th>Last Modified</th>
+</tr>
+<tr>
+<td>1</td>
+<td>C:\Users\neominds\Desktop\WRSSL_OPSSL\work\OpenSSL_1.0.1\openssl-1.0.1o_WR_DIR_STRUCTURE\security\compatibility\bn\asm</td>
+<td>x86-gf2m.pl</td>
+<td>Thu Jun 11 14:44:28 2015 UTC</td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td></td>
+<td>Sat Jul 11 14:43:25 2015 UTC</td>
+</tr>
+</table>
+<h3><strong>36.2&nbsp;Comparison summary</strong></h3>
+<table class="bordered">
+<tr>
+<th rowspan="2" style="vertical-align: bottom;">Description</th>
+<th colspan="2">Between<br />Files 1 and 2</th>
+</tr>
+<tr>
+<th style="text-align: right;">Text Blocks</th>
+<th style="text-align: right;">Lines</th>
+</tr>
+<tr>
+<td>Unchanged</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Changed</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Inserted</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Removed</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">313</td>
+</tr>
+</table>
+<h3><strong>36.3&nbsp;Comparison options</strong></h3>
+<table class="bordered" style="width: 55em;">
+<tr>
+<th>Whitespace</th>
+<td></td>
+</tr>
+<tr>
+<th>Character case</th>
+<td>Differences in character case are significant</td>
+</tr>
+<tr>
+<th>Line endings</th>
+<td>Differences in line endings (<code>CR</code> and <code>LF</code> characters) are ignored</td>
+</tr>
+<tr>
+<th>CR/LF characters</th>
+<td>Not shown in the comparison detail</td>
+</tr>
+</table>
+<h3><strong>36.4&nbsp;Active regular expressions</strong></h3>
+<p>No regular expressions were active.</p>
+<h3><strong>36.5&nbsp;Comparison detail</strong></h3>
+<table class="mgRowGroup">
+<col style="width: 5em;" />
+<col style="width: 1em;" />
+<col width="*" />
+<col style="width: 1em;" />
+<col style="width: 5em;" />
+<col style="width: 1em;" />
+<col width="*" />
+<tr>
+<td class="R1" style="text-align: right;">1</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#!/usr/bin</span>
+<span class="R1">/env&nbsp;perl</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">2</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">3</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;========</span>
+<span class="R1">==========</span>
+<span class="R1">==========</span>
+<span class="R1">==========</span>
+<span class="R1">==========</span>
+<span class="R1">==========</span>
+<span class="R1">==========</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">4</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;Written&nbsp;</span>
+<span class="R1">by&nbsp;Andy&nbsp;Po</span>
+<span class="R1">lyakov&nbsp;&lt;ap</span>
+<span class="R1">pro@openss</span>
+<span class="R1">l.org&gt;&nbsp;for</span>
+<span class="R1">&nbsp;the&nbsp;OpenS</span>
+<span class="R1">SL</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">5</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;project.</span>
+<span class="R1">&nbsp;The&nbsp;modul</span>
+<span class="R1">e&nbsp;is,&nbsp;howe</span>
+<span class="R1">ver,&nbsp;dual&nbsp;</span>
+<span class="R1">licensed&nbsp;u</span>
+<span class="R1">nder&nbsp;OpenS</span>
+<span class="R1">SL&nbsp;and</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">6</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;CRYPTOGA</span>
+<span class="R1">MS&nbsp;license</span>
+<span class="R1">s&nbsp;dependin</span>
+<span class="R1">g&nbsp;on&nbsp;where</span>
+<span class="R1">&nbsp;you&nbsp;obtai</span>
+<span class="R1">n&nbsp;it.&nbsp;For&nbsp;</span>
+<span class="R1">further</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">7</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;details&nbsp;</span>
+<span class="R1">see&nbsp;http:/</span>
+<span class="R1">/www.opens</span>
+<span class="R1">sl.org/~ap</span>
+<span class="R1">pro/crypto</span>
+<span class="R1">gams/.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">8</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;========</span>
+<span class="R1">==========</span>
+<span class="R1">==========</span>
+<span class="R1">==========</span>
+<span class="R1">==========</span>
+<span class="R1">==========</span>
+<span class="R1">==========</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">9</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">10</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;May&nbsp;2011</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">11</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">12</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;The&nbsp;modu</span>
+<span class="R1">le&nbsp;impleme</span>
+<span class="R1">nts&nbsp;bn_GF2</span>
+<span class="R1">m_mul_2x2&nbsp;</span>
+<span class="R1">polynomial</span>
+<span class="R1">&nbsp;multiplic</span>
+<span class="R1">ation&nbsp;used</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">13</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;in&nbsp;bn_gf</span>
+<span class="R1">2m.c.&nbsp;It's</span>
+<span class="R1">&nbsp;kind&nbsp;of&nbsp;l</span>
+<span class="R1">ow-hanging</span>
+<span class="R1">&nbsp;mechanica</span>
+<span class="R1">l&nbsp;port&nbsp;fro</span>
+<span class="R1">m&nbsp;C&nbsp;for</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">14</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;the&nbsp;time</span>
+<span class="R1">&nbsp;being...&nbsp;</span>
+<span class="R1">Except&nbsp;tha</span>
+<span class="R1">t&nbsp;it&nbsp;has&nbsp;t</span>
+<span class="R1">hree&nbsp;code&nbsp;</span>
+<span class="R1">paths:&nbsp;pur</span>
+<span class="R1">e&nbsp;integer</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">15</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;code&nbsp;sui</span>
+<span class="R1">table&nbsp;for&nbsp;</span>
+<span class="R1">any&nbsp;x86&nbsp;CP</span>
+<span class="R1">U,&nbsp;MMX&nbsp;cod</span>
+<span class="R1">e&nbsp;suitable</span>
+<span class="R1">&nbsp;for&nbsp;PIII&nbsp;</span>
+<span class="R1">and&nbsp;later</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">16</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;and&nbsp;PCLM</span>
+<span class="R1">ULQDQ&nbsp;suit</span>
+<span class="R1">able&nbsp;for&nbsp;W</span>
+<span class="R1">estmere&nbsp;an</span>
+<span class="R1">d&nbsp;later.&nbsp;I</span>
+<span class="R1">mprovement</span>
+<span class="R1">&nbsp;varies</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">17</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;from&nbsp;one</span>
+<span class="R1">&nbsp;benchmark</span>
+<span class="R1">&nbsp;and&nbsp;µ-arc</span>
+<span class="R1">h&nbsp;to&nbsp;anoth</span>
+<span class="R1">er.&nbsp;Below&nbsp;</span>
+<span class="R1">are&nbsp;interv</span>
+<span class="R1">al&nbsp;values</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">18</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;for&nbsp;163-</span>
+<span class="R1">&nbsp;and&nbsp;571-b</span>
+<span class="R1">it&nbsp;ECDH&nbsp;be</span>
+<span class="R1">nchmarks&nbsp;r</span>
+<span class="R1">elative&nbsp;to</span>
+<span class="R1">&nbsp;compiler-</span>
+<span class="R1">generated</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">19</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;code:</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">20</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">21</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;PIII&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16%-</span>
+<span class="R1">30%</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">22</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;P4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;12%-</span>
+<span class="R1">12%</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">23</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;Opteron&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;18%-</span>
+<span class="R1">40%</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">24</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;Core2&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;19%-</span>
+<span class="R1">44%</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">25</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;Atom&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;38%-</span>
+<span class="R1">64%</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">26</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;Westmere</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;53%-</span>
+<span class="R1">121%(PCLMU</span>
+<span class="R1">LQDQ)/20%-</span>
+<span class="R1">32%(MMX)</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">27</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;Sandy&nbsp;Br</span>
+<span class="R1">idge&nbsp;&nbsp;72%-</span>
+<span class="R1">127%(PCLMU</span>
+<span class="R1">LQDQ)/27%-</span>
+<span class="R1">23%(MMX)</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">28</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">29</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;Note&nbsp;tha</span>
+<span class="R1">t&nbsp;above&nbsp;im</span>
+<span class="R1">provement&nbsp;</span>
+<span class="R1">coefficien</span>
+<span class="R1">ts&nbsp;are&nbsp;not</span>
+<span class="R1">&nbsp;coefficie</span>
+<span class="R1">nts&nbsp;for</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">30</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;bn_GF2m_</span>
+<span class="R1">mul_2x2&nbsp;it</span>
+<span class="R1">self.&nbsp;For&nbsp;</span>
+<span class="R1">example&nbsp;12</span>
+<span class="R1">0%&nbsp;ECDH&nbsp;im</span>
+<span class="R1">provement&nbsp;</span>
+<span class="R1">is&nbsp;result</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">31</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;of&nbsp;bn_GF</span>
+<span class="R1">2m_mul_2x2</span>
+<span class="R1">&nbsp;being&nbsp;&gt;4x</span>
+<span class="R1">&nbsp;faster.&nbsp;A</span>
+<span class="R1">s&nbsp;it&nbsp;gets&nbsp;</span>
+<span class="R1">faster,&nbsp;be</span>
+<span class="R1">nchmark</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">32</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;is&nbsp;more&nbsp;</span>
+<span class="R1">and&nbsp;more&nbsp;d</span>
+<span class="R1">ominated&nbsp;b</span>
+<span class="R1">y&nbsp;other&nbsp;su</span>
+<span class="R1">broutines,</span>
+<span class="R1">&nbsp;most&nbsp;nota</span>
+<span class="R1">bly&nbsp;by</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">33</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;BN_GF2m_</span>
+<span class="R1">mod[_mul]_</span>
+<span class="R1">arr...</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">34</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">35</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">$0&nbsp;=~&nbsp;m/(.</span>
+<span class="R1">*[\/\\])[^</span>
+<span class="R1">\/\\]+$/;&nbsp;</span>
+<span class="R1">$dir=$1;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">36</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">push(@INC,</span>
+<span class="R1">"${dir}","</span>
+<span class="R1">${dir}../.</span>
+<span class="R1">./perlasm"</span>
+<span class="R1">);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">37</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">require&nbsp;"x</span>
+<span class="R1">86asm.pl";</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">38</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">39</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&amp;asm_init(</span>
+<span class="R1">$ARGV[0],$</span>
+<span class="R1">0,$x86only</span>
+<span class="R1">&nbsp;=&nbsp;$ARGV[$</span>
+<span class="R1">#ARGV]&nbsp;eq&nbsp;</span>
+<span class="R1">"386");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">40</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">41</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">$sse2=0;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">42</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">for&nbsp;(@ARGV</span>
+<span class="R1">)&nbsp;{&nbsp;$sse2=</span>
+<span class="R1">1&nbsp;if&nbsp;(/-DO</span>
+<span class="R1">PENSSL_IA3</span>
+<span class="R1">2_SSE2/);&nbsp;</span>
+<span class="R1">}</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">43</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">44</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&amp;external_</span>
+<span class="R1">label("OPE</span>
+<span class="R1">NSSL_ia32c</span>
+<span class="R1">ap_P")&nbsp;if&nbsp;</span>
+<span class="R1">($sse2);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">45</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">46</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">$a="eax";</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">47</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">$b="ebx";</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">48</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">($a1,$a2,$</span>
+<span class="R1">a4)=("ecx"</span>
+<span class="R1">,"edx","eb</span>
+<span class="R1">p");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">49</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">50</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">$R="mm0";</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">51</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">@T=("mm1",</span>
+<span class="R1">"mm2");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">52</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">($A,$B,$B3</span>
+<span class="R1">0,$B31)=("</span>
+<span class="R1">mm2","mm3"</span>
+<span class="R1">,"mm4","mm</span>
+<span class="R1">5");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">53</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">@i=("esi",</span>
+<span class="R1">"edi");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">54</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">55</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">if&nbsp;(!$x86o</span>
+<span class="R1">nly)&nbsp;{</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">56</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&amp;function_</span>
+<span class="R1">begin_B("_</span>
+<span class="R1">mul_1x1_mm</span>
+<span class="R1">x");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">57</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;s</span>
+<span class="R1">ub&nbsp;&nbsp;&nbsp;&nbsp;("es</span>
+<span class="R1">p",32+4);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">58</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">mov&nbsp;&nbsp;&nbsp;($a1</span>
+<span class="R1">,$a);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">59</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">lea&nbsp;&nbsp;&nbsp;($a2</span>
+<span class="R1">,&amp;DWP(0,$a</span>
+<span class="R1">,$a));</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">60</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">and&nbsp;&nbsp;&nbsp;($a1</span>
+<span class="R1">,0x3ffffff</span>
+<span class="R1">f);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">61</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">lea&nbsp;&nbsp;&nbsp;($a4</span>
+<span class="R1">,&amp;DWP(0,$a</span>
+<span class="R1">2,$a2));</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">62</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">mov&nbsp;&nbsp;&nbsp;(&amp;DW</span>
+<span class="R1">P(0*4,"esp</span>
+<span class="R1">"),0);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">63</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">and&nbsp;&nbsp;&nbsp;($a2</span>
+<span class="R1">,0x7ffffff</span>
+<span class="R1">f);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">64</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ovd&nbsp;&nbsp;&nbsp;($A,</span>
+<span class="R1">$a);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">65</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ovd&nbsp;&nbsp;&nbsp;($B,</span>
+<span class="R1">$b);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">66</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">mov&nbsp;&nbsp;&nbsp;(&amp;DW</span>
+<span class="R1">P(1*4,"esp</span>
+<span class="R1">"),$a1);&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;a1</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">67</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">xor&nbsp;&nbsp;&nbsp;($a1</span>
+<span class="R1">,$a2);&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;a1^a2</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">68</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">xor&nbsp;&nbsp;&nbsp;($B3</span>
+<span class="R1">1,$B31);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">69</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">xor&nbsp;&nbsp;&nbsp;($B3</span>
+<span class="R1">0,$B30);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">70</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">mov&nbsp;&nbsp;&nbsp;(&amp;DW</span>
+<span class="R1">P(2*4,"esp</span>
+<span class="R1">"),$a2);&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;a2</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">71</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">xor&nbsp;&nbsp;&nbsp;($a2</span>
+<span class="R1">,$a4);&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;a2^a4</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">72</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">mov&nbsp;&nbsp;&nbsp;(&amp;DW</span>
+<span class="R1">P(3*4,"esp</span>
+<span class="R1">"),$a1);&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;a1^a2</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">73</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">cmpgtd($B3</span>
+<span class="R1">1,$A);&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;broadcas</span>
+<span class="R1">t&nbsp;31st&nbsp;bit</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">74</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">addd&nbsp;&nbsp;($A,</span>
+<span class="R1">$A);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;$A&lt;&lt;=1</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">75</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">xor&nbsp;&nbsp;&nbsp;($a1</span>
+<span class="R1">,$a2);&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;a1^a4=a1</span>
+<span class="R1">^a2^a2^a4</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">76</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">mov&nbsp;&nbsp;&nbsp;(&amp;DW</span>
+<span class="R1">P(4*4,"esp</span>
+<span class="R1">"),$a4);&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;a4</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">77</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">xor&nbsp;&nbsp;&nbsp;($a4</span>
+<span class="R1">,$a2);&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;a2=a4^a2</span>
+<span class="R1">^a4</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">78</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">and&nbsp;&nbsp;&nbsp;($B3</span>
+<span class="R1">1,$B);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">79</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">cmpgtd($B3</span>
+<span class="R1">0,$A);&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;broadcas</span>
+<span class="R1">t&nbsp;30th&nbsp;bit</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">80</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">mov&nbsp;&nbsp;&nbsp;(&amp;DW</span>
+<span class="R1">P(5*4,"esp</span>
+<span class="R1">"),$a1);&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;a1^a4</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">81</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">xor&nbsp;&nbsp;&nbsp;($a4</span>
+<span class="R1">,$a1);&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;a1^a2^a4</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">82</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">sllq&nbsp;&nbsp;($B3</span>
+<span class="R1">1,31);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">83</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">and&nbsp;&nbsp;&nbsp;($B3</span>
+<span class="R1">0,$B);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">84</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">mov&nbsp;&nbsp;&nbsp;(&amp;DW</span>
+<span class="R1">P(6*4,"esp</span>
+<span class="R1">"),$a2);&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;a2^a4</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">85</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;(@i[</span>
+<span class="R1">0],0x7);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">86</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">mov&nbsp;&nbsp;&nbsp;(&amp;DW</span>
+<span class="R1">P(7*4,"esp</span>
+<span class="R1">"),$a4);&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;a1^a2^a4</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">87</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">mov&nbsp;&nbsp;&nbsp;($a4</span>
+<span class="R1">,@i[0]);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">88</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;a</span>
+<span class="R1">nd&nbsp;&nbsp;&nbsp;&nbsp;(@i[</span>
+<span class="R1">0],$b);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">89</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;s</span>
+<span class="R1">hr&nbsp;&nbsp;&nbsp;&nbsp;($b,</span>
+<span class="R1">3);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">90</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;(@i[</span>
+<span class="R1">1],$a4);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">91</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">sllq&nbsp;&nbsp;($B3</span>
+<span class="R1">0,30);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">92</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;a</span>
+<span class="R1">nd&nbsp;&nbsp;&nbsp;&nbsp;(@i[</span>
+<span class="R1">1],$b);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">93</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;s</span>
+<span class="R1">hr&nbsp;&nbsp;&nbsp;&nbsp;($b,</span>
+<span class="R1">3);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">94</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ovd&nbsp;&nbsp;&nbsp;($R,</span>
+<span class="R1">&amp;DWP(0,"es</span>
+<span class="R1">p",@i[0],4</span>
+<span class="R1">));</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">95</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;(@i[</span>
+<span class="R1">0],$a4);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">96</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;a</span>
+<span class="R1">nd&nbsp;&nbsp;&nbsp;&nbsp;(@i[</span>
+<span class="R1">0],$b);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">97</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;s</span>
+<span class="R1">hr&nbsp;&nbsp;&nbsp;&nbsp;($b,</span>
+<span class="R1">3);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">98</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fo</span>
+<span class="R1">r($n=1;$n&lt;</span>
+<span class="R1">9;$n++)&nbsp;{</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">99</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;mov</span>
+<span class="R1">d&nbsp;&nbsp;&nbsp;(@T[1]</span>
+<span class="R1">,&amp;DWP(0,"e</span>
+<span class="R1">sp",@i[1],</span>
+<span class="R1">4));</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">100</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;mov</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;(@i[1]</span>
+<span class="R1">,$a4);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">101</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;psl</span>
+<span class="R1">lq&nbsp;&nbsp;(@T[1]</span>
+<span class="R1">,3*$n);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">102</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;and</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;(@i[1]</span>
+<span class="R1">,$b);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">103</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;shr</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;($b,3)</span>
+<span class="R1">;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">104</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;pxo</span>
+<span class="R1">r&nbsp;&nbsp;&nbsp;($R,@T</span>
+<span class="R1">[1]);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">105</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">106</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;push</span>
+<span class="R1">(@i,shift(</span>
+<span class="R1">@i));&nbsp;push</span>
+<span class="R1">(@T,shift(</span>
+<span class="R1">@T));</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">107</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">108</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ovd&nbsp;&nbsp;&nbsp;(@T[</span>
+<span class="R1">1],&amp;DWP(0,</span>
+<span class="R1">"esp",@i[1</span>
+<span class="R1">],4));</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">109</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">xor&nbsp;&nbsp;&nbsp;($R,</span>
+<span class="R1">$B30);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">110</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">sllq&nbsp;&nbsp;(@T[</span>
+<span class="R1">1],3*$n++)</span>
+<span class="R1">;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">111</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">xor&nbsp;&nbsp;&nbsp;($R,</span>
+<span class="R1">@T[1]);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">112</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">113</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ovd&nbsp;&nbsp;&nbsp;(@T[</span>
+<span class="R1">0],&amp;DWP(0,</span>
+<span class="R1">"esp",@i[0</span>
+<span class="R1">],4));</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">114</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">xor&nbsp;&nbsp;&nbsp;($R,</span>
+<span class="R1">$B31);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">115</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">sllq&nbsp;&nbsp;(@T[</span>
+<span class="R1">0],3*$n);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">116</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;a</span>
+<span class="R1">dd&nbsp;&nbsp;&nbsp;&nbsp;("es</span>
+<span class="R1">p",32+4);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">117</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">xor&nbsp;&nbsp;&nbsp;($R,</span>
+<span class="R1">@T[0]);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">118</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;r</span>
+<span class="R1">et&nbsp;&nbsp;&nbsp;&nbsp;();</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">119</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&amp;function_</span>
+<span class="R1">end_B("_mu</span>
+<span class="R1">l_1x1_mmx"</span>
+<span class="R1">);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">120</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">}</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">121</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">122</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">($lo,$hi)=</span>
+<span class="R1">("eax","ed</span>
+<span class="R1">x");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">123</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">@T=("ecx",</span>
+<span class="R1">"ebp");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">124</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">125</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&amp;function_</span>
+<span class="R1">begin_B("_</span>
+<span class="R1">mul_1x1_ia</span>
+<span class="R1">lu");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">126</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;s</span>
+<span class="R1">ub&nbsp;&nbsp;&nbsp;&nbsp;("es</span>
+<span class="R1">p",32+4);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">127</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">mov&nbsp;&nbsp;&nbsp;($a1</span>
+<span class="R1">,$a);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">128</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">lea&nbsp;&nbsp;&nbsp;($a2</span>
+<span class="R1">,&amp;DWP(0,$a</span>
+<span class="R1">,$a));</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">129</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">lea&nbsp;&nbsp;&nbsp;($a4</span>
+<span class="R1">,&amp;DWP(0,""</span>
+<span class="R1">,$a,4));</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">130</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">and&nbsp;&nbsp;&nbsp;($a1</span>
+<span class="R1">,0x3ffffff</span>
+<span class="R1">f);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">131</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;l</span>
+<span class="R1">ea&nbsp;&nbsp;&nbsp;&nbsp;(@i[</span>
+<span class="R1">1],&amp;DWP(0,</span>
+<span class="R1">$lo,$lo));</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">132</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;s</span>
+<span class="R1">ar&nbsp;&nbsp;&nbsp;&nbsp;($lo</span>
+<span class="R1">,31);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;broadcas</span>
+<span class="R1">t&nbsp;31st&nbsp;bit</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">133</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">mov&nbsp;&nbsp;&nbsp;(&amp;DW</span>
+<span class="R1">P(0*4,"esp</span>
+<span class="R1">"),0);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">134</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">and&nbsp;&nbsp;&nbsp;($a2</span>
+<span class="R1">,0x7ffffff</span>
+<span class="R1">f);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">135</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">mov&nbsp;&nbsp;&nbsp;(&amp;DW</span>
+<span class="R1">P(1*4,"esp</span>
+<span class="R1">"),$a1);&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;a1</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">136</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">xor&nbsp;&nbsp;&nbsp;($a1</span>
+<span class="R1">,$a2);&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;a1^a2</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">137</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">mov&nbsp;&nbsp;&nbsp;(&amp;DW</span>
+<span class="R1">P(2*4,"esp</span>
+<span class="R1">"),$a2);&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;a2</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">138</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">xor&nbsp;&nbsp;&nbsp;($a2</span>
+<span class="R1">,$a4);&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;a2^a4</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">139</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">mov&nbsp;&nbsp;&nbsp;(&amp;DW</span>
+<span class="R1">P(3*4,"esp</span>
+<span class="R1">"),$a1);&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;a1^a2</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">140</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">xor&nbsp;&nbsp;&nbsp;($a1</span>
+<span class="R1">,$a2);&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;a1^a4=a1</span>
+<span class="R1">^a2^a2^a4</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">141</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">mov&nbsp;&nbsp;&nbsp;(&amp;DW</span>
+<span class="R1">P(4*4,"esp</span>
+<span class="R1">"),$a4);&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;a4</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">142</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">xor&nbsp;&nbsp;&nbsp;($a4</span>
+<span class="R1">,$a2);&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;a2=a4^a2</span>
+<span class="R1">^a4</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">143</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">mov&nbsp;&nbsp;&nbsp;(&amp;DW</span>
+<span class="R1">P(5*4,"esp</span>
+<span class="R1">"),$a1);&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;a1^a4</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">144</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">xor&nbsp;&nbsp;&nbsp;($a4</span>
+<span class="R1">,$a1);&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;a1^a2^a4</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">145</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;s</span>
+<span class="R1">ar&nbsp;&nbsp;&nbsp;&nbsp;(@i[</span>
+<span class="R1">1],31);&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;broardca</span>
+<span class="R1">st&nbsp;30th&nbsp;bi</span>
+<span class="R1">t</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">146</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;a</span>
+<span class="R1">nd&nbsp;&nbsp;&nbsp;&nbsp;($lo</span>
+<span class="R1">,$b);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">147</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">mov&nbsp;&nbsp;&nbsp;(&amp;DW</span>
+<span class="R1">P(6*4,"esp</span>
+<span class="R1">"),$a2);&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;a2^a4</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">148</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;a</span>
+<span class="R1">nd&nbsp;&nbsp;&nbsp;&nbsp;(@i[</span>
+<span class="R1">1],$b);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">149</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">mov&nbsp;&nbsp;&nbsp;(&amp;DW</span>
+<span class="R1">P(7*4,"esp</span>
+<span class="R1">"),$a4);&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;a1^a2^a4</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">150</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;($hi</span>
+<span class="R1">,$lo);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">151</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;s</span>
+<span class="R1">hl&nbsp;&nbsp;&nbsp;&nbsp;($lo</span>
+<span class="R1">,31);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">152</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;(@T[</span>
+<span class="R1">0],@i[1]);</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">153</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;s</span>
+<span class="R1">hr&nbsp;&nbsp;&nbsp;&nbsp;($hi</span>
+<span class="R1">,1);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">154</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">155</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">mov&nbsp;&nbsp;&nbsp;(@i[</span>
+<span class="R1">0],0x7);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">156</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;s</span>
+<span class="R1">hl&nbsp;&nbsp;&nbsp;&nbsp;(@i[</span>
+<span class="R1">1],30);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">157</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">and&nbsp;&nbsp;&nbsp;(@i[</span>
+<span class="R1">0],$b);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">158</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;s</span>
+<span class="R1">hr&nbsp;&nbsp;&nbsp;&nbsp;(@T[</span>
+<span class="R1">0],2);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">159</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;x</span>
+<span class="R1">or&nbsp;&nbsp;&nbsp;&nbsp;($lo</span>
+<span class="R1">,@i[1]);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">160</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">161</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;s</span>
+<span class="R1">hr&nbsp;&nbsp;&nbsp;&nbsp;($b,</span>
+<span class="R1">3);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">162</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;(@i[</span>
+<span class="R1">1],0x7);&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;5-byte&nbsp;i</span>
+<span class="R1">nstruction</span>
+<span class="R1">!?</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">163</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;a</span>
+<span class="R1">nd&nbsp;&nbsp;&nbsp;&nbsp;(@i[</span>
+<span class="R1">1],$b);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">164</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;s</span>
+<span class="R1">hr&nbsp;&nbsp;&nbsp;&nbsp;($b,</span>
+<span class="R1">3);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">165</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;</span>
+<span class="R1">xor&nbsp;&nbsp;&nbsp;($hi</span>
+<span class="R1">,@T[0]);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">166</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;x</span>
+<span class="R1">or&nbsp;&nbsp;&nbsp;&nbsp;($lo</span>
+<span class="R1">,&amp;DWP(0,"e</span>
+<span class="R1">sp",@i[0],</span>
+<span class="R1">4));</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">167</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;(@i[</span>
+<span class="R1">0],0x7);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">168</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;a</span>
+<span class="R1">nd&nbsp;&nbsp;&nbsp;&nbsp;(@i[</span>
+<span class="R1">0],$b);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">169</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;s</span>
+<span class="R1">hr&nbsp;&nbsp;&nbsp;&nbsp;($b,</span>
+<span class="R1">3);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">170</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fo</span>
+<span class="R1">r($n=1;$n&lt;</span>
+<span class="R1">9;$n++)&nbsp;{</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">171</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;mov</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;(@T[1]</span>
+<span class="R1">,&amp;DWP(0,"e</span>
+<span class="R1">sp",@i[1],</span>
+<span class="R1">4));</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">172</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;mov</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;(@i[1]</span>
+<span class="R1">,0x7);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">173</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;mov</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;(@T[0]</span>
+<span class="R1">,@T[1]);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">174</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;shl</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;(@T[1]</span>
+<span class="R1">,3*$n);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">175</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;and</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;(@i[1]</span>
+<span class="R1">,$b);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">176</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;shr</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;(@T[0]</span>
+<span class="R1">,32-3*$n);</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">177</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;xor</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;($lo,@</span>
+<span class="R1">T[1]);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">178</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;shr</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;($b,3)</span>
+<span class="R1">;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">179</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;xor</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;($hi,@</span>
+<span class="R1">T[0]);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">180</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">181</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;push</span>
+<span class="R1">(@i,shift(</span>
+<span class="R1">@i));&nbsp;push</span>
+<span class="R1">(@T,shift(</span>
+<span class="R1">@T));</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">182</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">183</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;(@T[</span>
+<span class="R1">1],&amp;DWP(0,</span>
+<span class="R1">"esp",@i[1</span>
+<span class="R1">],4));</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">184</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;(@T[</span>
+<span class="R1">0],@T[1]);</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">185</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;s</span>
+<span class="R1">hl&nbsp;&nbsp;&nbsp;&nbsp;(@T[</span>
+<span class="R1">1],3*$n);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">186</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;(@i[</span>
+<span class="R1">1],&amp;DWP(0,</span>
+<span class="R1">"esp",@i[0</span>
+<span class="R1">],4));</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">187</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;s</span>
+<span class="R1">hr&nbsp;&nbsp;&nbsp;&nbsp;(@T[</span>
+<span class="R1">0],32-3*$n</span>
+<span class="R1">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">$n++;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">188</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;(@i[</span>
+<span class="R1">0],@i[1]);</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">189</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;x</span>
+<span class="R1">or&nbsp;&nbsp;&nbsp;&nbsp;($lo</span>
+<span class="R1">,@T[1]);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">190</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;s</span>
+<span class="R1">hl&nbsp;&nbsp;&nbsp;&nbsp;(@i[</span>
+<span class="R1">1],3*$n);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">191</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;x</span>
+<span class="R1">or&nbsp;&nbsp;&nbsp;&nbsp;($hi</span>
+<span class="R1">,@T[0]);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">192</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;s</span>
+<span class="R1">hr&nbsp;&nbsp;&nbsp;&nbsp;(@i[</span>
+<span class="R1">0],32-3*$n</span>
+<span class="R1">);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">193</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;x</span>
+<span class="R1">or&nbsp;&nbsp;&nbsp;&nbsp;($lo</span>
+<span class="R1">,@i[1]);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">194</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;x</span>
+<span class="R1">or&nbsp;&nbsp;&nbsp;&nbsp;($hi</span>
+<span class="R1">,@i[0]);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">195</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">196</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;a</span>
+<span class="R1">dd&nbsp;&nbsp;&nbsp;&nbsp;("es</span>
+<span class="R1">p",32+4);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">197</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;r</span>
+<span class="R1">et&nbsp;&nbsp;&nbsp;&nbsp;();</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">198</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&amp;function_</span>
+<span class="R1">end_B("_mu</span>
+<span class="R1">l_1x1_ialu</span>
+<span class="R1">");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">199</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">200</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">#&nbsp;void&nbsp;bn_</span>
+<span class="R1">GF2m_mul_2</span>
+<span class="R1">x2(BN_ULON</span>
+<span class="R1">G&nbsp;*r,&nbsp;BN_U</span>
+<span class="R1">LONG&nbsp;a1,&nbsp;B</span>
+<span class="R1">N_ULONG&nbsp;a0</span>
+<span class="R1">,&nbsp;BN_ULONG</span>
+<span class="R1">&nbsp;b1,&nbsp;BN_UL</span>
+<span class="R1">ONG&nbsp;b0);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">201</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&amp;function_</span>
+<span class="R1">begin_B("b</span>
+<span class="R1">n_GF2m_mul</span>
+<span class="R1">_2x2");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">202</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">if&nbsp;(!$x86o</span>
+<span class="R1">nly)&nbsp;{</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">203</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">icmeup("ed</span>
+<span class="R1">x","OPENSS</span>
+<span class="R1">L_ia32cap_</span>
+<span class="R1">P");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">204</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;("ea</span>
+<span class="R1">x",&amp;DWP(0,</span>
+<span class="R1">"edx"));</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">205</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;("ed</span>
+<span class="R1">x",&amp;DWP(4,</span>
+<span class="R1">"edx"));</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">206</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;t</span>
+<span class="R1">est&nbsp;&nbsp;&nbsp;("ea</span>
+<span class="R1">x",1&lt;&lt;23);</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;check&nbsp;MM</span>
+<span class="R1">X&nbsp;bit</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">207</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;j</span>
+<span class="R1">z&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&amp;la</span>
+<span class="R1">bel("ialu"</span>
+<span class="R1">));</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">208</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">if&nbsp;($sse2)</span>
+<span class="R1">&nbsp;{</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">209</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;t</span>
+<span class="R1">est&nbsp;&nbsp;&nbsp;("ea</span>
+<span class="R1">x",1&lt;&lt;24);</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;check&nbsp;FX</span>
+<span class="R1">SR&nbsp;bit</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">210</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;j</span>
+<span class="R1">z&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&amp;la</span>
+<span class="R1">bel("mmx")</span>
+<span class="R1">);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">211</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;t</span>
+<span class="R1">est&nbsp;&nbsp;&nbsp;("ed</span>
+<span class="R1">x",1&lt;&lt;1);&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;check&nbsp;PC</span>
+<span class="R1">LMULQDQ&nbsp;bi</span>
+<span class="R1">t</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">212</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;j</span>
+<span class="R1">z&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(&amp;la</span>
+<span class="R1">bel("mmx")</span>
+<span class="R1">);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">213</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">214</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ovups&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;("xmm0</span>
+<span class="R1">",&amp;QWP(8,"</span>
+<span class="R1">esp"));</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">215</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;s</span>
+<span class="R1">hufps&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;("xmm0</span>
+<span class="R1">","xmm0",0</span>
+<span class="R1">b10110001)</span>
+<span class="R1">;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">216</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">clmulqdq&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;("xmm0</span>
+<span class="R1">","xmm0",1</span>
+<span class="R1">);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">217</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;("eax"</span>
+<span class="R1">,&amp;DWP(4,"e</span>
+<span class="R1">sp"));</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">218</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ovups&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;(&amp;QWP(</span>
+<span class="R1">0,"eax"),"</span>
+<span class="R1">xmm0");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">219</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;r</span>
+<span class="R1">et&nbsp;&nbsp;&nbsp;&nbsp;();</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">220</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">221</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&amp;set_label</span>
+<span class="R1">("mmx",16)</span>
+<span class="R1">;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">222</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">}</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">223</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">ush&nbsp;&nbsp;&nbsp;("eb</span>
+<span class="R1">p");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">224</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">ush&nbsp;&nbsp;&nbsp;("eb</span>
+<span class="R1">x");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">225</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">ush&nbsp;&nbsp;&nbsp;("es</span>
+<span class="R1">i");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">226</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">ush&nbsp;&nbsp;&nbsp;("ed</span>
+<span class="R1">i");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">227</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;($a,</span>
+<span class="R1">&amp;wparam(1)</span>
+<span class="R1">);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">228</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;($b,</span>
+<span class="R1">&amp;wparam(3)</span>
+<span class="R1">);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">229</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;c</span>
+<span class="R1">all&nbsp;&nbsp;&nbsp;("_m</span>
+<span class="R1">ul_1x1_mmx</span>
+<span class="R1">");&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;a1·b1</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">230</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ovq&nbsp;&nbsp;&nbsp;("mm</span>
+<span class="R1">7",$R);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">231</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">232</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;($a,</span>
+<span class="R1">&amp;wparam(2)</span>
+<span class="R1">);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">233</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;($b,</span>
+<span class="R1">&amp;wparam(4)</span>
+<span class="R1">);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">234</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;c</span>
+<span class="R1">all&nbsp;&nbsp;&nbsp;("_m</span>
+<span class="R1">ul_1x1_mmx</span>
+<span class="R1">");&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;a0·b0</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">235</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ovq&nbsp;&nbsp;&nbsp;("mm</span>
+<span class="R1">6",$R);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">236</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">237</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;($a,</span>
+<span class="R1">&amp;wparam(1)</span>
+<span class="R1">);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">238</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;($b,</span>
+<span class="R1">&amp;wparam(3)</span>
+<span class="R1">);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">239</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;x</span>
+<span class="R1">or&nbsp;&nbsp;&nbsp;&nbsp;($a,</span>
+<span class="R1">&amp;wparam(2)</span>
+<span class="R1">);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">240</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;x</span>
+<span class="R1">or&nbsp;&nbsp;&nbsp;&nbsp;($b,</span>
+<span class="R1">&amp;wparam(4)</span>
+<span class="R1">);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">241</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;c</span>
+<span class="R1">all&nbsp;&nbsp;&nbsp;("_m</span>
+<span class="R1">ul_1x1_mmx</span>
+<span class="R1">");&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;(a0+a1)·</span>
+<span class="R1">(b0+b1)</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">242</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">xor&nbsp;&nbsp;&nbsp;($R,</span>
+<span class="R1">"mm7");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">243</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;($a,</span>
+<span class="R1">&amp;wparam(0)</span>
+<span class="R1">);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">244</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">xor&nbsp;&nbsp;&nbsp;($R,</span>
+<span class="R1">"mm6");&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;(a0+a1)·</span>
+<span class="R1">(b0+b1)-a1</span>
+<span class="R1">·b1-a0·b0</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">245</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">246</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ovq&nbsp;&nbsp;&nbsp;($A,</span>
+<span class="R1">$R);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">247</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">sllq&nbsp;&nbsp;($R,</span>
+<span class="R1">32);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">248</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">op&nbsp;&nbsp;&nbsp;&nbsp;("ed</span>
+<span class="R1">i");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">249</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">srlq&nbsp;&nbsp;($A,</span>
+<span class="R1">32);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">250</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">op&nbsp;&nbsp;&nbsp;&nbsp;("es</span>
+<span class="R1">i");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">251</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">xor&nbsp;&nbsp;&nbsp;($R,</span>
+<span class="R1">"mm6");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">252</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">op&nbsp;&nbsp;&nbsp;&nbsp;("eb</span>
+<span class="R1">x");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">253</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">xor&nbsp;&nbsp;&nbsp;($A,</span>
+<span class="R1">"mm7");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">254</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ovq&nbsp;&nbsp;&nbsp;(&amp;QW</span>
+<span class="R1">P(0,$a),$R</span>
+<span class="R1">);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">255</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">op&nbsp;&nbsp;&nbsp;&nbsp;("eb</span>
+<span class="R1">p");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">256</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ovq&nbsp;&nbsp;&nbsp;(&amp;QW</span>
+<span class="R1">P(8,$a),$A</span>
+<span class="R1">);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">257</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;e</span>
+<span class="R1">mms&nbsp;&nbsp;&nbsp;();</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">258</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;r</span>
+<span class="R1">et&nbsp;&nbsp;&nbsp;&nbsp;();</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">259</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&amp;set_label</span>
+<span class="R1">("ialu",16</span>
+<span class="R1">);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">260</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">}</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">261</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">ush&nbsp;&nbsp;&nbsp;("eb</span>
+<span class="R1">p");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">262</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">ush&nbsp;&nbsp;&nbsp;("eb</span>
+<span class="R1">x");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">263</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">ush&nbsp;&nbsp;&nbsp;("es</span>
+<span class="R1">i");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">264</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">ush&nbsp;&nbsp;&nbsp;("ed</span>
+<span class="R1">i");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">265</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;s</span>
+<span class="R1">tack_push(</span>
+<span class="R1">4+1);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">266</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">267</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;($a,</span>
+<span class="R1">&amp;wparam(1)</span>
+<span class="R1">);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">268</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;($b,</span>
+<span class="R1">&amp;wparam(3)</span>
+<span class="R1">);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">269</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;c</span>
+<span class="R1">all&nbsp;&nbsp;&nbsp;("_m</span>
+<span class="R1">ul_1x1_ial</span>
+<span class="R1">u");&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;a1·b1</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">270</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;(&amp;DW</span>
+<span class="R1">P(8,"esp")</span>
+<span class="R1">,$lo);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">271</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;(&amp;DW</span>
+<span class="R1">P(12,"esp"</span>
+<span class="R1">),$hi);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">272</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">273</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;($a,</span>
+<span class="R1">&amp;wparam(2)</span>
+<span class="R1">);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">274</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;($b,</span>
+<span class="R1">&amp;wparam(4)</span>
+<span class="R1">);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">275</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;c</span>
+<span class="R1">all&nbsp;&nbsp;&nbsp;("_m</span>
+<span class="R1">ul_1x1_ial</span>
+<span class="R1">u");&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;a0·b0</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">276</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;(&amp;DW</span>
+<span class="R1">P(0,"esp")</span>
+<span class="R1">,$lo);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">277</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;(&amp;DW</span>
+<span class="R1">P(4,"esp")</span>
+<span class="R1">,$hi);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">278</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">279</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;($a,</span>
+<span class="R1">&amp;wparam(1)</span>
+<span class="R1">);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">280</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;($b,</span>
+<span class="R1">&amp;wparam(3)</span>
+<span class="R1">);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">281</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;x</span>
+<span class="R1">or&nbsp;&nbsp;&nbsp;&nbsp;($a,</span>
+<span class="R1">&amp;wparam(2)</span>
+<span class="R1">);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">282</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;x</span>
+<span class="R1">or&nbsp;&nbsp;&nbsp;&nbsp;($b,</span>
+<span class="R1">&amp;wparam(4)</span>
+<span class="R1">);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">283</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;c</span>
+<span class="R1">all&nbsp;&nbsp;&nbsp;("_m</span>
+<span class="R1">ul_1x1_ial</span>
+<span class="R1">u");&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">#&nbsp;(a0+a1)·</span>
+<span class="R1">(b0+b1)</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">284</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">285</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;("eb</span>
+<span class="R1">p",&amp;wparam</span>
+<span class="R1">(0));</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">286</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@r=</span>
+<span class="R1">("ebx","ec</span>
+<span class="R1">x","edi","</span>
+<span class="R1">esi");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">287</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;(@r[</span>
+<span class="R1">0],&amp;DWP(0,</span>
+<span class="R1">"esp"));</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">288</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;(@r[</span>
+<span class="R1">1],&amp;DWP(4,</span>
+<span class="R1">"esp"));</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">289</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;(@r[</span>
+<span class="R1">2],&amp;DWP(8,</span>
+<span class="R1">"esp"));</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">290</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;(@r[</span>
+<span class="R1">3],&amp;DWP(12</span>
+<span class="R1">,"esp"));</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">291</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">292</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;x</span>
+<span class="R1">or&nbsp;&nbsp;&nbsp;&nbsp;($lo</span>
+<span class="R1">,$hi);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">293</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;x</span>
+<span class="R1">or&nbsp;&nbsp;&nbsp;&nbsp;($hi</span>
+<span class="R1">,@r[1]);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">294</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;x</span>
+<span class="R1">or&nbsp;&nbsp;&nbsp;&nbsp;($lo</span>
+<span class="R1">,@r[0]);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">295</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;(&amp;DW</span>
+<span class="R1">P(0,"ebp")</span>
+<span class="R1">,@r[0]);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">296</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;x</span>
+<span class="R1">or&nbsp;&nbsp;&nbsp;&nbsp;($hi</span>
+<span class="R1">,@r[2]);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">297</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;(&amp;DW</span>
+<span class="R1">P(12,"ebp"</span>
+<span class="R1">),@r[3]);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">298</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;x</span>
+<span class="R1">or&nbsp;&nbsp;&nbsp;&nbsp;($lo</span>
+<span class="R1">,@r[3]);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">299</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;s</span>
+<span class="R1">tack_pop(4</span>
+<span class="R1">+1);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">300</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;x</span>
+<span class="R1">or&nbsp;&nbsp;&nbsp;&nbsp;($hi</span>
+<span class="R1">,@r[3]);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">301</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">op&nbsp;&nbsp;&nbsp;&nbsp;("ed</span>
+<span class="R1">i");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">302</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;x</span>
+<span class="R1">or&nbsp;&nbsp;&nbsp;&nbsp;($lo</span>
+<span class="R1">,$hi);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">303</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">op&nbsp;&nbsp;&nbsp;&nbsp;("es</span>
+<span class="R1">i");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">304</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;(&amp;DW</span>
+<span class="R1">P(8,"ebp")</span>
+<span class="R1">,$hi);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">305</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">op&nbsp;&nbsp;&nbsp;&nbsp;("eb</span>
+<span class="R1">x");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">306</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;m</span>
+<span class="R1">ov&nbsp;&nbsp;&nbsp;&nbsp;(&amp;DW</span>
+<span class="R1">P(4,"ebp")</span>
+<span class="R1">,$lo);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">307</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;p</span>
+<span class="R1">op&nbsp;&nbsp;&nbsp;&nbsp;("eb</span>
+<span class="R1">p");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">308</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;r</span>
+<span class="R1">et&nbsp;&nbsp;&nbsp;&nbsp;();</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">309</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&amp;function_</span>
+<span class="R1">end_B("bn_</span>
+<span class="R1">GF2m_mul_2</span>
+<span class="R1">x2");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">310</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">311</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&amp;asciz&nbsp;&nbsp;("</span>
+<span class="R1">GF(2^m)&nbsp;Mu</span>
+<span class="R1">ltiplicati</span>
+<span class="R1">on&nbsp;for&nbsp;x86</span>
+<span class="R1">,&nbsp;CRYPTOGA</span>
+<span class="R1">MS&nbsp;by&nbsp;&lt;app</span>
+<span class="R1">ro\@openss</span>
+<span class="R1">l.org&gt;");</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">312</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">313</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&amp;asm_finis</span>
+<span class="R1">h();</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+</table>
+<p class="copyright" style="margin-top: 25px; padding-top: 2px; border-top: solid #a0a0a0 1px; max-width: none;">Araxis Merge (but not the data content of this report) is Copyright  &copy; 1993-2009 Araxis Ltd (<a href="http://www.araxis.com/" title="Link to the Araxis corporate web site">www.araxis.com</a>). All rights reserved.</p>
+</body>
+</html>

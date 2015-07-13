@@ -1,0 +1,5346 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mg="http://www.araxis.com/2002/Merge/Reporting" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<!--The layout and design of this report is Copyright © 2003-2009 Araxis Ltd. All rights reserved.-->
+<!--The copyright of the data content of this report belongs to the relevant copyright holders.-->
+<title>58. Araxis Merge File Comparison Report</title>
+<style type="text/css">
+body { background: #fff;  color: #000; margin: 0px 14px 14px 14px; }
+h1, h2, h3, h4, h5 {
+	padding: 0em;
+	margin: 1.5em 0em .25em 0em;
+	text-align: left;
+	font-weight: normal;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 70%;
+	max-width: 55em;
+}
+body, h4, h5, p, ol, ul, li, td, th { font-family: Verdana, Arial, Helvetica, sans-serif; text-align: left; }
+
+h4, h5, p, ol, ul, li { font-size: 70%; }
+input {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 120%;
+}
+
+h1 { margin: 14px 0em 1.2em 0em; font-size: 112%; line-height: 130%;}
+h2 { font-size: 125%; line-height: 84%;}
+h3 { margin-top: 1.4em; font-size: 81%; }
+h4 { margin-top: 1em; font-size: 70%; }
+h5 { margin-top: 1em; font-size: 100%; font-style: italic;}
+h1 strong, h2 strong, h3 strong, h4 strong { font-weight: bold; }
+
+p { margin: 6px 0em 6px 0em; max-width: 55em;}
+p.code, code {}
+p { font-size: 70%; line-height: 125%; }
+table { font-size: 70%;}
+
+p.copyright, .small { font-size: 60%; line-height: 120%; }
+p.copyright { margin: 3px 0px 0px 0px; padding: 0px; text-align: left; }
+acronym { font-variant: small-caps; }
+div.pad { padding: 3px; }
+span.lineEndings { color: red; font-size: 70%; }
+
+table.mgRowGroup, table.mgRowGroupFolder { border: 1px solid #a0a0a0; margin: 10px 0px 10px 0px; width: 100%; table-layout: fixed; border-collapse: collapse; }
+table.mgRowGroup td { vertical-align: top; padding: 0; }
+table.mgRowGroupFolder td { vertical-align: top; padding: 1px 0 1px 0; }
+div.IP { width: 2px; height: 1em; float: left; }
+
+img.mgFldrIcon {float: left; text-align: left; margin: -1px 2px 0px 0px;  height: 16px; width: 16px; border: none; vertical-align: top; background-color: transparent;}
+div.mgFldrIcon {float: left; width: auto;}
+span.left {float: left;width: auto;}
+span.right {float: right;width: auto;}
+
+table.bordered { border-collapse: collapse; border: 1px solid #a0a0a0; margin: 10px 0px 10px 0px;}
+table.bordered th, table.bordered td { vertical-align: top; padding: 3px; border: 1px solid #a0a0a0;}
+table.bordered th { background-color: #e5e5e5; }
+table.bordered td.group { background-color: #f5f5f5; }
+span.disabledNavigation { color: #a0a0a0; }
+div.navigation { margin-top: 14px; font-size: 70%; }
+div.comment { font-weight: normal; color: #000; font-family: Verdana, Arial, Helvetica, sans-serif; background-color: #fcfed8; padding: 2px 5px 2px 5px; border: 1px solid #E3E5C3; margin: 1px 2px 3px 2px; -moz-border-radius: 7px; border-radius: 7px; }
+
+                span.U1, span.U1 a {float: left; width: auto;color: #000000; background-color: #FFFFFF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.U1 a {text-decoration: underline;}
+td.U1 {color: #000000; background-color: #FFFFFF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.R1, span.R1 a {float: left; width: auto;color: #800000; background-color: #F3E6D8; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.R1 a {text-decoration: underline;}
+td.R1 {color: #800000; background-color: #F3E6D8; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.I1, span.I1 a {float: left; width: auto;color: #800000; background-color: #D1E8CF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.I1 a {text-decoration: underline;}
+td.I1 {color: #800000; background-color: #D1E8CF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.C1, span.C1 a {float: left; width: auto;color: #800000; background-color: #DACDE6; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.C1 a {text-decoration: underline;}
+td.C1 {color: #800000; background-color: #DACDE6; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+td.nbgC1 {color: #800000; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; background-color: #FFFFFF; }
+span.U2, span.U2 a {float: left; width: auto;color: #000000; background-color: #FFFFFF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.U2 a {text-decoration: underline;}
+td.U2 {color: #000000; background-color: #FFFFFF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.R2, span.R2 a {float: left; width: auto;color: #800000; background-color: #F3E6D8; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.R2 a {text-decoration: underline;}
+td.R2 {color: #800000; background-color: #F3E6D8; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.I2, span.I2 a {float: left; width: auto;color: #800000; background-color: #D1E8CF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.I2 a {text-decoration: underline;}
+td.I2 {color: #800000; background-color: #D1E8CF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.C2, span.C2 a {float: left; width: auto;color: #800000; background-color: #DACDE6; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.C2 a {text-decoration: underline;}
+td.C2 {color: #800000; background-color: #DACDE6; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+td.nbgC2 {color: #800000; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; background-color: #FFFFFF; }
+
+span.selected {background-color: #3d80df; color: #fff;}
+span.selected a {background-color: #3d80df; color: #fff; text-decoration: underline;}
+span.symbol {cursor: pointer;}
+			</style>
+</head>
+<body>
+<h1><strong>58. Araxis Merge File Comparison Report</strong></h1>
+<p>Produced by <strong>Araxis Merge</strong> on <strong>Sat Jul 11 14:41:25 2015 UTC</strong>. See <a href="http://www.araxis.com/" title="Link to the Araxis corporate web site">www.araxis.com</a> for information about Merge. This report uses XHTML and CSS2, and is best viewed with a reasonably standards compliant browser such as the latest version of <a href="http://www.mozilla.org/products/firefox/" title="Link to the Firefox page on the Mozilla website">Firefox</a> or <a href="http://www.microsoft.com/ie/" title="Link to the Microsoft website">Internet Explorer</a>. For optimum results when printing this report, use landscape orientation and enable printing of background images and colours in your browser.</p>
+<h3><strong>58.1&nbsp;Files compared</strong></h3>
+<table class="bordered">
+<tr>
+<th>#</th>
+<th>Location</th>
+<th>File</th>
+<th>Last Modified</th>
+</tr>
+<tr>
+<td>1</td>
+<td>C:\Users\neominds\Desktop\WRSSL_OPSSL\work\OpenSSL_1.0.1\openssl-1.0.1o_WR_DIR_STRUCTURE\security\certificate_support\asn1</td>
+<td>p5_pbev2.c</td>
+<td>Fri Jun 12 14:51:22 2015 UTC</td>
+</tr>
+<tr>
+<td>2</td>
+<td>C:\Users\neominds\Desktop\WRSSL_OPSSL\work\WR_SSL_VxWorks62\security\certificate_support\asn1</td>
+<td>p5_pbev2.c</td>
+<td>Thu Sep 29 06:39:05 2005 UTC</td>
+</tr>
+</table>
+<h3><strong>58.2&nbsp;Comparison summary</strong></h3>
+<table class="bordered">
+<tr>
+<th rowspan="2" style="vertical-align: bottom;">Description</th>
+<th colspan="2">Between<br />Files 1 and 2</th>
+</tr>
+<tr>
+<th style="text-align: right;">Text Blocks</th>
+<th style="text-align: right;">Lines</th>
+</tr>
+<tr>
+<td>Unchanged</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">284</td>
+</tr>
+<tr>
+<td>Changed</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">86</td>
+</tr>
+<tr>
+<td>Inserted</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">21</td>
+</tr>
+<tr>
+<td>Removed</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">94</td>
+</tr>
+</table>
+<h3><strong>58.3&nbsp;Comparison options</strong></h3>
+<table class="bordered" style="width: 55em;">
+<tr>
+<th>Whitespace</th>
+<td></td>
+</tr>
+<tr>
+<th>Character case</th>
+<td>Differences in character case are significant</td>
+</tr>
+<tr>
+<th>Line endings</th>
+<td>Differences in line endings (<code>CR</code> and <code>LF</code> characters) are ignored</td>
+</tr>
+<tr>
+<th>CR/LF characters</th>
+<td>Not shown in the comparison detail</td>
+</tr>
+</table>
+<h3><strong>58.4&nbsp;Active regular expressions</strong></h3>
+<p>No regular expressions were active.</p>
+<h3><strong>58.5&nbsp;Comparison detail</strong></h3>
+<table class="mgRowGroup">
+<col style="width: 5em;" />
+<col style="width: 1em;" />
+<col width="*" />
+<col style="width: 1em;" />
+<col style="width: 5em;" />
+<col style="width: 1em;" />
+<col width="*" />
+<tr>
+<td class="U1" style="text-align: right;">1</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">/*&nbsp;p5_pbev</span>
+<span class="U1">2.c&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">1</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">/*&nbsp;p5_pbev</span>
+<span class="U2">2.c&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">2</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">/*</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">2</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">/*&nbsp;Written</span>
+<span class="C2">&nbsp;by&nbsp;Dr&nbsp;Ste</span>
+<span class="C2">phen&nbsp;N&nbsp;Hen</span>
+<span class="C2">son&nbsp;(shens</span>
+<span class="C2">on@bigfoot</span>
+<span class="C2">.com)&nbsp;for&nbsp;</span>
+<span class="C2">the&nbsp;OpenSS</span>
+<span class="C2">L</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">3</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;*&nbsp;Written</span>
+<span class="C1">&nbsp;by&nbsp;Dr&nbsp;Ste</span>
+<span class="C1">phen&nbsp;N&nbsp;Hen</span>
+<span class="C1">son&nbsp;(steve</span>
+<span class="C1">@openssl.o</span>
+<span class="C1">rg)&nbsp;for&nbsp;th</span>
+<span class="C1">e&nbsp;OpenSSL&nbsp;</span>
+<span class="C1">project</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">3</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;*&nbsp;project</span>
+<span class="C2">&nbsp;1999-2004</span>
+<span class="C2">.</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">4</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;*&nbsp;1999-20</span>
+<span class="C1">04.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">5</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">4</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">6</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">/*&nbsp;=======</span>
+<span class="U1">==========</span>
+<span class="U1">==========</span>
+<span class="U1">==========</span>
+<span class="U1">==========</span>
+<span class="U1">==========</span>
+<span class="U1">==========</span>
+<span class="U1">=</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">5</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">/*&nbsp;=======</span>
+<span class="U2">==========</span>
+<span class="U2">==========</span>
+<span class="U2">==========</span>
+<span class="U2">==========</span>
+<span class="U2">==========</span>
+<span class="U2">==========</span>
+<span class="U2">=</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">7</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;Copyrig</span>
+<span class="U1">ht&nbsp;(c)&nbsp;199</span>
+<span class="U1">9&nbsp;The&nbsp;Open</span>
+<span class="U1">SSL&nbsp;Projec</span>
+<span class="U1">t.&nbsp;&nbsp;All&nbsp;ri</span>
+<span class="U1">ghts&nbsp;reser</span>
+<span class="U1">ved.</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">6</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;Copyrig</span>
+<span class="U2">ht&nbsp;(c)&nbsp;199</span>
+<span class="U2">9&nbsp;The&nbsp;Open</span>
+<span class="U2">SSL&nbsp;Projec</span>
+<span class="U2">t.&nbsp;&nbsp;All&nbsp;ri</span>
+<span class="U2">ghts&nbsp;reser</span>
+<span class="U2">ved.</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">8</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">7</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">9</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;Redistr</span>
+<span class="U1">ibution&nbsp;an</span>
+<span class="U1">d&nbsp;use&nbsp;in&nbsp;s</span>
+<span class="U1">ource&nbsp;and&nbsp;</span>
+<span class="U1">binary&nbsp;for</span>
+<span class="U1">ms,&nbsp;with&nbsp;o</span>
+<span class="U1">r&nbsp;without</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">8</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;Redistr</span>
+<span class="U2">ibution&nbsp;an</span>
+<span class="U2">d&nbsp;use&nbsp;in&nbsp;s</span>
+<span class="U2">ource&nbsp;and&nbsp;</span>
+<span class="U2">binary&nbsp;for</span>
+<span class="U2">ms,&nbsp;with&nbsp;o</span>
+<span class="U2">r&nbsp;without</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">10</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;modific</span>
+<span class="U1">ation,&nbsp;are</span>
+<span class="U1">&nbsp;permitted</span>
+<span class="U1">&nbsp;provided&nbsp;</span>
+<span class="U1">that&nbsp;the&nbsp;f</span>
+<span class="U1">ollowing&nbsp;c</span>
+<span class="U1">onditions</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">9</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;modific</span>
+<span class="U2">ation,&nbsp;are</span>
+<span class="U2">&nbsp;permitted</span>
+<span class="U2">&nbsp;provided&nbsp;</span>
+<span class="U2">that&nbsp;the&nbsp;f</span>
+<span class="U2">ollowing&nbsp;c</span>
+<span class="U2">onditions</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">11</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;are&nbsp;met</span>
+<span class="U1">:</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">10</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;are&nbsp;met</span>
+<span class="U2">:</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">12</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">11</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">13</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;1.&nbsp;Redi</span>
+<span class="U1">stribution</span>
+<span class="U1">s&nbsp;of&nbsp;sourc</span>
+<span class="U1">e&nbsp;code&nbsp;mus</span>
+<span class="U1">t&nbsp;retain&nbsp;t</span>
+<span class="U1">he&nbsp;above&nbsp;c</span>
+<span class="U1">opyright</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">12</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;1.&nbsp;Redi</span>
+<span class="U2">stribution</span>
+<span class="U2">s&nbsp;of&nbsp;sourc</span>
+<span class="U2">e&nbsp;code&nbsp;mus</span>
+<span class="U2">t&nbsp;retain&nbsp;t</span>
+<span class="U2">he&nbsp;above&nbsp;c</span>
+<span class="U2">opyright</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">14</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;noti</span>
+<span class="C1">ce,&nbsp;this&nbsp;l</span>
+<span class="C1">ist&nbsp;of&nbsp;con</span>
+<span class="C1">ditions&nbsp;an</span>
+<span class="C1">d&nbsp;the&nbsp;foll</span>
+<span class="C1">owing&nbsp;disc</span>
+<span class="C1">laimer.</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">13</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;noti</span>
+<span class="C2">ce,&nbsp;this&nbsp;l</span>
+<span class="C2">ist&nbsp;of&nbsp;con</span>
+<span class="C2">ditions&nbsp;an</span>
+<span class="C2">d&nbsp;the&nbsp;foll</span>
+<span class="C2">owing&nbsp;disc</span>
+<span class="C2">laimer.&nbsp;</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">15</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">14</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">16</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;2.&nbsp;Redi</span>
+<span class="U1">stribution</span>
+<span class="U1">s&nbsp;in&nbsp;binar</span>
+<span class="U1">y&nbsp;form&nbsp;mus</span>
+<span class="U1">t&nbsp;reproduc</span>
+<span class="U1">e&nbsp;the&nbsp;abov</span>
+<span class="U1">e&nbsp;copyrigh</span>
+<span class="U1">t</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">15</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;2.&nbsp;Redi</span>
+<span class="U2">stribution</span>
+<span class="U2">s&nbsp;in&nbsp;binar</span>
+<span class="U2">y&nbsp;form&nbsp;mus</span>
+<span class="U2">t&nbsp;reproduc</span>
+<span class="U2">e&nbsp;the&nbsp;abov</span>
+<span class="U2">e&nbsp;copyrigh</span>
+<span class="U2">t</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">17</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;noti</span>
+<span class="U1">ce,&nbsp;this&nbsp;l</span>
+<span class="U1">ist&nbsp;of&nbsp;con</span>
+<span class="U1">ditions&nbsp;an</span>
+<span class="U1">d&nbsp;the&nbsp;foll</span>
+<span class="U1">owing&nbsp;disc</span>
+<span class="U1">laimer&nbsp;in</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">16</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;noti</span>
+<span class="U2">ce,&nbsp;this&nbsp;l</span>
+<span class="U2">ist&nbsp;of&nbsp;con</span>
+<span class="U2">ditions&nbsp;an</span>
+<span class="U2">d&nbsp;the&nbsp;foll</span>
+<span class="U2">owing&nbsp;disc</span>
+<span class="U2">laimer&nbsp;in</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">18</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;</span>
+<span class="U1">documentat</span>
+<span class="U1">ion&nbsp;and/or</span>
+<span class="U1">&nbsp;other&nbsp;mat</span>
+<span class="U1">erials&nbsp;pro</span>
+<span class="U1">vided&nbsp;with</span>
+<span class="U1">&nbsp;the</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">17</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;</span>
+<span class="U2">documentat</span>
+<span class="U2">ion&nbsp;and/or</span>
+<span class="U2">&nbsp;other&nbsp;mat</span>
+<span class="U2">erials&nbsp;pro</span>
+<span class="U2">vided&nbsp;with</span>
+<span class="U2">&nbsp;the</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">19</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;dist</span>
+<span class="U1">ribution.</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">18</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;dist</span>
+<span class="U2">ribution.</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">20</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">19</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">21</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;3.&nbsp;All&nbsp;</span>
+<span class="U1">advertisin</span>
+<span class="U1">g&nbsp;material</span>
+<span class="U1">s&nbsp;mentioni</span>
+<span class="U1">ng&nbsp;feature</span>
+<span class="U1">s&nbsp;or&nbsp;use&nbsp;o</span>
+<span class="U1">f&nbsp;this</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">20</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;3.&nbsp;All&nbsp;</span>
+<span class="U2">advertisin</span>
+<span class="U2">g&nbsp;material</span>
+<span class="U2">s&nbsp;mentioni</span>
+<span class="U2">ng&nbsp;feature</span>
+<span class="U2">s&nbsp;or&nbsp;use&nbsp;o</span>
+<span class="U2">f&nbsp;this</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">22</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;soft</span>
+<span class="U1">ware&nbsp;must&nbsp;</span>
+<span class="U1">display&nbsp;th</span>
+<span class="U1">e&nbsp;followin</span>
+<span class="U1">g&nbsp;acknowle</span>
+<span class="U1">dgment:</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">21</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;soft</span>
+<span class="U2">ware&nbsp;must&nbsp;</span>
+<span class="U2">display&nbsp;th</span>
+<span class="U2">e&nbsp;followin</span>
+<span class="U2">g&nbsp;acknowle</span>
+<span class="U2">dgment:</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">23</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;"Thi</span>
+<span class="U1">s&nbsp;product&nbsp;</span>
+<span class="U1">includes&nbsp;s</span>
+<span class="U1">oftware&nbsp;de</span>
+<span class="U1">veloped&nbsp;by</span>
+<span class="U1">&nbsp;the&nbsp;OpenS</span>
+<span class="U1">SL&nbsp;Project</span>
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">22</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;"Thi</span>
+<span class="U2">s&nbsp;product&nbsp;</span>
+<span class="U2">includes&nbsp;s</span>
+<span class="U2">oftware&nbsp;de</span>
+<span class="U2">veloped&nbsp;by</span>
+<span class="U2">&nbsp;the&nbsp;OpenS</span>
+<span class="U2">SL&nbsp;Project</span>
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">24</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;</span>
+<span class="U1">use&nbsp;in&nbsp;the</span>
+<span class="U1">&nbsp;OpenSSL&nbsp;T</span>
+<span class="U1">oolkit.&nbsp;(h</span>
+<span class="U1">ttp://www.</span>
+<span class="U1">OpenSSL.or</span>
+<span class="U1">g/)"</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">23</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;</span>
+<span class="U2">use&nbsp;in&nbsp;the</span>
+<span class="U2">&nbsp;OpenSSL&nbsp;T</span>
+<span class="U2">oolkit.&nbsp;(h</span>
+<span class="U2">ttp://www.</span>
+<span class="U2">OpenSSL.or</span>
+<span class="U2">g/)"</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">25</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">24</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">26</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;4.&nbsp;The&nbsp;</span>
+<span class="U1">names&nbsp;"Ope</span>
+<span class="U1">nSSL&nbsp;Toolk</span>
+<span class="U1">it"&nbsp;and&nbsp;"O</span>
+<span class="U1">penSSL&nbsp;Pro</span>
+<span class="U1">ject"&nbsp;must</span>
+<span class="U1">&nbsp;not&nbsp;be&nbsp;us</span>
+<span class="U1">ed&nbsp;to</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">25</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;4.&nbsp;The&nbsp;</span>
+<span class="U2">names&nbsp;"Ope</span>
+<span class="U2">nSSL&nbsp;Toolk</span>
+<span class="U2">it"&nbsp;and&nbsp;"O</span>
+<span class="U2">penSSL&nbsp;Pro</span>
+<span class="U2">ject"&nbsp;must</span>
+<span class="U2">&nbsp;not&nbsp;be&nbsp;us</span>
+<span class="U2">ed&nbsp;to</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">27</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;endo</span>
+<span class="U1">rse&nbsp;or&nbsp;pro</span>
+<span class="U1">mote&nbsp;produ</span>
+<span class="U1">cts&nbsp;derive</span>
+<span class="U1">d&nbsp;from&nbsp;thi</span>
+<span class="U1">s&nbsp;software</span>
+<span class="U1">&nbsp;without</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">26</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;endo</span>
+<span class="U2">rse&nbsp;or&nbsp;pro</span>
+<span class="U2">mote&nbsp;produ</span>
+<span class="U2">cts&nbsp;derive</span>
+<span class="U2">d&nbsp;from&nbsp;thi</span>
+<span class="U2">s&nbsp;software</span>
+<span class="U2">&nbsp;without</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">28</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;prio</span>
+<span class="U1">r&nbsp;written&nbsp;</span>
+<span class="U1">permission</span>
+<span class="U1">.&nbsp;For&nbsp;writ</span>
+<span class="U1">ten&nbsp;permis</span>
+<span class="U1">sion,&nbsp;plea</span>
+<span class="U1">se&nbsp;contact</span>
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">27</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;prio</span>
+<span class="U2">r&nbsp;written&nbsp;</span>
+<span class="U2">permission</span>
+<span class="U2">.&nbsp;For&nbsp;writ</span>
+<span class="U2">ten&nbsp;permis</span>
+<span class="U2">sion,&nbsp;plea</span>
+<span class="U2">se&nbsp;contact</span>
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">29</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;lice</span>
+<span class="U1">nsing@Open</span>
+<span class="U1">SSL.org.</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">28</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;lice</span>
+<span class="U2">nsing@Open</span>
+<span class="U2">SSL.org.</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">30</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">29</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">31</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;5.&nbsp;Prod</span>
+<span class="U1">ucts&nbsp;deriv</span>
+<span class="U1">ed&nbsp;from&nbsp;th</span>
+<span class="U1">is&nbsp;softwar</span>
+<span class="U1">e&nbsp;may&nbsp;not&nbsp;</span>
+<span class="U1">be&nbsp;called&nbsp;</span>
+<span class="U1">"OpenSSL"</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">30</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;5.&nbsp;Prod</span>
+<span class="U2">ucts&nbsp;deriv</span>
+<span class="U2">ed&nbsp;from&nbsp;th</span>
+<span class="U2">is&nbsp;softwar</span>
+<span class="U2">e&nbsp;may&nbsp;not&nbsp;</span>
+<span class="U2">be&nbsp;called&nbsp;</span>
+<span class="U2">"OpenSSL"</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">32</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;nor&nbsp;</span>
+<span class="U1">may&nbsp;"OpenS</span>
+<span class="U1">SL"&nbsp;appear</span>
+<span class="U1">&nbsp;in&nbsp;their&nbsp;</span>
+<span class="U1">names&nbsp;with</span>
+<span class="U1">out&nbsp;prior&nbsp;</span>
+<span class="U1">written</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">31</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;nor&nbsp;</span>
+<span class="U2">may&nbsp;"OpenS</span>
+<span class="U2">SL"&nbsp;appear</span>
+<span class="U2">&nbsp;in&nbsp;their&nbsp;</span>
+<span class="U2">names&nbsp;with</span>
+<span class="U2">out&nbsp;prior&nbsp;</span>
+<span class="U2">written</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">33</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;perm</span>
+<span class="U1">ission&nbsp;of&nbsp;</span>
+<span class="U1">the&nbsp;OpenSS</span>
+<span class="U1">L&nbsp;Project.</span>
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">32</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;perm</span>
+<span class="U2">ission&nbsp;of&nbsp;</span>
+<span class="U2">the&nbsp;OpenSS</span>
+<span class="U2">L&nbsp;Project.</span>
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">34</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">33</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">35</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;6.&nbsp;Redi</span>
+<span class="U1">stribution</span>
+<span class="U1">s&nbsp;of&nbsp;any&nbsp;f</span>
+<span class="U1">orm&nbsp;whatso</span>
+<span class="U1">ever&nbsp;must&nbsp;</span>
+<span class="U1">retain&nbsp;the</span>
+<span class="U1">&nbsp;following</span>
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">34</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;6.&nbsp;Redi</span>
+<span class="U2">stribution</span>
+<span class="U2">s&nbsp;of&nbsp;any&nbsp;f</span>
+<span class="U2">orm&nbsp;whatso</span>
+<span class="U2">ever&nbsp;must&nbsp;</span>
+<span class="U2">retain&nbsp;the</span>
+<span class="U2">&nbsp;following</span>
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">36</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;ackn</span>
+<span class="U1">owledgment</span>
+<span class="U1">:</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">35</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;ackn</span>
+<span class="U2">owledgment</span>
+<span class="U2">:</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">37</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;"Thi</span>
+<span class="U1">s&nbsp;product&nbsp;</span>
+<span class="U1">includes&nbsp;s</span>
+<span class="U1">oftware&nbsp;de</span>
+<span class="U1">veloped&nbsp;by</span>
+<span class="U1">&nbsp;the&nbsp;OpenS</span>
+<span class="U1">SL&nbsp;Project</span>
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">36</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;"Thi</span>
+<span class="U2">s&nbsp;product&nbsp;</span>
+<span class="U2">includes&nbsp;s</span>
+<span class="U2">oftware&nbsp;de</span>
+<span class="U2">veloped&nbsp;by</span>
+<span class="U2">&nbsp;the&nbsp;OpenS</span>
+<span class="U2">SL&nbsp;Project</span>
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">38</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;</span>
+<span class="U1">use&nbsp;in&nbsp;the</span>
+<span class="U1">&nbsp;OpenSSL&nbsp;T</span>
+<span class="U1">oolkit&nbsp;(ht</span>
+<span class="U1">tp://www.O</span>
+<span class="U1">penSSL.org</span>
+<span class="U1">/)"</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">37</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;</span>
+<span class="U2">use&nbsp;in&nbsp;the</span>
+<span class="U2">&nbsp;OpenSSL&nbsp;T</span>
+<span class="U2">oolkit&nbsp;(ht</span>
+<span class="U2">tp://www.O</span>
+<span class="U2">penSSL.org</span>
+<span class="U2">/)"</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">39</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">38</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">40</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;THIS&nbsp;SO</span>
+<span class="U1">FTWARE&nbsp;IS&nbsp;</span>
+<span class="U1">PROVIDED&nbsp;B</span>
+<span class="U1">Y&nbsp;THE&nbsp;Open</span>
+<span class="U1">SSL&nbsp;PROJEC</span>
+<span class="U1">T&nbsp;``AS&nbsp;IS'</span>
+<span class="U1">'&nbsp;AND&nbsp;ANY</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">39</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;THIS&nbsp;SO</span>
+<span class="U2">FTWARE&nbsp;IS&nbsp;</span>
+<span class="U2">PROVIDED&nbsp;B</span>
+<span class="U2">Y&nbsp;THE&nbsp;Open</span>
+<span class="U2">SSL&nbsp;PROJEC</span>
+<span class="U2">T&nbsp;``AS&nbsp;IS'</span>
+<span class="U2">'&nbsp;AND&nbsp;ANY</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">41</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;EXPRESS</span>
+<span class="U1">ED&nbsp;OR&nbsp;IMPL</span>
+<span class="U1">IED&nbsp;WARRAN</span>
+<span class="U1">TIES,&nbsp;INCL</span>
+<span class="U1">UDING,&nbsp;BUT</span>
+<span class="U1">&nbsp;NOT&nbsp;LIMIT</span>
+<span class="U1">ED&nbsp;TO,&nbsp;THE</span>
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">40</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;EXPRESS</span>
+<span class="U2">ED&nbsp;OR&nbsp;IMPL</span>
+<span class="U2">IED&nbsp;WARRAN</span>
+<span class="U2">TIES,&nbsp;INCL</span>
+<span class="U2">UDING,&nbsp;BUT</span>
+<span class="U2">&nbsp;NOT&nbsp;LIMIT</span>
+<span class="U2">ED&nbsp;TO,&nbsp;THE</span>
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">42</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;IMPLIED</span>
+<span class="U1">&nbsp;WARRANTIE</span>
+<span class="U1">S&nbsp;OF&nbsp;MERCH</span>
+<span class="U1">ANTABILITY</span>
+<span class="U1">&nbsp;AND&nbsp;FITNE</span>
+<span class="U1">SS&nbsp;FOR&nbsp;A&nbsp;P</span>
+<span class="U1">ARTICULAR</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">41</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;IMPLIED</span>
+<span class="U2">&nbsp;WARRANTIE</span>
+<span class="U2">S&nbsp;OF&nbsp;MERCH</span>
+<span class="U2">ANTABILITY</span>
+<span class="U2">&nbsp;AND&nbsp;FITNE</span>
+<span class="U2">SS&nbsp;FOR&nbsp;A&nbsp;P</span>
+<span class="U2">ARTICULAR</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">43</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;PURPOSE</span>
+<span class="U1">&nbsp;ARE&nbsp;DISCL</span>
+<span class="U1">AIMED.&nbsp;&nbsp;IN</span>
+<span class="U1">&nbsp;NO&nbsp;EVENT&nbsp;</span>
+<span class="U1">SHALL&nbsp;THE&nbsp;</span>
+<span class="U1">OpenSSL&nbsp;PR</span>
+<span class="U1">OJECT&nbsp;OR</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">42</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;PURPOSE</span>
+<span class="U2">&nbsp;ARE&nbsp;DISCL</span>
+<span class="U2">AIMED.&nbsp;&nbsp;IN</span>
+<span class="U2">&nbsp;NO&nbsp;EVENT&nbsp;</span>
+<span class="U2">SHALL&nbsp;THE&nbsp;</span>
+<span class="U2">OpenSSL&nbsp;PR</span>
+<span class="U2">OJECT&nbsp;OR</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">44</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;ITS&nbsp;CON</span>
+<span class="U1">TRIBUTORS&nbsp;</span>
+<span class="U1">BE&nbsp;LIABLE&nbsp;</span>
+<span class="U1">FOR&nbsp;ANY&nbsp;DI</span>
+<span class="U1">RECT,&nbsp;INDI</span>
+<span class="U1">RECT,&nbsp;INCI</span>
+<span class="U1">DENTAL,</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">43</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;ITS&nbsp;CON</span>
+<span class="U2">TRIBUTORS&nbsp;</span>
+<span class="U2">BE&nbsp;LIABLE&nbsp;</span>
+<span class="U2">FOR&nbsp;ANY&nbsp;DI</span>
+<span class="U2">RECT,&nbsp;INDI</span>
+<span class="U2">RECT,&nbsp;INCI</span>
+<span class="U2">DENTAL,</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">45</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;SPECIAL</span>
+<span class="U1">,&nbsp;EXEMPLAR</span>
+<span class="U1">Y,&nbsp;OR&nbsp;CONS</span>
+<span class="U1">EQUENTIAL&nbsp;</span>
+<span class="U1">DAMAGES&nbsp;(I</span>
+<span class="U1">NCLUDING,&nbsp;</span>
+<span class="U1">BUT</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">44</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;SPECIAL</span>
+<span class="U2">,&nbsp;EXEMPLAR</span>
+<span class="U2">Y,&nbsp;OR&nbsp;CONS</span>
+<span class="U2">EQUENTIAL&nbsp;</span>
+<span class="U2">DAMAGES&nbsp;(I</span>
+<span class="U2">NCLUDING,&nbsp;</span>
+<span class="U2">BUT</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">46</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;NOT&nbsp;LIM</span>
+<span class="U1">ITED&nbsp;TO,&nbsp;P</span>
+<span class="U1">ROCUREMENT</span>
+<span class="U1">&nbsp;OF&nbsp;SUBSTI</span>
+<span class="U1">TUTE&nbsp;GOODS</span>
+<span class="U1">&nbsp;OR&nbsp;SERVIC</span>
+<span class="U1">ES;</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">45</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;NOT&nbsp;LIM</span>
+<span class="U2">ITED&nbsp;TO,&nbsp;P</span>
+<span class="U2">ROCUREMENT</span>
+<span class="U2">&nbsp;OF&nbsp;SUBSTI</span>
+<span class="U2">TUTE&nbsp;GOODS</span>
+<span class="U2">&nbsp;OR&nbsp;SERVIC</span>
+<span class="U2">ES;</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">47</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;LOSS&nbsp;OF</span>
+<span class="U1">&nbsp;USE,&nbsp;DATA</span>
+<span class="U1">,&nbsp;OR&nbsp;PROFI</span>
+<span class="U1">TS;&nbsp;OR&nbsp;BUS</span>
+<span class="U1">INESS&nbsp;INTE</span>
+<span class="U1">RRUPTION)</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">46</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;LOSS&nbsp;OF</span>
+<span class="U2">&nbsp;USE,&nbsp;DATA</span>
+<span class="U2">,&nbsp;OR&nbsp;PROFI</span>
+<span class="U2">TS;&nbsp;OR&nbsp;BUS</span>
+<span class="U2">INESS&nbsp;INTE</span>
+<span class="U2">RRUPTION)</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">48</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;HOWEVER</span>
+<span class="U1">&nbsp;CAUSED&nbsp;AN</span>
+<span class="U1">D&nbsp;ON&nbsp;ANY&nbsp;T</span>
+<span class="U1">HEORY&nbsp;OF&nbsp;L</span>
+<span class="U1">IABILITY,&nbsp;</span>
+<span class="U1">WHETHER&nbsp;IN</span>
+<span class="U1">&nbsp;CONTRACT,</span>
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">47</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;HOWEVER</span>
+<span class="U2">&nbsp;CAUSED&nbsp;AN</span>
+<span class="U2">D&nbsp;ON&nbsp;ANY&nbsp;T</span>
+<span class="U2">HEORY&nbsp;OF&nbsp;L</span>
+<span class="U2">IABILITY,&nbsp;</span>
+<span class="U2">WHETHER&nbsp;IN</span>
+<span class="U2">&nbsp;CONTRACT,</span>
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">49</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;STRICT&nbsp;</span>
+<span class="U1">LIABILITY,</span>
+<span class="U1">&nbsp;OR&nbsp;TORT&nbsp;(</span>
+<span class="U1">INCLUDING&nbsp;</span>
+<span class="U1">NEGLIGENCE</span>
+<span class="U1">&nbsp;OR&nbsp;OTHERW</span>
+<span class="U1">ISE)</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">48</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;STRICT&nbsp;</span>
+<span class="U2">LIABILITY,</span>
+<span class="U2">&nbsp;OR&nbsp;TORT&nbsp;(</span>
+<span class="U2">INCLUDING&nbsp;</span>
+<span class="U2">NEGLIGENCE</span>
+<span class="U2">&nbsp;OR&nbsp;OTHERW</span>
+<span class="U2">ISE)</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">50</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;ARISING</span>
+<span class="U1">&nbsp;IN&nbsp;ANY&nbsp;WA</span>
+<span class="U1">Y&nbsp;OUT&nbsp;OF&nbsp;T</span>
+<span class="U1">HE&nbsp;USE&nbsp;OF&nbsp;</span>
+<span class="U1">THIS&nbsp;SOFTW</span>
+<span class="U1">ARE,&nbsp;EVEN&nbsp;</span>
+<span class="U1">IF&nbsp;ADVISED</span>
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">49</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;ARISING</span>
+<span class="U2">&nbsp;IN&nbsp;ANY&nbsp;WA</span>
+<span class="U2">Y&nbsp;OUT&nbsp;OF&nbsp;T</span>
+<span class="U2">HE&nbsp;USE&nbsp;OF&nbsp;</span>
+<span class="U2">THIS&nbsp;SOFTW</span>
+<span class="U2">ARE,&nbsp;EVEN&nbsp;</span>
+<span class="U2">IF&nbsp;ADVISED</span>
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">51</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;OF&nbsp;THE&nbsp;</span>
+<span class="U1">POSSIBILIT</span>
+<span class="U1">Y&nbsp;OF&nbsp;SUCH&nbsp;</span>
+<span class="U1">DAMAGE.</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">50</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;OF&nbsp;THE&nbsp;</span>
+<span class="U2">POSSIBILIT</span>
+<span class="U2">Y&nbsp;OF&nbsp;SUCH&nbsp;</span>
+<span class="U2">DAMAGE.</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">52</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;=======</span>
+<span class="U1">==========</span>
+<span class="U1">==========</span>
+<span class="U1">==========</span>
+<span class="U1">==========</span>
+<span class="U1">==========</span>
+<span class="U1">==========</span>
+<span class="U1">=</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">51</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;=======</span>
+<span class="U2">==========</span>
+<span class="U2">==========</span>
+<span class="U2">==========</span>
+<span class="U2">==========</span>
+<span class="U2">==========</span>
+<span class="U2">==========</span>
+<span class="U2">=</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">53</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">52</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">54</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;This&nbsp;pr</span>
+<span class="U1">oduct&nbsp;incl</span>
+<span class="U1">udes&nbsp;crypt</span>
+<span class="U1">ographic&nbsp;s</span>
+<span class="U1">oftware&nbsp;wr</span>
+<span class="U1">itten&nbsp;by&nbsp;E</span>
+<span class="U1">ric&nbsp;Young</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">53</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;This&nbsp;pr</span>
+<span class="U2">oduct&nbsp;incl</span>
+<span class="U2">udes&nbsp;crypt</span>
+<span class="U2">ographic&nbsp;s</span>
+<span class="U2">oftware&nbsp;wr</span>
+<span class="U2">itten&nbsp;by&nbsp;E</span>
+<span class="U2">ric&nbsp;Young</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">55</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;(eay@cr</span>
+<span class="U1">yptsoft.co</span>
+<span class="U1">m).&nbsp;&nbsp;This&nbsp;</span>
+<span class="U1">product&nbsp;in</span>
+<span class="U1">cludes&nbsp;sof</span>
+<span class="U1">tware&nbsp;writ</span>
+<span class="U1">ten&nbsp;by&nbsp;Tim</span>
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">54</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;(eay@cr</span>
+<span class="U2">yptsoft.co</span>
+<span class="U2">m).&nbsp;&nbsp;This&nbsp;</span>
+<span class="U2">product&nbsp;in</span>
+<span class="U2">cludes&nbsp;sof</span>
+<span class="U2">tware&nbsp;writ</span>
+<span class="U2">ten&nbsp;by&nbsp;Tim</span>
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">56</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*&nbsp;Hudson&nbsp;</span>
+<span class="U1">(tjh@crypt</span>
+<span class="U1">soft.com).</span>
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">55</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*&nbsp;Hudson&nbsp;</span>
+<span class="U2">(tjh@crypt</span>
+<span class="U2">soft.com).</span>
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">57</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">56</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">58</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">57</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">59</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">58</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">60</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#include&nbsp;&lt;</span>
+<span class="U1">stdio.h&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">59</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#include&nbsp;&lt;</span>
+<span class="U2">stdio.h&gt;</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">61</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#include&nbsp;"</span>
+<span class="U1">cryptlib.h</span>
+<span class="U1">"</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">60</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#include&nbsp;"</span>
+<span class="U2">cryptlib.h</span>
+<span class="U2">"</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">62</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#include&nbsp;&lt;</span>
+<span class="U1">openssl/as</span>
+<span class="U1">n1t.h&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">61</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#include&nbsp;&lt;</span>
+<span class="U2">openssl/as</span>
+<span class="U2">n1t.h&gt;</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">63</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#include&nbsp;&lt;</span>
+<span class="U1">openssl/x5</span>
+<span class="U1">09.h&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">62</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#include&nbsp;&lt;</span>
+<span class="U2">openssl/x5</span>
+<span class="U2">09.h&gt;</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">64</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">#include&nbsp;&lt;</span>
+<span class="U1">openssl/ra</span>
+<span class="U1">nd.h&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">63</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">#include&nbsp;&lt;</span>
+<span class="U2">openssl/ra</span>
+<span class="U2">nd.h&gt;</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">65</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">64</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">66</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">/*&nbsp;PKCS#5&nbsp;</span>
+<span class="U1">v2.0&nbsp;passw</span>
+<span class="U1">ord&nbsp;based&nbsp;</span>
+<span class="U1">encryption</span>
+<span class="U1">&nbsp;structure</span>
+<span class="U1">s&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">65</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">/*&nbsp;PKCS#5&nbsp;</span>
+<span class="U2">v2.0&nbsp;passw</span>
+<span class="U2">ord&nbsp;based&nbsp;</span>
+<span class="U2">encryption</span>
+<span class="U2">&nbsp;structure</span>
+<span class="U2">s&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">67</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">66</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">68</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">ASN1_SEQUE</span>
+<span class="U1">NCE(PBE2PA</span>
+<span class="U1">RAM)&nbsp;=&nbsp;{</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">67</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">ASN1_SEQUE</span>
+<span class="U2">NCE(PBE2PA</span>
+<span class="U2">RAM)&nbsp;=&nbsp;{</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">69</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AS</span>
+<span class="U1">N1_SIMPLE(</span>
+<span class="U1">PBE2PARAM,</span>
+<span class="U1">&nbsp;keyfunc,&nbsp;</span>
+<span class="U1">X509_ALGOR</span>
+<span class="U1">),</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">68</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AS</span>
+<span class="U2">N1_SIMPLE(</span>
+<span class="U2">PBE2PARAM,</span>
+<span class="U2">&nbsp;keyfunc,&nbsp;</span>
+<span class="U2">X509_ALGOR</span>
+<span class="U2">),</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">70</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AS</span>
+<span class="U1">N1_SIMPLE(</span>
+<span class="U1">PBE2PARAM,</span>
+<span class="U1">&nbsp;encryptio</span>
+<span class="U1">n,&nbsp;X509_AL</span>
+<span class="U1">GOR)</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">69</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AS</span>
+<span class="U2">N1_SIMPLE(</span>
+<span class="U2">PBE2PARAM,</span>
+<span class="U2">&nbsp;encryptio</span>
+<span class="U2">n,&nbsp;X509_AL</span>
+<span class="U2">GOR)</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">71</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">}&nbsp;ASN1_SEQ</span>
+<span class="U1">UENCE_END(</span>
+<span class="U1">PBE2PARAM)</span>
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">70</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">}&nbsp;ASN1_SEQ</span>
+<span class="U2">UENCE_END(</span>
+<span class="U2">PBE2PARAM)</span>
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">72</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">71</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">73</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">IMPLEMENT_</span>
+<span class="U1">ASN1_FUNCT</span>
+<span class="U1">IONS(PBE2P</span>
+<span class="U1">ARAM)</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">72</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">IMPLEMENT_</span>
+<span class="U2">ASN1_FUNCT</span>
+<span class="U2">IONS(PBE2P</span>
+<span class="U2">ARAM)</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">74</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">73</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">75</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">ASN1_SEQUE</span>
+<span class="U1">NCE(PBKDF2</span>
+<span class="U1">PARAM)&nbsp;=&nbsp;{</span>
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">74</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">ASN1_SEQUE</span>
+<span class="U2">NCE(PBKDF2</span>
+<span class="U2">PARAM)&nbsp;=&nbsp;{</span>
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">76</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AS</span>
+<span class="U1">N1_SIMPLE(</span>
+<span class="U1">PBKDF2PARA</span>
+<span class="U1">M,&nbsp;salt,&nbsp;A</span>
+<span class="U1">SN1_ANY),</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">75</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AS</span>
+<span class="U2">N1_SIMPLE(</span>
+<span class="U2">PBKDF2PARA</span>
+<span class="U2">M,&nbsp;salt,&nbsp;A</span>
+<span class="U2">SN1_ANY),</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">77</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AS</span>
+<span class="U1">N1_SIMPLE(</span>
+<span class="U1">PBKDF2PARA</span>
+<span class="U1">M,&nbsp;iter,&nbsp;A</span>
+<span class="U1">SN1_INTEGE</span>
+<span class="U1">R),</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">76</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AS</span>
+<span class="U2">N1_SIMPLE(</span>
+<span class="U2">PBKDF2PARA</span>
+<span class="U2">M,&nbsp;iter,&nbsp;A</span>
+<span class="U2">SN1_INTEGE</span>
+<span class="U2">R),</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">78</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AS</span>
+<span class="U1">N1_OPT(PBK</span>
+<span class="U1">DF2PARAM,&nbsp;</span>
+<span class="U1">keylength,</span>
+<span class="U1">&nbsp;ASN1_INTE</span>
+<span class="U1">GER),</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">77</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AS</span>
+<span class="U2">N1_OPT(PBK</span>
+<span class="U2">DF2PARAM,&nbsp;</span>
+<span class="U2">keylength,</span>
+<span class="U2">&nbsp;ASN1_INTE</span>
+<span class="U2">GER),</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">79</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AS</span>
+<span class="U1">N1_OPT(PBK</span>
+<span class="U1">DF2PARAM,&nbsp;</span>
+<span class="U1">prf,&nbsp;X509_</span>
+<span class="U1">ALGOR)</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">78</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AS</span>
+<span class="U2">N1_OPT(PBK</span>
+<span class="U2">DF2PARAM,&nbsp;</span>
+<span class="U2">prf,&nbsp;X509_</span>
+<span class="U2">ALGOR)</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">80</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">}&nbsp;ASN1_SEQ</span>
+<span class="U1">UENCE_END(</span>
+<span class="U1">PBKDF2PARA</span>
+<span class="U1">M)</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">79</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">}&nbsp;ASN1_SEQ</span>
+<span class="U2">UENCE_END(</span>
+<span class="U2">PBKDF2PARA</span>
+<span class="U2">M)</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">81</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">80</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">82</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">IMPLEMENT_</span>
+<span class="U1">ASN1_FUNCT</span>
+<span class="U1">IONS(PBKDF</span>
+<span class="U1">2PARAM)</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">81</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">IMPLEMENT_</span>
+<span class="U2">ASN1_FUNCT</span>
+<span class="U2">IONS(PBKDF</span>
+<span class="U2">2PARAM)</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">83</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">82</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">84</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">/*</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">83</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">/*&nbsp;Return&nbsp;</span>
+<span class="C2">an&nbsp;algorit</span>
+<span class="C2">hm&nbsp;identif</span>
+<span class="C2">ier&nbsp;for&nbsp;a&nbsp;</span>
+<span class="C2">PKCS#5&nbsp;v2.</span>
+<span class="C2">0&nbsp;PBE&nbsp;algo</span>
+<span class="C2">rithm:</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">85</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;*&nbsp;Return&nbsp;</span>
+<span class="C1">an&nbsp;algorit</span>
+<span class="C1">hm&nbsp;identif</span>
+<span class="C1">ier&nbsp;for&nbsp;a&nbsp;</span>
+<span class="C1">PKCS#5&nbsp;v2.</span>
+<span class="C1">0&nbsp;PBE&nbsp;algo</span>
+<span class="C1">rithm:&nbsp;yes</span>
+<span class="C1">&nbsp;I&nbsp;know</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">84</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;*&nbsp;yes&nbsp;I&nbsp;k</span>
+<span class="C2">now&nbsp;this&nbsp;i</span>
+<span class="C2">s&nbsp;horrible</span>
+<span class="C2">!</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">86</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;*&nbsp;this&nbsp;is</span>
+<span class="C1">&nbsp;horrible!</span>
+<span class="C1">&nbsp;Extended&nbsp;</span>
+<span class="C1">version&nbsp;to</span>
+<span class="C1">&nbsp;allow&nbsp;app</span>
+<span class="C1">lication&nbsp;s</span>
+<span class="C1">upplied&nbsp;PR</span>
+<span class="C1">F&nbsp;NID</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">87</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;*&nbsp;and&nbsp;IV.</span>
+<span class="C1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">88</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">85</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">89</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">86</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">90</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">X509_ALGOR</span>
+<span class="C1">&nbsp;*PKCS5_pb</span>
+<span class="C1">e2_set_iv(</span>
+<span class="C1">const&nbsp;EVP_</span>
+<span class="C1">CIPHER&nbsp;*ci</span>
+<span class="C1">pher,&nbsp;int&nbsp;</span>
+<span class="C1">iter,</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">87</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">X509_ALGOR</span>
+<span class="C2">&nbsp;*PKCS5_pb</span>
+<span class="C2">e2_set(con</span>
+<span class="C2">st&nbsp;EVP_CIP</span>
+<span class="C2">HER&nbsp;*ciphe</span>
+<span class="C2">r,&nbsp;int&nbsp;ite</span>
+<span class="C2">r,</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">91</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="C1">unsigned&nbsp;c</span>
+<span class="C1">har&nbsp;*salt,</span>
+<span class="C1">&nbsp;int&nbsp;saltl</span>
+<span class="C1">en,</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">88</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="C2">&nbsp;&nbsp;&nbsp;unsigne</span>
+<span class="C2">d&nbsp;char&nbsp;*sa</span>
+<span class="C2">lt,&nbsp;int&nbsp;sa</span>
+<span class="C2">ltlen)</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">92</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="C1">unsigned&nbsp;c</span>
+<span class="C1">har&nbsp;*aiv,&nbsp;</span>
+<span class="C1">int&nbsp;prf_ni</span>
+<span class="C1">d)</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">93</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">{</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">89</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">{</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">94</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;X509_A</span>
+<span class="U1">LGOR&nbsp;*sche</span>
+<span class="U1">me&nbsp;=&nbsp;NULL,</span>
+<span class="U1">&nbsp;*kalg&nbsp;=&nbsp;N</span>
+<span class="U1">ULL,&nbsp;*ret&nbsp;</span>
+<span class="U1">=&nbsp;NULL;</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">90</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X5</span>
+<span class="U2">09_ALGOR&nbsp;*</span>
+<span class="U2">scheme&nbsp;=&nbsp;N</span>
+<span class="U2">ULL,&nbsp;*kalg</span>
+<span class="U2">&nbsp;=&nbsp;NULL,&nbsp;*</span>
+<span class="U2">ret&nbsp;=&nbsp;NULL</span>
+<span class="U2">;</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">95</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;int&nbsp;al</span>
+<span class="C1">g_nid,&nbsp;key</span>
+<span class="C1">len;</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">91</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in</span>
+<span class="C2">t&nbsp;alg_nid;</span>
+<span class="C2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">96</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;EVP_CI</span>
+<span class="U1">PHER_CTX&nbsp;c</span>
+<span class="U1">tx;</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">92</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EV</span>
+<span class="U2">P_CIPHER_C</span>
+<span class="U2">TX&nbsp;ctx;</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">97</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;unsign</span>
+<span class="U1">ed&nbsp;char&nbsp;iv</span>
+<span class="U1">[EVP_MAX_I</span>
+<span class="U1">V_LENGTH];</span>
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">93</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;un</span>
+<span class="U2">signed&nbsp;cha</span>
+<span class="U2">r&nbsp;iv[EVP_M</span>
+<span class="U2">AX_IV_LENG</span>
+<span class="U2">TH];</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">94</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PB</span>
+<span class="I2">KDF2PARAM&nbsp;</span>
+<span class="I2">*kdf&nbsp;=&nbsp;NUL</span>
+<span class="I2">L;</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">98</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;PBE2PA</span>
+<span class="U1">RAM&nbsp;*pbe2&nbsp;</span>
+<span class="U1">=&nbsp;NULL;</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">95</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PB</span>
+<span class="U2">E2PARAM&nbsp;*p</span>
+<span class="U2">be2&nbsp;=&nbsp;NULL</span>
+<span class="U2">;</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">96</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AS</span>
+<span class="I2">N1_OCTET_S</span>
+<span class="I2">TRING&nbsp;*osa</span>
+<span class="I2">lt&nbsp;=&nbsp;NULL;</span>
+<span class="I2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">99</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;ASN1_O</span>
+<span class="U1">BJECT&nbsp;*obj</span>
+<span class="U1">;</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">97</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AS</span>
+<span class="U2">N1_OBJECT&nbsp;</span>
+<span class="U2">*obj;</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">100</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">98</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">101</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;alg_ni</span>
+<span class="U1">d&nbsp;=&nbsp;EVP_CI</span>
+<span class="U1">PHER_type(</span>
+<span class="U1">cipher);</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">99</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;al</span>
+<span class="U2">g_nid&nbsp;=&nbsp;EV</span>
+<span class="U2">P_CIPHER_t</span>
+<span class="U2">ype(cipher</span>
+<span class="U2">);</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">102</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(al</span>
+<span class="C1">g_nid&nbsp;==&nbsp;N</span>
+<span class="C1">ID_undef)&nbsp;</span>
+<span class="C1">{</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">100</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if</span>
+<span class="C2">(alg_nid&nbsp;=</span>
+<span class="C2">=&nbsp;NID_unde</span>
+<span class="C2">f)&nbsp;{</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">103</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AS</span>
+<span class="C1">N1err(ASN1</span>
+<span class="C1">_F_PKCS5_P</span>
+<span class="C1">BE2_SET_IV</span>
+<span class="C1">,</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">101</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ASN1</span>
+<span class="C2">err(ASN1_F</span>
+<span class="C2">_PKCS5_PBE</span>
+<span class="C2">2_SET,</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">104</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ASN1</span>
+<span class="U1">_R_CIPHER_</span>
+<span class="U1">HAS_NO_OBJ</span>
+<span class="U1">ECT_IDENTI</span>
+<span class="U1">FIER);</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">102</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="U2">&nbsp;&nbsp;ASN1_R_C</span>
+<span class="U2">IPHER_HAS_</span>
+<span class="U2">NO_OBJECT_</span>
+<span class="U2">IDENTIFIER</span>
+<span class="U2">);</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">105</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;go</span>
+<span class="U1">to&nbsp;err;</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">103</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;goto</span>
+<span class="U2">&nbsp;err;</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">106</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;}</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">104</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">107</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;obj&nbsp;=&nbsp;</span>
+<span class="U1">OBJ_nid2ob</span>
+<span class="U1">j(alg_nid)</span>
+<span class="U1">;</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">105</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ob</span>
+<span class="U2">j&nbsp;=&nbsp;OBJ_ni</span>
+<span class="U2">d2obj(alg_</span>
+<span class="U2">nid);</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">108</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">106</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">109</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!(</span>
+<span class="C1">pbe2&nbsp;=&nbsp;PBE</span>
+<span class="C1">2PARAM_new</span>
+<span class="C1">()))</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">107</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if</span>
+<span class="C2">(!(pbe2&nbsp;=&nbsp;</span>
+<span class="C2">PBE2PARAM_</span>
+<span class="C2">new()))&nbsp;go</span>
+<span class="C2">to&nbsp;merr;</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">110</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;go</span>
+<span class="C1">to&nbsp;merr;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">111</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">108</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">112</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;Set</span>
+<span class="U1">up&nbsp;the&nbsp;Alg</span>
+<span class="U1">orithmIden</span>
+<span class="U1">tifier&nbsp;for</span>
+<span class="U1">&nbsp;the&nbsp;encry</span>
+<span class="U1">ption&nbsp;sche</span>
+<span class="U1">me&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">109</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*</span>
+<span class="U2">&nbsp;Setup&nbsp;the</span>
+<span class="U2">&nbsp;Algorithm</span>
+<span class="U2">Identifier</span>
+<span class="U2">&nbsp;for&nbsp;the&nbsp;e</span>
+<span class="U2">ncryption&nbsp;</span>
+<span class="U2">scheme&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">113</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;scheme</span>
+<span class="U1">&nbsp;=&nbsp;pbe2-&gt;e</span>
+<span class="U1">ncryption;</span>
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">110</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sc</span>
+<span class="U2">heme&nbsp;=&nbsp;pbe</span>
+<span class="U2">2-&gt;encrypt</span>
+<span class="U2">ion;</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">114</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">111</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">115</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;scheme</span>
+<span class="U1">-&gt;algorith</span>
+<span class="U1">m&nbsp;=&nbsp;obj;</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">112</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sc</span>
+<span class="U2">heme-&gt;algo</span>
+<span class="U2">rithm&nbsp;=&nbsp;ob</span>
+<span class="U2">j;</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">116</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!(</span>
+<span class="C1">scheme-&gt;pa</span>
+<span class="C1">rameter&nbsp;=&nbsp;</span>
+<span class="C1">ASN1_TYPE_</span>
+<span class="C1">new()))</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">113</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if</span>
+<span class="C2">(!(scheme-</span>
+<span class="C2">&gt;parameter</span>
+<span class="C2">&nbsp;=&nbsp;ASN1_TY</span>
+<span class="C2">PE_new()))</span>
+<span class="C2">&nbsp;goto&nbsp;merr</span>
+<span class="C2">;</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">117</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;go</span>
+<span class="C1">to&nbsp;merr;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">118</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">114</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">119</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;Cre</span>
+<span class="U1">ate&nbsp;random</span>
+<span class="U1">&nbsp;IV&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">115</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*</span>
+<span class="U2">&nbsp;Create&nbsp;ra</span>
+<span class="U2">ndom&nbsp;IV&nbsp;*/</span>
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">120</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(EV</span>
+<span class="C1">P_CIPHER_i</span>
+<span class="C1">v_length(c</span>
+<span class="C1">ipher))&nbsp;{</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">116</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if</span>
+<span class="C2">&nbsp;(EVP_CIPH</span>
+<span class="C2">ER_iv_leng</span>
+<span class="C2">th(cipher)</span>
+<span class="C2">&nbsp;&amp;&amp;</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">121</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if</span>
+<span class="C1">&nbsp;(aiv)</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">117</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RAND</span>
+<span class="C2">_pseudo_by</span>
+<span class="C2">tes(iv,&nbsp;EV</span>
+<span class="C2">P_CIPHER_i</span>
+<span class="C2">v_length(c</span>
+<span class="C2">ipher))&nbsp;&lt;&nbsp;</span>
+<span class="C2">0)</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">122</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="C1">&nbsp;&nbsp;memcpy(i</span>
+<span class="C1">v,&nbsp;aiv,&nbsp;EV</span>
+<span class="C1">P_CIPHER_i</span>
+<span class="C1">v_length(c</span>
+<span class="C1">ipher));</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">123</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;el</span>
+<span class="C1">se&nbsp;if&nbsp;(RAN</span>
+<span class="C1">D_pseudo_b</span>
+<span class="C1">ytes(iv,&nbsp;E</span>
+<span class="C1">VP_CIPHER_</span>
+<span class="C1">iv_length(</span>
+<span class="C1">cipher))&nbsp;&lt;</span>
+<span class="C1">&nbsp;0)</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">124</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="U1">&nbsp;&nbsp;goto&nbsp;err</span>
+<span class="U1">;</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">118</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;goto</span>
+<span class="U2">&nbsp;err;</span>
+</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">125</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;}</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">126</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">119</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">127</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;EVP_CI</span>
+<span class="U1">PHER_CTX_i</span>
+<span class="U1">nit(&amp;ctx);</span>
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">120</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EV</span>
+<span class="U2">P_CIPHER_C</span>
+<span class="U2">TX_init(&amp;c</span>
+<span class="U2">tx);</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">128</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">121</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">129</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;Dum</span>
+<span class="C1">my&nbsp;cipheri</span>
+<span class="C1">nit&nbsp;to&nbsp;jus</span>
+<span class="C1">t&nbsp;setup&nbsp;th</span>
+<span class="C1">e&nbsp;IV,&nbsp;and&nbsp;</span>
+<span class="C1">PRF&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">122</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*</span>
+<span class="C2">&nbsp;Dummy&nbsp;cip</span>
+<span class="C2">herinit&nbsp;to</span>
+<span class="C2">&nbsp;just&nbsp;setu</span>
+<span class="C2">p&nbsp;the&nbsp;IV&nbsp;*</span>
+<span class="C2">/</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">130</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!E</span>
+<span class="C1">VP_CipherI</span>
+<span class="C1">nit_ex(&amp;ct</span>
+<span class="C1">x,&nbsp;cipher,</span>
+<span class="C1">&nbsp;NULL,&nbsp;NUL</span>
+<span class="C1">L,&nbsp;iv,&nbsp;0))</span>
+<span class="C1" />
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">123</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EV</span>
+<span class="C2">P_CipherIn</span>
+<span class="C2">it_ex(&amp;ctx</span>
+<span class="C2">,&nbsp;cipher,&nbsp;</span>
+<span class="C2">NULL,&nbsp;NULL</span>
+<span class="C2">,&nbsp;iv,&nbsp;0);</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">131</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;go</span>
+<span class="C1">to&nbsp;err;</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">124</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if</span>
+<span class="C2">(EVP_CIPHE</span>
+<span class="C2">R_param_to</span>
+<span class="C2">_asn1(&amp;ctx</span>
+<span class="C2">,&nbsp;scheme-&gt;</span>
+<span class="C2">parameter)</span>
+<span class="C2">&nbsp;&lt;&nbsp;0)&nbsp;{</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">132</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(EV</span>
+<span class="C1">P_CIPHER_p</span>
+<span class="C1">aram_to_as</span>
+<span class="C1">n1(&amp;ctx,&nbsp;s</span>
+<span class="C1">cheme-&gt;par</span>
+<span class="C1">ameter)&nbsp;&lt;&nbsp;</span>
+<span class="C1">0)&nbsp;{</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">125</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ASN1</span>
+<span class="C2">err(ASN1_F</span>
+<span class="C2">_PKCS5_PBE</span>
+<span class="C2">2_SET,</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">133</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AS</span>
+<span class="C1">N1err(ASN1</span>
+<span class="C1">_F_PKCS5_P</span>
+<span class="C1">BE2_SET_IV</span>
+<span class="C1">,&nbsp;ASN1_R_E</span>
+<span class="C1">RROR_SETTI</span>
+<span class="C1">NG_CIPHER_</span>
+<span class="C1">PARAMS);</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">126</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="C2">ASN1_R_ERR</span>
+<span class="C2">OR_SETTING</span>
+<span class="C2">_CIPHER_PA</span>
+<span class="C2">RAMS);</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">134</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EV</span>
+<span class="U1">P_CIPHER_C</span>
+<span class="U1">TX_cleanup</span>
+<span class="U1">(&amp;ctx);</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">127</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EVP_</span>
+<span class="U2">CIPHER_CTX</span>
+<span class="U2">_cleanup(&amp;</span>
+<span class="U2">ctx);</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">135</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;go</span>
+<span class="U1">to&nbsp;err;</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">128</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;goto</span>
+<span class="U2">&nbsp;err;</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">136</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;}</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">129</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span>
+</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">137</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;/*</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">138</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;If&nbsp;</span>
+<span class="R1">prf&nbsp;NID&nbsp;un</span>
+<span class="R1">specified&nbsp;</span>
+<span class="R1">see&nbsp;if&nbsp;cip</span>
+<span class="R1">her&nbsp;has&nbsp;a&nbsp;</span>
+<span class="R1">preference</span>
+<span class="R1">.&nbsp;An&nbsp;error</span>
+<span class="R1">&nbsp;is&nbsp;OK</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">139</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;her</span>
+<span class="R1">e:&nbsp;just&nbsp;me</span>
+<span class="R1">ans&nbsp;use&nbsp;de</span>
+<span class="R1">fault&nbsp;PRF.</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">140</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">141</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;((p</span>
+<span class="R1">rf_nid&nbsp;==&nbsp;</span>
+<span class="R1">-1)&nbsp;&amp;&amp;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">142</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EV</span>
+<span class="R1">P_CIPHER_C</span>
+<span class="R1">TX_ctrl(&amp;c</span>
+<span class="R1">tx,&nbsp;EVP_CT</span>
+<span class="R1">RL_PBE_PRF</span>
+<span class="R1">_NID,&nbsp;0,&nbsp;&amp;</span>
+<span class="R1">prf_nid)&nbsp;&lt;</span>
+<span class="R1">=&nbsp;0)&nbsp;{</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">143</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ER</span>
+<span class="R1">R_clear_er</span>
+<span class="R1">ror();</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">144</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pr</span>
+<span class="R1">f_nid&nbsp;=&nbsp;NI</span>
+<span class="R1">D_hmacWith</span>
+<span class="R1">SHA1;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">145</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;}</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">146</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;EVP_CI</span>
+<span class="U1">PHER_CTX_c</span>
+<span class="U1">leanup(&amp;ct</span>
+<span class="U1">x);</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">130</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EV</span>
+<span class="U2">P_CIPHER_C</span>
+<span class="U2">TX_cleanup</span>
+<span class="U2">(&amp;ctx);</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">147</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">131</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">132</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if</span>
+<span class="I2">(!(kdf&nbsp;=&nbsp;P</span>
+<span class="I2">BKDF2PARAM</span>
+<span class="I2">_new()))&nbsp;g</span>
+<span class="I2">oto&nbsp;merr;</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">133</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if</span>
+<span class="I2">(!(osalt&nbsp;=</span>
+<span class="I2">&nbsp;M_ASN1_OC</span>
+<span class="I2">TET_STRING</span>
+<span class="I2">_new()))&nbsp;g</span>
+<span class="I2">oto&nbsp;merr;</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">134</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">135</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if</span>
+<span class="I2">&nbsp;(!saltlen</span>
+<span class="I2">)&nbsp;saltlen&nbsp;</span>
+<span class="I2">=&nbsp;PKCS5_SA</span>
+<span class="I2">LT_LEN;</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">136</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if</span>
+<span class="I2">&nbsp;(!(osalt-</span>
+<span class="I2">&gt;data&nbsp;=&nbsp;OP</span>
+<span class="I2">ENSSL_mall</span>
+<span class="I2">oc&nbsp;(saltle</span>
+<span class="I2">n)))&nbsp;goto&nbsp;</span>
+<span class="I2">merr;</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">137</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;os</span>
+<span class="I2">alt-&gt;lengt</span>
+<span class="I2">h&nbsp;=&nbsp;saltle</span>
+<span class="I2">n;</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">138</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if</span>
+<span class="I2">&nbsp;(salt)&nbsp;me</span>
+<span class="I2">mcpy&nbsp;(osal</span>
+<span class="I2">t-&gt;data,&nbsp;s</span>
+<span class="I2">alt,&nbsp;saltl</span>
+<span class="I2">en);</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">139</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;el</span>
+<span class="I2">se&nbsp;if&nbsp;(RAN</span>
+<span class="I2">D_pseudo_b</span>
+<span class="I2">ytes&nbsp;(osal</span>
+<span class="I2">t-&gt;data,&nbsp;s</span>
+<span class="I2">altlen)&nbsp;&lt;&nbsp;</span>
+<span class="I2">0)&nbsp;goto&nbsp;me</span>
+<span class="I2">rr;</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">140</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">141</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if</span>
+<span class="I2">(iter&nbsp;&lt;=&nbsp;0</span>
+<span class="I2">)&nbsp;iter&nbsp;=&nbsp;P</span>
+<span class="I2">KCS5_DEFAU</span>
+<span class="I2">LT_ITER;</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">142</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if</span>
+<span class="I2">(!ASN1_INT</span>
+<span class="I2">EGER_set(k</span>
+<span class="I2">df-&gt;iter,&nbsp;</span>
+<span class="I2">iter))&nbsp;got</span>
+<span class="I2">o&nbsp;merr;</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">143</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">144</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*</span>
+<span class="I2">&nbsp;Now&nbsp;inclu</span>
+<span class="I2">de&nbsp;salt&nbsp;in</span>
+<span class="I2">&nbsp;kdf&nbsp;struc</span>
+<span class="I2">ture&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">145</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kd</span>
+<span class="I2">f-&gt;salt-&gt;v</span>
+<span class="I2">alue.octet</span>
+<span class="I2">_string&nbsp;=&nbsp;</span>
+<span class="I2">osalt;</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">146</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kd</span>
+<span class="I2">f-&gt;salt-&gt;t</span>
+<span class="I2">ype&nbsp;=&nbsp;V_AS</span>
+<span class="I2">N1_OCTET_S</span>
+<span class="I2">TRING;</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">147</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;os</span>
+<span class="I2">alt&nbsp;=&nbsp;NULL</span>
+<span class="I2">;</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">148</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">148</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;If&nbsp;</span>
+<span class="U1">its&nbsp;RC2&nbsp;th</span>
+<span class="U1">en&nbsp;we'd&nbsp;be</span>
+<span class="U1">tter&nbsp;setup</span>
+<span class="U1">&nbsp;the&nbsp;key&nbsp;l</span>
+<span class="U1">ength&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">149</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*</span>
+<span class="U2">&nbsp;If&nbsp;its&nbsp;RC</span>
+<span class="U2">2&nbsp;then&nbsp;we'</span>
+<span class="U2">d&nbsp;better&nbsp;s</span>
+<span class="U2">etup&nbsp;the&nbsp;k</span>
+<span class="U2">ey&nbsp;length&nbsp;</span>
+<span class="U2">*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">149</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">150</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">150</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(al</span>
+<span class="C1">g_nid&nbsp;==&nbsp;N</span>
+<span class="C1">ID_rc2_cbc</span>
+<span class="C1">)</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">151</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if</span>
+<span class="C2">(alg_nid&nbsp;=</span>
+<span class="C2">=&nbsp;NID_rc2_</span>
+<span class="C2">cbc)&nbsp;{</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">151</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ke</span>
+<span class="C1">ylen&nbsp;=&nbsp;EVP</span>
+<span class="C1">_CIPHER_ke</span>
+<span class="C1">y_length(c</span>
+<span class="C1">ipher);</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">152</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(!</span>
+<span class="C2">(kdf-&gt;keyl</span>
+<span class="C2">ength&nbsp;=&nbsp;M_</span>
+<span class="C2">ASN1_INTEG</span>
+<span class="C2">ER_new()))</span>
+<span class="C2">&nbsp;goto&nbsp;merr</span>
+<span class="C2">;</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">152</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;else</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">153</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(!</span>
+<span class="C2">ASN1_INTEG</span>
+<span class="C2">ER_set&nbsp;(kd</span>
+<span class="C2">f-&gt;keyleng</span>
+<span class="C2">th,</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">153</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ke</span>
+<span class="C1">ylen&nbsp;=&nbsp;-1;</span>
+<span class="C1" />
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">154</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="C2">&nbsp;&nbsp;&nbsp;EVP_CIP</span>
+<span class="C2">HER_key_le</span>
+<span class="C2">ngth(ciphe</span>
+<span class="C2">r)))&nbsp;goto&nbsp;</span>
+<span class="C2">merr;</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">155</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">156</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">157</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*</span>
+<span class="C2">&nbsp;prf&nbsp;can&nbsp;s</span>
+<span class="C2">tay&nbsp;NULL&nbsp;b</span>
+<span class="C2">ecause&nbsp;we&nbsp;</span>
+<span class="C2">are&nbsp;using&nbsp;</span>
+<span class="C2">hmacWithSH</span>
+<span class="C2">A1&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">158</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">159</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*</span>
+<span class="C2">&nbsp;Now&nbsp;setup</span>
+<span class="C2">&nbsp;the&nbsp;PBE2P</span>
+<span class="C2">ARAM&nbsp;keyfu</span>
+<span class="C2">nc&nbsp;structu</span>
+<span class="C2">re&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">160</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">161</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pb</span>
+<span class="C2">e2-&gt;keyfun</span>
+<span class="C2">c-&gt;algorit</span>
+<span class="C2">hm&nbsp;=&nbsp;OBJ_n</span>
+<span class="C2">id2obj(NID</span>
+<span class="C2">_id_pbkdf2</span>
+<span class="C2">);</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">154</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">162</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">155</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;Set</span>
+<span class="C1">up&nbsp;keyfunc</span>
+<span class="C1">&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">163</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*</span>
+<span class="C2">&nbsp;Encode&nbsp;PB</span>
+<span class="C2">KDF2PARAM&nbsp;</span>
+<span class="C2">into&nbsp;param</span>
+<span class="C2">eter&nbsp;of&nbsp;pb</span>
+<span class="C2">e2&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">156</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">164</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">157</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;X509_A</span>
+<span class="C1">LGOR_free(</span>
+<span class="C1">pbe2-&gt;keyf</span>
+<span class="C1">unc);</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">165</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if</span>
+<span class="C2">(!(pbe2-&gt;k</span>
+<span class="C2">eyfunc-&gt;pa</span>
+<span class="C2">rameter&nbsp;=&nbsp;</span>
+<span class="C2">ASN1_TYPE_</span>
+<span class="C2">new()))&nbsp;go</span>
+<span class="C2">to&nbsp;merr;</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">158</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">166</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">159</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;pbe2-&gt;</span>
+<span class="C1">keyfunc&nbsp;=&nbsp;</span>
+<span class="C1">PKCS5_pbkd</span>
+<span class="C1">f2_set(ite</span>
+<span class="C1">r,&nbsp;salt,&nbsp;s</span>
+<span class="C1">altlen,&nbsp;pr</span>
+<span class="C1">f_nid,&nbsp;key</span>
+<span class="C1">len);</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">167</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if</span>
+<span class="C2">(!ASN1_pac</span>
+<span class="C2">k_string_o</span>
+<span class="C2">f(PBKDF2PA</span>
+<span class="C2">RAM,&nbsp;kdf,&nbsp;</span>
+<span class="C2">i2d_PBKDF2</span>
+<span class="C2">PARAM,</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">168</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;pbe2</span>
+<span class="C2">-&gt;keyfunc-</span>
+<span class="C2">&gt;parameter</span>
+<span class="C2">-&gt;value.se</span>
+<span class="C2">quence))&nbsp;g</span>
+<span class="C2">oto&nbsp;merr;</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">169</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pb</span>
+<span class="C2">e2-&gt;keyfun</span>
+<span class="C2">c-&gt;paramet</span>
+<span class="C2">er-&gt;type&nbsp;=</span>
+<span class="C2">&nbsp;V_ASN1_SE</span>
+<span class="C2">QUENCE;</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">160</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">170</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">161</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!p</span>
+<span class="C1">be2-&gt;keyfu</span>
+<span class="C1">nc)</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">171</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PB</span>
+<span class="C2">KDF2PARAM_</span>
+<span class="C2">free(kdf);</span>
+<span class="C2" />
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">162</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;go</span>
+<span class="C1">to&nbsp;merr;</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">172</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kd</span>
+<span class="C2">f&nbsp;=&nbsp;NULL;</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">163</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">173</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">164</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;Now</span>
+<span class="U1">&nbsp;set&nbsp;up&nbsp;to</span>
+<span class="U1">p&nbsp;level&nbsp;Al</span>
+<span class="U1">gorithmIde</span>
+<span class="U1">ntifier&nbsp;*/</span>
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">174</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*</span>
+<span class="U2">&nbsp;Now&nbsp;set&nbsp;u</span>
+<span class="U2">p&nbsp;top&nbsp;leve</span>
+<span class="U2">l&nbsp;Algorith</span>
+<span class="U2">mIdentifie</span>
+<span class="U2">r&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">165</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">175</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">166</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!(</span>
+<span class="C1">ret&nbsp;=&nbsp;X509</span>
+<span class="C1">_ALGOR_new</span>
+<span class="C1">()))</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">176</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if</span>
+<span class="C2">(!(ret&nbsp;=&nbsp;X</span>
+<span class="C2">509_ALGOR_</span>
+<span class="C2">new()))&nbsp;go</span>
+<span class="C2">to&nbsp;merr;</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">167</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;go</span>
+<span class="C1">to&nbsp;merr;</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">177</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if</span>
+<span class="C2">(!(ret-&gt;pa</span>
+<span class="C2">rameter&nbsp;=&nbsp;</span>
+<span class="C2">ASN1_TYPE_</span>
+<span class="C2">new()))&nbsp;go</span>
+<span class="C2">to&nbsp;merr;</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">168</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!(</span>
+<span class="C1">ret-&gt;param</span>
+<span class="C1">eter&nbsp;=&nbsp;ASN</span>
+<span class="C1">1_TYPE_new</span>
+<span class="C1">()))</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">169</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;go</span>
+<span class="C1">to&nbsp;merr;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">170</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">178</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">171</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;ret-&gt;a</span>
+<span class="U1">lgorithm&nbsp;=</span>
+<span class="U1">&nbsp;OBJ_nid2o</span>
+<span class="U1">bj(NID_pbe</span>
+<span class="U1">s2);</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">179</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;re</span>
+<span class="U2">t-&gt;algorit</span>
+<span class="U2">hm&nbsp;=&nbsp;OBJ_n</span>
+<span class="U2">id2obj(NID</span>
+<span class="U2">_pbes2);</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">172</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">180</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">173</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;Enc</span>
+<span class="U1">ode&nbsp;PBE2PA</span>
+<span class="U1">RAM&nbsp;into&nbsp;p</span>
+<span class="U1">arameter&nbsp;*</span>
+<span class="U1">/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">181</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*</span>
+<span class="U2">&nbsp;Encode&nbsp;PB</span>
+<span class="U2">E2PARAM&nbsp;in</span>
+<span class="U2">to&nbsp;paramet</span>
+<span class="U2">er&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">174</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">182</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">175</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!A</span>
+<span class="C1">SN1_item_p</span>
+<span class="C1">ack(pbe2,&nbsp;</span>
+<span class="C1">ASN1_ITEM_</span>
+<span class="C1">rptr(PBE2P</span>
+<span class="C1">ARAM),</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">183</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if</span>
+<span class="C2">(!ASN1_pac</span>
+<span class="C2">k_string_o</span>
+<span class="C2">f(PBE2PARA</span>
+<span class="C2">M,&nbsp;pbe2,&nbsp;i</span>
+<span class="C2">2d_PBE2PAR</span>
+<span class="C2">AM,</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">176</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;&amp;ret-&gt;</span>
+<span class="C1">parameter-</span>
+<span class="C1">&gt;value.seq</span>
+<span class="C1">uence))</span>
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">184</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="C2">&nbsp;&nbsp;&nbsp;&amp;ret-&gt;p</span>
+<span class="C2">arameter-&gt;</span>
+<span class="C2">value.sequ</span>
+<span class="C2">ence))&nbsp;got</span>
+<span class="C2">o&nbsp;merr;</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">177</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g</span>
+<span class="C1">oto&nbsp;merr;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">178</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;ret-&gt;p</span>
+<span class="U1">arameter-&gt;</span>
+<span class="U1">type&nbsp;=&nbsp;V_A</span>
+<span class="U1">SN1_SEQUEN</span>
+<span class="U1">CE;</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">185</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;re</span>
+<span class="U2">t-&gt;paramet</span>
+<span class="U2">er-&gt;type&nbsp;=</span>
+<span class="U2">&nbsp;V_ASN1_SE</span>
+<span class="U2">QUENCE;</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">179</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">186</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">180</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;PBE2PA</span>
+<span class="U1">RAM_free(p</span>
+<span class="U1">be2);</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">187</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PB</span>
+<span class="U2">E2PARAM_fr</span>
+<span class="U2">ee(pbe2);</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">181</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;pbe2&nbsp;=</span>
+<span class="U1">&nbsp;NULL;</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">188</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pb</span>
+<span class="U2">e2&nbsp;=&nbsp;NULL;</span>
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">182</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">189</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">183</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;return</span>
+<span class="U1">&nbsp;ret;</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">190</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;re</span>
+<span class="U2">turn&nbsp;ret;</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">184</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">191</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">185</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;merr:</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">192</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;me</span>
+<span class="U2">rr:</span>
+</td>
+</tr>
+<tr>
+<td class="C1" style="text-align: right;">186</td>
+<td class="C1" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC1">
+<span class="C1">&nbsp;&nbsp;&nbsp;&nbsp;ASN1er</span>
+<span class="C1">r(ASN1_F_P</span>
+<span class="C1">KCS5_PBE2_</span>
+<span class="C1">SET_IV,&nbsp;ER</span>
+<span class="C1">R_R_MALLOC</span>
+<span class="C1">_FAILURE);</span>
+<span class="C1" />
+</td>
+<td>&nbsp;</td>
+<td class="C2" style="text-align: right;">193</td>
+<td class="C2" style="text-decoration: none;">&nbsp;</td>
+<td class="nbgC2">
+<span class="C2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AS</span>
+<span class="C2">N1err(ASN1</span>
+<span class="C2">_F_PKCS5_P</span>
+<span class="C2">BE2_SET,ER</span>
+<span class="C2">R_R_MALLOC</span>
+<span class="C2">_FAILURE);</span>
+<span class="C2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">187</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">194</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">188</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;err:</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">195</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;er</span>
+<span class="U2">r:</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">189</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;PBE2PA</span>
+<span class="U1">RAM_free(p</span>
+<span class="U1">be2);</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">196</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PB</span>
+<span class="U2">E2PARAM_fr</span>
+<span class="U2">ee(pbe2);</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">190</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;Not</span>
+<span class="U1">e&nbsp;'scheme'</span>
+<span class="U1">&nbsp;is&nbsp;freed&nbsp;</span>
+<span class="U1">as&nbsp;part&nbsp;of</span>
+<span class="U1">&nbsp;pbe2&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">197</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*</span>
+<span class="U2">&nbsp;Note&nbsp;'sch</span>
+<span class="U2">eme'&nbsp;is&nbsp;fr</span>
+<span class="U2">eed&nbsp;as&nbsp;par</span>
+<span class="U2">t&nbsp;of&nbsp;pbe2&nbsp;</span>
+<span class="U2">*/</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">198</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;M_</span>
+<span class="I2">ASN1_OCTET</span>
+<span class="I2">_STRING_fr</span>
+<span class="I2">ee(osalt);</span>
+<span class="I2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">199</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PB</span>
+<span class="I2">KDF2PARAM_</span>
+<span class="I2">free(kdf);</span>
+<span class="I2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">191</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;X509_A</span>
+<span class="U1">LGOR_free(</span>
+<span class="U1">kalg);</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">200</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X5</span>
+<span class="U2">09_ALGOR_f</span>
+<span class="U2">ree(kalg);</span>
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">192</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;X509_A</span>
+<span class="U1">LGOR_free(</span>
+<span class="U1">ret);</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">201</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X5</span>
+<span class="U2">09_ALGOR_f</span>
+<span class="U2">ree(ret);</span>
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">193</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">202</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">194</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">&nbsp;&nbsp;&nbsp;&nbsp;return</span>
+<span class="U1">&nbsp;NULL;</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">203</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;re</span>
+<span class="U2">turn&nbsp;NULL;</span>
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">195</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1" />
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">204</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2" />
+</td>
+</tr>
+<tr>
+<td class="U1" style="text-align: right;">196</td>
+<td class="U1" style="text-decoration: none;">&nbsp;</td>
+<td class="U1">
+<span class="U1">}</span>
+</td>
+<td>&nbsp;</td>
+<td class="U2" style="text-align: right;">205</td>
+<td class="U2" style="text-decoration: none;">&nbsp;</td>
+<td class="U2">
+<span class="U2">}</span>
+</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">197</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">198</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">X509_ALGOR</span>
+<span class="R1">&nbsp;*PKCS5_pb</span>
+<span class="R1">e2_set(con</span>
+<span class="R1">st&nbsp;EVP_CIP</span>
+<span class="R1">HER&nbsp;*ciphe</span>
+<span class="R1">r,&nbsp;int&nbsp;ite</span>
+<span class="R1">r,</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">199</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uns</span>
+<span class="R1">igned&nbsp;char</span>
+<span class="R1">&nbsp;*salt,&nbsp;in</span>
+<span class="R1">t&nbsp;saltlen)</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">200</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">{</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">201</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;return</span>
+<span class="R1">&nbsp;PKCS5_pbe</span>
+<span class="R1">2_set_iv(c</span>
+<span class="R1">ipher,&nbsp;ite</span>
+<span class="R1">r,&nbsp;salt,&nbsp;s</span>
+<span class="R1">altlen,&nbsp;NU</span>
+<span class="R1">LL,&nbsp;-1);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">202</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">}</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">203</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">204</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">X509_ALGOR</span>
+<span class="R1">&nbsp;*PKCS5_pb</span>
+<span class="R1">kdf2_set(i</span>
+<span class="R1">nt&nbsp;iter,&nbsp;u</span>
+<span class="R1">nsigned&nbsp;ch</span>
+<span class="R1">ar&nbsp;*salt,&nbsp;</span>
+<span class="R1">int&nbsp;saltle</span>
+<span class="R1">n,</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">205</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i</span>
+<span class="R1">nt&nbsp;prf_nid</span>
+<span class="R1">,&nbsp;int&nbsp;keyl</span>
+<span class="R1">en)</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">206</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">{</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">207</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;X509_A</span>
+<span class="R1">LGOR&nbsp;*keyf</span>
+<span class="R1">unc&nbsp;=&nbsp;NULL</span>
+<span class="R1">;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">208</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;PBKDF2</span>
+<span class="R1">PARAM&nbsp;*kdf</span>
+<span class="R1">&nbsp;=&nbsp;NULL;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">209</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;ASN1_O</span>
+<span class="R1">CTET_STRIN</span>
+<span class="R1">G&nbsp;*osalt&nbsp;=</span>
+<span class="R1">&nbsp;NULL;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">210</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">211</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!(</span>
+<span class="R1">kdf&nbsp;=&nbsp;PBKD</span>
+<span class="R1">F2PARAM_ne</span>
+<span class="R1">w()))</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">212</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;go</span>
+<span class="R1">to&nbsp;merr;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">213</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!(</span>
+<span class="R1">osalt&nbsp;=&nbsp;M_</span>
+<span class="R1">ASN1_OCTET</span>
+<span class="R1">_STRING_ne</span>
+<span class="R1">w()))</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">214</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;go</span>
+<span class="R1">to&nbsp;merr;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">215</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">216</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;kdf-&gt;s</span>
+<span class="R1">alt-&gt;value</span>
+<span class="R1">.octet_str</span>
+<span class="R1">ing&nbsp;=&nbsp;osal</span>
+<span class="R1">t;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">217</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;kdf-&gt;s</span>
+<span class="R1">alt-&gt;type&nbsp;</span>
+<span class="R1">=&nbsp;V_ASN1_O</span>
+<span class="R1">CTET_STRIN</span>
+<span class="R1">G;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">218</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">219</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!s</span>
+<span class="R1">altlen)</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">220</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sa</span>
+<span class="R1">ltlen&nbsp;=&nbsp;PK</span>
+<span class="R1">CS5_SALT_L</span>
+<span class="R1">EN;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">221</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!(</span>
+<span class="R1">osalt-&gt;dat</span>
+<span class="R1">a&nbsp;=&nbsp;OPENSS</span>
+<span class="R1">L_malloc(s</span>
+<span class="R1">altlen)))</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">222</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;go</span>
+<span class="R1">to&nbsp;merr;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">223</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">224</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;osalt-</span>
+<span class="R1">&gt;length&nbsp;=&nbsp;</span>
+<span class="R1">saltlen;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">225</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">226</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(sa</span>
+<span class="R1">lt)</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">227</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;me</span>
+<span class="R1">mcpy(osalt</span>
+<span class="R1">-&gt;data,&nbsp;sa</span>
+<span class="R1">lt,&nbsp;saltle</span>
+<span class="R1">n);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">228</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;i</span>
+<span class="R1">f&nbsp;(RAND_ps</span>
+<span class="R1">eudo_bytes</span>
+<span class="R1">(osalt-&gt;da</span>
+<span class="R1">ta,&nbsp;saltle</span>
+<span class="R1">n)&nbsp;&lt;&nbsp;0)</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">229</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;go</span>
+<span class="R1">to&nbsp;merr;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">230</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">231</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(it</span>
+<span class="R1">er&nbsp;&lt;=&nbsp;0)</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">232</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it</span>
+<span class="R1">er&nbsp;=&nbsp;PKCS5</span>
+<span class="R1">_DEFAULT_I</span>
+<span class="R1">TER;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">233</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">234</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!A</span>
+<span class="R1">SN1_INTEGE</span>
+<span class="R1">R_set(kdf-</span>
+<span class="R1">&gt;iter,&nbsp;ite</span>
+<span class="R1">r))</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">235</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;go</span>
+<span class="R1">to&nbsp;merr;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">236</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">237</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;If&nbsp;</span>
+<span class="R1">have&nbsp;a&nbsp;key</span>
+<span class="R1">&nbsp;len&nbsp;set&nbsp;i</span>
+<span class="R1">t&nbsp;up&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">238</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">239</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(ke</span>
+<span class="R1">ylen&nbsp;&gt;&nbsp;0)&nbsp;</span>
+<span class="R1">{</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">240</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if</span>
+<span class="R1">&nbsp;(!(kdf-&gt;k</span>
+<span class="R1">eylength&nbsp;=</span>
+<span class="R1">&nbsp;M_ASN1_IN</span>
+<span class="R1">TEGER_new(</span>
+<span class="R1">)))</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">241</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;goto&nbsp;mer</span>
+<span class="R1">r;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">242</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if</span>
+<span class="R1">&nbsp;(!ASN1_IN</span>
+<span class="R1">TEGER_set(</span>
+<span class="R1">kdf-&gt;keyle</span>
+<span class="R1">ngth,&nbsp;keyl</span>
+<span class="R1">en))</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">243</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;goto&nbsp;mer</span>
+<span class="R1">r;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">244</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;}</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">245</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">246</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;prf</span>
+<span class="R1">&nbsp;can&nbsp;stay&nbsp;</span>
+<span class="R1">NULL&nbsp;if&nbsp;we</span>
+<span class="R1">&nbsp;are&nbsp;using</span>
+<span class="R1">&nbsp;hmacWithS</span>
+<span class="R1">HA1&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">247</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(pr</span>
+<span class="R1">f_nid&nbsp;&gt;&nbsp;0&nbsp;</span>
+<span class="R1">&amp;&amp;&nbsp;prf_nid</span>
+<span class="R1">&nbsp;!=&nbsp;NID_hm</span>
+<span class="R1">acWithSHA1</span>
+<span class="R1">)&nbsp;{</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">248</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;kd</span>
+<span class="R1">f-&gt;prf&nbsp;=&nbsp;X</span>
+<span class="R1">509_ALGOR_</span>
+<span class="R1">new();</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">249</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if</span>
+<span class="R1">&nbsp;(!kdf-&gt;pr</span>
+<span class="R1">f)</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">250</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;goto&nbsp;mer</span>
+<span class="R1">r;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">251</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X5</span>
+<span class="R1">09_ALGOR_s</span>
+<span class="R1">et0(kdf-&gt;p</span>
+<span class="R1">rf,&nbsp;OBJ_ni</span>
+<span class="R1">d2obj(prf_</span>
+<span class="R1">nid),&nbsp;V_AS</span>
+<span class="R1">N1_NULL,&nbsp;N</span>
+<span class="R1">ULL);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">252</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;}</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">253</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">254</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;Fin</span>
+<span class="R1">ally&nbsp;setup</span>
+<span class="R1">&nbsp;the&nbsp;keyfu</span>
+<span class="R1">nc&nbsp;structu</span>
+<span class="R1">re&nbsp;*/</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">255</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">256</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;keyfun</span>
+<span class="R1">c&nbsp;=&nbsp;X509_A</span>
+<span class="R1">LGOR_new()</span>
+<span class="R1">;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">257</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!k</span>
+<span class="R1">eyfunc)</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">258</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;go</span>
+<span class="R1">to&nbsp;merr;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">259</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">260</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;keyfun</span>
+<span class="R1">c-&gt;algorit</span>
+<span class="R1">hm&nbsp;=&nbsp;OBJ_n</span>
+<span class="R1">id2obj(NID</span>
+<span class="R1">_id_pbkdf2</span>
+<span class="R1">);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">261</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">262</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;Enc</span>
+<span class="R1">ode&nbsp;PBKDF2</span>
+<span class="R1">PARAM&nbsp;into</span>
+<span class="R1">&nbsp;parameter</span>
+<span class="R1">&nbsp;of&nbsp;pbe2&nbsp;*</span>
+<span class="R1">/</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">263</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">264</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!(</span>
+<span class="R1">keyfunc-&gt;p</span>
+<span class="R1">arameter&nbsp;=</span>
+<span class="R1">&nbsp;ASN1_TYPE</span>
+<span class="R1">_new()))</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">265</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;go</span>
+<span class="R1">to&nbsp;merr;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">266</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">267</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!A</span>
+<span class="R1">SN1_item_p</span>
+<span class="R1">ack(kdf,&nbsp;A</span>
+<span class="R1">SN1_ITEM_r</span>
+<span class="R1">ptr(PBKDF2</span>
+<span class="R1">PARAM),</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">268</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&amp;keyfu</span>
+<span class="R1">nc-&gt;parame</span>
+<span class="R1">ter-&gt;value</span>
+<span class="R1">.sequence)</span>
+<span class="R1">)</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">269</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g</span>
+<span class="R1">oto&nbsp;merr;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">270</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;keyfun</span>
+<span class="R1">c-&gt;paramet</span>
+<span class="R1">er-&gt;type&nbsp;=</span>
+<span class="R1">&nbsp;V_ASN1_SE</span>
+<span class="R1">QUENCE;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">271</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">272</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;PBKDF2</span>
+<span class="R1">PARAM_free</span>
+<span class="R1">(kdf);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">273</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;return</span>
+<span class="R1">&nbsp;keyfunc;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">274</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">275</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;merr:</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">276</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;ASN1er</span>
+<span class="R1">r(ASN1_F_P</span>
+<span class="R1">KCS5_PBKDF</span>
+<span class="R1">2_SET,&nbsp;ERR</span>
+<span class="R1">_R_MALLOC_</span>
+<span class="R1">FAILURE);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">277</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;PBKDF2</span>
+<span class="R1">PARAM_free</span>
+<span class="R1">(kdf);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">278</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;X509_A</span>
+<span class="R1">LGOR_free(</span>
+<span class="R1">keyfunc);</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">279</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;return</span>
+<span class="R1">&nbsp;NULL;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">280</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">}</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+</table>
+<p class="copyright" style="margin-top: 25px; padding-top: 2px; border-top: solid #a0a0a0 1px; max-width: none;">Araxis Merge (but not the data content of this report) is Copyright  &copy; 1993-2009 Araxis Ltd (<a href="http://www.araxis.com/" title="Link to the Araxis corporate web site">www.araxis.com</a>). All rights reserved.</p>
+</body>
+</html>

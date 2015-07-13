@@ -1,0 +1,3793 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mg="http://www.araxis.com/2002/Merge/Reporting" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<!--The layout and design of this report is Copyright © 2003-2009 Araxis Ltd. All rights reserved.-->
+<!--The copyright of the data content of this report belongs to the relevant copyright holders.-->
+<title>138. Araxis Merge File Comparison Report</title>
+<style type="text/css">
+body { background: #fff;  color: #000; margin: 0px 14px 14px 14px; }
+h1, h2, h3, h4, h5 {
+	padding: 0em;
+	margin: 1.5em 0em .25em 0em;
+	text-align: left;
+	font-weight: normal;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 70%;
+	max-width: 55em;
+}
+body, h4, h5, p, ol, ul, li, td, th { font-family: Verdana, Arial, Helvetica, sans-serif; text-align: left; }
+
+h4, h5, p, ol, ul, li { font-size: 70%; }
+input {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 120%;
+}
+
+h1 { margin: 14px 0em 1.2em 0em; font-size: 112%; line-height: 130%;}
+h2 { font-size: 125%; line-height: 84%;}
+h3 { margin-top: 1.4em; font-size: 81%; }
+h4 { margin-top: 1em; font-size: 70%; }
+h5 { margin-top: 1em; font-size: 100%; font-style: italic;}
+h1 strong, h2 strong, h3 strong, h4 strong { font-weight: bold; }
+
+p { margin: 6px 0em 6px 0em; max-width: 55em;}
+p.code, code {}
+p { font-size: 70%; line-height: 125%; }
+table { font-size: 70%;}
+
+p.copyright, .small { font-size: 60%; line-height: 120%; }
+p.copyright { margin: 3px 0px 0px 0px; padding: 0px; text-align: left; }
+acronym { font-variant: small-caps; }
+div.pad { padding: 3px; }
+span.lineEndings { color: red; font-size: 70%; }
+
+table.mgRowGroup, table.mgRowGroupFolder { border: 1px solid #a0a0a0; margin: 10px 0px 10px 0px; width: 100%; table-layout: fixed; border-collapse: collapse; }
+table.mgRowGroup td { vertical-align: top; padding: 0; }
+table.mgRowGroupFolder td { vertical-align: top; padding: 1px 0 1px 0; }
+div.IP { width: 2px; height: 1em; float: left; }
+
+img.mgFldrIcon {float: left; text-align: left; margin: -1px 2px 0px 0px;  height: 16px; width: 16px; border: none; vertical-align: top; background-color: transparent;}
+div.mgFldrIcon {float: left; width: auto;}
+span.left {float: left;width: auto;}
+span.right {float: right;width: auto;}
+
+table.bordered { border-collapse: collapse; border: 1px solid #a0a0a0; margin: 10px 0px 10px 0px;}
+table.bordered th, table.bordered td { vertical-align: top; padding: 3px; border: 1px solid #a0a0a0;}
+table.bordered th { background-color: #e5e5e5; }
+table.bordered td.group { background-color: #f5f5f5; }
+span.disabledNavigation { color: #a0a0a0; }
+div.navigation { margin-top: 14px; font-size: 70%; }
+div.comment { font-weight: normal; color: #000; font-family: Verdana, Arial, Helvetica, sans-serif; background-color: #fcfed8; padding: 2px 5px 2px 5px; border: 1px solid #E3E5C3; margin: 1px 2px 3px 2px; -moz-border-radius: 7px; border-radius: 7px; }
+
+                span.U1, span.U1 a {float: left; width: auto;color: #000000; background-color: #FFFFFF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.U1 a {text-decoration: underline;}
+td.U1 {color: #000000; background-color: #FFFFFF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.R1, span.R1 a {float: left; width: auto;color: #800000; background-color: #F3E6D8; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.R1 a {text-decoration: underline;}
+td.R1 {color: #800000; background-color: #F3E6D8; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.I1, span.I1 a {float: left; width: auto;color: #800000; background-color: #D1E8CF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.I1 a {text-decoration: underline;}
+td.I1 {color: #800000; background-color: #D1E8CF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.C1, span.C1 a {float: left; width: auto;color: #800000; background-color: #DACDE6; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.C1 a {text-decoration: underline;}
+td.C1 {color: #800000; background-color: #DACDE6; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+td.nbgC1 {color: #800000; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; background-color: #FFFFFF; }
+span.U2, span.U2 a {float: left; width: auto;color: #000000; background-color: #FFFFFF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.U2 a {text-decoration: underline;}
+td.U2 {color: #000000; background-color: #FFFFFF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.R2, span.R2 a {float: left; width: auto;color: #800000; background-color: #F3E6D8; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.R2 a {text-decoration: underline;}
+td.R2 {color: #800000; background-color: #F3E6D8; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.I2, span.I2 a {float: left; width: auto;color: #800000; background-color: #D1E8CF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.I2 a {text-decoration: underline;}
+td.I2 {color: #800000; background-color: #D1E8CF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.C2, span.C2 a {float: left; width: auto;color: #800000; background-color: #DACDE6; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.C2 a {text-decoration: underline;}
+td.C2 {color: #800000; background-color: #DACDE6; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+td.nbgC2 {color: #800000; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; background-color: #FFFFFF; }
+
+span.selected {background-color: #3d80df; color: #fff;}
+span.selected a {background-color: #3d80df; color: #fff; text-decoration: underline;}
+span.symbol {cursor: pointer;}
+			</style>
+</head>
+<body>
+<h1><strong>138. Araxis Merge File Comparison Report</strong></h1>
+<p>Produced by <strong>Araxis Merge</strong> on <strong>Sat Jul 11 14:47:53 2015 UTC</strong>. See <a href="http://www.araxis.com/" title="Link to the Araxis corporate web site">www.araxis.com</a> for information about Merge. This report uses XHTML and CSS2, and is best viewed with a reasonably standards compliant browser such as the latest version of <a href="http://www.mozilla.org/products/firefox/" title="Link to the Firefox page on the Mozilla website">Firefox</a> or <a href="http://www.microsoft.com/ie/" title="Link to the Microsoft website">Internet Explorer</a>. For optimum results when printing this report, use landscape orientation and enable printing of background images and colours in your browser.</p>
+<h3><strong>138.1&nbsp;Files compared</strong></h3>
+<table class="bordered">
+<tr>
+<th>#</th>
+<th>Location</th>
+<th>File</th>
+<th>Last Modified</th>
+</tr>
+<tr>
+<td>1</td>
+<td>C:\Users\neominds\Desktop\WRSSL_OPSSL\work\OpenSSL_1.0.1\openssl-1.0.1o_WR_DIR_STRUCTURE\ssl\openssl\demos\tunala</td>
+<td>README</td>
+<td>Fri Jun 12 14:51:22 2015 UTC</td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td></td>
+<td>Sat Jul 11 14:47:53 2015 UTC</td>
+</tr>
+</table>
+<h3><strong>138.2&nbsp;Comparison summary</strong></h3>
+<table class="bordered">
+<tr>
+<th rowspan="2" style="vertical-align: bottom;">Description</th>
+<th colspan="2">Between<br />Files 1 and 2</th>
+</tr>
+<tr>
+<th style="text-align: right;">Text Blocks</th>
+<th style="text-align: right;">Lines</th>
+</tr>
+<tr>
+<td>Unchanged</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Changed</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Inserted</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Removed</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">233</td>
+</tr>
+</table>
+<h3><strong>138.3&nbsp;Comparison options</strong></h3>
+<table class="bordered" style="width: 55em;">
+<tr>
+<th>Whitespace</th>
+<td></td>
+</tr>
+<tr>
+<th>Character case</th>
+<td>Differences in character case are significant</td>
+</tr>
+<tr>
+<th>Line endings</th>
+<td>Differences in line endings (<code>CR</code> and <code>LF</code> characters) are ignored</td>
+</tr>
+<tr>
+<th>CR/LF characters</th>
+<td>Not shown in the comparison detail</td>
+</tr>
+</table>
+<h3><strong>138.4&nbsp;Active regular expressions</strong></h3>
+<p>No regular expressions were active.</p>
+<h3><strong>138.5&nbsp;Comparison detail</strong></h3>
+<table class="mgRowGroup">
+<col style="width: 5em;" />
+<col style="width: 1em;" />
+<col width="*" />
+<col style="width: 1em;" />
+<col style="width: 5em;" />
+<col style="width: 1em;" />
+<col width="*" />
+<tr>
+<td class="R1" style="text-align: right;">1</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">This&nbsp;is&nbsp;in</span>
+<span class="R1">tended&nbsp;to&nbsp;</span>
+<span class="R1">be&nbsp;an&nbsp;exam</span>
+<span class="R1">ple&nbsp;of&nbsp;a&nbsp;s</span>
+<span class="R1">tate-machi</span>
+<span class="R1">ne&nbsp;driven&nbsp;</span>
+<span class="R1">SSL&nbsp;applic</span>
+<span class="R1">ation.&nbsp;It</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">2</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">acts&nbsp;as&nbsp;an</span>
+<span class="R1">&nbsp;SSL&nbsp;tunne</span>
+<span class="R1">ler&nbsp;(funct</span>
+<span class="R1">ioning&nbsp;as&nbsp;</span>
+<span class="R1">either&nbsp;the</span>
+<span class="R1">&nbsp;server&nbsp;or</span>
+<span class="R1">&nbsp;client&nbsp;ha</span>
+<span class="R1">lf,</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">3</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">depending&nbsp;</span>
+<span class="R1">on&nbsp;command</span>
+<span class="R1">-line&nbsp;argu</span>
+<span class="R1">ments).&nbsp;*P</span>
+<span class="R1">LEASE*&nbsp;rea</span>
+<span class="R1">d&nbsp;the&nbsp;comm</span>
+<span class="R1">ents&nbsp;in&nbsp;tu</span>
+<span class="R1">nala.h</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">4</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">before&nbsp;you</span>
+<span class="R1">&nbsp;treat&nbsp;thi</span>
+<span class="R1">s&nbsp;stuff&nbsp;as</span>
+<span class="R1">&nbsp;anything&nbsp;</span>
+<span class="R1">more&nbsp;than&nbsp;</span>
+<span class="R1">a&nbsp;curiosit</span>
+<span class="R1">y&nbsp;-&nbsp;YOU&nbsp;HA</span>
+<span class="R1">VE&nbsp;BEEN</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">5</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">WARNED!!&nbsp;T</span>
+<span class="R1">here,&nbsp;that</span>
+<span class="R1">'s&nbsp;the&nbsp;dra</span>
+<span class="R1">conian&nbsp;bit</span>
+<span class="R1">&nbsp;out&nbsp;of&nbsp;th</span>
+<span class="R1">e&nbsp;way&nbsp;...</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">6</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">7</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">8</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Why&nbsp;"tunal</span>
+<span class="R1">a"??</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">9</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">----------</span>
+<span class="R1">----</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">10</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">11</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">I&nbsp;thought&nbsp;</span>
+<span class="R1">I&nbsp;asked&nbsp;yo</span>
+<span class="R1">u&nbsp;to&nbsp;read&nbsp;</span>
+<span class="R1">tunala.h??</span>
+<span class="R1">&nbsp;:-)</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">12</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">13</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">14</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Show&nbsp;me</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">15</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">-------</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">16</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">17</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">If&nbsp;you&nbsp;wan</span>
+<span class="R1">t&nbsp;to&nbsp;simpl</span>
+<span class="R1">y&nbsp;see&nbsp;it&nbsp;r</span>
+<span class="R1">unning,&nbsp;sk</span>
+<span class="R1">ip&nbsp;to&nbsp;the&nbsp;</span>
+<span class="R1">end&nbsp;and&nbsp;se</span>
+<span class="R1">e&nbsp;some&nbsp;exa</span>
+<span class="R1">mple</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">18</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">command-li</span>
+<span class="R1">ne&nbsp;argumen</span>
+<span class="R1">ts&nbsp;to&nbsp;demo</span>
+<span class="R1">nstrate&nbsp;wi</span>
+<span class="R1">th.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">19</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">20</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">21</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Where&nbsp;to&nbsp;l</span>
+<span class="R1">ook&nbsp;and&nbsp;wh</span>
+<span class="R1">at&nbsp;to&nbsp;do?</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">22</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">----------</span>
+<span class="R1">----------</span>
+<span class="R1">---------</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">23</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">24</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">The&nbsp;code&nbsp;i</span>
+<span class="R1">s&nbsp;split&nbsp;up</span>
+<span class="R1">&nbsp;roughly&nbsp;c</span>
+<span class="R1">oinciding&nbsp;</span>
+<span class="R1">with&nbsp;the&nbsp;d</span>
+<span class="R1">etaching&nbsp;o</span>
+<span class="R1">f&nbsp;an&nbsp;"abst</span>
+<span class="R1">ract"&nbsp;SSL</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">25</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">state&nbsp;mach</span>
+<span class="R1">ine&nbsp;(which</span>
+<span class="R1">&nbsp;is&nbsp;the&nbsp;pu</span>
+<span class="R1">rpose&nbsp;of&nbsp;a</span>
+<span class="R1">ll&nbsp;this)&nbsp;a</span>
+<span class="R1">nd&nbsp;its&nbsp;sur</span>
+<span class="R1">rounding&nbsp;a</span>
+<span class="R1">pplication</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">26</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">specifics.</span>
+<span class="R1">&nbsp;This&nbsp;is&nbsp;p</span>
+<span class="R1">rimarily&nbsp;t</span>
+<span class="R1">o&nbsp;make&nbsp;it&nbsp;</span>
+<span class="R1">possible&nbsp;f</span>
+<span class="R1">or&nbsp;me&nbsp;to&nbsp;k</span>
+<span class="R1">now&nbsp;when&nbsp;I</span>
+<span class="R1">&nbsp;could&nbsp;cut</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">27</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">corners&nbsp;an</span>
+<span class="R1">d&nbsp;when&nbsp;I&nbsp;n</span>
+<span class="R1">eeded&nbsp;to&nbsp;b</span>
+<span class="R1">e&nbsp;rigorous</span>
+<span class="R1">&nbsp;(or&nbsp;at&nbsp;le</span>
+<span class="R1">ast&nbsp;mainta</span>
+<span class="R1">in&nbsp;the&nbsp;pre</span>
+<span class="R1">tense&nbsp;as</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">28</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">such&nbsp;:-).</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">29</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">30</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Network&nbsp;st</span>
+<span class="R1">uff:</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">31</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">32</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Basically,</span>
+<span class="R1">&nbsp;the&nbsp;netwo</span>
+<span class="R1">rk&nbsp;part&nbsp;of</span>
+<span class="R1">&nbsp;all&nbsp;this&nbsp;</span>
+<span class="R1">is&nbsp;what&nbsp;is</span>
+<span class="R1">&nbsp;supposed&nbsp;</span>
+<span class="R1">to&nbsp;be&nbsp;abst</span>
+<span class="R1">racted&nbsp;out</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">33</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">of&nbsp;the&nbsp;way</span>
+<span class="R1">.&nbsp;The&nbsp;inte</span>
+<span class="R1">ntion&nbsp;is&nbsp;t</span>
+<span class="R1">o&nbsp;illustra</span>
+<span class="R1">te&nbsp;one&nbsp;way</span>
+<span class="R1">&nbsp;to&nbsp;stick&nbsp;</span>
+<span class="R1">OpenSSL's&nbsp;</span>
+<span class="R1">mechanisms</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">34</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">inside&nbsp;a&nbsp;l</span>
+<span class="R1">ittle&nbsp;memo</span>
+<span class="R1">ry-driven&nbsp;</span>
+<span class="R1">sandbox&nbsp;an</span>
+<span class="R1">d&nbsp;operate&nbsp;</span>
+<span class="R1">it&nbsp;like&nbsp;a&nbsp;</span>
+<span class="R1">pure&nbsp;state</span>
+<span class="R1">-machine.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">35</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">So,&nbsp;the&nbsp;ne</span>
+<span class="R1">twork&nbsp;code</span>
+<span class="R1">&nbsp;is&nbsp;inside</span>
+<span class="R1">&nbsp;both&nbsp;ip.c</span>
+<span class="R1">&nbsp;(general&nbsp;</span>
+<span class="R1">utility&nbsp;fu</span>
+<span class="R1">nctions&nbsp;an</span>
+<span class="R1">d&nbsp;gory</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">36</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">IPv4&nbsp;detai</span>
+<span class="R1">ls)&nbsp;and&nbsp;tu</span>
+<span class="R1">nala.c&nbsp;its</span>
+<span class="R1">elf,&nbsp;which</span>
+<span class="R1">&nbsp;takes&nbsp;car</span>
+<span class="R1">e&nbsp;of&nbsp;appli</span>
+<span class="R1">cation&nbsp;spe</span>
+<span class="R1">cifics</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">37</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">like&nbsp;the&nbsp;m</span>
+<span class="R1">ain&nbsp;select</span>
+<span class="R1">()&nbsp;loop.&nbsp;T</span>
+<span class="R1">he&nbsp;connect</span>
+<span class="R1">ivity&nbsp;betw</span>
+<span class="R1">een&nbsp;the&nbsp;sp</span>
+<span class="R1">ecifics&nbsp;of</span>
+<span class="R1">&nbsp;this</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">38</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">applicatio</span>
+<span class="R1">n&nbsp;(TCP/IP&nbsp;</span>
+<span class="R1">tunneling&nbsp;</span>
+<span class="R1">and&nbsp;the&nbsp;as</span>
+<span class="R1">sociated&nbsp;n</span>
+<span class="R1">etwork&nbsp;cod</span>
+<span class="R1">e)&nbsp;and&nbsp;the</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">39</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">underlying</span>
+<span class="R1">&nbsp;abstract&nbsp;</span>
+<span class="R1">SSL&nbsp;state&nbsp;</span>
+<span class="R1">machine&nbsp;st</span>
+<span class="R1">uff&nbsp;is&nbsp;thr</span>
+<span class="R1">ough&nbsp;the&nbsp;u</span>
+<span class="R1">se&nbsp;of&nbsp;the&nbsp;</span>
+<span class="R1">"buffer_t"</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">40</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">type,&nbsp;decl</span>
+<span class="R1">ared&nbsp;in&nbsp;tu</span>
+<span class="R1">nala.h&nbsp;and</span>
+<span class="R1">&nbsp;implement</span>
+<span class="R1">ed&nbsp;in&nbsp;buff</span>
+<span class="R1">er.c.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">41</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">42</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">State&nbsp;mach</span>
+<span class="R1">ine:</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">43</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">44</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Which&nbsp;leav</span>
+<span class="R1">es&nbsp;us,&nbsp;gen</span>
+<span class="R1">erally&nbsp;spe</span>
+<span class="R1">aking,&nbsp;wit</span>
+<span class="R1">h&nbsp;the&nbsp;abst</span>
+<span class="R1">ract&nbsp;"stat</span>
+<span class="R1">e&nbsp;machine"</span>
+<span class="R1">&nbsp;code&nbsp;left</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">45</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">over&nbsp;and&nbsp;t</span>
+<span class="R1">his&nbsp;is&nbsp;sit</span>
+<span class="R1">ting&nbsp;insid</span>
+<span class="R1">e&nbsp;sm.c,&nbsp;wi</span>
+<span class="R1">th&nbsp;declara</span>
+<span class="R1">tions&nbsp;insi</span>
+<span class="R1">de&nbsp;tunala.</span>
+<span class="R1">h.&nbsp;As&nbsp;can</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">46</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">be&nbsp;seen&nbsp;by</span>
+<span class="R1">&nbsp;the&nbsp;defin</span>
+<span class="R1">ition&nbsp;of&nbsp;t</span>
+<span class="R1">he&nbsp;state_m</span>
+<span class="R1">achine_t&nbsp;s</span>
+<span class="R1">tructure&nbsp;a</span>
+<span class="R1">nd&nbsp;the&nbsp;ass</span>
+<span class="R1">ociated</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">47</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">functions&nbsp;</span>
+<span class="R1">to&nbsp;manipul</span>
+<span class="R1">ate&nbsp;it,&nbsp;th</span>
+<span class="R1">ere&nbsp;are&nbsp;th</span>
+<span class="R1">e&nbsp;3&nbsp;OpenSS</span>
+<span class="R1">L&nbsp;"handles</span>
+<span class="R1">"&nbsp;plus&nbsp;4&nbsp;b</span>
+<span class="R1">uffer_t</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">48</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">structures</span>
+<span class="R1">&nbsp;dealing&nbsp;w</span>
+<span class="R1">ith&nbsp;IO&nbsp;on&nbsp;</span>
+<span class="R1">both&nbsp;the&nbsp;e</span>
+<span class="R1">ncrypted&nbsp;a</span>
+<span class="R1">nd&nbsp;unencry</span>
+<span class="R1">pted&nbsp;sides</span>
+<span class="R1">&nbsp;("dirty"</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">49</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">and&nbsp;"clean</span>
+<span class="R1">"&nbsp;respecti</span>
+<span class="R1">vely).&nbsp;The</span>
+<span class="R1">&nbsp;"SSL"&nbsp;han</span>
+<span class="R1">dle&nbsp;is&nbsp;wha</span>
+<span class="R1">t&nbsp;facilita</span>
+<span class="R1">tes&nbsp;the&nbsp;re</span>
+<span class="R1">ading&nbsp;and</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">50</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">writing&nbsp;of</span>
+<span class="R1">&nbsp;the&nbsp;unenc</span>
+<span class="R1">rypted&nbsp;(tu</span>
+<span class="R1">nneled)&nbsp;da</span>
+<span class="R1">ta.&nbsp;The&nbsp;tw</span>
+<span class="R1">o&nbsp;"BIO"&nbsp;ha</span>
+<span class="R1">ndles&nbsp;act&nbsp;</span>
+<span class="R1">as&nbsp;the</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">51</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">read&nbsp;and&nbsp;w</span>
+<span class="R1">rite&nbsp;chann</span>
+<span class="R1">els&nbsp;for&nbsp;en</span>
+<span class="R1">crypted&nbsp;tu</span>
+<span class="R1">nnel&nbsp;traff</span>
+<span class="R1">ic&nbsp;-&nbsp;in&nbsp;ot</span>
+<span class="R1">her&nbsp;applic</span>
+<span class="R1">ations</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">52</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">these&nbsp;are&nbsp;</span>
+<span class="R1">often&nbsp;sock</span>
+<span class="R1">et&nbsp;BIOs&nbsp;so</span>
+<span class="R1">&nbsp;that&nbsp;the&nbsp;</span>
+<span class="R1">OpenSSL&nbsp;fr</span>
+<span class="R1">amework&nbsp;op</span>
+<span class="R1">erates&nbsp;wit</span>
+<span class="R1">h&nbsp;the</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">53</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">network&nbsp;la</span>
+<span class="R1">yer&nbsp;direct</span>
+<span class="R1">ly.&nbsp;In&nbsp;thi</span>
+<span class="R1">s&nbsp;example,</span>
+<span class="R1">&nbsp;those&nbsp;two</span>
+<span class="R1">&nbsp;BIOs&nbsp;are&nbsp;</span>
+<span class="R1">memory&nbsp;BIO</span>
+<span class="R1">s</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">54</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">(BIO_s_mem</span>
+<span class="R1">())&nbsp;so&nbsp;tha</span>
+<span class="R1">t&nbsp;the&nbsp;send</span>
+<span class="R1">ing&nbsp;and&nbsp;re</span>
+<span class="R1">ceiving&nbsp;of</span>
+<span class="R1">&nbsp;the&nbsp;tunne</span>
+<span class="R1">l&nbsp;traffic&nbsp;</span>
+<span class="R1">stays</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">55</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">within&nbsp;the</span>
+<span class="R1">&nbsp;state-mac</span>
+<span class="R1">hine,&nbsp;and&nbsp;</span>
+<span class="R1">we&nbsp;can&nbsp;han</span>
+<span class="R1">dle&nbsp;where&nbsp;</span>
+<span class="R1">this&nbsp;gets&nbsp;</span>
+<span class="R1">send&nbsp;to&nbsp;(o</span>
+<span class="R1">r&nbsp;read</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">56</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">from)&nbsp;ours</span>
+<span class="R1">elves.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">57</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">58</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">59</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Why?</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">60</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">----</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">61</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">62</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">If&nbsp;you&nbsp;tak</span>
+<span class="R1">e&nbsp;a&nbsp;look&nbsp;a</span>
+<span class="R1">t&nbsp;the&nbsp;"sta</span>
+<span class="R1">te_machine</span>
+<span class="R1">_t"&nbsp;sectio</span>
+<span class="R1">n&nbsp;of&nbsp;tunal</span>
+<span class="R1">a.h&nbsp;and&nbsp;th</span>
+<span class="R1">e&nbsp;code&nbsp;in</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">63</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">sm.c,&nbsp;you&nbsp;</span>
+<span class="R1">will&nbsp;notic</span>
+<span class="R1">e&nbsp;that&nbsp;not</span>
+<span class="R1">hing&nbsp;relat</span>
+<span class="R1">ed&nbsp;to&nbsp;the&nbsp;</span>
+<span class="R1">concept&nbsp;of</span>
+<span class="R1">&nbsp;'transpor</span>
+<span class="R1">t'&nbsp;is</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">64</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">involved.&nbsp;</span>
+<span class="R1">The&nbsp;bindin</span>
+<span class="R1">g&nbsp;to&nbsp;TCP/I</span>
+<span class="R1">P&nbsp;networki</span>
+<span class="R1">ng&nbsp;occurs&nbsp;</span>
+<span class="R1">in&nbsp;tunala.</span>
+<span class="R1">c,&nbsp;specifi</span>
+<span class="R1">cally</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">65</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">within&nbsp;the</span>
+<span class="R1">&nbsp;"tunala_i</span>
+<span class="R1">tem_t"&nbsp;str</span>
+<span class="R1">ucture&nbsp;tha</span>
+<span class="R1">t&nbsp;associat</span>
+<span class="R1">es&nbsp;a&nbsp;state</span>
+<span class="R1">_machine_t</span>
+<span class="R1">&nbsp;object</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">66</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">with&nbsp;4&nbsp;fil</span>
+<span class="R1">e-descript</span>
+<span class="R1">ors.&nbsp;The&nbsp;w</span>
+<span class="R1">ay&nbsp;to&nbsp;best</span>
+<span class="R1">&nbsp;see&nbsp;where</span>
+<span class="R1">&nbsp;the&nbsp;bridg</span>
+<span class="R1">e&nbsp;between&nbsp;</span>
+<span class="R1">the</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">67</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">outside&nbsp;wo</span>
+<span class="R1">rld&nbsp;(TCP/I</span>
+<span class="R1">P&nbsp;reads,&nbsp;w</span>
+<span class="R1">rites,&nbsp;sel</span>
+<span class="R1">ect()s,&nbsp;fi</span>
+<span class="R1">le-descrip</span>
+<span class="R1">tors,&nbsp;etc)</span>
+<span class="R1">&nbsp;and&nbsp;the</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">68</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">state&nbsp;mach</span>
+<span class="R1">ine&nbsp;is,&nbsp;is</span>
+<span class="R1">&nbsp;to&nbsp;examin</span>
+<span class="R1">e&nbsp;the&nbsp;"tun</span>
+<span class="R1">ala_item_i</span>
+<span class="R1">o()"&nbsp;funct</span>
+<span class="R1">ion&nbsp;in&nbsp;tun</span>
+<span class="R1">ala.c.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">69</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">This&nbsp;is&nbsp;cu</span>
+<span class="R1">rrently&nbsp;ar</span>
+<span class="R1">ound&nbsp;lines</span>
+<span class="R1">&nbsp;641-732&nbsp;b</span>
+<span class="R1">ut&nbsp;of&nbsp;cour</span>
+<span class="R1">se&nbsp;could&nbsp;b</span>
+<span class="R1">e&nbsp;subject&nbsp;</span>
+<span class="R1">to&nbsp;change.</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">70</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">71</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">72</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">And...?</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">73</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">-------</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">74</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">75</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Well,&nbsp;alth</span>
+<span class="R1">ough&nbsp;that&nbsp;</span>
+<span class="R1">function&nbsp;i</span>
+<span class="R1">s&nbsp;around&nbsp;9</span>
+<span class="R1">0&nbsp;lines&nbsp;of</span>
+<span class="R1">&nbsp;code,&nbsp;it&nbsp;</span>
+<span class="R1">could&nbsp;easi</span>
+<span class="R1">ly&nbsp;have</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">76</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">been&nbsp;a&nbsp;lot</span>
+<span class="R1">&nbsp;less&nbsp;only</span>
+<span class="R1">&nbsp;I&nbsp;was&nbsp;try</span>
+<span class="R1">ing&nbsp;to&nbsp;add</span>
+<span class="R1">ress&nbsp;an&nbsp;ea</span>
+<span class="R1">sily&nbsp;misse</span>
+<span class="R1">d&nbsp;"gotcha"</span>
+<span class="R1">&nbsp;(item&nbsp;(2)</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">77</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">below).&nbsp;Th</span>
+<span class="R1">e&nbsp;main()&nbsp;c</span>
+<span class="R1">ode&nbsp;that&nbsp;d</span>
+<span class="R1">rives&nbsp;the&nbsp;</span>
+<span class="R1">select/acc</span>
+<span class="R1">ept/IO&nbsp;loo</span>
+<span class="R1">p&nbsp;initiali</span>
+<span class="R1">ses&nbsp;new</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">78</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">tunala_ite</span>
+<span class="R1">m_t&nbsp;struct</span>
+<span class="R1">ures&nbsp;when&nbsp;</span>
+<span class="R1">connection</span>
+<span class="R1">s&nbsp;arrive,&nbsp;</span>
+<span class="R1">and&nbsp;works&nbsp;</span>
+<span class="R1">out&nbsp;which</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">79</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">file-descr</span>
+<span class="R1">iptors&nbsp;go&nbsp;</span>
+<span class="R1">where&nbsp;depe</span>
+<span class="R1">nding&nbsp;on&nbsp;w</span>
+<span class="R1">hether&nbsp;we'</span>
+<span class="R1">re&nbsp;an&nbsp;SSL&nbsp;</span>
+<span class="R1">client&nbsp;or&nbsp;</span>
+<span class="R1">server</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">80</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">(client&nbsp;--</span>
+<span class="R1">&gt;&nbsp;accepted</span>
+<span class="R1">&nbsp;connectio</span>
+<span class="R1">n&nbsp;is&nbsp;clean</span>
+<span class="R1">&nbsp;and&nbsp;proxi</span>
+<span class="R1">ed&nbsp;is&nbsp;dirt</span>
+<span class="R1">y,&nbsp;server&nbsp;</span>
+<span class="R1">--&gt;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">81</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">accepted&nbsp;c</span>
+<span class="R1">onnection&nbsp;</span>
+<span class="R1">is&nbsp;dirty&nbsp;a</span>
+<span class="R1">nd&nbsp;proxied</span>
+<span class="R1">&nbsp;is&nbsp;clean)</span>
+<span class="R1">.&nbsp;What&nbsp;tha</span>
+<span class="R1">t&nbsp;tunala_i</span>
+<span class="R1">tem_io()</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">82</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">function&nbsp;i</span>
+<span class="R1">s&nbsp;attempti</span>
+<span class="R1">ng&nbsp;to&nbsp;do&nbsp;i</span>
+<span class="R1">s&nbsp;2&nbsp;things</span>
+<span class="R1">;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">83</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">84</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;(1)&nbsp;Perf</span>
+<span class="R1">orm&nbsp;all&nbsp;re</span>
+<span class="R1">ads&nbsp;and&nbsp;wr</span>
+<span class="R1">ites&nbsp;on&nbsp;th</span>
+<span class="R1">e&nbsp;network&nbsp;</span>
+<span class="R1">directly&nbsp;i</span>
+<span class="R1">nto&nbsp;the</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">85</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stat</span>
+<span class="R1">e_machine_</span>
+<span class="R1">t's&nbsp;buffer</span>
+<span class="R1">s&nbsp;(based&nbsp;o</span>
+<span class="R1">n&nbsp;a&nbsp;previo</span>
+<span class="R1">us&nbsp;select(</span>
+<span class="R1">)&nbsp;result),</span>
+<span class="R1">&nbsp;and&nbsp;only</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">86</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then</span>
+<span class="R1">&nbsp;allow&nbsp;the</span>
+<span class="R1">&nbsp;abstact&nbsp;s</span>
+<span class="R1">tate_machi</span>
+<span class="R1">ne_t&nbsp;to&nbsp;"c</span>
+<span class="R1">hurn()"&nbsp;us</span>
+<span class="R1">ing&nbsp;those&nbsp;</span>
+<span class="R1">buffers.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">87</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This</span>
+<span class="R1">&nbsp;will&nbsp;caus</span>
+<span class="R1">e&nbsp;the&nbsp;SSL&nbsp;</span>
+<span class="R1">machine&nbsp;to</span>
+<span class="R1">&nbsp;consume&nbsp;a</span>
+<span class="R1">s&nbsp;much&nbsp;inp</span>
+<span class="R1">ut&nbsp;data&nbsp;fr</span>
+<span class="R1">om&nbsp;the&nbsp;two</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">88</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"IN"</span>
+<span class="R1">&nbsp;buffers&nbsp;a</span>
+<span class="R1">s&nbsp;possible</span>
+<span class="R1">,&nbsp;and&nbsp;gene</span>
+<span class="R1">rate&nbsp;as&nbsp;mu</span>
+<span class="R1">ch&nbsp;output&nbsp;</span>
+<span class="R1">data&nbsp;into&nbsp;</span>
+<span class="R1">the&nbsp;two</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">89</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"OUT</span>
+<span class="R1">"&nbsp;buffers&nbsp;</span>
+<span class="R1">as&nbsp;possibl</span>
+<span class="R1">e.&nbsp;Back&nbsp;up</span>
+<span class="R1">&nbsp;in&nbsp;the&nbsp;ma</span>
+<span class="R1">in()&nbsp;funct</span>
+<span class="R1">ion,&nbsp;the&nbsp;n</span>
+<span class="R1">ext&nbsp;main</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">90</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;loop</span>
+<span class="R1">&nbsp;loop&nbsp;will</span>
+<span class="R1">&nbsp;examine&nbsp;t</span>
+<span class="R1">hese&nbsp;outpu</span>
+<span class="R1">t&nbsp;buffers&nbsp;</span>
+<span class="R1">and&nbsp;select</span>
+<span class="R1">()&nbsp;for&nbsp;wri</span>
+<span class="R1">tability</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">91</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;on&nbsp;t</span>
+<span class="R1">he&nbsp;corresp</span>
+<span class="R1">onding&nbsp;soc</span>
+<span class="R1">kets&nbsp;if&nbsp;th</span>
+<span class="R1">e&nbsp;buffers&nbsp;</span>
+<span class="R1">are&nbsp;non-em</span>
+<span class="R1">pty.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">92</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">93</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;(2)&nbsp;Hand</span>
+<span class="R1">le&nbsp;the&nbsp;com</span>
+<span class="R1">plicated&nbsp;t</span>
+<span class="R1">unneling-s</span>
+<span class="R1">pecific&nbsp;is</span>
+<span class="R1">sue&nbsp;of&nbsp;cas</span>
+<span class="R1">cading&nbsp;"cl</span>
+<span class="R1">ose"s.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">94</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This</span>
+<span class="R1">&nbsp;is&nbsp;the&nbsp;re</span>
+<span class="R1">ason&nbsp;for&nbsp;m</span>
+<span class="R1">ost&nbsp;of&nbsp;the</span>
+<span class="R1">&nbsp;complexit</span>
+<span class="R1">y&nbsp;in&nbsp;the&nbsp;l</span>
+<span class="R1">ogic&nbsp;-&nbsp;if&nbsp;</span>
+<span class="R1">one&nbsp;side</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">95</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;t</span>
+<span class="R1">he&nbsp;tunnel&nbsp;</span>
+<span class="R1">is&nbsp;closed,</span>
+<span class="R1">&nbsp;you&nbsp;can't</span>
+<span class="R1">&nbsp;simply&nbsp;cl</span>
+<span class="R1">ose&nbsp;the&nbsp;ot</span>
+<span class="R1">her&nbsp;side&nbsp;a</span>
+<span class="R1">nd&nbsp;throw</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">96</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;away</span>
+<span class="R1">&nbsp;the&nbsp;whole</span>
+<span class="R1">&nbsp;thing&nbsp;-&nbsp;(</span>
+<span class="R1">a)&nbsp;there&nbsp;m</span>
+<span class="R1">ay&nbsp;still&nbsp;b</span>
+<span class="R1">e&nbsp;outgoing</span>
+<span class="R1">&nbsp;data&nbsp;on&nbsp;t</span>
+<span class="R1">he&nbsp;other</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">97</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;side</span>
+<span class="R1">&nbsp;of&nbsp;the&nbsp;tu</span>
+<span class="R1">nnel&nbsp;that&nbsp;</span>
+<span class="R1">hasn't&nbsp;bee</span>
+<span class="R1">n&nbsp;sent&nbsp;yet</span>
+<span class="R1">,&nbsp;(b)&nbsp;the&nbsp;</span>
+<span class="R1">close&nbsp;(or&nbsp;</span>
+<span class="R1">things</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">98</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;happ</span>
+<span class="R1">ening&nbsp;duri</span>
+<span class="R1">ng&nbsp;the&nbsp;clo</span>
+<span class="R1">se)&nbsp;may&nbsp;ca</span>
+<span class="R1">use&nbsp;more&nbsp;d</span>
+<span class="R1">ata&nbsp;to&nbsp;be&nbsp;</span>
+<span class="R1">generated&nbsp;</span>
+<span class="R1">that&nbsp;needs</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">99</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;send</span>
+<span class="R1">ing&nbsp;on&nbsp;the</span>
+<span class="R1">&nbsp;other&nbsp;sid</span>
+<span class="R1">e.&nbsp;Of&nbsp;cour</span>
+<span class="R1">se,&nbsp;this&nbsp;l</span>
+<span class="R1">ogic&nbsp;is&nbsp;co</span>
+<span class="R1">mplicated&nbsp;</span>
+<span class="R1">yet&nbsp;futher</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">100</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by&nbsp;t</span>
+<span class="R1">he&nbsp;fact&nbsp;th</span>
+<span class="R1">at&nbsp;it's&nbsp;di</span>
+<span class="R1">fferent&nbsp;de</span>
+<span class="R1">pending&nbsp;on</span>
+<span class="R1">&nbsp;which&nbsp;sid</span>
+<span class="R1">e&nbsp;closes&nbsp;f</span>
+<span class="R1">irst&nbsp;:-)</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">101</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stat</span>
+<span class="R1">e_machine_</span>
+<span class="R1">close_clea</span>
+<span class="R1">n()&nbsp;will&nbsp;i</span>
+<span class="R1">ndicate&nbsp;to</span>
+<span class="R1">&nbsp;the&nbsp;state</span>
+<span class="R1">&nbsp;machine&nbsp;t</span>
+<span class="R1">hat&nbsp;the</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">102</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unen</span>
+<span class="R1">crypted&nbsp;si</span>
+<span class="R1">de&nbsp;of&nbsp;the&nbsp;</span>
+<span class="R1">tunnel&nbsp;has</span>
+<span class="R1">&nbsp;closed,&nbsp;s</span>
+<span class="R1">o&nbsp;any&nbsp;exis</span>
+<span class="R1">ting&nbsp;outgo</span>
+<span class="R1">ing&nbsp;data</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">103</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;need</span>
+<span class="R1">s&nbsp;to&nbsp;be&nbsp;fl</span>
+<span class="R1">ushed,&nbsp;and</span>
+<span class="R1">&nbsp;the&nbsp;SSL&nbsp;s</span>
+<span class="R1">tream&nbsp;need</span>
+<span class="R1">s&nbsp;to&nbsp;be&nbsp;cl</span>
+<span class="R1">osed&nbsp;down&nbsp;</span>
+<span class="R1">using&nbsp;the</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">104</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;appr</span>
+<span class="R1">opriate&nbsp;sh</span>
+<span class="R1">utdown&nbsp;seq</span>
+<span class="R1">uence.&nbsp;sta</span>
+<span class="R1">te_machine</span>
+<span class="R1">_close_dir</span>
+<span class="R1">ty()&nbsp;is&nbsp;si</span>
+<span class="R1">mpler</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">105</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;beca</span>
+<span class="R1">use&nbsp;it&nbsp;ind</span>
+<span class="R1">icates&nbsp;tha</span>
+<span class="R1">t&nbsp;the&nbsp;SSL&nbsp;</span>
+<span class="R1">stream&nbsp;has</span>
+<span class="R1">&nbsp;been&nbsp;disc</span>
+<span class="R1">onnected,&nbsp;</span>
+<span class="R1">so&nbsp;all</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">106</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;that</span>
+<span class="R1">&nbsp;remains&nbsp;b</span>
+<span class="R1">efore&nbsp;clos</span>
+<span class="R1">ing&nbsp;the&nbsp;ot</span>
+<span class="R1">her&nbsp;side&nbsp;i</span>
+<span class="R1">s&nbsp;to&nbsp;flush</span>
+<span class="R1">&nbsp;out&nbsp;anyth</span>
+<span class="R1">ing&nbsp;that</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">107</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rema</span>
+<span class="R1">ins&nbsp;and&nbsp;wa</span>
+<span class="R1">it&nbsp;for&nbsp;it&nbsp;</span>
+<span class="R1">to&nbsp;all&nbsp;be&nbsp;</span>
+<span class="R1">sent.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">108</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">109</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Anyway,&nbsp;wi</span>
+<span class="R1">th&nbsp;those&nbsp;t</span>
+<span class="R1">hings&nbsp;in&nbsp;m</span>
+<span class="R1">ind,&nbsp;the&nbsp;c</span>
+<span class="R1">ode&nbsp;should</span>
+<span class="R1">&nbsp;be&nbsp;a&nbsp;litt</span>
+<span class="R1">le&nbsp;easier&nbsp;</span>
+<span class="R1">to&nbsp;follow</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">110</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">in&nbsp;terms&nbsp;o</span>
+<span class="R1">f&nbsp;"what&nbsp;is</span>
+<span class="R1">&nbsp;*this*&nbsp;bi</span>
+<span class="R1">t&nbsp;supposed</span>
+<span class="R1">&nbsp;to&nbsp;achiev</span>
+<span class="R1">e??!!".</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">111</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">112</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">113</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">How&nbsp;might&nbsp;</span>
+<span class="R1">this&nbsp;help?</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">114</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">----------</span>
+<span class="R1">----------</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">115</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">116</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Well,&nbsp;the&nbsp;</span>
+<span class="R1">reason&nbsp;I&nbsp;w</span>
+<span class="R1">rote&nbsp;this&nbsp;</span>
+<span class="R1">is&nbsp;that&nbsp;th</span>
+<span class="R1">ere&nbsp;seemed</span>
+<span class="R1">&nbsp;to&nbsp;be&nbsp;rat</span>
+<span class="R1">her&nbsp;a&nbsp;floo</span>
+<span class="R1">d&nbsp;of</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">117</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">questions&nbsp;</span>
+<span class="R1">of&nbsp;late&nbsp;on</span>
+<span class="R1">&nbsp;the&nbsp;opens</span>
+<span class="R1">sl-dev&nbsp;and</span>
+<span class="R1">&nbsp;openssl-u</span>
+<span class="R1">sers&nbsp;lists</span>
+<span class="R1">&nbsp;about&nbsp;get</span>
+<span class="R1">ting&nbsp;this</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">118</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">whole&nbsp;IO&nbsp;l</span>
+<span class="R1">ogic&nbsp;thing</span>
+<span class="R1">&nbsp;sorted&nbsp;ou</span>
+<span class="R1">t,&nbsp;particu</span>
+<span class="R1">larly&nbsp;by&nbsp;t</span>
+<span class="R1">hose&nbsp;who&nbsp;w</span>
+<span class="R1">ere&nbsp;trying</span>
+<span class="R1">&nbsp;to&nbsp;either</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">119</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">use&nbsp;non-bl</span>
+<span class="R1">ocking&nbsp;IO,</span>
+<span class="R1">&nbsp;or&nbsp;wanted</span>
+<span class="R1">&nbsp;SSL&nbsp;in&nbsp;an</span>
+<span class="R1">&nbsp;environme</span>
+<span class="R1">nt&nbsp;where&nbsp;"</span>
+<span class="R1">something&nbsp;</span>
+<span class="R1">else"&nbsp;was</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">120</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">handling&nbsp;t</span>
+<span class="R1">he&nbsp;network</span>
+<span class="R1">&nbsp;already&nbsp;a</span>
+<span class="R1">nd&nbsp;they&nbsp;ne</span>
+<span class="R1">eded&nbsp;to&nbsp;op</span>
+<span class="R1">erate&nbsp;in&nbsp;m</span>
+<span class="R1">emory&nbsp;only</span>
+<span class="R1">.&nbsp;This</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">121</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">code&nbsp;is&nbsp;lo</span>
+<span class="R1">osely&nbsp;base</span>
+<span class="R1">d&nbsp;on&nbsp;some&nbsp;</span>
+<span class="R1">other&nbsp;stuf</span>
+<span class="R1">f&nbsp;I've&nbsp;bee</span>
+<span class="R1">n&nbsp;working&nbsp;</span>
+<span class="R1">on,&nbsp;althou</span>
+<span class="R1">gh&nbsp;that</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">122</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">stuff&nbsp;is&nbsp;f</span>
+<span class="R1">ar&nbsp;more&nbsp;co</span>
+<span class="R1">mplete,&nbsp;fa</span>
+<span class="R1">r&nbsp;more&nbsp;dep</span>
+<span class="R1">endant&nbsp;on&nbsp;</span>
+<span class="R1">a&nbsp;whole&nbsp;sl</span>
+<span class="R1">ew&nbsp;of&nbsp;othe</span>
+<span class="R1">r</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">123</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">network/fr</span>
+<span class="R1">amework&nbsp;co</span>
+<span class="R1">de&nbsp;I&nbsp;don't</span>
+<span class="R1">&nbsp;want&nbsp;to&nbsp;i</span>
+<span class="R1">ncorporate</span>
+<span class="R1">&nbsp;here,&nbsp;and</span>
+<span class="R1">&nbsp;far&nbsp;harde</span>
+<span class="R1">r&nbsp;to&nbsp;look</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">124</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">at&nbsp;for&nbsp;5&nbsp;m</span>
+<span class="R1">inutes&nbsp;and</span>
+<span class="R1">&nbsp;follow&nbsp;wh</span>
+<span class="R1">ere&nbsp;everyt</span>
+<span class="R1">hing&nbsp;is&nbsp;go</span>
+<span class="R1">ing.&nbsp;I&nbsp;wil</span>
+<span class="R1">l&nbsp;be&nbsp;tryin</span>
+<span class="R1">g&nbsp;over</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">125</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">time&nbsp;to&nbsp;su</span>
+<span class="R1">ck&nbsp;in&nbsp;a&nbsp;fe</span>
+<span class="R1">w&nbsp;things&nbsp;f</span>
+<span class="R1">rom&nbsp;that&nbsp;i</span>
+<span class="R1">nto&nbsp;this&nbsp;d</span>
+<span class="R1">emo&nbsp;in&nbsp;the</span>
+<span class="R1">&nbsp;hopes&nbsp;it&nbsp;</span>
+<span class="R1">might&nbsp;be</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">126</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">more&nbsp;usefu</span>
+<span class="R1">l,&nbsp;and&nbsp;may</span>
+<span class="R1">be&nbsp;to&nbsp;even</span>
+<span class="R1">&nbsp;make&nbsp;this</span>
+<span class="R1">&nbsp;demo&nbsp;usab</span>
+<span class="R1">le&nbsp;as&nbsp;a&nbsp;ut</span>
+<span class="R1">ility&nbsp;of&nbsp;i</span>
+<span class="R1">ts&nbsp;own.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">127</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Possible&nbsp;t</span>
+<span class="R1">hings&nbsp;incl</span>
+<span class="R1">ude:</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">128</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">129</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;*&nbsp;contro</span>
+<span class="R1">lling&nbsp;mult</span>
+<span class="R1">iple&nbsp;proce</span>
+<span class="R1">sses/threa</span>
+<span class="R1">ds&nbsp;-&nbsp;this&nbsp;</span>
+<span class="R1">can&nbsp;be&nbsp;use</span>
+<span class="R1">d&nbsp;to&nbsp;comba</span>
+<span class="R1">t</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">130</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;latenc</span>
+<span class="R1">ies&nbsp;and&nbsp;ge</span>
+<span class="R1">t&nbsp;passed&nbsp;f</span>
+<span class="R1">ile-descri</span>
+<span class="R1">ptor&nbsp;limit</span>
+<span class="R1">s&nbsp;on&nbsp;some&nbsp;</span>
+<span class="R1">systems,&nbsp;a</span>
+<span class="R1">nd&nbsp;it&nbsp;uses</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">131</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;"con</span>
+<span class="R1">troller"&nbsp;p</span>
+<span class="R1">rocess/thr</span>
+<span class="R1">ead&nbsp;that&nbsp;m</span>
+<span class="R1">aintains&nbsp;I</span>
+<span class="R1">PC&nbsp;links&nbsp;w</span>
+<span class="R1">ith&nbsp;the</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">132</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;proces</span>
+<span class="R1">ses/thread</span>
+<span class="R1">s&nbsp;doing&nbsp;th</span>
+<span class="R1">e&nbsp;real&nbsp;wor</span>
+<span class="R1">k.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">133</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">134</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;*&nbsp;cert&nbsp;v</span>
+<span class="R1">erificatio</span>
+<span class="R1">n&nbsp;rules&nbsp;-&nbsp;</span>
+<span class="R1">having&nbsp;som</span>
+<span class="R1">e&nbsp;say&nbsp;over</span>
+<span class="R1">&nbsp;which&nbsp;cer</span>
+<span class="R1">ts&nbsp;get&nbsp;in&nbsp;</span>
+<span class="R1">or&nbsp;out&nbsp;:-)</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">135</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">136</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;*&nbsp;contro</span>
+<span class="R1">l&nbsp;over&nbsp;SSL</span>
+<span class="R1">&nbsp;protocols</span>
+<span class="R1">&nbsp;and&nbsp;ciphe</span>
+<span class="R1">r&nbsp;suites</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">137</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">138</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;*&nbsp;A&nbsp;few&nbsp;</span>
+<span class="R1">other&nbsp;thin</span>
+<span class="R1">gs&nbsp;you&nbsp;can</span>
+<span class="R1">&nbsp;already&nbsp;d</span>
+<span class="R1">o&nbsp;in&nbsp;s_cli</span>
+<span class="R1">ent&nbsp;and&nbsp;s_</span>
+<span class="R1">server&nbsp;:-)</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">139</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">140</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;*&nbsp;Suppor</span>
+<span class="R1">t&nbsp;(and&nbsp;con</span>
+<span class="R1">trol&nbsp;over)</span>
+<span class="R1">&nbsp;session&nbsp;r</span>
+<span class="R1">esuming,&nbsp;p</span>
+<span class="R1">articularl</span>
+<span class="R1">y&nbsp;when&nbsp;fun</span>
+<span class="R1">ctioning</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">141</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;as&nbsp;an&nbsp;</span>
+<span class="R1">SSL&nbsp;client</span>
+<span class="R1">.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">142</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">143</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">If&nbsp;you&nbsp;hav</span>
+<span class="R1">e&nbsp;a&nbsp;partic</span>
+<span class="R1">ular&nbsp;envir</span>
+<span class="R1">onment&nbsp;whe</span>
+<span class="R1">re&nbsp;this&nbsp;mo</span>
+<span class="R1">del&nbsp;might&nbsp;</span>
+<span class="R1">work&nbsp;to&nbsp;le</span>
+<span class="R1">t&nbsp;you&nbsp;"do</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">144</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">SSL"&nbsp;witho</span>
+<span class="R1">ut&nbsp;having&nbsp;</span>
+<span class="R1">OpenSSL&nbsp;be</span>
+<span class="R1">&nbsp;aware&nbsp;of&nbsp;</span>
+<span class="R1">the&nbsp;transp</span>
+<span class="R1">ort,&nbsp;then&nbsp;</span>
+<span class="R1">you&nbsp;should</span>
+<span class="R1">&nbsp;find&nbsp;you</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">145</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">could&nbsp;use&nbsp;</span>
+<span class="R1">the&nbsp;state_</span>
+<span class="R1">machine_t&nbsp;</span>
+<span class="R1">structure&nbsp;</span>
+<span class="R1">(or&nbsp;your&nbsp;o</span>
+<span class="R1">wn&nbsp;variant</span>
+<span class="R1">&nbsp;thereof)&nbsp;</span>
+<span class="R1">and&nbsp;hook</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">146</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">it&nbsp;up&nbsp;to&nbsp;y</span>
+<span class="R1">our&nbsp;transp</span>
+<span class="R1">ort&nbsp;stuff&nbsp;</span>
+<span class="R1">in&nbsp;much&nbsp;th</span>
+<span class="R1">e&nbsp;way&nbsp;tuna</span>
+<span class="R1">la.c&nbsp;match</span>
+<span class="R1">es&nbsp;it&nbsp;up&nbsp;w</span>
+<span class="R1">ith&nbsp;those</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">147</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">4&nbsp;file-des</span>
+<span class="R1">criptors.&nbsp;</span>
+<span class="R1">The&nbsp;state_</span>
+<span class="R1">machine_ch</span>
+<span class="R1">urn(),&nbsp;sta</span>
+<span class="R1">te_machine</span>
+<span class="R1">_close_cle</span>
+<span class="R1">an(),&nbsp;and</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">148</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">state_mach</span>
+<span class="R1">ine_close_</span>
+<span class="R1">dirty()&nbsp;fu</span>
+<span class="R1">nctions&nbsp;ar</span>
+<span class="R1">e&nbsp;the&nbsp;main</span>
+<span class="R1">&nbsp;things&nbsp;to</span>
+<span class="R1">&nbsp;understan</span>
+<span class="R1">d&nbsp;-&nbsp;after</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">149</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">that's&nbsp;don</span>
+<span class="R1">e,&nbsp;you&nbsp;jus</span>
+<span class="R1">t&nbsp;have&nbsp;to&nbsp;</span>
+<span class="R1">ensure&nbsp;you</span>
+<span class="R1">'re&nbsp;feedin</span>
+<span class="R1">g&nbsp;and&nbsp;blee</span>
+<span class="R1">ding&nbsp;the&nbsp;4</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">150</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">state_mach</span>
+<span class="R1">ine&nbsp;buffer</span>
+<span class="R1">s&nbsp;in&nbsp;a&nbsp;log</span>
+<span class="R1">ical&nbsp;fashi</span>
+<span class="R1">on.&nbsp;This&nbsp;s</span>
+<span class="R1">tate_machi</span>
+<span class="R1">ne&nbsp;loop&nbsp;ha</span>
+<span class="R1">ndles&nbsp;not</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">151</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">only&nbsp;hands</span>
+<span class="R1">hakes&nbsp;and&nbsp;</span>
+<span class="R1">normal&nbsp;str</span>
+<span class="R1">eaming,&nbsp;bu</span>
+<span class="R1">t&nbsp;also&nbsp;ren</span>
+<span class="R1">egotiates&nbsp;</span>
+<span class="R1">-&nbsp;there's&nbsp;</span>
+<span class="R1">no&nbsp;special</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">152</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">handling&nbsp;r</span>
+<span class="R1">equired&nbsp;be</span>
+<span class="R1">yond&nbsp;keepi</span>
+<span class="R1">ng&nbsp;an&nbsp;eye&nbsp;</span>
+<span class="R1">on&nbsp;those&nbsp;4</span>
+<span class="R1">&nbsp;buffers&nbsp;a</span>
+<span class="R1">nd&nbsp;keeping</span>
+<span class="R1">&nbsp;them&nbsp;in</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">153</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">sync&nbsp;with&nbsp;</span>
+<span class="R1">your&nbsp;outer</span>
+<span class="R1">&nbsp;"loop"&nbsp;lo</span>
+<span class="R1">gic.&nbsp;Ie.&nbsp;i</span>
+<span class="R1">f&nbsp;one&nbsp;of&nbsp;t</span>
+<span class="R1">he&nbsp;OUT&nbsp;buf</span>
+<span class="R1">fers&nbsp;is&nbsp;no</span>
+<span class="R1">t&nbsp;empty,</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">154</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">you&nbsp;need&nbsp;t</span>
+<span class="R1">o&nbsp;find&nbsp;an&nbsp;</span>
+<span class="R1">opportunit</span>
+<span class="R1">y&nbsp;to&nbsp;try&nbsp;a</span>
+<span class="R1">nd&nbsp;forward</span>
+<span class="R1">&nbsp;its&nbsp;data&nbsp;</span>
+<span class="R1">on.&nbsp;If&nbsp;one</span>
+<span class="R1">&nbsp;of&nbsp;the&nbsp;IN</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">155</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">buffers&nbsp;is</span>
+<span class="R1">&nbsp;not&nbsp;full,</span>
+<span class="R1">&nbsp;you&nbsp;shoul</span>
+<span class="R1">d&nbsp;keep&nbsp;an&nbsp;</span>
+<span class="R1">eye&nbsp;out&nbsp;fo</span>
+<span class="R1">r&nbsp;data&nbsp;arr</span>
+<span class="R1">iving&nbsp;that</span>
+<span class="R1">&nbsp;should&nbsp;be</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">156</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">placed&nbsp;the</span>
+<span class="R1">re.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">157</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">158</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">This&nbsp;appro</span>
+<span class="R1">ach&nbsp;could&nbsp;</span>
+<span class="R1">hopefully&nbsp;</span>
+<span class="R1">also&nbsp;allow</span>
+<span class="R1">&nbsp;you&nbsp;to&nbsp;ru</span>
+<span class="R1">n&nbsp;the&nbsp;SSL&nbsp;</span>
+<span class="R1">protocol&nbsp;i</span>
+<span class="R1">n&nbsp;very</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">159</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">different&nbsp;</span>
+<span class="R1">environmen</span>
+<span class="R1">ts.&nbsp;As&nbsp;an&nbsp;</span>
+<span class="R1">example,&nbsp;y</span>
+<span class="R1">ou&nbsp;could&nbsp;s</span>
+<span class="R1">upport&nbsp;enc</span>
+<span class="R1">rypted&nbsp;eve</span>
+<span class="R1">nt-driven</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">160</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">IPC&nbsp;where&nbsp;</span>
+<span class="R1">threads/pr</span>
+<span class="R1">ocesses&nbsp;pa</span>
+<span class="R1">ss&nbsp;message</span>
+<span class="R1">s&nbsp;to&nbsp;each&nbsp;</span>
+<span class="R1">other&nbsp;insi</span>
+<span class="R1">de&nbsp;an&nbsp;SSL&nbsp;</span>
+<span class="R1">layer;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">161</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">each&nbsp;IPC-m</span>
+<span class="R1">essage's&nbsp;p</span>
+<span class="R1">ayload&nbsp;wou</span>
+<span class="R1">ld&nbsp;be&nbsp;in&nbsp;f</span>
+<span class="R1">act&nbsp;the&nbsp;"d</span>
+<span class="R1">irty"&nbsp;cont</span>
+<span class="R1">ent,&nbsp;and&nbsp;t</span>
+<span class="R1">he&nbsp;"clean"</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">162</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">payload&nbsp;co</span>
+<span class="R1">ming&nbsp;out&nbsp;o</span>
+<span class="R1">f&nbsp;the&nbsp;tunn</span>
+<span class="R1">el&nbsp;at&nbsp;each</span>
+<span class="R1">&nbsp;end&nbsp;would</span>
+<span class="R1">&nbsp;be&nbsp;the&nbsp;re</span>
+<span class="R1">al&nbsp;intende</span>
+<span class="R1">d&nbsp;message.</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">163</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Likewise,&nbsp;</span>
+<span class="R1">this&nbsp;could</span>
+<span class="R1">&nbsp;*easily*&nbsp;</span>
+<span class="R1">be&nbsp;made&nbsp;to</span>
+<span class="R1">&nbsp;work&nbsp;acro</span>
+<span class="R1">ss&nbsp;unix&nbsp;do</span>
+<span class="R1">main&nbsp;socke</span>
+<span class="R1">ts,&nbsp;or</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">164</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">even&nbsp;entir</span>
+<span class="R1">ely&nbsp;differ</span>
+<span class="R1">ent&nbsp;networ</span>
+<span class="R1">k/comms&nbsp;pr</span>
+<span class="R1">otocols.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">165</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">166</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">This&nbsp;is&nbsp;al</span>
+<span class="R1">so&nbsp;a&nbsp;quick</span>
+<span class="R1">&nbsp;and&nbsp;easy&nbsp;</span>
+<span class="R1">way&nbsp;to&nbsp;do&nbsp;</span>
+<span class="R1">VPN&nbsp;if&nbsp;you</span>
+<span class="R1">&nbsp;(and&nbsp;the&nbsp;</span>
+<span class="R1">remote&nbsp;net</span>
+<span class="R1">work's</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">167</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">gateway)&nbsp;s</span>
+<span class="R1">upport&nbsp;vir</span>
+<span class="R1">tual&nbsp;netwo</span>
+<span class="R1">rk&nbsp;devices</span>
+<span class="R1">&nbsp;that&nbsp;are&nbsp;</span>
+<span class="R1">encapsulte</span>
+<span class="R1">d&nbsp;in&nbsp;a&nbsp;sin</span>
+<span class="R1">gle</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">168</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">network&nbsp;co</span>
+<span class="R1">nnection,&nbsp;</span>
+<span class="R1">perhaps&nbsp;PP</span>
+<span class="R1">P&nbsp;going&nbsp;th</span>
+<span class="R1">rough&nbsp;an&nbsp;S</span>
+<span class="R1">SL&nbsp;tunnel?</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">169</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">170</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">171</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Suggestion</span>
+<span class="R1">s</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">172</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">----------</span>
+<span class="R1">-</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">173</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">174</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Please&nbsp;let</span>
+<span class="R1">&nbsp;me&nbsp;know&nbsp;i</span>
+<span class="R1">f&nbsp;you&nbsp;find</span>
+<span class="R1">&nbsp;this&nbsp;usef</span>
+<span class="R1">ul,&nbsp;or&nbsp;if&nbsp;</span>
+<span class="R1">there's&nbsp;an</span>
+<span class="R1">ything&nbsp;wro</span>
+<span class="R1">ng&nbsp;or</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">175</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">simply&nbsp;too</span>
+<span class="R1">&nbsp;confusing</span>
+<span class="R1">&nbsp;about&nbsp;it.</span>
+<span class="R1">&nbsp;Patches&nbsp;a</span>
+<span class="R1">re&nbsp;also&nbsp;we</span>
+<span class="R1">lcome,&nbsp;but</span>
+<span class="R1">&nbsp;please&nbsp;at</span>
+<span class="R1">tach&nbsp;a</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">176</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">descriptio</span>
+<span class="R1">n&nbsp;of&nbsp;what&nbsp;</span>
+<span class="R1">it&nbsp;changes</span>
+<span class="R1">&nbsp;and&nbsp;why,&nbsp;</span>
+<span class="R1">and&nbsp;"diff&nbsp;</span>
+<span class="R1">-urN"&nbsp;form</span>
+<span class="R1">at&nbsp;is&nbsp;pref</span>
+<span class="R1">erred.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">177</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Mail&nbsp;to&nbsp;ge</span>
+<span class="R1">off@openss</span>
+<span class="R1">l.org&nbsp;shou</span>
+<span class="R1">ld&nbsp;do&nbsp;the&nbsp;</span>
+<span class="R1">trick.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">178</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">179</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">180</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Example</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">181</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">-------</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">182</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">183</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Here&nbsp;is&nbsp;an</span>
+<span class="R1">&nbsp;example&nbsp;o</span>
+<span class="R1">f&nbsp;how&nbsp;to&nbsp;u</span>
+<span class="R1">se&nbsp;"tunala</span>
+<span class="R1">"&nbsp;...</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">184</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">185</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">First,&nbsp;it'</span>
+<span class="R1">s&nbsp;assumed&nbsp;</span>
+<span class="R1">that&nbsp;OpenS</span>
+<span class="R1">SL&nbsp;has&nbsp;alr</span>
+<span class="R1">eady&nbsp;built</span>
+<span class="R1">,&nbsp;and&nbsp;that</span>
+<span class="R1">&nbsp;you&nbsp;are&nbsp;b</span>
+<span class="R1">uilding</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">186</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">inside&nbsp;the</span>
+<span class="R1">&nbsp;./demos/t</span>
+<span class="R1">unala/&nbsp;dir</span>
+<span class="R1">ectory.&nbsp;If</span>
+<span class="R1">&nbsp;not&nbsp;-&nbsp;ple</span>
+<span class="R1">ase&nbsp;correc</span>
+<span class="R1">t&nbsp;the&nbsp;path</span>
+<span class="R1">s&nbsp;and</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">187</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">flags&nbsp;insi</span>
+<span class="R1">de&nbsp;the&nbsp;Mak</span>
+<span class="R1">efile.&nbsp;Lik</span>
+<span class="R1">ewise,&nbsp;if&nbsp;</span>
+<span class="R1">you&nbsp;want&nbsp;t</span>
+<span class="R1">o&nbsp;tweak&nbsp;th</span>
+<span class="R1">e&nbsp;building</span>
+<span class="R1">,&nbsp;it's</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">188</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">best&nbsp;to&nbsp;tr</span>
+<span class="R1">y&nbsp;and&nbsp;do&nbsp;s</span>
+<span class="R1">o&nbsp;in&nbsp;the&nbsp;m</span>
+<span class="R1">akefile&nbsp;(e</span>
+<span class="R1">g.&nbsp;removin</span>
+<span class="R1">g&nbsp;the&nbsp;debu</span>
+<span class="R1">g&nbsp;flags&nbsp;an</span>
+<span class="R1">d&nbsp;adding</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">189</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">optimisati</span>
+<span class="R1">on&nbsp;flags).</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">190</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">191</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Secondly,&nbsp;</span>
+<span class="R1">this&nbsp;code&nbsp;</span>
+<span class="R1">has&nbsp;mostly</span>
+<span class="R1">&nbsp;only&nbsp;been</span>
+<span class="R1">&nbsp;tested&nbsp;on</span>
+<span class="R1">&nbsp;Linux.&nbsp;Ho</span>
+<span class="R1">wever,&nbsp;som</span>
+<span class="R1">e</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">192</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">autoconf/e</span>
+<span class="R1">tc&nbsp;support</span>
+<span class="R1">&nbsp;has&nbsp;been&nbsp;</span>
+<span class="R1">added&nbsp;and&nbsp;</span>
+<span class="R1">the&nbsp;code&nbsp;h</span>
+<span class="R1">as&nbsp;been&nbsp;co</span>
+<span class="R1">mpiled&nbsp;on&nbsp;</span>
+<span class="R1">openbsd</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">193</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">and&nbsp;solari</span>
+<span class="R1">s&nbsp;using&nbsp;th</span>
+<span class="R1">at.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">194</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">195</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Thirdly,&nbsp;i</span>
+<span class="R1">f&nbsp;you&nbsp;are&nbsp;</span>
+<span class="R1">Win32,&nbsp;you</span>
+<span class="R1">&nbsp;probably&nbsp;</span>
+<span class="R1">need&nbsp;to&nbsp;do</span>
+<span class="R1">&nbsp;some&nbsp;*maj</span>
+<span class="R1">or*&nbsp;rewrit</span>
+<span class="R1">ing&nbsp;of</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">196</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">ip.c&nbsp;to&nbsp;st</span>
+<span class="R1">and&nbsp;a&nbsp;hope</span>
+<span class="R1">&nbsp;in&nbsp;hell.&nbsp;</span>
+<span class="R1">Good&nbsp;luck,</span>
+<span class="R1">&nbsp;and&nbsp;pleas</span>
+<span class="R1">e&nbsp;mail&nbsp;me&nbsp;</span>
+<span class="R1">the&nbsp;diff&nbsp;i</span>
+<span class="R1">f&nbsp;you&nbsp;do</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">197</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">this,&nbsp;othe</span>
+<span class="R1">rwise&nbsp;I&nbsp;wi</span>
+<span class="R1">ll&nbsp;take&nbsp;a&nbsp;</span>
+<span class="R1">look&nbsp;at&nbsp;an</span>
+<span class="R1">other&nbsp;time</span>
+<span class="R1">.&nbsp;It&nbsp;can&nbsp;c</span>
+<span class="R1">ertainly&nbsp;b</span>
+<span class="R1">e&nbsp;done,</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">198</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">but&nbsp;it's&nbsp;v</span>
+<span class="R1">ery&nbsp;non-PO</span>
+<span class="R1">SIXy.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">199</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">200</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">See&nbsp;the&nbsp;IN</span>
+<span class="R1">STALL&nbsp;docu</span>
+<span class="R1">ment&nbsp;for&nbsp;d</span>
+<span class="R1">etails&nbsp;on&nbsp;</span>
+<span class="R1">building.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">201</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">202</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Now,&nbsp;if&nbsp;yo</span>
+<span class="R1">u&nbsp;don't&nbsp;ha</span>
+<span class="R1">ve&nbsp;an&nbsp;exec</span>
+<span class="R1">utable&nbsp;"tu</span>
+<span class="R1">nala"&nbsp;comp</span>
+<span class="R1">iled,&nbsp;go&nbsp;b</span>
+<span class="R1">ack&nbsp;to&nbsp;"Fi</span>
+<span class="R1">rst,...".</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">203</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Rinse&nbsp;and&nbsp;</span>
+<span class="R1">repeat.</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">204</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">205</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Inside&nbsp;one</span>
+<span class="R1">&nbsp;console,&nbsp;</span>
+<span class="R1">try&nbsp;typing</span>
+<span class="R1">;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">206</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">207</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">(i)&nbsp;&nbsp;./tun</span>
+<span class="R1">ala&nbsp;-liste</span>
+<span class="R1">n&nbsp;localhos</span>
+<span class="R1">t:8080&nbsp;-pr</span>
+<span class="R1">oxy&nbsp;localh</span>
+<span class="R1">ost:8081&nbsp;-</span>
+<span class="R1">cacert&nbsp;CA.</span>
+<span class="R1">pem&nbsp;\</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">208</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;-cert&nbsp;</span>
+<span class="R1">A-client.p</span>
+<span class="R1">em&nbsp;-out_to</span>
+<span class="R1">tals&nbsp;-v_pe</span>
+<span class="R1">er&nbsp;-v_stri</span>
+<span class="R1">ct</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">209</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">210</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">In&nbsp;another</span>
+<span class="R1">&nbsp;console,&nbsp;</span>
+<span class="R1">type;</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">211</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">212</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">(ii)&nbsp;./tun</span>
+<span class="R1">ala&nbsp;-liste</span>
+<span class="R1">n&nbsp;localhos</span>
+<span class="R1">t:8081&nbsp;-pr</span>
+<span class="R1">oxy&nbsp;localh</span>
+<span class="R1">ost:23&nbsp;-ca</span>
+<span class="R1">cert&nbsp;CA.pe</span>
+<span class="R1">m&nbsp;\</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">213</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<span class="R1">&nbsp;&nbsp;&nbsp;&nbsp;-cert&nbsp;</span>
+<span class="R1">A-server.p</span>
+<span class="R1">em&nbsp;-server</span>
+<span class="R1">&nbsp;1&nbsp;-out_to</span>
+<span class="R1">tals&nbsp;-v_pe</span>
+<span class="R1">er&nbsp;-v_stri</span>
+<span class="R1">ct</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">214</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">215</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Now&nbsp;if&nbsp;you</span>
+<span class="R1">&nbsp;open&nbsp;anot</span>
+<span class="R1">her&nbsp;consol</span>
+<span class="R1">e&nbsp;and&nbsp;"tel</span>
+<span class="R1">net&nbsp;localh</span>
+<span class="R1">ost&nbsp;8080",</span>
+<span class="R1">&nbsp;you&nbsp;shoul</span>
+<span class="R1">d&nbsp;be</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">216</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">tunneled&nbsp;t</span>
+<span class="R1">hrough&nbsp;to&nbsp;</span>
+<span class="R1">the&nbsp;telnet</span>
+<span class="R1">&nbsp;service&nbsp;o</span>
+<span class="R1">n&nbsp;your&nbsp;loc</span>
+<span class="R1">al&nbsp;machine</span>
+<span class="R1">&nbsp;(if&nbsp;it's&nbsp;</span>
+<span class="R1">running&nbsp;-</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">217</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">you&nbsp;could&nbsp;</span>
+<span class="R1">change&nbsp;it&nbsp;</span>
+<span class="R1">to&nbsp;port&nbsp;"2</span>
+<span class="R1">2"&nbsp;and&nbsp;tun</span>
+<span class="R1">nel&nbsp;ssh&nbsp;in</span>
+<span class="R1">stead&nbsp;if&nbsp;y</span>
+<span class="R1">ou&nbsp;so&nbsp;desi</span>
+<span class="R1">red).&nbsp;When</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">218</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">you&nbsp;logout</span>
+<span class="R1">&nbsp;of&nbsp;the&nbsp;te</span>
+<span class="R1">lnet&nbsp;sessi</span>
+<span class="R1">on,&nbsp;the&nbsp;tu</span>
+<span class="R1">nnel&nbsp;shoul</span>
+<span class="R1">d&nbsp;cleanly&nbsp;</span>
+<span class="R1">shutdown&nbsp;a</span>
+<span class="R1">nd&nbsp;show</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">219</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">you&nbsp;some&nbsp;t</span>
+<span class="R1">raffic&nbsp;sta</span>
+<span class="R1">ts&nbsp;in&nbsp;both</span>
+<span class="R1">&nbsp;consoles.</span>
+<span class="R1">&nbsp;Feel&nbsp;free</span>
+<span class="R1">&nbsp;to&nbsp;experi</span>
+<span class="R1">ment.&nbsp;:-)</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">220</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">221</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">Notes:</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">222</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">223</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;-&nbsp;the&nbsp;for</span>
+<span class="R1">mat&nbsp;for&nbsp;th</span>
+<span class="R1">e&nbsp;"-listen</span>
+<span class="R1">"&nbsp;argument</span>
+<span class="R1">&nbsp;can&nbsp;skip&nbsp;</span>
+<span class="R1">the&nbsp;host&nbsp;p</span>
+<span class="R1">art&nbsp;(eg.&nbsp;"</span>
+<span class="R1">-listen</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">224</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;8080"&nbsp;i</span>
+<span class="R1">s&nbsp;fine).&nbsp;I</span>
+<span class="R1">f&nbsp;you&nbsp;do,&nbsp;</span>
+<span class="R1">the&nbsp;listen</span>
+<span class="R1">ing&nbsp;socket</span>
+<span class="R1">&nbsp;will&nbsp;list</span>
+<span class="R1">en&nbsp;on&nbsp;all&nbsp;</span>
+<span class="R1">interfaces</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">225</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;so&nbsp;you&nbsp;</span>
+<span class="R1">can&nbsp;connec</span>
+<span class="R1">t&nbsp;from&nbsp;oth</span>
+<span class="R1">er&nbsp;machine</span>
+<span class="R1">s&nbsp;for&nbsp;exam</span>
+<span class="R1">ple.&nbsp;Using</span>
+<span class="R1">&nbsp;the&nbsp;"loca</span>
+<span class="R1">lhost"</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">226</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;form&nbsp;li</span>
+<span class="R1">stens&nbsp;only</span>
+<span class="R1">&nbsp;on&nbsp;127.0.</span>
+<span class="R1">0.1&nbsp;so&nbsp;you</span>
+<span class="R1">&nbsp;can&nbsp;only&nbsp;</span>
+<span class="R1">connect&nbsp;lo</span>
+<span class="R1">cally&nbsp;(unl</span>
+<span class="R1">ess,&nbsp;of</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">227</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;course,</span>
+<span class="R1">&nbsp;you've&nbsp;se</span>
+<span class="R1">t&nbsp;up&nbsp;weird</span>
+<span class="R1">&nbsp;stuff&nbsp;wit</span>
+<span class="R1">h&nbsp;your&nbsp;net</span>
+<span class="R1">working&nbsp;in</span>
+<span class="R1">&nbsp;which&nbsp;cas</span>
+<span class="R1">e&nbsp;probably</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">228</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;none&nbsp;of</span>
+<span class="R1">&nbsp;the&nbsp;above</span>
+<span class="R1">&nbsp;applies).</span>
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">229</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">230</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;-&nbsp;./tunal</span>
+<span class="R1">a&nbsp;-?&nbsp;gives</span>
+<span class="R1">&nbsp;you&nbsp;a&nbsp;lis</span>
+<span class="R1">t&nbsp;of&nbsp;other</span>
+<span class="R1">&nbsp;command-l</span>
+<span class="R1">ine&nbsp;option</span>
+<span class="R1">s,&nbsp;but&nbsp;tun</span>
+<span class="R1">ala.c&nbsp;is</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">231</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1">&nbsp;&nbsp;&nbsp;also&nbsp;a&nbsp;</span>
+<span class="R1">good&nbsp;place</span>
+<span class="R1">&nbsp;to&nbsp;look&nbsp;:</span>
+<span class="R1">-)</span>
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">232</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+<tr>
+<td class="R1" style="text-align: right;">233</td>
+<td class="R1" style="text-decoration: none;">&nbsp;</td>
+<td class="R1">
+<span class="R1" />
+</td>
+<td>&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+</tr>
+</table>
+<p class="copyright" style="margin-top: 25px; padding-top: 2px; border-top: solid #a0a0a0 1px; max-width: none;">Araxis Merge (but not the data content of this report) is Copyright  &copy; 1993-2009 Araxis Ltd (<a href="http://www.araxis.com/" title="Link to the Araxis corporate web site">www.araxis.com</a>). All rights reserved.</p>
+</body>
+</html>

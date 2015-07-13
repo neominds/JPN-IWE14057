@@ -1,0 +1,2144 @@
+﻿<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mg="http://www.araxis.com/2002/Merge/Reporting" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<!--The layout and design of this report is Copyright © 2003-2009 Araxis Ltd. All rights reserved.-->
+<!--The copyright of the data content of this report belongs to the relevant copyright holders.-->
+<title>24. Araxis Merge File Comparison Report</title>
+<style type="text/css">
+body { background: #fff;  color: #000; margin: 0px 14px 14px 14px; }
+h1, h2, h3, h4, h5 {
+	padding: 0em;
+	margin: 1.5em 0em .25em 0em;
+	text-align: left;
+	font-weight: normal;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 70%;
+	max-width: 55em;
+}
+body, h4, h5, p, ol, ul, li, td, th { font-family: Verdana, Arial, Helvetica, sans-serif; text-align: left; }
+
+h4, h5, p, ol, ul, li { font-size: 70%; }
+input {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 120%;
+}
+
+h1 { margin: 14px 0em 1.2em 0em; font-size: 112%; line-height: 130%;}
+h2 { font-size: 125%; line-height: 84%;}
+h3 { margin-top: 1.4em; font-size: 81%; }
+h4 { margin-top: 1em; font-size: 70%; }
+h5 { margin-top: 1em; font-size: 100%; font-style: italic;}
+h1 strong, h2 strong, h3 strong, h4 strong { font-weight: bold; }
+
+p { margin: 6px 0em 6px 0em; max-width: 55em;}
+p.code, code {}
+p { font-size: 70%; line-height: 125%; }
+table { font-size: 70%;}
+
+p.copyright, .small { font-size: 60%; line-height: 120%; }
+p.copyright { margin: 3px 0px 0px 0px; padding: 0px; text-align: left; }
+acronym { font-variant: small-caps; }
+div.pad { padding: 3px; }
+span.lineEndings { color: red; font-size: 70%; }
+
+table.mgRowGroup, table.mgRowGroupFolder { border: 1px solid #a0a0a0; margin: 10px 0px 10px 0px; width: 100%; table-layout: fixed; border-collapse: collapse; }
+table.mgRowGroup td { vertical-align: top; padding: 0; }
+table.mgRowGroupFolder td { vertical-align: top; padding: 1px 0 1px 0; }
+div.IP { width: 2px; height: 1em; float: left; }
+
+img.mgFldrIcon {float: left; text-align: left; margin: -1px 2px 0px 0px;  height: 16px; width: 16px; border: none; vertical-align: top; background-color: transparent;}
+div.mgFldrIcon {float: left; width: auto;}
+span.left {float: left;width: auto;}
+span.right {float: right;width: auto;}
+
+table.bordered { border-collapse: collapse; border: 1px solid #a0a0a0; margin: 10px 0px 10px 0px;}
+table.bordered th, table.bordered td { vertical-align: top; padding: 3px; border: 1px solid #a0a0a0;}
+table.bordered th { background-color: #e5e5e5; }
+table.bordered td.group { background-color: #f5f5f5; }
+span.disabledNavigation { color: #a0a0a0; }
+div.navigation { margin-top: 14px; font-size: 70%; }
+div.comment { font-weight: normal; color: #000; font-family: Verdana, Arial, Helvetica, sans-serif; background-color: #fcfed8; padding: 2px 5px 2px 5px; border: 1px solid #E3E5C3; margin: 1px 2px 3px 2px; -moz-border-radius: 7px; border-radius: 7px; }
+
+                span.U1, span.U1 a {float: left; width: auto;color: #000000; background-color: #FFFFFF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.U1 a {text-decoration: underline;}
+td.U1 {color: #000000; background-color: #FFFFFF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.R1, span.R1 a {float: left; width: auto;color: #800000; background-color: #F3E6D8; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.R1 a {text-decoration: underline;}
+td.R1 {color: #800000; background-color: #F3E6D8; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.I1, span.I1 a {float: left; width: auto;color: #800000; background-color: #D1E8CF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.I1 a {text-decoration: underline;}
+td.I1 {color: #800000; background-color: #D1E8CF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.C1, span.C1 a {float: left; width: auto;color: #800000; background-color: #DACDE6; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.C1 a {text-decoration: underline;}
+td.C1 {color: #800000; background-color: #DACDE6; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+td.nbgC1 {color: #800000; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; background-color: #FFFFFF; }
+span.U2, span.U2 a {float: left; width: auto;color: #000000; background-color: #FFFFFF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.U2 a {text-decoration: underline;}
+td.U2 {color: #000000; background-color: #FFFFFF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.R2, span.R2 a {float: left; width: auto;color: #800000; background-color: #F3E6D8; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.R2 a {text-decoration: underline;}
+td.R2 {color: #800000; background-color: #F3E6D8; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.I2, span.I2 a {float: left; width: auto;color: #800000; background-color: #D1E8CF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.I2 a {text-decoration: underline;}
+td.I2 {color: #800000; background-color: #D1E8CF; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.C2, span.C2 a {float: left; width: auto;color: #800000; background-color: #DACDE6; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+span.C2 a {text-decoration: underline;}
+td.C2 {color: #800000; background-color: #DACDE6; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; }
+td.nbgC2 {color: #800000; font-family: "Consolas"; font-weight: normal; font-style: normal; font-size: 9pt; text-decoration: none; background-color: #FFFFFF; }
+
+span.selected {background-color: #3d80df; color: #fff;}
+span.selected a {background-color: #3d80df; color: #fff; text-decoration: underline;}
+span.symbol {cursor: pointer;}
+			</style>
+</head>
+<body>
+<h1><strong>24. Araxis Merge File Comparison Report</strong></h1>
+<p>Produced by <strong>Araxis Merge</strong> on <strong>Sat Jul 11 14:45:27 2015 UTC</strong>. See <a href="http://www.araxis.com/" title="Link to the Araxis corporate web site">www.araxis.com</a> for information about Merge. This report uses XHTML and CSS2, and is best viewed with a reasonably standards compliant browser such as the latest version of <a href="http://www.mozilla.org/products/firefox/" title="Link to the Firefox page on the Mozilla website">Firefox</a> or <a href="http://www.microsoft.com/ie/" title="Link to the Microsoft website">Internet Explorer</a>. For optimum results when printing this report, use landscape orientation and enable printing of background images and colours in your browser.</p>
+<h3><strong>24.1&nbsp;Files compared</strong></h3>
+<table class="bordered">
+<tr>
+<th>#</th>
+<th>Location</th>
+<th>File</th>
+<th>Last Modified</th>
+</tr>
+<tr>
+<td>1</td>
+<td></td>
+<td></td>
+<td>Sat Jul 11 14:45:27 2015 UTC</td>
+</tr>
+<tr>
+<td>2</td>
+<td>C:\Users\neominds\Desktop\WRSSL_OPSSL\work\WR_SSL_VxWorks62\security\utilities\bio</td>
+<td>LICENSE</td>
+<td>Tue Aug 16 11:20:50 2005 UTC</td>
+</tr>
+</table>
+<h3><strong>24.2&nbsp;Comparison summary</strong></h3>
+<table class="bordered">
+<tr>
+<th rowspan="2" style="vertical-align: bottom;">Description</th>
+<th colspan="2">Between<br />Files 1 and 2</th>
+</tr>
+<tr>
+<th style="text-align: right;">Text Blocks</th>
+<th style="text-align: right;">Lines</th>
+</tr>
+<tr>
+<td>Unchanged</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Changed</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>Inserted</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">127</td>
+</tr>
+<tr>
+<td>Removed</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+</table>
+<h3><strong>24.3&nbsp;Comparison options</strong></h3>
+<table class="bordered" style="width: 55em;">
+<tr>
+<th>Whitespace</th>
+<td></td>
+</tr>
+<tr>
+<th>Character case</th>
+<td>Differences in character case are significant</td>
+</tr>
+<tr>
+<th>Line endings</th>
+<td>Differences in line endings (<code>CR</code> and <code>LF</code> characters) are ignored</td>
+</tr>
+<tr>
+<th>CR/LF characters</th>
+<td>Not shown in the comparison detail</td>
+</tr>
+</table>
+<h3><strong>24.4&nbsp;Active regular expressions</strong></h3>
+<p>No regular expressions were active.</p>
+<h3><strong>24.5&nbsp;Comparison detail</strong></h3>
+<table class="mgRowGroup">
+<col style="width: 5em;" />
+<col style="width: 1em;" />
+<col width="*" />
+<col style="width: 1em;" />
+<col style="width: 5em;" />
+<col style="width: 1em;" />
+<col width="*" />
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">1</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">2</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;&nbsp;LICENSE&nbsp;</span>
+<span class="I2">ISSUES</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">3</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;&nbsp;========</span>
+<span class="I2">======</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">4</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">5</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;&nbsp;The&nbsp;Open</span>
+<span class="I2">SSL&nbsp;toolki</span>
+<span class="I2">t&nbsp;stays&nbsp;un</span>
+<span class="I2">der&nbsp;a&nbsp;dual</span>
+<span class="I2">&nbsp;license,&nbsp;</span>
+<span class="I2">i.e.&nbsp;both&nbsp;</span>
+<span class="I2">the&nbsp;condit</span>
+<span class="I2">ions&nbsp;of</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">6</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;&nbsp;the&nbsp;Open</span>
+<span class="I2">SSL&nbsp;Licens</span>
+<span class="I2">e&nbsp;and&nbsp;the&nbsp;</span>
+<span class="I2">original&nbsp;S</span>
+<span class="I2">SLeay&nbsp;lice</span>
+<span class="I2">nse&nbsp;apply&nbsp;</span>
+<span class="I2">to&nbsp;the&nbsp;too</span>
+<span class="I2">lkit.</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">7</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;&nbsp;See&nbsp;belo</span>
+<span class="I2">w&nbsp;for&nbsp;the&nbsp;</span>
+<span class="I2">actual&nbsp;lic</span>
+<span class="I2">ense&nbsp;texts</span>
+<span class="I2">.&nbsp;Actually</span>
+<span class="I2">&nbsp;both&nbsp;lice</span>
+<span class="I2">nses&nbsp;are&nbsp;B</span>
+<span class="I2">SD-style</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">8</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;&nbsp;Open&nbsp;Sou</span>
+<span class="I2">rce&nbsp;licens</span>
+<span class="I2">es.&nbsp;In&nbsp;cas</span>
+<span class="I2">e&nbsp;of&nbsp;any&nbsp;l</span>
+<span class="I2">icense&nbsp;iss</span>
+<span class="I2">ues&nbsp;relate</span>
+<span class="I2">d&nbsp;to&nbsp;OpenS</span>
+<span class="I2">SL</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">9</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;&nbsp;please&nbsp;c</span>
+<span class="I2">ontact&nbsp;ope</span>
+<span class="I2">nssl-core@</span>
+<span class="I2">openssl.or</span>
+<span class="I2">g.</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">10</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">11</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;&nbsp;OpenSSL&nbsp;</span>
+<span class="I2">License</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">12</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;&nbsp;--------</span>
+<span class="I2">-------</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">13</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">14</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">/*&nbsp;=======</span>
+<span class="I2">==========</span>
+<span class="I2">==========</span>
+<span class="I2">==========</span>
+<span class="I2">==========</span>
+<span class="I2">==========</span>
+<span class="I2">==========</span>
+<span class="I2">=</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">15</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;Copyrig</span>
+<span class="I2">ht&nbsp;(c)&nbsp;199</span>
+<span class="I2">8-2004&nbsp;The</span>
+<span class="I2">&nbsp;OpenSSL&nbsp;P</span>
+<span class="I2">roject.&nbsp;&nbsp;A</span>
+<span class="I2">ll&nbsp;rights&nbsp;</span>
+<span class="I2">reserved.</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">16</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">17</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;Redistr</span>
+<span class="I2">ibution&nbsp;an</span>
+<span class="I2">d&nbsp;use&nbsp;in&nbsp;s</span>
+<span class="I2">ource&nbsp;and&nbsp;</span>
+<span class="I2">binary&nbsp;for</span>
+<span class="I2">ms,&nbsp;with&nbsp;o</span>
+<span class="I2">r&nbsp;without</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">18</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;modific</span>
+<span class="I2">ation,&nbsp;are</span>
+<span class="I2">&nbsp;permitted</span>
+<span class="I2">&nbsp;provided&nbsp;</span>
+<span class="I2">that&nbsp;the&nbsp;f</span>
+<span class="I2">ollowing&nbsp;c</span>
+<span class="I2">onditions</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">19</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;are&nbsp;met</span>
+<span class="I2">:</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">20</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">21</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;1.&nbsp;Redi</span>
+<span class="I2">stribution</span>
+<span class="I2">s&nbsp;of&nbsp;sourc</span>
+<span class="I2">e&nbsp;code&nbsp;mus</span>
+<span class="I2">t&nbsp;retain&nbsp;t</span>
+<span class="I2">he&nbsp;above&nbsp;c</span>
+<span class="I2">opyright</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">22</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;noti</span>
+<span class="I2">ce,&nbsp;this&nbsp;l</span>
+<span class="I2">ist&nbsp;of&nbsp;con</span>
+<span class="I2">ditions&nbsp;an</span>
+<span class="I2">d&nbsp;the&nbsp;foll</span>
+<span class="I2">owing&nbsp;disc</span>
+<span class="I2">laimer.&nbsp;</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">23</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">24</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;2.&nbsp;Redi</span>
+<span class="I2">stribution</span>
+<span class="I2">s&nbsp;in&nbsp;binar</span>
+<span class="I2">y&nbsp;form&nbsp;mus</span>
+<span class="I2">t&nbsp;reproduc</span>
+<span class="I2">e&nbsp;the&nbsp;abov</span>
+<span class="I2">e&nbsp;copyrigh</span>
+<span class="I2">t</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">25</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;noti</span>
+<span class="I2">ce,&nbsp;this&nbsp;l</span>
+<span class="I2">ist&nbsp;of&nbsp;con</span>
+<span class="I2">ditions&nbsp;an</span>
+<span class="I2">d&nbsp;the&nbsp;foll</span>
+<span class="I2">owing&nbsp;disc</span>
+<span class="I2">laimer&nbsp;in</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">26</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;</span>
+<span class="I2">documentat</span>
+<span class="I2">ion&nbsp;and/or</span>
+<span class="I2">&nbsp;other&nbsp;mat</span>
+<span class="I2">erials&nbsp;pro</span>
+<span class="I2">vided&nbsp;with</span>
+<span class="I2">&nbsp;the</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">27</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;dist</span>
+<span class="I2">ribution.</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">28</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">29</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;3.&nbsp;All&nbsp;</span>
+<span class="I2">advertisin</span>
+<span class="I2">g&nbsp;material</span>
+<span class="I2">s&nbsp;mentioni</span>
+<span class="I2">ng&nbsp;feature</span>
+<span class="I2">s&nbsp;or&nbsp;use&nbsp;o</span>
+<span class="I2">f&nbsp;this</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">30</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;soft</span>
+<span class="I2">ware&nbsp;must&nbsp;</span>
+<span class="I2">display&nbsp;th</span>
+<span class="I2">e&nbsp;followin</span>
+<span class="I2">g&nbsp;acknowle</span>
+<span class="I2">dgment:</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">31</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;"Thi</span>
+<span class="I2">s&nbsp;product&nbsp;</span>
+<span class="I2">includes&nbsp;s</span>
+<span class="I2">oftware&nbsp;de</span>
+<span class="I2">veloped&nbsp;by</span>
+<span class="I2">&nbsp;the&nbsp;OpenS</span>
+<span class="I2">SL&nbsp;Project</span>
+<span class="I2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">32</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;</span>
+<span class="I2">use&nbsp;in&nbsp;the</span>
+<span class="I2">&nbsp;OpenSSL&nbsp;T</span>
+<span class="I2">oolkit.&nbsp;(h</span>
+<span class="I2">ttp://www.</span>
+<span class="I2">openssl.or</span>
+<span class="I2">g/)"</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">33</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">34</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;4.&nbsp;The&nbsp;</span>
+<span class="I2">names&nbsp;"Ope</span>
+<span class="I2">nSSL&nbsp;Toolk</span>
+<span class="I2">it"&nbsp;and&nbsp;"O</span>
+<span class="I2">penSSL&nbsp;Pro</span>
+<span class="I2">ject"&nbsp;must</span>
+<span class="I2">&nbsp;not&nbsp;be&nbsp;us</span>
+<span class="I2">ed&nbsp;to</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">35</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;endo</span>
+<span class="I2">rse&nbsp;or&nbsp;pro</span>
+<span class="I2">mote&nbsp;produ</span>
+<span class="I2">cts&nbsp;derive</span>
+<span class="I2">d&nbsp;from&nbsp;thi</span>
+<span class="I2">s&nbsp;software</span>
+<span class="I2">&nbsp;without</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">36</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;prio</span>
+<span class="I2">r&nbsp;written&nbsp;</span>
+<span class="I2">permission</span>
+<span class="I2">.&nbsp;For&nbsp;writ</span>
+<span class="I2">ten&nbsp;permis</span>
+<span class="I2">sion,&nbsp;plea</span>
+<span class="I2">se&nbsp;contact</span>
+<span class="I2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">37</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;open</span>
+<span class="I2">ssl-core@o</span>
+<span class="I2">penssl.org</span>
+<span class="I2">.</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">38</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">39</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;5.&nbsp;Prod</span>
+<span class="I2">ucts&nbsp;deriv</span>
+<span class="I2">ed&nbsp;from&nbsp;th</span>
+<span class="I2">is&nbsp;softwar</span>
+<span class="I2">e&nbsp;may&nbsp;not&nbsp;</span>
+<span class="I2">be&nbsp;called&nbsp;</span>
+<span class="I2">"OpenSSL"</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">40</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;nor&nbsp;</span>
+<span class="I2">may&nbsp;"OpenS</span>
+<span class="I2">SL"&nbsp;appear</span>
+<span class="I2">&nbsp;in&nbsp;their&nbsp;</span>
+<span class="I2">names&nbsp;with</span>
+<span class="I2">out&nbsp;prior&nbsp;</span>
+<span class="I2">written</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">41</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;perm</span>
+<span class="I2">ission&nbsp;of&nbsp;</span>
+<span class="I2">the&nbsp;OpenSS</span>
+<span class="I2">L&nbsp;Project.</span>
+<span class="I2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">42</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">43</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;6.&nbsp;Redi</span>
+<span class="I2">stribution</span>
+<span class="I2">s&nbsp;of&nbsp;any&nbsp;f</span>
+<span class="I2">orm&nbsp;whatso</span>
+<span class="I2">ever&nbsp;must&nbsp;</span>
+<span class="I2">retain&nbsp;the</span>
+<span class="I2">&nbsp;following</span>
+<span class="I2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">44</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;ackn</span>
+<span class="I2">owledgment</span>
+<span class="I2">:</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">45</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;"Thi</span>
+<span class="I2">s&nbsp;product&nbsp;</span>
+<span class="I2">includes&nbsp;s</span>
+<span class="I2">oftware&nbsp;de</span>
+<span class="I2">veloped&nbsp;by</span>
+<span class="I2">&nbsp;the&nbsp;OpenS</span>
+<span class="I2">SL&nbsp;Project</span>
+<span class="I2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">46</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;</span>
+<span class="I2">use&nbsp;in&nbsp;the</span>
+<span class="I2">&nbsp;OpenSSL&nbsp;T</span>
+<span class="I2">oolkit&nbsp;(ht</span>
+<span class="I2">tp://www.o</span>
+<span class="I2">penssl.org</span>
+<span class="I2">/)"</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">47</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">48</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;THIS&nbsp;SO</span>
+<span class="I2">FTWARE&nbsp;IS&nbsp;</span>
+<span class="I2">PROVIDED&nbsp;B</span>
+<span class="I2">Y&nbsp;THE&nbsp;Open</span>
+<span class="I2">SSL&nbsp;PROJEC</span>
+<span class="I2">T&nbsp;``AS&nbsp;IS'</span>
+<span class="I2">'&nbsp;AND&nbsp;ANY</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">49</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;EXPRESS</span>
+<span class="I2">ED&nbsp;OR&nbsp;IMPL</span>
+<span class="I2">IED&nbsp;WARRAN</span>
+<span class="I2">TIES,&nbsp;INCL</span>
+<span class="I2">UDING,&nbsp;BUT</span>
+<span class="I2">&nbsp;NOT&nbsp;LIMIT</span>
+<span class="I2">ED&nbsp;TO,&nbsp;THE</span>
+<span class="I2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">50</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;IMPLIED</span>
+<span class="I2">&nbsp;WARRANTIE</span>
+<span class="I2">S&nbsp;OF&nbsp;MERCH</span>
+<span class="I2">ANTABILITY</span>
+<span class="I2">&nbsp;AND&nbsp;FITNE</span>
+<span class="I2">SS&nbsp;FOR&nbsp;A&nbsp;P</span>
+<span class="I2">ARTICULAR</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">51</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;PURPOSE</span>
+<span class="I2">&nbsp;ARE&nbsp;DISCL</span>
+<span class="I2">AIMED.&nbsp;&nbsp;IN</span>
+<span class="I2">&nbsp;NO&nbsp;EVENT&nbsp;</span>
+<span class="I2">SHALL&nbsp;THE&nbsp;</span>
+<span class="I2">OpenSSL&nbsp;PR</span>
+<span class="I2">OJECT&nbsp;OR</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">52</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;ITS&nbsp;CON</span>
+<span class="I2">TRIBUTORS&nbsp;</span>
+<span class="I2">BE&nbsp;LIABLE&nbsp;</span>
+<span class="I2">FOR&nbsp;ANY&nbsp;DI</span>
+<span class="I2">RECT,&nbsp;INDI</span>
+<span class="I2">RECT,&nbsp;INCI</span>
+<span class="I2">DENTAL,</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">53</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;SPECIAL</span>
+<span class="I2">,&nbsp;EXEMPLAR</span>
+<span class="I2">Y,&nbsp;OR&nbsp;CONS</span>
+<span class="I2">EQUENTIAL&nbsp;</span>
+<span class="I2">DAMAGES&nbsp;(I</span>
+<span class="I2">NCLUDING,&nbsp;</span>
+<span class="I2">BUT</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">54</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;NOT&nbsp;LIM</span>
+<span class="I2">ITED&nbsp;TO,&nbsp;P</span>
+<span class="I2">ROCUREMENT</span>
+<span class="I2">&nbsp;OF&nbsp;SUBSTI</span>
+<span class="I2">TUTE&nbsp;GOODS</span>
+<span class="I2">&nbsp;OR&nbsp;SERVIC</span>
+<span class="I2">ES;</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">55</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;LOSS&nbsp;OF</span>
+<span class="I2">&nbsp;USE,&nbsp;DATA</span>
+<span class="I2">,&nbsp;OR&nbsp;PROFI</span>
+<span class="I2">TS;&nbsp;OR&nbsp;BUS</span>
+<span class="I2">INESS&nbsp;INTE</span>
+<span class="I2">RRUPTION)</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">56</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;HOWEVER</span>
+<span class="I2">&nbsp;CAUSED&nbsp;AN</span>
+<span class="I2">D&nbsp;ON&nbsp;ANY&nbsp;T</span>
+<span class="I2">HEORY&nbsp;OF&nbsp;L</span>
+<span class="I2">IABILITY,&nbsp;</span>
+<span class="I2">WHETHER&nbsp;IN</span>
+<span class="I2">&nbsp;CONTRACT,</span>
+<span class="I2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">57</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;STRICT&nbsp;</span>
+<span class="I2">LIABILITY,</span>
+<span class="I2">&nbsp;OR&nbsp;TORT&nbsp;(</span>
+<span class="I2">INCLUDING&nbsp;</span>
+<span class="I2">NEGLIGENCE</span>
+<span class="I2">&nbsp;OR&nbsp;OTHERW</span>
+<span class="I2">ISE)</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">58</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;ARISING</span>
+<span class="I2">&nbsp;IN&nbsp;ANY&nbsp;WA</span>
+<span class="I2">Y&nbsp;OUT&nbsp;OF&nbsp;T</span>
+<span class="I2">HE&nbsp;USE&nbsp;OF&nbsp;</span>
+<span class="I2">THIS&nbsp;SOFTW</span>
+<span class="I2">ARE,&nbsp;EVEN&nbsp;</span>
+<span class="I2">IF&nbsp;ADVISED</span>
+<span class="I2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">59</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;OF&nbsp;THE&nbsp;</span>
+<span class="I2">POSSIBILIT</span>
+<span class="I2">Y&nbsp;OF&nbsp;SUCH&nbsp;</span>
+<span class="I2">DAMAGE.</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">60</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;=======</span>
+<span class="I2">==========</span>
+<span class="I2">==========</span>
+<span class="I2">==========</span>
+<span class="I2">==========</span>
+<span class="I2">==========</span>
+<span class="I2">==========</span>
+<span class="I2">=</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">61</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">62</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;This&nbsp;pr</span>
+<span class="I2">oduct&nbsp;incl</span>
+<span class="I2">udes&nbsp;crypt</span>
+<span class="I2">ographic&nbsp;s</span>
+<span class="I2">oftware&nbsp;wr</span>
+<span class="I2">itten&nbsp;by&nbsp;E</span>
+<span class="I2">ric&nbsp;Young</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">63</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;(eay@cr</span>
+<span class="I2">yptsoft.co</span>
+<span class="I2">m).&nbsp;&nbsp;This&nbsp;</span>
+<span class="I2">product&nbsp;in</span>
+<span class="I2">cludes&nbsp;sof</span>
+<span class="I2">tware&nbsp;writ</span>
+<span class="I2">ten&nbsp;by&nbsp;Tim</span>
+<span class="I2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">64</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;Hudson&nbsp;</span>
+<span class="I2">(tjh@crypt</span>
+<span class="I2">soft.com).</span>
+<span class="I2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">65</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">66</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">67</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">68</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;Original&nbsp;</span>
+<span class="I2">SSLeay&nbsp;Lic</span>
+<span class="I2">ense</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">69</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;---------</span>
+<span class="I2">----------</span>
+<span class="I2">----</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">70</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">71</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">/*&nbsp;Copyrig</span>
+<span class="I2">ht&nbsp;(C)&nbsp;199</span>
+<span class="I2">5-1998&nbsp;Eri</span>
+<span class="I2">c&nbsp;Young&nbsp;(e</span>
+<span class="I2">ay@cryptso</span>
+<span class="I2">ft.com)</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">72</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;All&nbsp;rig</span>
+<span class="I2">hts&nbsp;reserv</span>
+<span class="I2">ed.</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">73</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">74</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;This&nbsp;pa</span>
+<span class="I2">ckage&nbsp;is&nbsp;a</span>
+<span class="I2">n&nbsp;SSL&nbsp;impl</span>
+<span class="I2">ementation</span>
+<span class="I2">&nbsp;written</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">75</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;by&nbsp;Eric</span>
+<span class="I2">&nbsp;Young&nbsp;(ea</span>
+<span class="I2">y@cryptsof</span>
+<span class="I2">t.com).</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">76</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;The&nbsp;imp</span>
+<span class="I2">lementatio</span>
+<span class="I2">n&nbsp;was&nbsp;writ</span>
+<span class="I2">ten&nbsp;so&nbsp;as&nbsp;</span>
+<span class="I2">to&nbsp;conform</span>
+<span class="I2">&nbsp;with&nbsp;Nets</span>
+<span class="I2">capes&nbsp;SSL.</span>
+<span class="I2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">77</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">78</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;This&nbsp;li</span>
+<span class="I2">brary&nbsp;is&nbsp;f</span>
+<span class="I2">ree&nbsp;for&nbsp;co</span>
+<span class="I2">mmercial&nbsp;a</span>
+<span class="I2">nd&nbsp;non-com</span>
+<span class="I2">mercial&nbsp;us</span>
+<span class="I2">e&nbsp;as&nbsp;long&nbsp;</span>
+<span class="I2">as</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">79</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;the&nbsp;fol</span>
+<span class="I2">lowing&nbsp;con</span>
+<span class="I2">ditions&nbsp;ar</span>
+<span class="I2">e&nbsp;aheared&nbsp;</span>
+<span class="I2">to.&nbsp;&nbsp;The&nbsp;f</span>
+<span class="I2">ollowing&nbsp;c</span>
+<span class="I2">onditions</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">80</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;apply&nbsp;t</span>
+<span class="I2">o&nbsp;all&nbsp;code</span>
+<span class="I2">&nbsp;found&nbsp;in&nbsp;</span>
+<span class="I2">this&nbsp;distr</span>
+<span class="I2">ibution,&nbsp;b</span>
+<span class="I2">e&nbsp;it&nbsp;the&nbsp;R</span>
+<span class="I2">C4,&nbsp;RSA,</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">81</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;lhash,&nbsp;</span>
+<span class="I2">DES,&nbsp;etc.,</span>
+<span class="I2">&nbsp;code;&nbsp;not</span>
+<span class="I2">&nbsp;just&nbsp;the&nbsp;</span>
+<span class="I2">SSL&nbsp;code.&nbsp;</span>
+<span class="I2">&nbsp;The&nbsp;SSL&nbsp;d</span>
+<span class="I2">ocumentati</span>
+<span class="I2">on</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">82</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;include</span>
+<span class="I2">d&nbsp;with&nbsp;thi</span>
+<span class="I2">s&nbsp;distribu</span>
+<span class="I2">tion&nbsp;is&nbsp;co</span>
+<span class="I2">vered&nbsp;by&nbsp;t</span>
+<span class="I2">he&nbsp;same&nbsp;co</span>
+<span class="I2">pyright&nbsp;te</span>
+<span class="I2">rms</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">83</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;except&nbsp;</span>
+<span class="I2">that&nbsp;the&nbsp;h</span>
+<span class="I2">older&nbsp;is&nbsp;T</span>
+<span class="I2">im&nbsp;Hudson&nbsp;</span>
+<span class="I2">(tjh@crypt</span>
+<span class="I2">soft.com).</span>
+<span class="I2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">84</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">85</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;Copyrig</span>
+<span class="I2">ht&nbsp;remains</span>
+<span class="I2">&nbsp;Eric&nbsp;Youn</span>
+<span class="I2">g's,&nbsp;and&nbsp;a</span>
+<span class="I2">s&nbsp;such&nbsp;any</span>
+<span class="I2">&nbsp;Copyright</span>
+<span class="I2">&nbsp;notices&nbsp;i</span>
+<span class="I2">n</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">86</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;the&nbsp;cod</span>
+<span class="I2">e&nbsp;are&nbsp;not&nbsp;</span>
+<span class="I2">to&nbsp;be&nbsp;remo</span>
+<span class="I2">ved.</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">87</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;If&nbsp;this</span>
+<span class="I2">&nbsp;package&nbsp;i</span>
+<span class="I2">s&nbsp;used&nbsp;in&nbsp;</span>
+<span class="I2">a&nbsp;product,</span>
+<span class="I2">&nbsp;Eric&nbsp;Youn</span>
+<span class="I2">g&nbsp;should&nbsp;b</span>
+<span class="I2">e&nbsp;given&nbsp;at</span>
+<span class="I2">tribution</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">88</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;as&nbsp;the&nbsp;</span>
+<span class="I2">author&nbsp;of&nbsp;</span>
+<span class="I2">the&nbsp;parts&nbsp;</span>
+<span class="I2">of&nbsp;the&nbsp;lib</span>
+<span class="I2">rary&nbsp;used.</span>
+<span class="I2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">89</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;This&nbsp;ca</span>
+<span class="I2">n&nbsp;be&nbsp;in&nbsp;th</span>
+<span class="I2">e&nbsp;form&nbsp;of&nbsp;</span>
+<span class="I2">a&nbsp;textual&nbsp;</span>
+<span class="I2">message&nbsp;at</span>
+<span class="I2">&nbsp;program&nbsp;s</span>
+<span class="I2">tartup&nbsp;or</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">90</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;in&nbsp;docu</span>
+<span class="I2">mentation&nbsp;</span>
+<span class="I2">(online&nbsp;or</span>
+<span class="I2">&nbsp;textual)&nbsp;</span>
+<span class="I2">provided&nbsp;w</span>
+<span class="I2">ith&nbsp;the&nbsp;pa</span>
+<span class="I2">ckage.</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">91</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">92</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;Redistr</span>
+<span class="I2">ibution&nbsp;an</span>
+<span class="I2">d&nbsp;use&nbsp;in&nbsp;s</span>
+<span class="I2">ource&nbsp;and&nbsp;</span>
+<span class="I2">binary&nbsp;for</span>
+<span class="I2">ms,&nbsp;with&nbsp;o</span>
+<span class="I2">r&nbsp;without</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">93</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;modific</span>
+<span class="I2">ation,&nbsp;are</span>
+<span class="I2">&nbsp;permitted</span>
+<span class="I2">&nbsp;provided&nbsp;</span>
+<span class="I2">that&nbsp;the&nbsp;f</span>
+<span class="I2">ollowing&nbsp;c</span>
+<span class="I2">onditions</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">94</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;are&nbsp;met</span>
+<span class="I2">:</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">95</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;1.&nbsp;Redi</span>
+<span class="I2">stribution</span>
+<span class="I2">s&nbsp;of&nbsp;sourc</span>
+<span class="I2">e&nbsp;code&nbsp;mus</span>
+<span class="I2">t&nbsp;retain&nbsp;t</span>
+<span class="I2">he&nbsp;copyrig</span>
+<span class="I2">ht</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">96</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;noti</span>
+<span class="I2">ce,&nbsp;this&nbsp;l</span>
+<span class="I2">ist&nbsp;of&nbsp;con</span>
+<span class="I2">ditions&nbsp;an</span>
+<span class="I2">d&nbsp;the&nbsp;foll</span>
+<span class="I2">owing&nbsp;disc</span>
+<span class="I2">laimer.</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">97</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;2.&nbsp;Redi</span>
+<span class="I2">stribution</span>
+<span class="I2">s&nbsp;in&nbsp;binar</span>
+<span class="I2">y&nbsp;form&nbsp;mus</span>
+<span class="I2">t&nbsp;reproduc</span>
+<span class="I2">e&nbsp;the&nbsp;abov</span>
+<span class="I2">e&nbsp;copyrigh</span>
+<span class="I2">t</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">98</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;noti</span>
+<span class="I2">ce,&nbsp;this&nbsp;l</span>
+<span class="I2">ist&nbsp;of&nbsp;con</span>
+<span class="I2">ditions&nbsp;an</span>
+<span class="I2">d&nbsp;the&nbsp;foll</span>
+<span class="I2">owing&nbsp;disc</span>
+<span class="I2">laimer&nbsp;in&nbsp;</span>
+<span class="I2">the</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">99</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;docu</span>
+<span class="I2">mentation&nbsp;</span>
+<span class="I2">and/or&nbsp;oth</span>
+<span class="I2">er&nbsp;materia</span>
+<span class="I2">ls&nbsp;provide</span>
+<span class="I2">d&nbsp;with&nbsp;the</span>
+<span class="I2">&nbsp;distribut</span>
+<span class="I2">ion.</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">100</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;3.&nbsp;All&nbsp;</span>
+<span class="I2">advertisin</span>
+<span class="I2">g&nbsp;material</span>
+<span class="I2">s&nbsp;mentioni</span>
+<span class="I2">ng&nbsp;feature</span>
+<span class="I2">s&nbsp;or&nbsp;use&nbsp;o</span>
+<span class="I2">f&nbsp;this&nbsp;sof</span>
+<span class="I2">tware</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">101</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;must</span>
+<span class="I2">&nbsp;display&nbsp;t</span>
+<span class="I2">he&nbsp;followi</span>
+<span class="I2">ng&nbsp;acknowl</span>
+<span class="I2">edgement:</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">102</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;"Thi</span>
+<span class="I2">s&nbsp;product&nbsp;</span>
+<span class="I2">includes&nbsp;c</span>
+<span class="I2">ryptograph</span>
+<span class="I2">ic&nbsp;softwar</span>
+<span class="I2">e&nbsp;written&nbsp;</span>
+<span class="I2">by</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">103</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eri</span>
+<span class="I2">c&nbsp;Young&nbsp;(e</span>
+<span class="I2">ay@cryptso</span>
+<span class="I2">ft.com)"</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">104</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;</span>
+<span class="I2">word&nbsp;'cryp</span>
+<span class="I2">tographic'</span>
+<span class="I2">&nbsp;can&nbsp;be&nbsp;le</span>
+<span class="I2">ft&nbsp;out&nbsp;if&nbsp;</span>
+<span class="I2">the&nbsp;rouine</span>
+<span class="I2">s&nbsp;from&nbsp;the</span>
+<span class="I2">&nbsp;library</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">105</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;bein</span>
+<span class="I2">g&nbsp;used&nbsp;are</span>
+<span class="I2">&nbsp;not&nbsp;crypt</span>
+<span class="I2">ographic&nbsp;r</span>
+<span class="I2">elated&nbsp;:-)</span>
+<span class="I2">.</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">106</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;4.&nbsp;If&nbsp;y</span>
+<span class="I2">ou&nbsp;include</span>
+<span class="I2">&nbsp;any&nbsp;Windo</span>
+<span class="I2">ws&nbsp;specifi</span>
+<span class="I2">c&nbsp;code&nbsp;(or</span>
+<span class="I2">&nbsp;a&nbsp;derivat</span>
+<span class="I2">ive&nbsp;thereo</span>
+<span class="I2">f)&nbsp;from&nbsp;</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">107</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;</span>
+<span class="I2">apps&nbsp;direc</span>
+<span class="I2">tory&nbsp;(appl</span>
+<span class="I2">ication&nbsp;co</span>
+<span class="I2">de)&nbsp;you&nbsp;mu</span>
+<span class="I2">st&nbsp;include</span>
+<span class="I2">&nbsp;an&nbsp;acknow</span>
+<span class="I2">ledgement:</span>
+<span class="I2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">108</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;"Thi</span>
+<span class="I2">s&nbsp;product&nbsp;</span>
+<span class="I2">includes&nbsp;s</span>
+<span class="I2">oftware&nbsp;wr</span>
+<span class="I2">itten&nbsp;by&nbsp;T</span>
+<span class="I2">im&nbsp;Hudson&nbsp;</span>
+<span class="I2">(tjh@crypt</span>
+<span class="I2">soft.com)"</span>
+<span class="I2" />
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">109</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">110</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;THIS&nbsp;SO</span>
+<span class="I2">FTWARE&nbsp;IS&nbsp;</span>
+<span class="I2">PROVIDED&nbsp;B</span>
+<span class="I2">Y&nbsp;ERIC&nbsp;YOU</span>
+<span class="I2">NG&nbsp;``AS&nbsp;IS</span>
+<span class="I2">''&nbsp;AND</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">111</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;ANY&nbsp;EXP</span>
+<span class="I2">RESS&nbsp;OR&nbsp;IM</span>
+<span class="I2">PLIED&nbsp;WARR</span>
+<span class="I2">ANTIES,&nbsp;IN</span>
+<span class="I2">CLUDING,&nbsp;B</span>
+<span class="I2">UT&nbsp;NOT&nbsp;LIM</span>
+<span class="I2">ITED&nbsp;TO,&nbsp;T</span>
+<span class="I2">HE</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">112</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;IMPLIED</span>
+<span class="I2">&nbsp;WARRANTIE</span>
+<span class="I2">S&nbsp;OF&nbsp;MERCH</span>
+<span class="I2">ANTABILITY</span>
+<span class="I2">&nbsp;AND&nbsp;FITNE</span>
+<span class="I2">SS&nbsp;FOR&nbsp;A&nbsp;P</span>
+<span class="I2">ARTICULAR&nbsp;</span>
+<span class="I2">PURPOSE</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">113</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;ARE&nbsp;DIS</span>
+<span class="I2">CLAIMED.&nbsp;&nbsp;</span>
+<span class="I2">IN&nbsp;NO&nbsp;EVEN</span>
+<span class="I2">T&nbsp;SHALL&nbsp;TH</span>
+<span class="I2">E&nbsp;AUTHOR&nbsp;O</span>
+<span class="I2">R&nbsp;CONTRIBU</span>
+<span class="I2">TORS&nbsp;BE&nbsp;LI</span>
+<span class="I2">ABLE</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">114</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;FOR&nbsp;ANY</span>
+<span class="I2">&nbsp;DIRECT,&nbsp;I</span>
+<span class="I2">NDIRECT,&nbsp;I</span>
+<span class="I2">NCIDENTAL,</span>
+<span class="I2">&nbsp;SPECIAL,&nbsp;</span>
+<span class="I2">EXEMPLARY,</span>
+<span class="I2">&nbsp;OR&nbsp;CONSEQ</span>
+<span class="I2">UENTIAL</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">115</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;DAMAGES</span>
+<span class="I2">&nbsp;(INCLUDIN</span>
+<span class="I2">G,&nbsp;BUT&nbsp;NOT</span>
+<span class="I2">&nbsp;LIMITED&nbsp;T</span>
+<span class="I2">O,&nbsp;PROCURE</span>
+<span class="I2">MENT&nbsp;OF&nbsp;SU</span>
+<span class="I2">BSTITUTE&nbsp;G</span>
+<span class="I2">OODS</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">116</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;OR&nbsp;SERV</span>
+<span class="I2">ICES;&nbsp;LOSS</span>
+<span class="I2">&nbsp;OF&nbsp;USE,&nbsp;D</span>
+<span class="I2">ATA,&nbsp;OR&nbsp;PR</span>
+<span class="I2">OFITS;&nbsp;OR&nbsp;</span>
+<span class="I2">BUSINESS&nbsp;I</span>
+<span class="I2">NTERRUPTIO</span>
+<span class="I2">N)</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">117</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;HOWEVER</span>
+<span class="I2">&nbsp;CAUSED&nbsp;AN</span>
+<span class="I2">D&nbsp;ON&nbsp;ANY&nbsp;T</span>
+<span class="I2">HEORY&nbsp;OF&nbsp;L</span>
+<span class="I2">IABILITY,&nbsp;</span>
+<span class="I2">WHETHER&nbsp;IN</span>
+<span class="I2">&nbsp;CONTRACT,</span>
+<span class="I2">&nbsp;STRICT</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">118</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;LIABILI</span>
+<span class="I2">TY,&nbsp;OR&nbsp;TOR</span>
+<span class="I2">T&nbsp;(INCLUDI</span>
+<span class="I2">NG&nbsp;NEGLIGE</span>
+<span class="I2">NCE&nbsp;OR&nbsp;OTH</span>
+<span class="I2">ERWISE)&nbsp;AR</span>
+<span class="I2">ISING&nbsp;IN&nbsp;A</span>
+<span class="I2">NY&nbsp;WAY</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">119</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;OUT&nbsp;OF&nbsp;</span>
+<span class="I2">THE&nbsp;USE&nbsp;OF</span>
+<span class="I2">&nbsp;THIS&nbsp;SOFT</span>
+<span class="I2">WARE,&nbsp;EVEN</span>
+<span class="I2">&nbsp;IF&nbsp;ADVISE</span>
+<span class="I2">D&nbsp;OF&nbsp;THE&nbsp;P</span>
+<span class="I2">OSSIBILITY</span>
+<span class="I2">&nbsp;OF</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">120</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;SUCH&nbsp;DA</span>
+<span class="I2">MAGE.</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">121</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">122</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;The&nbsp;lic</span>
+<span class="I2">ence&nbsp;and&nbsp;d</span>
+<span class="I2">istributio</span>
+<span class="I2">n&nbsp;terms&nbsp;fo</span>
+<span class="I2">r&nbsp;any&nbsp;publ</span>
+<span class="I2">ically&nbsp;ava</span>
+<span class="I2">ilable&nbsp;ver</span>
+<span class="I2">sion&nbsp;or</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">123</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;derivat</span>
+<span class="I2">ive&nbsp;of&nbsp;thi</span>
+<span class="I2">s&nbsp;code&nbsp;can</span>
+<span class="I2">not&nbsp;be&nbsp;cha</span>
+<span class="I2">nged.&nbsp;&nbsp;i.e</span>
+<span class="I2">.&nbsp;this&nbsp;cod</span>
+<span class="I2">e&nbsp;cannot&nbsp;s</span>
+<span class="I2">imply&nbsp;be</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">124</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;copied&nbsp;</span>
+<span class="I2">and&nbsp;put&nbsp;un</span>
+<span class="I2">der&nbsp;anothe</span>
+<span class="I2">r&nbsp;distribu</span>
+<span class="I2">tion&nbsp;licen</span>
+<span class="I2">ce</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">125</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*&nbsp;[includ</span>
+<span class="I2">ing&nbsp;the&nbsp;GN</span>
+<span class="I2">U&nbsp;Public&nbsp;L</span>
+<span class="I2">icence.]</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">126</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2">&nbsp;*/</span>
+</td>
+</tr>
+<tr>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td style="background-color: #f5f5f5;">&nbsp;</td>
+<td>&nbsp;</td>
+<td class="I2" style="text-align: right;">127</td>
+<td class="I2" style="text-decoration: none;">&nbsp;</td>
+<td class="I2">
+<span class="I2" />
+</td>
+</tr>
+</table>
+<p class="copyright" style="margin-top: 25px; padding-top: 2px; border-top: solid #a0a0a0 1px; max-width: none;">Araxis Merge (but not the data content of this report) is Copyright  &copy; 1993-2009 Araxis Ltd (<a href="http://www.araxis.com/" title="Link to the Araxis corporate web site">www.araxis.com</a>). All rights reserved.</p>
+</body>
+</html>
