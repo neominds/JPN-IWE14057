@@ -32,5 +32,5 @@ else
 endif 
 
 
-SUBDIRS = asn1 ocsp pem pkcs12 pkcs7 store x509 x509v3 
+SUBDIRS = asn1 ocsp pem pkcs12 pkcs7 x509 x509v3 
 include $(MAKE_INCLUDE_PATH)/make/rules.library

@@ -652,8 +652,8 @@ int BN_nist_mod_224(BIGNUM *r, const BIGNUM *a, const BIGNUM *field,
          * *subtracting* the latter.
          */
         carry =
-            (int)bn_add_words(r_d, r_d, _nist_p_224[-carry - 1],
-                              BN_NIST_224_TOP);
+            (int)bn_add_words(r_d, r_d, _nist_p_224[-carry - 1],BN_NIST_224_TOP);
+                      
         mask = 0 - (PTR_SIZE_INT) carry;
         u.p = ((PTR_SIZE_INT) bn_sub_words & mask) |
             ((PTR_SIZE_INT) bn_add_words & ~mask);

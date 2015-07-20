@@ -122,6 +122,9 @@
 #include <vxWorks.h>
 #endif
 
+ 
+
+
 /* need for #define _POSIX_C_SOURCE arises whenever you pass -ansi to gcc
  * [maybe others?], because it masks interfaces not discussed in standard,
  * sigaction and fileno included. -pedantic would be more appropriate for the
@@ -204,6 +207,11 @@
 #  undef  TERMIOS
 #  define TERMIO
 #  undef  SGTTY
+
+
+
+
+
 /*
  * We know that VMS, MSDOS, VXWORKS, NETWARE use entirely other mechanisms.
  * MAC_OS_GUSI_SOURCE should probably go away, but that needs to be confirmed.
@@ -220,6 +228,15 @@
 # endif
 
 #endif
+
+#if defined(OPENSSL_SYS_VXWORKS)
+#undef TERMIOS
+#undef TERMIO
+#undef SGTTY
+#endif 
+
+
+
 
 #ifdef TERMIOS
 # include <termios.h>

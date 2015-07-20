@@ -238,13 +238,13 @@ ASN1_OBJECT *c2i_ASN1_OBJECT(ASN1_OBJECT **a, const unsigned char **pp,
 	p= *pp;
 	if ((ret->data == NULL) || (ret->length < len))
 		{
-		if (ret->data != NULL) OPENSSL_free(ret->data);
+		if (ret->data != NULL) OPENSSL_free((void *)ret->data);
 		ret->data=(unsigned char *)OPENSSL_malloc(len ? (int)len : 1);
 		ret->flags|=ASN1_OBJECT_FLAG_DYNAMIC_DATA;
 		if (ret->data == NULL)
 			{ i=ERR_R_MALLOC_FAILURE; goto err; }
 		}
-	memcpy(ret->data,p,(int)len);
+	memcpy((void *)ret->data,p,(int)len);
 	ret->length=(int)len;
 	ret->sn=NULL;
 	ret->ln=NULL;
@@ -293,7 +293,7 @@ void ASN1_OBJECT_free(ASN1_OBJECT *a)
 		}
 	if (a->flags & ASN1_OBJECT_FLAG_DYNAMIC_DATA)
 		{
-		if (a->data != NULL) OPENSSL_free(a->data);
+		if (a->data != NULL) OPENSSL_free((void *)a->data);
 		a->data=NULL;
 		a->length=0;
 		}

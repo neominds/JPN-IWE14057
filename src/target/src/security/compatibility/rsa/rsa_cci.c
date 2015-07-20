@@ -48,7 +48,7 @@ typedef enum rsa_cci_key_type
 static int RSA_cci_cipher(int flen, const unsigned char *from,
     unsigned char *to, RSA *rsa, int padding, RSA_CCI_OPERATION_TYPE encrypt, RSA_CCI_KEY_TYPE keyType);
 static int RSA_cci_sign_verify(int type, const unsigned char *m, unsigned int m_len,
-    unsigned char *sigbuf, unsigned int *siglen, const RSA *rsa, RSA_CCI_OPERATION_TYPE sign);
+   const unsigned char *sigbuf, unsigned int *siglen, const RSA *rsa, RSA_CCI_OPERATION_TYPE sign);
 static int RSA_cci_public_encrypt(int flen, const unsigned char *from,
     unsigned char *to, RSA *rsa,int padding);
 static int RSA_cci_private_encrypt(int flen, const unsigned char *from,
@@ -59,9 +59,9 @@ static int RSA_cci_private_decrypt(int flen, const unsigned char *from,
     unsigned char *to, RSA *rsa,int padding);
 static int RSA_cci_init(RSA *rsa);
 static int RSA_cci_sign(int type, const unsigned char *m, unsigned int m_len,
-    unsigned char *sigret, unsigned int *siglen, const RSA *rsa);
+     unsigned char *sigret, unsigned int *siglen, const RSA *rsa);
 static int RSA_cci_verify(int type, const unsigned char *m, unsigned int m_len,
-    unsigned char *sigbuf, unsigned int siglen, const RSA *rsa);
+   const unsigned char *sigbuf, unsigned int siglen, const RSA *rsa);
 BOOL openssl_to_cci( const RSA *opensslKey, CCIPublicKey *privateKey, CCIPublicKey *publicKey );
 
 
@@ -411,7 +411,7 @@ static int RSA_cci_verify
     int type,
     const unsigned char *m,
     unsigned int m_len,
-    unsigned char *sigbuf,
+   const unsigned char *sigbuf,
     unsigned int siglen,
     const RSA *rsa
     )
@@ -813,7 +813,7 @@ static int RSA_cci_sign_verify
     int type,
     const unsigned char *m,
     unsigned int m_len,
-    unsigned char *sigbuf,
+   const unsigned char *sigbuf,
     unsigned int *siglen,
     const RSA *rsa,
     RSA_CCI_OPERATION_TYPE sign

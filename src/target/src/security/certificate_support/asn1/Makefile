@@ -95,8 +95,8 @@ OBJS = 	a_object.o a_bitstr.o a_utctm.o a_gentm.o a_time.o a_int.o a_octet.o \
 	t_req.o t_x509.o t_x509a.o t_crl.o t_pkey.o t_spki.o t_bitst.o \
 	tasn_new.o tasn_fre.o tasn_enc.o tasn_dec.o tasn_utl.o tasn_typ.o \
 	f_int.o f_string.o n_pkey.o \
-	f_enum.o a_hdr.o x_pkey.o a_bool.o x_exten.o \
-	asn1_gen.o asn1_par.o asn1_lib.o asn1_err.o a_meth.o a_bytes.o a_strnid.o \
+	f_enum.o x_pkey.o a_bool.o x_exten.o \
+	asn1_gen.o asn1_par.o asn1_lib.o asn1_err.o a_bytes.o a_strnid.o \
 	evp_asn1.o asn_pack.o p5_pbe.o p5_pbev2.o p8_pkey.o asn_moid.o
 
 OBJS+= asn1_link_syms.o

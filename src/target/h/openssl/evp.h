@@ -117,6 +117,10 @@
 # define EVP_PKEY_HMAC   NID_hmac
 # define EVP_PKEY_CMAC   NID_cmac
 
+# define EVP_PKT_EXP     0x1000 /* <= 512 bit key */
+
+
+
 #ifdef  __cplusplus
 extern "C" {
 #endif
