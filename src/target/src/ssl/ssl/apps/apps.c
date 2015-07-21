@@ -109,6 +109,8 @@
  *
  */
 
+# define OPENSSL_SYSTEM_VXWORKS
+
 #if !defined(_POSIX_C_SOURCE) && defined(OPENSSL_SYS_VMS)
 /*
  * On VMS, you need to define this to get the declaration of fileno().  The
@@ -2882,7 +2884,7 @@ double app_tminterval(int stop, int usertime)
 }
 
 #else
-# include <sys/time.h>
+/*# include <sys/time.h>*/
 # include <sys/resource.h>
 
 double app_tminterval(int stop, int usertime)
@@ -2989,6 +2991,6 @@ int raw_write_stdout(const void *buf, int siz)
 #else
 int raw_write_stdout(const void *buf, int siz)
 {
-    return write(fileno(stdout), buf, siz);
+    return write(fileno(stdout), (void *)buf, siz);
 }
 #endif

@@ -384,7 +384,7 @@ const X509_VERIFY_PARAM *X509_VERIFY_PARAM_lookup(const char *name)
 		if (idx != -1)
 			return sk_X509_VERIFY_PARAM_value(param_table, idx);
 		}
-	return (const X509_VERIFY_PARAM *) OBJ_bsearch((char *)&pm,
+	return (const X509_VERIFY_PARAM *) OBJ_bsearch_((char *)&pm,
 				(char *)&default_table,
 				sizeof(default_table)/sizeof(X509_VERIFY_PARAM),
 				sizeof(X509_VERIFY_PARAM),

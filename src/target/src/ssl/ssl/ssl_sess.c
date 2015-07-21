@@ -1219,9 +1219,14 @@ void SSL_CTX_sess_set_new_cb(SSL_CTX *ctx,
     ctx->new_session_cb = cb;
 }
 
-int (*SSL_CTX_sess_get_new_cb(SSL_CTX *ctx)) (SSL *ssl, SSL_SESSION *sess) {
-    return ctx->new_session_cb;
+typedef int (*SESSION_CB_TYPE_SSL)(SSL *ssl, SSL_SESSION *sess);
+SESSION_CB_TYPE_SSL SSL_CTX_sess_get_new_cb(SSL_CTX *ctx){
+	return ctx->new_session_cb;
 }
+
+/*int (*SSL_CTX_sess_get_new_cb(SSL_CTX *ctx)) (SSL *ssl, SSL_SESSION *sess) {
+    return ctx->new_session_cb;
+}*/
 
 void SSL_CTX_sess_set_remove_cb(SSL_CTX *ctx,
                                 void (*cb) (SSL_CTX *ctx, SSL_SESSION *sess))
@@ -1229,10 +1234,16 @@ void SSL_CTX_sess_set_remove_cb(SSL_CTX *ctx,
     ctx->remove_session_cb = cb;
 }
 
-void (*SSL_CTX_sess_get_remove_cb(SSL_CTX *ctx)) (SSL_CTX *ctx,
+typedef void (*SESSION_CB_TYPE_CTX)(SSL_CTX *ctx, SSL_SESSION *sess);
+SESSION_CB_TYPE_CTX SSL_CTX_sess_get_remove_cb(SSL_CTX *ctx){
+	return ctx->remove_session_cb;
+}
+
+
+/*void (*SSL_CTX_sess_get_remove_cb(SSL_CTX *ctx)) (SSL_CTX *ctx,
                                                   SSL_SESSION *sess) {
     return ctx->remove_session_cb;
-}
+}*/
 
 void SSL_CTX_sess_set_get_cb(SSL_CTX *ctx,
                              SSL_SESSION *(*cb) (struct ssl_st *ssl,
@@ -1242,11 +1253,18 @@ void SSL_CTX_sess_set_get_cb(SSL_CTX *ctx,
     ctx->get_session_cb = cb;
 }
 
-SSL_SESSION *(*SSL_CTX_sess_get_get_cb(SSL_CTX *ctx)) (SSL *ssl,
+
+typedef SSL_SESSION *(*SESSION_CB_TYPE_GET_CTX)(SSL *ssl, unsigned char *data,int len, int *copy);
+SESSION_CB_TYPE_GET_CTX SSL_CTX_sess_get_get_cb(SSL_CTX *ctx){
+	return ctx->get_session_cb;
+}
+
+
+/*SSL_SESSION *(*SSL_CTX_sess_get_get_cb(SSL_CTX *ctx)) (SSL *ssl,
                                                        unsigned char *data,
                                                        int len, int *copy) {
     return ctx->get_session_cb;
-}
+}*/
 
 void SSL_CTX_set_info_callback(SSL_CTX *ctx,
                                void (*cb) (const SSL *ssl, int type, int val))
@@ -1254,10 +1272,16 @@ void SSL_CTX_set_info_callback(SSL_CTX *ctx,
     ctx->info_callback = cb;
 }
 
-void (*SSL_CTX_get_info_callback(SSL_CTX *ctx)) (const SSL *ssl, int type,
+typedef void (*SESSION_CB_TYPE_INFO_CALLBACK)(const SSL *ssl, int type,int val);
+SESSION_CB_TYPE_INFO_CALLBACK SSL_CTX_get_info_callback(SSL_CTX *ctx){
+	return ctx->info_callback;
+}
+
+
+/*void (*SSL_CTX_get_info_callback(SSL_CTX *ctx)) (const SSL *ssl, int type,
                                                  int val) {
     return ctx->info_callback;
-}
+}*/
 
 void SSL_CTX_set_client_cert_cb(SSL_CTX *ctx,
                                 int (*cb) (SSL *ssl, X509 **x509,
@@ -1265,11 +1289,15 @@ void SSL_CTX_set_client_cert_cb(SSL_CTX *ctx,
 {
     ctx->client_cert_cb = cb;
 }
+typedef int (*SESSION_CB_GET_CLIENT_CERT)(SSL *ssl, X509 **x509,EVP_PKEY **pkey);
+SESSION_CB_GET_CLIENT_CERT SSL_CTX_get_client_cert_cb(SSL_CTX *ctx){
+	return ctx->client_cert_cb;
+}
 
-int (*SSL_CTX_get_client_cert_cb(SSL_CTX *ctx)) (SSL *ssl, X509 **x509,
+/*int (*SSL_CTX_get_client_cert_cb(SSL_CTX *ctx)) (SSL *ssl, X509 **x509,
                                                  EVP_PKEY **pkey) {
     return ctx->client_cert_cb;
-}
+}*/
 
 #ifndef OPENSSL_NO_ENGINE
 int SSL_CTX_set_client_cert_engine(SSL_CTX *ctx, ENGINE *e)

@@ -111,7 +111,7 @@
 
 #include "ssl_locl.h"
 #ifndef OPENSSL_NO_SSL2
-#include "../crypto/constant_time_locl.h"
+# include <openssl/constant_time_locl.h>
 # include <stdio.h>
 # include <openssl/bio.h>
 # include <openssl/rand.h>

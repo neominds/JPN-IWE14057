@@ -122,6 +122,9 @@
 #ifndef OPENSSL_NO_ENGINE
 #include <openssl/engine.h>
 #endif
+# ifndef OPENSSL_NO_OCSP
+#  include <openssl/ocsp.h>
+# endif
 #include <openssl/ossl_typ.h>
 
 int app_RAND_load_file(const char *file, BIO *bio_e, int dont_warn);
@@ -236,6 +239,13 @@ extern BIO *bio_err;
 #  endif
 #endif
 
+# ifdef OPENSSL_SYSNAME_WIN32
+#  define openssl_fdset(a,b) FD_SET((unsigned int)a, b)
+# else
+#  define openssl_fdset(a,b) FD_SET(a, b)
+# endif
+
+
 typedef struct args_st
 	{
 	char **data;
@@ -283,6 +293,14 @@ X509_STORE *setup_verify(BIO *bp, char *CAfile, char *CApath);
 ENGINE *setup_engine(BIO *err, const char *engine, int debug);
 #endif
 
+# ifndef OPENSSL_NO_OCSP
+OCSP_RESPONSE *process_responder(BIO *err, OCSP_REQUEST *req,
+                                 char *host, char *path, char *port,
+                                 int use_ssl, STACK_OF(CONF_VALUE) *headers,
+                                 int req_timeout);
+#endif
+
+
 int load_config(BIO *err, CONF *cnf);
 char *make_config_name(void);
 
@@ -321,13 +339,27 @@ int index_index(CA_DB *db);
 int save_index(const char *dbfile, const char *suffix, CA_DB *db);
 int rotate_index(const char *dbfile, const char *new_suffix, const char *old_suffix);
 void free_index(CA_DB *db);
-int index_name_cmp(const char **a, const char **b);
+/*int index_name_cmp(const char **a, const char **b);*/
+int index_name_cmp(const OPENSSL_CSTRING *a, const OPENSSL_CSTRING *b);
+
 int parse_yesno(const char *str, int def);
 
 X509_NAME *parse_name(char *str, long chtype, int multirdn);
 int args_verify(char ***pargs, int *pargc,
 			int *badarg, BIO *err, X509_VERIFY_PARAM **pm);
 void policies_print(BIO *out, X509_STORE_CTX *ctx);
+
+# ifndef OPENSSL_NO_PSK
+extern char *psk_key;
+# endif
+
+# if !defined(OPENSSL_NO_TLSEXT) && !defined(OPENSSL_NO_NEXTPROTONEG)
+unsigned char *next_protos_parse(unsigned short *outlen, const char *in);
+# endif                         /* !OPENSSL_NO_TLSEXT &&
+                                 * !OPENSSL_NO_NEXTPROTONEG */
+
+
+
 
 #define FORMAT_UNDEF    0
 #define FORMAT_ASN1     1
@@ -339,6 +371,10 @@ void policies_print(BIO *out, X509_STORE_CTX *ctx);
 #define FORMAT_ENGINE   7
 #define FORMAT_IISSGC	8	/* XXX this stupid macro helps us to avoid
 				 * adding yet another param to load_*key() */
+# define FORMAT_PEMRSA   9      /* PEM RSAPubicKey format */
+# define FORMAT_ASN1RSA  10     /* DER RSAPubicKey format */
+# define FORMAT_MSBLOB   11     /* MS Key blob format */
+# define FORMAT_PVK      12     /* MS PVK file format */
 
 #define EXT_COPY_NONE	0
 #define EXT_COPY_ADD	1
@@ -349,5 +385,11 @@ void policies_print(BIO *out, X509_STORE_CTX *ctx);
 #define APP_PASS_LEN	1024
 
 #define SERIAL_RAND_BITS	64
+
+int raw_write_stdout(const void *, int);
+
+# define TM_START        0
+# define TM_STOP         1
+
 
 #endif

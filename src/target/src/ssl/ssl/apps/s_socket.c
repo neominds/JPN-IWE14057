@@ -68,7 +68,9 @@
 # include "e_os2.h"
 #else
 /*# include "../e_os2.h" */
-# include <openssl/private/e_os2.h>
+/*# include <openssl/private/e_os2.h>*/
+# include <openssl/e_os2.h>
+
 #endif
 
 /*

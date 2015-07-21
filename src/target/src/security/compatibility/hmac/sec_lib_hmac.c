@@ -125,7 +125,7 @@ static CCI_ALGORITHM_ID hmacGetCCIAlgorithmId(int type)
 * 
 * NOMANUAL
 */
-void HMAC_Init_ex(HMAC_CTX *ctx, const void *key, int len,
+int HMAC_Init_ex(HMAC_CTX *ctx, const void *key, int len,
                   const EVP_MD *md, ENGINE *impl)
     {
 
@@ -201,7 +201,10 @@ void HMAC_Init_ex(HMAC_CTX *ctx, const void *key, int len,
         SECLIBerr(WRSECLIB_F_HMAC_Init_ex,WRSECLIB_R_TASK_SUSPEND);
         taskSuspend(0);
 #endif
-        }
+		
+	
+		}
+	return cciStatus;
 
     }
 /******************************************************************************
@@ -263,7 +266,7 @@ void HMAC_Init(HMAC_CTX *ctx, const void *key, int len,
 * 
 * NOMANUAL
 */
-void HMAC_Update(HMAC_CTX *ctx, const unsigned char *data, int len)
+int HMAC_Update(HMAC_CTX *ctx, const unsigned char *data, int len)
     {
     cci_st cciStatus;
     cciStatus = cciHmacUpdate((ctx->cciCtx),data,len);
@@ -271,6 +274,7 @@ void HMAC_Update(HMAC_CTX *ctx, const unsigned char *data, int len)
         {
         SECLIBerr(WRSECLIB_F_HMAC_Update,WRSECLIB_R_CCI_FAILED);
         }
+	return cciStatus;
     }
 /******************************************************************************
 *
@@ -296,7 +300,7 @@ void HMAC_Update(HMAC_CTX *ctx, const unsigned char *data, int len)
 * 
 * NOMANUAL
 */
-void HMAC_Final(HMAC_CTX *ctx, unsigned char *md, unsigned int *len)
+int HMAC_Final(HMAC_CTX *ctx, unsigned char *md, unsigned int *len)
     {
     cci_st cciStatus;
     unsigned int tempLen;
@@ -316,7 +320,9 @@ void HMAC_Final(HMAC_CTX *ctx, unsigned char *md, unsigned int *len)
         taskSuspend(0);
 #endif
         }
-    }
+	return cciStatus;
+
+}
 /******************************************************************************
 *
 * HMAC_CTX_init - init a HMAC_CTX structure

@@ -230,10 +230,35 @@ int openssl_main(int Argc, char *Argv[])
     CONF *config=NULL;
     BIO *bio_err=NULL;
 
+#if defined( OPENSSL_SYS_VMS) && (__INITIAL_POINTER_SIZE == 64)
+    /*-
+     * 2011-03-22 SMS.
+     * If we have 32-bit pointers everywhere, then we're safe, and
+     * we bypass this mess, as on non-VMS systems.  (See ARGV,
+     * above.)
+     * Problem 1: Compaq/HP C before V7.3 always used 32-bit
+     * pointers for argv[].
+     * Fix 1: For a 32-bit argv[], when we're using 64-bit pointers
+     * everywhere else, we always allocate and use a 64-bit
+     * duplicate of argv[].
+     * Problem 2: Compaq/HP C V7.3 (Alpha, IA64) before ECO1 failed
+     * to NULL-terminate a 64-bit argv[].  (As this was written, the
+     * compiler ECO was available only on IA64.)
+     * Fix 2: Unless advised not to (VMS_TRUST_ARGV), we test a
+     * 64-bit argv[argc] for NULL, and, if necessary, use a
+     * (properly) NULL-terminated (64-bit) duplicate of argv[].
+     * The same code is used in either case to duplicate argv[].
+     * Some of these decisions could be handled in preprocessing,
+     * but the code tends to get even uglier, and the penalty for
+     * deciding at compile- or run-time is tiny.
+     */
+    char **Argv = NULL;
+    int free_Argv = 0;
+
     if ((sizeof(_Argv) < 8)     /* 32-bit argv[]. */
 # if !defined( VMS_TRUST_ARGV)
         || (_Argv[Argc] != NULL) /* Untrusted argv[argc] not NULL. */
-# endif
+#endif
         ) {
         int i;
         Argv = OPENSSL_malloc((Argc + 1) * sizeof(char *));
@@ -283,6 +308,7 @@ int openssl_main(int Argc, char *Argv[])
     {
         CRYPTO_set_locking_callback(lock_dbg_cb);
     }
+#endif
 #if 0
     if (getenv("OPENSSL_FIPS")) {
 #ifdef OPENSSL_FIPS

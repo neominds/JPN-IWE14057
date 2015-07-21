@@ -154,7 +154,7 @@
 #include <stdio.h>
 #include "ssl_locl.h"
 #include "kssl_lcl.h"
-#include "../crypto/constant_time_locl.h"
+#include <openssl/constant_time_locl.h>
 #include <openssl/buffer.h>
 #include <openssl/rand.h>
 #include <openssl/objects.h>
