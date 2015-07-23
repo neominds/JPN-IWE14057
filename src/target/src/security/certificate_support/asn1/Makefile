@@ -97,7 +97,7 @@ OBJS = 	a_object.o a_bitstr.o a_utctm.o a_gentm.o a_time.o a_int.o a_octet.o \
 	f_int.o f_string.o n_pkey.o \
 	f_enum.o x_pkey.o a_bool.o x_exten.o \
 	asn1_gen.o asn1_par.o asn1_lib.o asn1_err.o a_bytes.o a_strnid.o \
-	evp_asn1.o asn_pack.o p5_pbe.o p5_pbev2.o p8_pkey.o asn_moid.o
+	evp_asn1.o asn_pack.o p5_pbe.o p5_pbev2.o p8_pkey.o asn_moid.o ameth_lib.o
 
 OBJS+= asn1_link_syms.o
 

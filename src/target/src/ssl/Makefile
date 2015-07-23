@@ -31,7 +31,7 @@ else
 endif
 
 
-SUBDIRS = ssl openssl
+SUBDIRS = ssl
 
 include $(MAKE_INCLUDE_PATH)/make/rules.library
 

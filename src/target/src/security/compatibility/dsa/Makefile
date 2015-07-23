@@ -87,7 +87,7 @@ override EXTRA_DEFINE+=-DOPENSSLDIR="\"./\"" -DOPENSSL_SYSNAME_VXWORKS \
 SUBDIRS = 
 
 OBJS = 	dsa_gen.o dsa_key.o dsa_lib.o dsa_asn1.o dsa_vrf.o dsa_sign.o \
-	dsa_err.o dsa_ossl.o dsa_depr.o
+	dsa_err.o dsa_ossl.o dsa_depr.o dsa_pmeth.o
 
 
 

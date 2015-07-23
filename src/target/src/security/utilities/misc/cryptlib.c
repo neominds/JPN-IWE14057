@@ -970,6 +970,15 @@ void OpenSSLDie(const char *file, int line, const char *assertion)
 #endif
 }
 
+void OPENSSL_init(void)
+{
+    static int done = 0;
+    if (done)
+        return;
+    done = 1;
+}
+
+
 void *OPENSSL_stderr(void)
 {
     return stderr;

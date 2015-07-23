@@ -97,7 +97,7 @@ static char *table2string(long s, OCSP_TBLSTR *ts, int len)
 	return "(UNKNOWN)";
 }
 
-char *OCSP_response_status_str(long s)
+const char *OCSP_response_status_str(long s)
         {
 	static OCSP_TBLSTR rstat_tbl[] = {
 	        { OCSP_RESPONSE_STATUS_SUCCESSFUL, "successful" },
@@ -109,7 +109,7 @@ char *OCSP_response_status_str(long s)
 	return table2string(s, rstat_tbl, 6);
 	} 
 
-char *OCSP_cert_status_str(long s)
+const char *OCSP_cert_status_str(long s)
         {
 	static OCSP_TBLSTR cstat_tbl[] = {
 	        { V_OCSP_CERTSTATUS_GOOD, "good" },
@@ -118,7 +118,7 @@ char *OCSP_cert_status_str(long s)
 	return table2string(s, cstat_tbl, 3);
 	} 
 
-char *OCSP_crl_reason_str(long s)
+const char *OCSP_crl_reason_str(long s)
         {
 	OCSP_TBLSTR reason_tbl[] = {
 	  { OCSP_REVOKED_STATUS_UNSPECIFIED, "unspecified" },

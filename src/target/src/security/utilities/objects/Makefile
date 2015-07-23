@@ -86,7 +86,7 @@ override EXTRA_DEFINE+=-DOPENSSLDIR="\"./\"" -DOPENSSL_SYSNAME_VXWORKS \
 
 SUBDIRS = 
 
-OBJS = 	o_names.o obj_dat.o obj_lib.o obj_err.o
+OBJS = 	o_names.o obj_dat.o obj_lib.o obj_err.o obj_xref.o
 
 
 

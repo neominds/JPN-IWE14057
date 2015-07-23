@@ -88,7 +88,7 @@ SUBDIRS =
 
 OBJS = 	rsa_gen.o rsa_lib.o rsa_sign.o rsa_saos.o rsa_err.o \
 	rsa_pk1.o rsa_ssl.o rsa_none.o rsa_oaep.o rsa_chk.o rsa_null.o \
-	rsa_pss.o rsa_x931.o rsa_asn1.o rsa_depr.o
+	rsa_pss.o rsa_x931.o rsa_asn1.o rsa_depr.o rsa_pmeth.o rsa_ameth.o
 
 OBJS+=	rsa_cci.o
 

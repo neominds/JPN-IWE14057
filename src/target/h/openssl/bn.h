@@ -125,12 +125,11 @@
 #ifndef HEADER_BN_H
 # define HEADER_BN_H
 
-#include <openssl/e_os2.h>
-#ifndef OPENSSL_NO_FP_API
-#include <stdio.h> /* FILE */
-#endif
-#include <openssl/ossl_typ.h>
-
+# include <openssl/e_os2.h>
+# ifndef OPENSSL_NO_FP_API
+#  include <stdio.h>            /* FILE */
+# endif
+# include <openssl/ossl_typ.h>
 #include <wrn/cci/cci.h>
 # include <openssl/crypto.h>
 
@@ -150,11 +149,10 @@ extern "C" {
 /* #define BN_DEBUG */
 /* #define BN_DEBUG_RAND */
 
-# ifndef OPENSSL_SMALL_FOOTPRINT
+
 #  define BN_MUL_COMBA
 #  define BN_SQR_COMBA
 #  define BN_RECURSION
-# endif
 
 /*
  * This next option uses the C libraries (2 word)/(1 word) function. If it is
@@ -376,6 +374,7 @@ struct bn_gencb_st {
     } cb;
 };
 /* Wrapper function to make using BN_GENCB easier,  */
+#define BN_GENCB_call ccip_BN_GENCB_call
 int BN_GENCB_call(BN_GENCB *cb, int a, int b);
 /* Macro to populate a BN_GENCB structure with an "old"-style callback */
 # define BN_GENCB_set_old(gencb, callback, cb_arg) { \
@@ -436,7 +435,6 @@ int BN_GENCB_call(BN_GENCB *cb, int a, int b);
 # else
 #  define BN_zero(a)      (BN_set_word((a),0))
 # endif
-
 /*
 ** --- CCI prototypes
 */
@@ -451,12 +449,13 @@ BN_ULONG 	ccip_bn_sub_words(BN_ULONG *rp, const BN_ULONG *ap, const BN_ULONG *bp
 void	ccip_BN_CTX_init(BN_CTX *c);
 void	ccip_BN_CTX_free(BN_CTX *c);
 
-void	BN_clear_free(BIGNUM *a);
+const BIGNUM *BN_value_one(void);
+char *BN_options(void);
 BN_CTX *BN_CTX_new(void);
-#ifndef OPENSSL_NO_DEPRECATED
-void BN_CTX_init(BN_CTX *ctx);
-#endif
-void BN_CTX_free(BN_CTX *ctx);
+# ifndef OPENSSL_NO_DEPRECATED
+void BN_CTX_init(BN_CTX *c);
+# endif
+void BN_CTX_free(BN_CTX *c);
 void BN_CTX_start(BN_CTX *ctx);
 BIGNUM *BN_CTX_get(BN_CTX *ctx);
 void BN_CTX_end(BN_CTX *ctx);
@@ -474,19 +473,15 @@ void BN_cci2bn( cci_m op, BIGNUM *ret );
 int BN_usub(BIGNUM *r, const BIGNUM *a, const BIGNUM *b);
 
 BN_CTX *BN_CTX_new(void);
-
-
-const BIGNUM *BN_value_one(void);
-char *	BN_options(void);
 int BN_rand(BIGNUM *rnd, int bits, int top, int bottom);
 int BN_pseudo_rand(BIGNUM *rnd, int bits, int top, int bottom);
-int BN_rand_range(BIGNUM *rnd, BIGNUM *range);
-int BN_pseudo_rand_range(BIGNUM *rnd, BIGNUM *range);
+int BN_rand_range(BIGNUM *rnd, const BIGNUM *range);
+int BN_pseudo_rand_range(BIGNUM *rnd, const BIGNUM *range);
 int BN_num_bits(const BIGNUM *a);
 int BN_num_bits_word(BN_ULONG);
 BIGNUM *BN_new(void);
 void BN_init(BIGNUM *);
-//void BN_clear_free(BIGNUM *a);
+void BN_clear_free(BIGNUM *a);
 BIGNUM *BN_copy(BIGNUM *a, const BIGNUM *b);
 void BN_swap(BIGNUM *a, BIGNUM *b);
 BIGNUM *BN_bin2bn(const unsigned char *s, int len, BIGNUM *ret);
@@ -503,6 +498,7 @@ int BN_sqr(BIGNUM *r, const BIGNUM *a, BN_CTX *ctx);
  * \param  b  pointer to the BIGNUM object
  * \param  n  0 if the BIGNUM b should be positive and a value != 0 otherwise
  */
+#define BN_set_negative ccip_BN_set_negative
 void BN_set_negative(BIGNUM *b, int n);
 /** BN_is_negative returns 1 if the BIGNUM is negative
  * \param  a  pointer to the BIGNUM object
@@ -550,6 +546,8 @@ int BN_mod_exp(BIGNUM *r, const BIGNUM *a, const BIGNUM *p,
                const BIGNUM *m, BN_CTX *ctx);
 int BN_mod_exp_mont(BIGNUM *r, const BIGNUM *a, const BIGNUM *p,
                     const BIGNUM *m, BN_CTX *ctx, BN_MONT_CTX *m_ctx);
+#define BN_mod_exp_mont_consttime ccip_BN_mod_exp_mont_consttime
+
 int BN_mod_exp_mont_consttime(BIGNUM *rr, const BIGNUM *a, const BIGNUM *p,
                               const BIGNUM *m, BN_CTX *ctx,
                               BN_MONT_CTX *in_mont);
@@ -608,9 +606,12 @@ int BN_is_prime_fasttest(const BIGNUM *p, int nchecks,
 # endif                         /* !defined(OPENSSL_NO_DEPRECATED) */
 
 /* Newer versions */
+#define BN_generate_prime_ex ccip_BN_generate_prime_ex
 int BN_generate_prime_ex(BIGNUM *ret, int bits, int safe, const BIGNUM *add,
                          const BIGNUM *rem, BN_GENCB *cb);
+#define BN_is_prime_ex ccip_BN_is_prime_ex
 int BN_is_prime_ex(const BIGNUM *p, int nchecks, BN_CTX *ctx, BN_GENCB *cb);
+#define BN_is_prime_fasttest_ex ccip_BN_is_prime_fasttest_ex
 int BN_is_prime_fasttest_ex(const BIGNUM *p, int nchecks, BN_CTX *ctx,
                             int do_trial_division, BN_GENCB *cb);
 
@@ -635,6 +636,7 @@ int BN_from_montgomery(BIGNUM *r, const BIGNUM *a,
 void BN_MONT_CTX_free(BN_MONT_CTX *mont);
 int BN_MONT_CTX_set(BN_MONT_CTX *mont, const BIGNUM *mod, BN_CTX *ctx);
 BN_MONT_CTX *BN_MONT_CTX_copy(BN_MONT_CTX *to, BN_MONT_CTX *from);
+#define BN_MONT_CTX_set_locked ccip_BN_MONT_CTX_set_locked	
 BN_MONT_CTX *BN_MONT_CTX_set_locked(BN_MONT_CTX **pmont, int lock,
                                     const BIGNUM *mod, BN_CTX *ctx);
 
@@ -652,12 +654,13 @@ int BN_BLINDING_invert_ex(BIGNUM *n, const BIGNUM *r, BN_BLINDING *b,
                           BN_CTX *);
 # ifndef OPENSSL_NO_DEPRECATED
 unsigned long BN_BLINDING_get_thread_id(const BN_BLINDING *);
+#define BN_BLINDING_set_thread_id ccip_BN_BLINDING_set_thread_id 
 void BN_BLINDING_set_thread_id(BN_BLINDING *, unsigned long);
 # endif
-
 CRYPTO_THREADID *BN_BLINDING_thread_id(BN_BLINDING *);
 unsigned long BN_BLINDING_get_flags(const BN_BLINDING *);
 void BN_BLINDING_set_flags(BN_BLINDING *, unsigned long);
+#define BN_BLINDING_create_param ccip_BN_BLINDING_create_param
 BN_BLINDING *BN_BLINDING_create_param(BN_BLINDING *b,
                                       const BIGNUM *e, BIGNUM *m, BN_CTX *ctx,
                                       int (*bn_mod_exp) (BIGNUM *r,

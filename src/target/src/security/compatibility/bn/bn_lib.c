@@ -473,16 +473,16 @@ int     BN_bntest_rand(BIGNUM *rnd, int bits, int top, int bottom)
 
 
 
-int	BN_rand_range(BIGNUM *r, BIGNUM *range)
+int	BN_rand_range(BIGNUM *r, const BIGNUM *range)
 	{
         int	ccip_BN_rand_range(BIGNUM *rnd, BIGNUM *range);
-		return(ccip_BN_rand_range(r, range));
+		return(ccip_BN_rand_range(r, (void *)range));
 }
 
-int	BN_pseudo_rand_range(BIGNUM *r, BIGNUM *range)
+int	BN_pseudo_rand_range(BIGNUM *r,const BIGNUM *range)
 {
         int	ccip_BN_pseudo_rand_range(BIGNUM *rnd, BIGNUM *range);
-		return(ccip_BN_pseudo_rand_range(r, range));
+		return(ccip_BN_pseudo_rand_range(r, (void *)range));
 	}
 
 
