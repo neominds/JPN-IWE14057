@@ -96,6 +96,8 @@
 #  define sock_puts  SockPuts
 # endif
 
+#define gettimeofday(tv, tzp) (microtime (tv))
+
 static int dgram_write(BIO *h, const char *buf, int num);
 static int dgram_read(BIO *h, char *buf, int size);
 static int dgram_puts(BIO *h, const char *str);

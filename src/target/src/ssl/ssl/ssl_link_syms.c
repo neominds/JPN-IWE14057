@@ -12,7 +12,7 @@ modification history
 
 extern int BIO_f_ssl ();
 extern int SSLv23_client_method ();
-extern int SSL23_version_str ();
+//extern int SSL23_version_str ();
 extern int SSLv23_method ();
 extern int ssl23_read_bytes ();
 extern int SSLv23_server_method ();
@@ -52,7 +52,7 @@ FUNCPTR * ssl_link_syms()
         {
         (FUNCPTR) BIO_f_ssl,
         (FUNCPTR) SSLv23_client_method,
-        (FUNCPTR) SSL23_version_str,
+//        (FUNCPTR) SSL23_version_str,
         (FUNCPTR) SSLv23_method,
         (FUNCPTR) ssl23_read_bytes,
         (FUNCPTR) SSLv23_server_method,

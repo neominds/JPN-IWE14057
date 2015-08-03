@@ -225,6 +225,63 @@ ASN1_UTCTIME *ASN1_UTCTIME_set(ASN1_UTCTIME *s, time_t t)
 	}
 
 
+ASN1_UTCTIME *ASN1_UTCTIME_adj(ASN1_UTCTIME *s, time_t t,
+                               int offset_day, long offset_sec)
+{
+    char *p;
+    struct tm *ts;
+    struct tm data;
+    size_t len = 20;
+    int free_s = 0;
+
+    if (s == NULL) {
+        free_s = 1;
+        s = M_ASN1_UTCTIME_new();
+    }
+    if (s == NULL)
+        goto err;
+
+    ts = OPENSSL_gmtime(&t, &data);
+    if (ts == NULL)
+        goto err;
+
+    if (offset_day || offset_sec) {
+        if (!OPENSSL_gmtime_adj(ts, offset_day, offset_sec))
+            goto err;
+    }
+
+    if ((ts->tm_year < 50) || (ts->tm_year >= 150))
+        goto err;
+
+    p = (char *)s->data;
+    if ((p == NULL) || ((size_t)s->length < len)) {
+        p = OPENSSL_malloc(len);
+        if (p == NULL) {
+            ASN1err(ASN1_F_ASN1_UTCTIME_ADJ, ERR_R_MALLOC_FAILURE);
+            goto err;
+        }
+        if (s->data != NULL)
+            OPENSSL_free(s->data);
+        s->data = (unsigned char *)p;
+    }
+
+    BIO_snprintf(p, len, "%02d%02d%02d%02d%02d%02dZ", ts->tm_year % 100,
+                 ts->tm_mon + 1, ts->tm_mday, ts->tm_hour, ts->tm_min,
+                 ts->tm_sec);
+    s->length = strlen(p);
+    s->type = V_ASN1_UTCTIME;
+#ifdef CHARSET_EBCDIC_not
+    ebcdic2ascii(s->data, s->data, s->length);
+#endif
+    return (s);
+ err:
+    if (free_s && s)
+        M_ASN1_UTCTIME_free(s);
+    return NULL;
+}
+
+
+
 int ASN1_UTCTIME_cmp_time_t(const ASN1_UTCTIME *s, time_t t)
 	{
 	struct tm *tm;

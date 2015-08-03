@@ -112,6 +112,9 @@
 #ifndef HEADER_APPS_H
 #define HEADER_APPS_H
 
+
+#define gettimeofday(tv, tzp) (microtime (tv))
+
 #include "e_os.h"
 
 #include <openssl/bio.h>
@@ -339,6 +342,9 @@ int index_index(CA_DB *db);
 int save_index(const char *dbfile, const char *suffix, CA_DB *db);
 int rotate_index(const char *dbfile, const char *new_suffix, const char *old_suffix);
 void free_index(CA_DB *db);
+# define index_name_cmp_noconst(a, b) \
+        index_name_cmp((const OPENSSL_CSTRING *)CHECKED_PTR_OF(OPENSSL_STRING, a), \
+        (const OPENSSL_CSTRING *)CHECKED_PTR_OF(OPENSSL_STRING, b))
 /*int index_name_cmp(const char **a, const char **b);*/
 int index_name_cmp(const OPENSSL_CSTRING *a, const OPENSSL_CSTRING *b);
 
@@ -348,6 +354,13 @@ X509_NAME *parse_name(char *str, long chtype, int multirdn);
 int args_verify(char ***pargs, int *pargc,
 			int *badarg, BIO *err, X509_VERIFY_PARAM **pm);
 void policies_print(BIO *out, X509_STORE_CTX *ctx);
+
+int do_X509_CRL_sign(BIO *err, X509_CRL *x, EVP_PKEY *pkey, const EVP_MD *md,
+                     STACK_OF(OPENSSL_STRING) *sigopts);
+
+int do_X509_sign(BIO *err, X509 *x, EVP_PKEY *pkey, const EVP_MD *md,
+                 STACK_OF(OPENSSL_STRING) *sigopts);
+
 
 # ifndef OPENSSL_NO_PSK
 extern char *psk_key;
@@ -393,3 +406,5 @@ int raw_write_stdout(const void *, int);
 
 
 #endif
+
+

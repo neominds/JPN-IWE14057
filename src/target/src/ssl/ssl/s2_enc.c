@@ -67,7 +67,7 @@ int ssl2_enc_init(SSL *s, int client)
     const EVP_CIPHER *c;
     const EVP_MD *md;
     int num;
-
+	printf("Inside the ssl2_enc_init method\n");
     if (!ssl_cipher_get_evp(s->session, &c, &md, NULL, NULL, NULL)) {
         ssl2_return_error(s, SSL2_PE_NO_CIPHER);
         SSLerr(SSL_F_SSL2_ENC_INIT, SSL_R_PROBLEMS_MAPPING_CIPHER_FUNCTIONS);
@@ -75,7 +75,7 @@ int ssl2_enc_init(SSL *s, int client)
     }
     ssl_replace_hash(&s->read_hash, md);
     ssl_replace_hash(&s->write_hash, md);
-
+	printf("Done with ssl_replace_hash methods\n");
     if ((s->enc_read_ctx == NULL) && ((s->enc_read_ctx = (EVP_CIPHER_CTX *)
                                        OPENSSL_malloc(sizeof(EVP_CIPHER_CTX)))
                                       == NULL))
@@ -87,7 +87,7 @@ int ssl2_enc_init(SSL *s, int client)
      */
     rs = s->enc_read_ctx;
     EVP_CIPHER_CTX_init(rs);
-
+   printf("After the call of evp_cipher_ctx_init function in s2_enc.c\n");
     if ((s->enc_write_ctx == NULL) && ((s->enc_write_ctx = (EVP_CIPHER_CTX *)
                                         OPENSSL_malloc(sizeof
                                                        (EVP_CIPHER_CTX))) ==
@@ -100,19 +100,22 @@ int ssl2_enc_init(SSL *s, int client)
     num = c->key_len;
     s->s2->key_material_length = num * 2;
     OPENSSL_assert(s->s2->key_material_length <= sizeof s->s2->key_material);
-
+	printf("Done with ethe openssl_assert function call\n");
     if (ssl2_generate_key_material(s) <= 0)
         return 0;
-
+	printf("Done with ssl2_generate_key_material\n");
     OPENSSL_assert(c->iv_len <= (int)sizeof(s->session->key_arg));
+	printf("Done with second openssl_assert function\n");
     EVP_EncryptInit_ex(ws, c, NULL,
                        &(s->s2->key_material[(client) ? num : 0]),
                        s->session->key_arg);
+	printf("Done witht the evp_encryptinit \n");
     EVP_DecryptInit_ex(rs, c, NULL,
                        &(s->s2->key_material[(client) ? 0 : num]),
                        s->session->key_arg);
     s->s2->read_key = &(s->s2->key_material[(client) ? 0 : num]);
     s->s2->write_key = &(s->s2->key_material[(client) ? num : 0]);
+	printf("End of ssl2_enc_inint function\n");
     return (1);
  err:
     SSLerr(SSL_F_SSL2_ENC_INIT, ERR_R_MALLOC_FAILURE);

@@ -677,7 +677,7 @@ int ssl2_part_read(SSL *s, unsigned long f, int i)
 int ssl2_do_write(SSL *s)
 {
     int ret;
-
+printf("Entered ssl2_do_write func\n");
     ret = ssl2_write(s, &s->init_buf->data[s->init_off], s->init_num);
     if (ret == s->init_num) {
         if (s->msg_callback)
@@ -690,6 +690,7 @@ int ssl2_do_write(SSL *s)
         return (-1);
     s->init_off += ret;
     s->init_num -= ret;
+	printf("end of ssl2_do_write func\n");
     return (0);
 }
 

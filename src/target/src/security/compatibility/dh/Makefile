@@ -86,7 +86,7 @@ override EXTRA_DEFINE+=-DOPENSSLDIR="\"./\"" -DOPENSSL_SYSNAME_VXWORKS \
 
 SUBDIRS = 
 
-OBJS = 	dh_asn1.o dh_gen.o dh_key.o dh_lib.o dh_check.o dh_err.o dh_depr.o
+OBJS = 	dh_asn1.o dh_gen.o dh_key.o dh_lib.o dh_check.o dh_err.o dh_depr.o dh_ameth.o dh_pmeth.o
 
 
 

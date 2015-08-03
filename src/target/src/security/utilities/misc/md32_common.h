@@ -285,7 +285,7 @@ int HASH_UPDATE(HASH_CTX *c, const void *data_, size_t len)
     unsigned char *p;
     HASH_LONG l;
     size_t n;
-
+	printf("I am inside HASH_UPDATE function in md32_common.h files\n");
     if (len == 0)
         return 1;
 

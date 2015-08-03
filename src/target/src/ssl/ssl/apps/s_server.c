@@ -1010,6 +1010,19 @@ int MAIN(int argc, char *argv[])
     char *CApath = NULL, *CAfile = NULL;
     unsigned char *context = NULL;
     char *dhfile = NULL;
+	int nm_i=0;
+
+		//int   argv0 = 4;
+		char *argv1 = "-cert";
+		char *argv2 = "md5rsa.pem";
+		char *argv3 = "-key";
+		char *argv4 = "md5rsakey.pem";
+		char *argv5 = "-debug";
+		char *argv6 = "-msg";
+
+
+	/*debug code*/
+
 #ifndef OPENSSL_NO_ECDH
     char *named_curve = NULL;
 #endif
@@ -1049,14 +1062,34 @@ int MAIN(int argc, char *argv[])
     char *srpuserseed = NULL;
     char *srp_verifier_file = NULL;
 #endif
-    meth = SSLv23_server_method();
+	
 
+   // meth = SSLv23_server_method();
+	//printf("protocol_version:- %d\n",meth->version);
+	//meth= SSLv2_server_method();
+	meth= TLSv1_server_method();
+	//meth= SSLv3_server_method();
+
+	
+
+	//argc = 5;
+	argc = 7;
+	argv[0]=NULL;
+	argv[1]=argv1;
+	argv[2]=argv2;
+	argv[3]=argv3;
+	argv[4]=argv4;
+	argv[5]=argv5;
+	argv[6]=argv6;
     local_argc = argc;
     local_argv = argv;
+	
+	printf("hello windriver1\n");
 
     apps_startup();
 #ifdef MONOLITH
     s_server_init();
+	printf("After the s_server_init func\n");
 #endif
 
     if (bio_err == NULL)
@@ -1071,10 +1104,17 @@ int MAIN(int argc, char *argv[])
 #endif
     s_nbio_test = 0;
 
+	printf("hello windriver\n");
+
+	for(nm_i=1;nm_i<local_argc;nm_i++)
+		printf("%s\n",argv[nm_i]);
+
+
     argc--;
     argv++;
 
     while (argc >= 1) {
+		printf("Inside while loop\n");
         if ((strcmp(*argv, "-port") == 0) || (strcmp(*argv, "-accept") == 0)) {
             if (--argc < 1)
                 goto bad;
@@ -1103,7 +1143,9 @@ int MAIN(int argc, char *argv[])
         } else if (strcmp(*argv, "-cert") == 0) {
             if (--argc < 1)
                 goto bad;
+			printf("At strcmp -cert condition\n");
             s_cert_file = *(++argv);
+			printf("certfile is %s\n",s_cert_file);
         } else if (strcmp(*argv, "-certform") == 0) {
             if (--argc < 1)
                 goto bad;
@@ -1400,9 +1442,11 @@ int MAIN(int argc, char *argv[])
         }
         argc--;
         argv++;
+		printf("argc after decrement %d, argv is %s\n",argc,*argv);
     }
     if (badop) {
  bad:
+ 		printf("Inside Bad label\n");
         sv_usage();
         goto end;
     }
@@ -1430,7 +1474,7 @@ int MAIN(int argc, char *argv[])
 
     SSL_load_error_strings();
     OpenSSL_add_ssl_algorithms();
-
+	printf("protocol_version:- %d\n",meth->version);
 #ifndef OPENSSL_NO_ENGINE
     e = setup_engine(bio_err, engine_id, 1);
 #endif
@@ -1532,6 +1576,7 @@ int MAIN(int argc, char *argv[])
                 bio_s_out = BIO_new_fp(stdout, BIO_NOCLOSE);
         }
     }
+	BIO_printf(bio_s_out,"from BIO_Printf\n");
 #if !defined(OPENSSL_NO_RSA) || !defined(OPENSSL_NO_DSA) || !defined(OPENSSL_NO_ECDSA)
     if (nocert)
 #endif
@@ -1880,6 +1925,7 @@ int MAIN(int argc, char *argv[])
     print_stats(bio_s_out, ctx);
     ret = 0;
  end:
+ 	goto die; //by neominds
     if (ctx != NULL)
         SSL_CTX_free(ctx);
     if (s_cert)
@@ -1914,6 +1960,7 @@ int MAIN(int argc, char *argv[])
         BIO_free(bio_s_out);
         bio_s_out = NULL;
     }
+	die:
     apps_shutdown();
     OPENSSL_EXIT(ret);
 }

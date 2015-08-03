@@ -19,6 +19,25 @@ extern "C" {
 #ifndef OPENSSL_NO_MDC5
 # define OPENSSL_NO_MDC5
 #endif
+
+/*no srp,strp, camellia*/
+#ifndef OPENSSL_NO_SRP
+# define OPENSSL_NO_SRP
+#endif
+
+#ifndef OPENSSL_NO_SRTP
+# define OPENSSL_NO_SRTP
+#endif
+
+#ifndef OPENSSL_NO_CAMELLIA
+# define OPENSSL_NO_CAMELLIA
+#endif
+
+#ifndef OPENSSL_NO_SEED
+# define OPENSSL_NO_SEED
+#endif
+
+
 #ifndef OPENSSL_NO_IDEA
 # define OPENSSL_NO_IDEA
 #endif
@@ -52,6 +71,12 @@ extern "C" {
 #ifndef OPENSSL_NO_RC5
 # define OPENSSL_NO_RC5
 #endif
+
+#ifndef OPENSSL_NO_SHA512
+# define OPENSSL_NO_SHA512
+#endif
+
+
 #ifndef OPENSSL_NO_RFC3779
 # define OPENSSL_NO_RFC3779
 #endif
@@ -64,7 +89,6 @@ extern "C" {
 #ifndef OPENSSL_NO_UNIT_TEST
 # define OPENSSL_NO_UNIT_TEST
 #endif
-
 #endif /* OPENSSL_DOING_MAKEDEPEND */
 #ifndef OPENSSL_NO_HW
 # define OPENSSL_NO_HW
@@ -78,6 +102,9 @@ extern "C" {
 #ifndef OPENSSL_NO_DYNAMIC_ENGINE
 # define OPENSSL_NO_DYNAMIC_ENGINE
 #endif
+
+
+
 
 /* The OPENSSL_NO_* macros are also defined as NO_* if the application
    asks for it.  This is a transient feature that is provided for those

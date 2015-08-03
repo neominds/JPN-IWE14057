@@ -247,9 +247,13 @@ int EVP_DigestInit_ex(EVP_MD_CTX *ctx, const EVP_MD *type, ENGINE *impl)
 int EVP_DigestUpdate(EVP_MD_CTX *ctx, const void *data, size_t count)
 {
 #ifdef OPENSSL_FIPS
+	printf("Inside fips digsest.c");
     return FIPS_digestupdate(ctx, data, count);
 #else
-    return ctx->update(ctx, data, count);
+	printf("Indside the else part iof digest.c\n");
+	printf("ctx->update %x, ctx->digest->update %x,\n ctx->digest->init %x, ctx->digest->final %x\n", ctx->update, ctx->digest->update, ctx->digest->init,ctx->digest->final);
+	ctx->update=ctx->digest->update;
+	return ctx->update(ctx, data, count);
 #endif
 }
 

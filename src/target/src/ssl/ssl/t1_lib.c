@@ -2449,8 +2449,9 @@ const EVP_MD *tls12_get_hash(unsigned char hash_alg)
 # endif
 # ifndef OPENSSL_NO_SHA256
     case TLSEXT_hash_sha224:
-        return EVP_sha224();
-
+        //return EVP_sha224();
+		return NULL;
+	
     case TLSEXT_hash_sha256:
         return EVP_sha256();
 # endif

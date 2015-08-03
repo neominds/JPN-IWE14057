@@ -123,6 +123,7 @@ static const SSL_METHOD *ssl23_get_server_method(int ver);
 int ssl23_get_client_hello(SSL *s);
 static const SSL_METHOD *ssl23_get_server_method(int ver)
 {
+printf("Inside ssl23_get_server method func ver:%d",ver);
 #ifndef OPENSSL_NO_SSL2
     if (ver == SSL2_VERSION)
         return (SSLv2_server_method());
@@ -152,7 +153,7 @@ int ssl23_accept(SSL *s)
     void (*cb) (const SSL *ssl, int type, int val) = NULL;
     int ret = -1;
     int new_state, state;
-
+	printf("Inside ssl23_srvr.c function\n");
     RAND_add(&Time, sizeof(Time), 0);
     ERR_clear_error();
     clear_sys_error();
@@ -165,7 +166,7 @@ int ssl23_accept(SSL *s)
     s->in_handshake++;
     if (!SSL_in_init(s) || SSL_in_before(s))
         SSL_clear(s);
-
+	printf("Getting inside sate function\n");
     for (;;) {
         state = s->state;
 

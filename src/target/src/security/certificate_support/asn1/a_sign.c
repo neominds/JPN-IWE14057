@@ -123,6 +123,8 @@
 #include <openssl/x509.h>
 #include <openssl/objects.h>
 #include <openssl/buffer.h>
+#include "asn1_locl.h"
+
 
 #ifndef NO_ASN1_OLD
 
@@ -293,3 +295,106 @@ err:
 		{ OPENSSL_cleanse((char *)buf_out,outll); OPENSSL_free(buf_out); }
 	return(outl);
 	}
+
+	
+	int ASN1_item_sign_ctx(const ASN1_ITEM *it,
+						   X509_ALGOR *algor1, X509_ALGOR *algor2,
+						   ASN1_BIT_STRING *signature, void *asn, EVP_MD_CTX *ctx)
+	{
+		const EVP_MD *type;
+		EVP_PKEY *pkey;
+		unsigned char *buf_in = NULL, *buf_out = NULL;
+		size_t inl = 0, outl = 0, outll = 0;
+		int signid, paramtype;
+		int rv;
+	
+		type = EVP_MD_CTX_md(ctx);
+		pkey = EVP_PKEY_CTX_get0_pkey(ctx->pctx);
+	
+		if (!type || !pkey) {
+			ASN1err(ASN1_F_ASN1_ITEM_SIGN_CTX, ASN1_R_CONTEXT_NOT_INITIALISED);
+			return 0;
+		}
+	
+		if (pkey->ameth->item_sign) {
+			rv = pkey->ameth->item_sign(ctx, it, asn, algor1, algor2, signature);
+			if (rv == 1)
+				outl = signature->length;
+			/*-
+			 * Return value meanings:
+			 * <=0: error.
+			 *	 1: method does everything.
+			 *	 2: carry on as normal.
+			 *	 3: ASN1 method sets algorithm identifiers: just sign.
+			 */
+			if (rv <= 0)
+				ASN1err(ASN1_F_ASN1_ITEM_SIGN_CTX, ERR_R_EVP_LIB);
+			if (rv <= 1)
+				goto err;
+		} else
+			rv = 2;
+	
+		if (rv == 2) {
+			if (type->flags & EVP_MD_FLAG_PKEY_METHOD_SIGNATURE) {
+				if (!pkey->ameth ||
+					!OBJ_find_sigid_by_algs(&signid,
+											EVP_MD_nid(type),
+											pkey->ameth->pkey_id)) {
+					ASN1err(ASN1_F_ASN1_ITEM_SIGN_CTX,
+							ASN1_R_DIGEST_AND_KEY_TYPE_NOT_SUPPORTED);
+					return 0;
+				}
+			} else
+				signid = type->pkey_type;
+	
+			if (pkey->ameth->pkey_flags & ASN1_PKEY_SIGPARAM_NULL)
+				paramtype = V_ASN1_NULL;
+			else
+				paramtype = V_ASN1_UNDEF;
+	
+			if (algor1)
+				X509_ALGOR_set0(algor1, OBJ_nid2obj(signid), paramtype, NULL);
+			if (algor2)
+				X509_ALGOR_set0(algor2, OBJ_nid2obj(signid), paramtype, NULL);
+	
+		}
+	
+		inl = ASN1_item_i2d(asn, &buf_in, it);
+		outll = outl = EVP_PKEY_size(pkey);
+		buf_out = OPENSSL_malloc((unsigned int)outl);
+		if ((buf_in == NULL) || (buf_out == NULL)) {
+			outl = 0;
+			ASN1err(ASN1_F_ASN1_ITEM_SIGN_CTX, ERR_R_MALLOC_FAILURE);
+			goto err;
+		}
+	
+		if (!EVP_DigestSignUpdate(ctx, buf_in, inl)
+			|| !EVP_DigestSignFinal(ctx, buf_out, &outl)) {
+			outl = 0;
+			ASN1err(ASN1_F_ASN1_ITEM_SIGN_CTX, ERR_R_EVP_LIB);
+			goto err;
+		}
+		if (signature->data != NULL)
+			OPENSSL_free(signature->data);
+		signature->data = buf_out;
+		buf_out = NULL;
+		signature->length = outl;
+		/*
+		 * In the interests of compatibility, I'll make sure that the bit string
+		 * has a 'not-used bits' value of 0
+		 */
+		signature->flags &= ~(ASN1_STRING_FLAG_BITS_LEFT | 0x07);
+		signature->flags |= ASN1_STRING_FLAG_BITS_LEFT;
+	 err:
+		EVP_MD_CTX_cleanup(ctx);
+		if (buf_in != NULL) {
+			OPENSSL_cleanse((char *)buf_in, (unsigned int)inl);
+			OPENSSL_free(buf_in);
+		}
+		if (buf_out != NULL) {
+			OPENSSL_cleanse((char *)buf_out, outll);
+			OPENSSL_free(buf_out);
+		}
+		return (outl);
+	}
+

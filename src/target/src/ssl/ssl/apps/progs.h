@@ -22,31 +22,35 @@ extern int ecparam_main(int argc, char *argv[]);
 extern int x509_main(int argc, char *argv[]);
 extern int genrsa_main(int argc, char *argv[]);
 extern int gendsa_main(int argc, char *argv[]);
-extern int genpkey_main(int argc, char *argv[]);
+//extern int genpkey_main(int argc, char *argv[]);
 extern int s_server_main(int argc, char *argv[]);
 extern int s_client_main(int argc, char *argv[]);
 extern int speed_main(int argc, char *argv[]);
 extern int s_time_main(int argc, char *argv[]);
 extern int version_main(int argc, char *argv[]);
 extern int pkcs7_main(int argc, char *argv[]);
-extern int cms_main(int argc, char *argv[]);
+//extern int cms_main(int argc, char *argv[]);
 extern int crl2pkcs7_main(int argc, char *argv[]);
 extern int sess_id_main(int argc, char *argv[]);
 extern int ciphers_main(int argc, char *argv[]);
 extern int nseq_main(int argc, char *argv[]);
 extern int pkcs12_main(int argc, char *argv[]);
 extern int pkcs8_main(int argc, char *argv[]);
-extern int pkey_main(int argc, char *argv[]);
-extern int pkeyparam_main(int argc, char *argv[]);
-extern int pkeyutl_main(int argc, char *argv[]);
+//extern int pkey_main(int argc, char *argv[]);
+//extern int pkeyparam_main(int argc, char *argv[]);
+//extern int pkeyutl_main(int argc, char *argv[]);
 extern int spkac_main(int argc, char *argv[]);
 extern int smime_main(int argc, char *argv[]);
 extern int rand_main(int argc, char *argv[]);
 extern int engine_main(int argc, char *argv[]);
 extern int ocsp_main(int argc, char *argv[]);
 extern int prime_main(int argc, char *argv[]);
-extern int ts_main(int argc, char *argv[]);
-extern int srp_main(int argc, char *argv[]);
+//extern int ts_main(int argc, char *argv[]);
+//extern int srp_main(int argc, char *argv[]);
+
+extern int nm_client_main(char *argv1,char *argv2,char *argv3,char *argv4,char *argv5,char *argv6, char *argv7,char *argv8, char *argv9, char *argv10);
+extern int nm_server_main(char *argv1,char *argv2,char *argv3,char *argv4,char *argv5,char *argv6, char *argv7,char *argv8, char *argv9, char *argv10);
+
 
 #define FUNC_TYPE_GENERAL       1
 #define FUNC_TYPE_MD            2
@@ -106,7 +110,7 @@ FUNCTION functions[] = {
 #ifndef OPENSSL_NO_DSA
     {FUNC_TYPE_GENERAL, "gendsa", gendsa_main},
 #endif
-    {FUNC_TYPE_GENERAL, "genpkey", genpkey_main},
+    //{FUNC_TYPE_GENERAL, "genpkey", genpkey_main},
 #if !defined(OPENSSL_NO_SOCK)
     {FUNC_TYPE_GENERAL, "s_server", s_server_main},
 #endif
@@ -122,7 +126,7 @@ FUNCTION functions[] = {
     {FUNC_TYPE_GENERAL, "version", version_main},
     {FUNC_TYPE_GENERAL, "pkcs7", pkcs7_main},
 #ifndef OPENSSL_NO_CMS
-    {FUNC_TYPE_GENERAL, "cms", cms_main},
+    //{FUNC_TYPE_GENERAL, "cms", cms_main},
 #endif
     {FUNC_TYPE_GENERAL, "crl2pkcs7", crl2pkcs7_main},
     {FUNC_TYPE_GENERAL, "sess_id", sess_id_main},
@@ -134,9 +138,9 @@ FUNCTION functions[] = {
     {FUNC_TYPE_GENERAL, "pkcs12", pkcs12_main},
 #endif
     {FUNC_TYPE_GENERAL, "pkcs8", pkcs8_main},
-    {FUNC_TYPE_GENERAL, "pkey", pkey_main},
-    {FUNC_TYPE_GENERAL, "pkeyparam", pkeyparam_main},
-    {FUNC_TYPE_GENERAL, "pkeyutl", pkeyutl_main},
+    //{FUNC_TYPE_GENERAL, "pkey", pkey_main},
+    //{FUNC_TYPE_GENERAL, "pkeyparam", pkeyparam_main},
+    //{FUNC_TYPE_GENERAL, "pkeyutl", pkeyutl_main},
     {FUNC_TYPE_GENERAL, "spkac", spkac_main},
     {FUNC_TYPE_GENERAL, "smime", smime_main},
     {FUNC_TYPE_GENERAL, "rand", rand_main},
@@ -147,10 +151,13 @@ FUNCTION functions[] = {
     {FUNC_TYPE_GENERAL, "ocsp", ocsp_main},
 #endif
     {FUNC_TYPE_GENERAL, "prime", prime_main},
-    {FUNC_TYPE_GENERAL, "ts", ts_main},
-#ifndef OPENSSL_NO_SRP
+  //  {FUNC_TYPE_GENERAL, "ts", ts_main},
+
+/* #ifndef OPENSSL_NO_SRP
     {FUNC_TYPE_GENERAL, "srp", srp_main},
-#endif
+#endif 
+*/
+
 #ifndef OPENSSL_NO_MD2
     {FUNC_TYPE_MD, "md2", dgst_main},
 #endif

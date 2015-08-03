@@ -96,7 +96,7 @@ OBJS = 	sec_lib_encode.o digest.o evp_enc.o evp_key.o evp_acnf.o \
 	bio_md.o bio_b64.o bio_enc.o evp_err.o e_null.o \
 	c_all.o c_allc.o c_alld.o evp_lib.o bio_ok.o \
 	evp_pkey.o evp_pbe.o p5_crpt.o p5_crpt2.o \
-	e_old.o pmeth_lib.o pmeth_fn.o
+	e_old.o pmeth_lib.o pmeth_fn.o m_sigver.o pmeth_gn.o evp_cnf.o
 
 OBJS+=	evp_cci.o
 

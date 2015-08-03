@@ -233,6 +233,7 @@ int ssl2_accept(SSL *s)
         case SSL2_ST_GET_CLIENT_MASTER_KEY_A:
         case SSL2_ST_GET_CLIENT_MASTER_KEY_B:
             ret = get_client_master_key(s);
+			printf("\n After the call of get_client_master_key() in s2_server.c file teh value of ret is %d=\n",ret);
             if (ret <= 0)
                 goto end;
             s->init_num = 0;
@@ -244,8 +245,10 @@ int ssl2_accept(SSL *s)
              * Ok we how have sent all the stuff needed to start encrypting,
              * the next packet back will be encrypted.
              */
+             printf("Insdie the st_server_start encryption case in s2_server.c\n");
             if (!ssl2_enc_init(s, 0)) {
-                ret = -1;
+				printf("Erroe in ssl2_enc_init function\n");
+				ret = -1;
                 goto end;
             }
             s->s2->clear_text = 0;
@@ -254,7 +257,9 @@ int ssl2_accept(SSL *s)
 
         case SSL2_ST_SEND_SERVER_VERIFY_A:
         case SSL2_ST_SEND_SERVER_VERIFY_B:
+			printf("before the server_verfy func\n");
             ret = server_verify(s);
+			printf("After the server_verfy func call, vluse ret:%d",ret);
             if (ret <= 0)
                 goto end;
             s->init_num = 0;
@@ -382,7 +387,7 @@ static int get_client_master_key(SSL *s)
     unsigned char rand_premaster_secret[SSL_MAX_MASTER_KEY_LENGTH];
     unsigned char decrypt_good;
     size_t j;
-
+	printf("Inside get_client_mastrer ksy function from server.c files\n");
     p = (unsigned char *)s->init_buf->data;
     if (s->state == SSL2_ST_GET_CLIENT_MASTER_KEY_A) {
         i = ssl2_read(s, (char *)&(p[s->init_num]), 10 - s->init_num);
@@ -553,7 +558,7 @@ static int get_client_master_key(SSL *s)
     s->session->master_key_length = (int)key_length;
     memcpy(s->session->master_key, p, key_length);
     OPENSSL_cleanse(p, key_length);
-
+printf("Leaving the get_client_master_key function in server.c files\n");
     return 1;
 }
 
@@ -566,7 +571,8 @@ static int get_client_hello(SSL *s)
     STACK_OF(SSL_CIPHER) *cl;   /* the ones we want to use */
     STACK_OF(SSL_CIPHER) *prio, *allow;
     int z;
-
+	
+	SSL_CIPHER *t;
     /*
      * This is a bit of a hack to check for the correct packet type the first
      * time round.
@@ -676,23 +682,61 @@ static int get_client_hello(SSL *s)
         if (cs == NULL)
             goto mem_err;
 
+		
         cl = SSL_get_ciphers(s);
 
+		{
+		
+		for (z = 0; z < sk_SSL_CIPHER_num(cl); z++) {
+		t = sk_SSL_CIPHER_value(cl,z);
+		printf("%s value=%x\n",t->name,t->id);
+		
+		}
+		
+//debug code by neominds
+		printf("Inside client hello function in s2_serve.c\n");
+		printf("List of server ciphers\n");
+
+		
+			}
         if (s->options & SSL_OP_CIPHER_SERVER_PREFERENCE) {
             if (NULL == cl) goto mem_err;			/*Merged for WR*/
             prio = sk_SSL_CIPHER_dup(cl);
+			printf("To dis play server priority\n");
+			//for (z = 0; z < sk_SSL_CIPHER_num(prio); z++) {
+			//printf("%s\n",prio->name);
+			//}
             if (prio == NULL)
                 goto mem_err;
             allow = cs;
         } else {
+        	printf("++++Its coming to else before comparision\n++++");
             prio = cs;
             allow = cl;
         }
+
+		for (z = 0; z < sk_SSL_CIPHER_num(cs); z++) {
+		t = sk_SSL_CIPHER_value(prio,z);
+		printf("cs: %s value=%x\n",t->name,t->id);
+		}
+		
         for (z = 0; z < sk_SSL_CIPHER_num(prio); z++) {
             if (sk_SSL_CIPHER_find(allow, sk_SSL_CIPHER_value(prio, z)) < 0) {
+				t = sk_SSL_CIPHER_value(prio,z);
+				printf("Deleting %s value=%x\n",t->name,t->id);
                 (void)sk_SSL_CIPHER_delete(prio, z);
                 z--;
             }
+			printf("After the cipher comparision and deletion\n");
+		for (z = 0; z < sk_SSL_CIPHER_num(prio); z++) {
+		t = sk_SSL_CIPHER_value(prio,z);
+		printf("prio: %s value=%x\n",t->name,t->id);
+		}
+		for (z = 0; z < sk_SSL_CIPHER_num(allow); z++) {
+		t = sk_SSL_CIPHER_value(allow,z);
+		printf("allow: %s value=%x\n",t->name,t->id);
+		}
+					
         }
         if (s->options & SSL_OP_CIPHER_SERVER_PREFERENCE) {
             sk_SSL_CIPHER_free(s->session->ciphers);
@@ -727,8 +771,8 @@ static int get_client_hello(SSL *s)
 static int server_hello(SSL *s)
 {
     unsigned char *p, *d;
-    int n, hit;
-
+    int n, hit,i_nm;
+	printf("\n\nInside server_hello func\n");
     p = (unsigned char *)s->init_buf->data;
     if (s->state == SSL2_ST_SEND_SERVER_HELLO_A) {
         d = p + 11;
@@ -799,6 +843,9 @@ static int server_hello(SSL *s)
             /*
              * lets send out the ciphers we like in the prefered order
              */
+            //printf("s->session->ciphers-num =%d",s->session->ciphers);
+			 i_nm = sk_SSL_CIPHER_num(s->session->ciphers);
+			printf("Value of i is \n%d",i_nm);
             n = ssl_cipher_list_to_bytes(s, s->session->ciphers, d, 0);
             d += n;
             s2n(n, p);          /* add cipher length */
@@ -827,7 +874,7 @@ static int server_hello(SSL *s)
         if (!ssl_init_wbio_buffer(s, 1))
             return (-1);
     }
-
+	printf("End of server_hello func\n");
     return (ssl2_do_write(s));
 }
 
@@ -838,6 +885,7 @@ static int get_client_finished(SSL *s)
     unsigned long len;
 
     p = (unsigned char *)s->init_buf->data;
+	printf("Begining with teh client finish funvtion\n");
     if (s->state == SSL2_ST_GET_CLIENT_FINISHED_A) {
         i = ssl2_read(s, (char *)&(p[s->init_num]), 1 - s->init_num);
         if (i < 1 - s->init_num)
@@ -882,13 +930,14 @@ static int get_client_finished(SSL *s)
         SSLerr(SSL_F_GET_CLIENT_FINISHED, SSL_R_CONNECTION_ID_IS_DIFFERENT);
         return (-1);
     }
+	printf("Done with client finish function\n");
     return (1);
 }
 
 static int server_verify(SSL *s)
 {
     unsigned char *p;
-
+	printf("I am inside server_verify\n");
     if (s->state == SSL2_ST_SEND_SERVER_VERIFY_A) {
         p = (unsigned char *)s->init_buf->data;
         *(p++) = SSL2_MT_SERVER_VERIFY;
@@ -903,13 +952,14 @@ static int server_verify(SSL *s)
         s->init_num = s->s2->challenge_length + 1;
         s->init_off = 0;
     }
+	printf("Done with the server verify\n");
     return (ssl2_do_write(s));
 }
 
 static int server_finish(SSL *s)
 {
     unsigned char *p;
-
+	printf("Started in the server finsish function\n");
     if (s->state == SSL2_ST_SEND_SERVER_FINISHED_A) {
         p = (unsigned char *)s->init_buf->data;
         *(p++) = SSL2_MT_SERVER_FINISHED;
@@ -926,7 +976,7 @@ static int server_finish(SSL *s)
         s->init_num = s->session->session_id_length + 1;
         s->init_off = 0;
     }
-
+printf("Done with server finish fuction\n");
     /* SSL2_ST_SEND_SERVER_FINISHED_B */
     return (ssl2_do_write(s));
 }

@@ -18,11 +18,11 @@ extern int ASN1_digest ();
 extern int ASN1_dup ();
 extern int ASN1_ENUMERATED_get ();
 extern int ASN1_GENERALIZEDTIME_check ();
-extern int ASN1_HEADER_free ();
+//extern int ASN1_HEADER_free ();
 extern int ASN1_i2d_bio ();
 extern int ASN1_INTEGER_cmp ();
 extern int ASN1_mbstring_copy ();
-extern int ASN1_BIT_STRING_asn1_meth ();
+//extern int ASN1_BIT_STRING_asn1_meth ();
 extern int ASN1_OBJECT_create ();
 extern int ASN1_OCTET_STRING_cmp ();
 extern int ASN1_PRINTABLE_type ();
@@ -95,11 +95,11 @@ FUNCPTR * asn1_link_syms()
         (FUNCPTR) ASN1_dup,
         (FUNCPTR) ASN1_ENUMERATED_get,
         (FUNCPTR) ASN1_GENERALIZEDTIME_check,
-        (FUNCPTR) ASN1_HEADER_free,
+       // (FUNCPTR) ASN1_HEADER_free,
         (FUNCPTR) ASN1_i2d_bio,
         (FUNCPTR) ASN1_INTEGER_cmp,
         (FUNCPTR) ASN1_mbstring_copy,
-        (FUNCPTR) ASN1_BIT_STRING_asn1_meth,
+        //(FUNCPTR) ASN1_BIT_STRING_asn1_meth,
         (FUNCPTR) ASN1_OBJECT_create,
         (FUNCPTR) ASN1_OCTET_STRING_cmp,
         (FUNCPTR) ASN1_PRINTABLE_type,

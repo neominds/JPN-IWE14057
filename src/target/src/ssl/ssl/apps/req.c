@@ -1675,3 +1675,55 @@ static int check_end(const char *str, const char *end)
 	tmp = str + slen - elen;
 	return strcmp(tmp, end);
 }
+
+static int do_sign_init(BIO *err, EVP_MD_CTX *ctx, EVP_PKEY *pkey,
+                        const EVP_MD *md, STACK_OF(OPENSSL_STRING) *sigopts)
+{
+    EVP_PKEY_CTX *pkctx = NULL;
+    int i;
+    EVP_MD_CTX_init(ctx);
+    if (!EVP_DigestSignInit(ctx, &pkctx, md, NULL, pkey))
+        return 0;
+    for (i = 0; i < sk_OPENSSL_STRING_num(sigopts); i++) {
+        char *sigopt = sk_OPENSSL_STRING_value(sigopts, i);
+        if (pkey_ctrl_string(pkctx, sigopt) <= 0) {
+            BIO_printf(err, "parameter error \"%s\"\n", sigopt);
+            ERR_print_errors(bio_err);
+            return 0;
+        }
+    }
+    return 1;
+}
+
+
+
+
+int do_X509_CRL_sign(BIO *err, X509_CRL *x, EVP_PKEY *pkey, const EVP_MD *md,
+                     STACK_OF(OPENSSL_STRING) *sigopts)
+{
+    int rv;
+    EVP_MD_CTX mctx;
+    EVP_MD_CTX_init(&mctx);
+    rv = do_sign_init(err, &mctx, pkey, md, sigopts);
+    if (rv > 0)
+        rv = X509_CRL_sign_ctx(x, &mctx);
+    EVP_MD_CTX_cleanup(&mctx);
+    return rv > 0 ? 1 : 0;
+}
+
+int do_X509_sign(BIO *err, X509 *x, EVP_PKEY *pkey, const EVP_MD *md,
+                 STACK_OF(OPENSSL_STRING) *sigopts)
+{
+    int rv;
+    EVP_MD_CTX mctx;
+    EVP_MD_CTX_init(&mctx);
+    rv = do_sign_init(err, &mctx, pkey, md, sigopts);
+    if (rv > 0)
+        rv = X509_sign_ctx(x, &mctx);
+    EVP_MD_CTX_cleanup(&mctx);
+    return rv > 0 ? 1 : 0;
+}
+
+
+
+

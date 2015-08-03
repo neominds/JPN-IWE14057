@@ -150,7 +150,7 @@ void ERR_load_crypto_strings(void)
     ERR_load_PKCS12_strings();
     ERR_load_RAND_strings();
     ERR_load_DSO_strings();
-    ERR_load_TS_strings();
+   // ERR_load_TS_strings();
 # ifndef OPENSSL_NO_ENGINE
     ERR_load_ENGINE_strings();
 # endif
@@ -159,9 +159,11 @@ void ERR_load_crypto_strings(void)
 # ifdef OPENSSL_FIPS
     ERR_load_FIPS_strings();
 # endif
+/*
 # ifndef OPENSSL_NO_CMS
     ERR_load_CMS_strings();
 # endif
+*/
 # ifndef OPENSSL_NO_JPAKE
     ERR_load_JPAKE_strings();
 # endif

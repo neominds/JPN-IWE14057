@@ -151,7 +151,7 @@ int SHA256_Init(SHA256_CTX *c);
 int SHA256_Update(SHA256_CTX *c, const void *data, size_t len);
 int SHA256_Final(unsigned char *md, SHA256_CTX *c);
 unsigned char *SHA256(const unsigned char *d, size_t n, unsigned char *md);
-void SHA256_Transform(SHA256_CTX *c, const unsigned char *data);
+extern void SHA256Transform(SHA256_CTX *c, const unsigned char *data);
 # endif
 
 # define SHA384_DIGEST_LENGTH    48

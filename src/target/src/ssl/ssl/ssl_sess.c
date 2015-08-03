@@ -935,7 +935,7 @@ int SSL_set_session(SSL *s, SSL_SESSION *session)
 {
     int ret = 0;
     const SSL_METHOD *meth;
-
+	printf("Inside ssl_set_session ssl_sess.c function\n");
     if (session != NULL) {
         meth = s->ctx->method->get_ssl_method(session->ssl_version);
         if (meth == NULL)

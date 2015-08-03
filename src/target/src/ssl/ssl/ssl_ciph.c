@@ -809,12 +809,17 @@ static void ssl_cipher_collect_ciphers(const SSL_METHOD *ssl_method,
      * These will later be sorted in a linked list with at most num
      * entries.
      */
+	//printf("disabled_mkey %x,disabled_auth %x,disabled_enc %x,disabled_mac %x,disabled_ssl %x\n",disabled_mkey,disabled_auth,disabled_enc,disabled_mac,disabled_ssl);
 
     /* Get the initial list of ciphers */
     co_list_num = 0;            /* actual count of ciphers */
     for (i = 0; i < num_of_ciphers; i++) {
         c = ssl_method->get_cipher(i);
-        /* drop those that use any of that is not available */
+		printf("cipher_collect:[%d] %s,%x \n",i,c->name,c->id);
+		
+	//	printf("c->algorithm_mkey %x,	c->algorithm_auth %x,  c->algorithm_enc %x,	c->algorithm_mac %x,	c->algorithm_ssl %x\n",c->algorithm_mkey,		c->algorithm_auth,		c->algorithm_enc ,		c->algorithm_mac ,		c->algorithm_ssl );
+		printf("\nValid vlaue of c->valid:=%d\n",c->valid);
+		/* drop those that use any of that is not available */
         if ((c != NULL) && c->valid &&
 #ifdef OPENSSL_FIPS
             (!FIPS_mode() || (c->algo_strength & SSL_FIPS)) &&
@@ -824,11 +829,14 @@ static void ssl_cipher_collect_ciphers(const SSL_METHOD *ssl_method,
             !(c->algorithm_enc & disabled_enc) &&
             !(c->algorithm_mac & disabled_mac) &&
             !(c->algorithm_ssl & disabled_ssl)) {
+           // printf("Inside the IF condiditon\n");
             co_list[co_list_num].cipher = c;
             co_list[co_list_num].next = NULL;
             co_list[co_list_num].prev = NULL;
             co_list[co_list_num].active = 0;
             co_list_num++;
+			//printf("\t%d: %s %lx %lx %lx\n", i, c->name, c->id,
+              //      c->algorithm_mkey, c->algorithm_auth);
 #ifdef KSSL_DEBUG
             fprintf(stderr, "\t%d: %s %lx %lx %lx\n", i, c->name, c->id,
                     c->algorithm_mkey, c->algorithm_auth);
@@ -1369,6 +1377,11 @@ static int ssl_cipher_process_rulestr(const char *rule_str,
     return (retval);
 }
 
+
+
+
+
+
 STACK_OF(SSL_CIPHER) *ssl_create_cipher_list(const SSL_METHOD *ssl_method, STACK_OF(SSL_CIPHER)
                                              **cipher_list, STACK_OF(SSL_CIPHER)
                                              **cipher_list_by_id,
@@ -1381,6 +1394,10 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_list(const SSL_METHOD *ssl_method, STACK
     const char *rule_p;
     CIPHER_ORDER *co_list = NULL, *head = NULL, *tail = NULL, *curr;
     const SSL_CIPHER **ca_list = NULL;
+
+
+	printf("Inside ssl_create_cipher_list function in ssl_cipher.c file\n");
+	//printf("ssl_method version:%d");
 
     /*
      * Return with error if nothing to do.
@@ -1401,6 +1418,7 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_list(const SSL_METHOD *ssl_method, STACK
      * it is used for allocation.
      */
     num_of_ciphers = ssl_method->num_ciphers();
+	printf("TOT Number of ciphers are :%d\n",num_of_ciphers);
 #ifdef KSSL_DEBUG
     fprintf(stderr, "ssl_create_cipher_list() for %d ciphers\n",
             num_of_ciphers);
@@ -1423,20 +1441,23 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_list(const SSL_METHOD *ssl_method, STACK
      * Everything else being equal, prefer ephemeral ECDH over other key
      * exchange mechanisms
      */
+    
     ssl_cipher_apply_rule(0, SSL_kEECDH, 0, 0, 0, 0, 0, CIPHER_ADD, -1, &head,
                           &tail);
-    ssl_cipher_apply_rule(0, SSL_kEECDH, 0, 0, 0, 0, 0, CIPHER_DEL, -1, &head,
+	
+	ssl_cipher_apply_rule(0, SSL_kEECDH, 0, 0, 0, 0, 0, CIPHER_DEL, -1, &head,
                           &tail);
 
     /* AES is our preferred symmetric cipher */
-    ssl_cipher_apply_rule(0, 0, 0, SSL_AES, 0, 0, 0, CIPHER_ADD, -1, &head,
+	
+	ssl_cipher_apply_rule(0, 0, 0, SSL_AES, 0, 0, 0, CIPHER_ADD, -1, &head,
                           &tail);
 
     /* Temporarily enable everything else for sorting */
-    ssl_cipher_apply_rule(0, 0, 0, 0, 0, 0, 0, CIPHER_ADD, -1, &head, &tail);
+	ssl_cipher_apply_rule(0, 0, 0, 0, 0, 0, 0, CIPHER_ADD, -1, &head, &tail);
 
     /* Low priority for MD5 */
-    ssl_cipher_apply_rule(0, 0, 0, 0, SSL_MD5, 0, 0, CIPHER_ORD, -1, &head,
+	ssl_cipher_apply_rule(0, 0, 0, 0, SSL_MD5, 0, 0, CIPHER_ORD, -1, &head,
                           &tail);
 
     /*
@@ -1448,7 +1469,7 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_list(const SSL_METHOD *ssl_method, STACK
                           &tail);
 
     /* Move ciphers without forward secrecy to the end */
-    ssl_cipher_apply_rule(0, 0, SSL_aECDH, 0, 0, 0, 0, CIPHER_ORD, -1, &head,
+	ssl_cipher_apply_rule(0, 0, SSL_aECDH, 0, 0, 0, 0, CIPHER_ORD, -1, &head,
                           &tail);
     /*
      * ssl_cipher_apply_rule(0, 0, SSL_aDH, 0, 0, 0, 0, CIPHER_ORD, -1,
@@ -1543,6 +1564,7 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_list(const SSL_METHOD *ssl_method, STACK
 #endif
         {
             sk_SSL_CIPHER_push(cipherstack, curr->cipher);
+			printf("Pushing to cipherstack:%s,id=%x\n",curr->cipher->name,curr->cipher->id);
 #ifdef CIPHER_DEBUG
             fprintf(stderr, "<%s>\n", curr->cipher->name);
 #endif
@@ -1565,6 +1587,7 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_list(const SSL_METHOD *ssl_method, STACK
                                      ssl_cipher_ptr_id_cmp);
 
     sk_SSL_CIPHER_sort(*cipher_list_by_id);
+	
     return (cipherstack);
 }
 

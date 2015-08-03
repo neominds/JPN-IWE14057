@@ -305,6 +305,7 @@ int ssl2_num_ciphers(void)
 
 const SSL_CIPHER *ssl2_get_cipher(unsigned int u)
 {
+	printf("**Inside ssl12_get_cipher func *** u value:=%d",u);
     if (u < SSL2_NUM_CIPHERS)
         return (&(ssl2_ciphers[SSL2_NUM_CIPHERS - 1 - u]));
     else
@@ -466,20 +467,21 @@ int ssl2_generate_key_material(SSL *s)
     int md_size;
 
     md5 = EVP_md5();
-
+	printf("Entered ssl2_genrate_key_material s2_lib.c\n");
 # ifdef CHARSET_EBCDIC
     c = os_toascii['0'];        /* Must be an ASCII '0', not EBCDIC '0', see
                                  * SSLv2 docu */
 # endif
     EVP_MD_CTX_init(&ctx);
     km = s->s2->key_material;
-
+	printf("Done with evp_md_ctx_init function call\n");
     if (s->session->master_key_length < 0 ||
         s->session->master_key_length > (int)sizeof(s->session->master_key)) {
         SSLerr(SSL_F_SSL2_GENERATE_KEY_MATERIAL, ERR_R_INTERNAL_ERROR);
         return 0;
     }
     md_size = EVP_MD_size(md5);
+	printf("Done with evp_md_size:%d\n",md_size);
     if (md_size < 0)
         return 0;
     for (i = 0; i < s->s2->key_material_length; i += md_size) {
@@ -493,18 +495,24 @@ int ssl2_generate_key_material(SSL *s)
         }
 
         EVP_DigestInit_ex(&ctx, md5, NULL);
-
+		printf("evp_digest_init_ex call done\n");
         OPENSSL_assert(s->session->master_key_length >= 0
                        && s->session->master_key_length
                        <= (int)sizeof(s->session->master_key));
+		printf("start of evp_digest_update call\n");
         EVP_DigestUpdate(&ctx, s->session->master_key,
                          s->session->master_key_length);
+		printf("Done with evp_digestUpdate first\n");
         EVP_DigestUpdate(&ctx, &c, 1);
         c++;
+		printf("Done with evp_digestUpdate second\n");
         EVP_DigestUpdate(&ctx, s->s2->challenge, s->s2->challenge_length);
+		printf("Done with evp_digestUpdate third\n");
         EVP_DigestUpdate(&ctx, s->s2->conn_id, s->s2->conn_id_length);
+		printf("Done with evp_digestUpdate fourth\n");
         EVP_DigestFinal_ex(&ctx, km, NULL);
         km += md_size;
+				printf("Done with evp_digestFinal \n");
     }
 
     EVP_MD_CTX_cleanup(&ctx);

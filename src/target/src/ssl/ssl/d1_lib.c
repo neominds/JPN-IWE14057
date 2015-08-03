@@ -62,6 +62,8 @@
 #include <openssl/objects.h>
 #include "ssl_locl.h"
 
+#define gettimeofday(tv, tzp) (microtime (tv))
+
 #if defined(OPENSSL_SYS_WIN32) || defined(OPENSSL_SYS_VMS)
 # include <sys/timeb.h>
 #endif
