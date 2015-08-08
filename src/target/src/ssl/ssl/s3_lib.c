@@ -2917,7 +2917,6 @@ int ssl3_num_ciphers(void)
 
 const SSL_CIPHER *ssl3_get_cipher(unsigned int u)
 {
-	printf("Inside ssl3_getcipher function u valu:=%d",u);
     if (u < SSL3_NUM_CIPHERS)
         return (&(ssl3_ciphers[SSL3_NUM_CIPHERS - 1 - u]));
     else

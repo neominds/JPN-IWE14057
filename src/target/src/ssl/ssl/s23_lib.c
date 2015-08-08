@@ -77,7 +77,6 @@ int ssl23_num_ciphers(void)
 const SSL_CIPHER *ssl23_get_cipher(unsigned int u)
 {
     unsigned int uu = ssl3_num_ciphers();
-	printf("U=%d,UU=%d\n",u,uu);
     if (u < uu)
         return (ssl3_get_cipher(u));
     else

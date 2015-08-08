@@ -479,3 +479,14 @@ unsigned char *HMAC(const EVP_MD *evp_md, const void *key, int key_len,
 #endif     
     return(md);
 }
+
+void HMAC_CTX_set_flags(HMAC_CTX *ctx, unsigned long flags)
+{
+	NM_DEBUG("flags=%x\n",flags);
+	EVP_MD_CTX_set_flags(&ctx->i_ctx, flags);
+    EVP_MD_CTX_set_flags(&ctx->o_ctx, flags);
+    EVP_MD_CTX_set_flags(&ctx->md_ctx, flags);
+
+}
+
+

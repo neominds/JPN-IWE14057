@@ -1014,9 +1014,9 @@ int MAIN(int argc, char *argv[])
 
 		//int   argv0 = 4;
 		char *argv1 = "-cert";
-		char *argv2 = "md5rsa.pem";
+		char *argv2 = "sha256rsa.pem";
 		char *argv3 = "-key";
-		char *argv4 = "md5rsakey.pem";
+		char *argv4 = "sha256rsakey.pem";
 		char *argv5 = "-debug";
 		char *argv6 = "-msg";
 
@@ -1067,7 +1067,9 @@ int MAIN(int argc, char *argv[])
    // meth = SSLv23_server_method();
 	//printf("protocol_version:- %d\n",meth->version);
 	//meth= SSLv2_server_method();
-	meth= TLSv1_server_method();
+	//meth= TLSv1_server_method();
+	meth= TLSv1_2_server_method();
+
 	//meth= SSLv3_server_method();
 
 	
@@ -1919,10 +1921,16 @@ int MAIN(int argc, char *argv[])
     BIO_printf(bio_s_out, "ACCEPT\n");
     (void)BIO_flush(bio_s_out);
     if (www)
-        do_server(port, socket_type, &accept_socket, www_body, context);
+       {
+       printf("Inside IF condition, Before do_server func call in s_server.c\n");
+       do_server(port, socket_type, &accept_socket, www_body, context);
+		}
     else
+        {
+        printf("Inside ELSE condition, Before do_server func call in s_server.c\n");
         do_server(port, socket_type, &accept_socket, sv_body, context);
-    print_stats(bio_s_out, ctx);
+	    print_stats(bio_s_out, ctx);
+		}
     ret = 0;
  end:
  	goto die; //by neominds
@@ -2011,7 +2019,7 @@ static int sv_body(char *hostname, int s, unsigned char *context)
 #else
     struct timeval *timeoutp;
 #endif
-
+		printf("Entring %s\n",__FUNCTION__);
     if ((buf = OPENSSL_malloc(bufsize)) == NULL) {
         BIO_printf(bio_err, "out of memory\n");
         goto err;

@@ -67,7 +67,7 @@
 # include <openssl/evp.h>
 #include <wrn/cci/cci.h>
 
-#define HMAC_MAX_MD_CBLOCK	64
+#define HMAC_MAX_MD_CBLOCK	128
 
 #ifdef  __cplusplus
 extern "C" {
@@ -95,13 +95,13 @@ void HMAC_CTX_cleanup(HMAC_CTX *ctx);
 # define HMAC_cleanup(ctx) HMAC_CTX_cleanup(ctx)
 
 /* deprecated */
-void HMAC_Init(HMAC_CTX *ctx, const void *key, int len, const EVP_MD *md);
+int HMAC_Init(HMAC_CTX *ctx, const void *key, int len, const EVP_MD *md);
 int HMAC_Init_ex(HMAC_CTX *ctx, const void *key, int len,
                  const EVP_MD *md, ENGINE *impl);
-int HMAC_Update(HMAC_CTX *ctx, const unsigned char *data, int len);
+int HMAC_Update(HMAC_CTX *ctx, const unsigned char *data, size_t len);
 int HMAC_Final(HMAC_CTX *ctx, unsigned char *md, unsigned int *len);
 unsigned char *HMAC(const EVP_MD *evp_md, const void *key, int key_len,
-                    const unsigned char *d, int n, unsigned char *md,
+                    const unsigned char *d, size_t n, unsigned char *md,
                     unsigned int *md_len);
 int HMAC_CTX_copy(HMAC_CTX *dctx, HMAC_CTX *sctx);
 

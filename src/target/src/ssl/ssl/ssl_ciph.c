@@ -815,10 +815,6 @@ static void ssl_cipher_collect_ciphers(const SSL_METHOD *ssl_method,
     co_list_num = 0;            /* actual count of ciphers */
     for (i = 0; i < num_of_ciphers; i++) {
         c = ssl_method->get_cipher(i);
-		printf("cipher_collect:[%d] %s,%x \n",i,c->name,c->id);
-		
-	//	printf("c->algorithm_mkey %x,	c->algorithm_auth %x,  c->algorithm_enc %x,	c->algorithm_mac %x,	c->algorithm_ssl %x\n",c->algorithm_mkey,		c->algorithm_auth,		c->algorithm_enc ,		c->algorithm_mac ,		c->algorithm_ssl );
-		printf("\nValid vlaue of c->valid:=%d\n",c->valid);
 		/* drop those that use any of that is not available */
         if ((c != NULL) && c->valid &&
 #ifdef OPENSSL_FIPS

@@ -86,7 +86,7 @@ override EXTRA_DEFINE+=-DOPENSSLDIR="\"./\"" -DOPENSSL_SYSNAME_VXWORKS \
 
 SUBDIRS = 
 
-OBJS = 	sec_lib_hmac.o
+OBJS = 	hmac.o hm_pmeth.o hm_ameth.o
 
 
 

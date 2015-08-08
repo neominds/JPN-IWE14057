@@ -211,8 +211,8 @@ int EVP_DigestInit_ex(EVP_MD_CTX *ctx, const EVP_MD *type, ENGINE *impl)
             OPENSSL_free(ctx->md_data);
 		}
         ctx->digest = type;
-        if (!(ctx->flags & EVP_MD_CTX_FLAG_NO_INIT) && type->ctx_size) {
-            ctx->update = type->update;
+		if (!(ctx->flags & EVP_MD_CTX_FLAG_NO_INIT) && type->ctx_size) {
+	            ctx->update = type->update;
             ctx->md_data = OPENSSL_malloc(type->ctx_size);
             if (ctx->md_data == NULL) {
                 EVPerr(EVP_F_EVP_DIGESTINIT_EX, ERR_R_MALLOC_FAILURE);
@@ -250,9 +250,6 @@ int EVP_DigestUpdate(EVP_MD_CTX *ctx, const void *data, size_t count)
 	printf("Inside fips digsest.c");
     return FIPS_digestupdate(ctx, data, count);
 #else
-	printf("Indside the else part iof digest.c\n");
-	printf("ctx->update %x, ctx->digest->update %x,\n ctx->digest->init %x, ctx->digest->final %x\n", ctx->update, ctx->digest->update, ctx->digest->init,ctx->digest->final);
-	ctx->update=ctx->digest->update;
 	return ctx->update(ctx, data, count);
 #endif
 }

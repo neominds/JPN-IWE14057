@@ -618,7 +618,7 @@ enum {
 
 int MAIN(int, char **);
 
-int MAIN(int argc, char **argv)
+int MAIN(int argc, char *argv[])
 {
     unsigned int off = 0, clr = 0;
     SSL *con = NULL;
@@ -688,8 +688,24 @@ int MAIN(int argc, char **argv)
     int srp_lateuser = 0;
     SRP_ARG srp_arg = { NULL, NULL, 0, 0, 0, 1024 };
 #endif
-
-    meth = SSLv23_client_method();
+			char *argv1 = "-cipher";
+			char *argv2 = "RC4-SHA";
+			char *argv3 = "-connect";
+			char *argv4 = "192.168.1.78:4433";
+			char *argv5 = "-debug";
+			char *argv6 = "-msg";
+	SSL_library_init();
+    meth = SSLv3_client_method();
+	//meth= TLSv1_1_client_method();
+	
+	argc = 7;
+	argv[0]=NULL;
+	argv[1]=argv1;
+	argv[2]=argv2;
+	argv[3]=argv3;
+	argv[4]=argv4;
+	argv[5]=argv5;
+	argv[6]=argv6;
 
     apps_startup();
     c_Pause = 0;
