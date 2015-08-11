@@ -617,9 +617,19 @@ enum {
 };
 
 int MAIN(int, char **);
+int nm_client(char *str1,char *str2,char *str3,char *str4,char *str5,char *str6,char *str7,char *str8,char *str9,char *str10);
 
-int MAIN(int argc, char *argv[])
+
+int MAIN(int ss_argc, char *ss_argv[])
 {
+return 0;
+}
+
+int nm_client(char *str1,char *str2,char *str3,char *str4,char *str5,char *str6,char *str7,char *str8,char *str9,char *str10)
+{
+	int argc;
+	char *largv[10],**argv;
+	int nm_i=0;
     unsigned int off = 0, clr = 0;
     SSL *con = NULL;
 	char *token1;
@@ -689,29 +699,28 @@ int MAIN(int argc, char *argv[])
     int srp_lateuser = 0;
     SRP_ARG srp_arg = { NULL, NULL, 0, 0, 0, 1024 };
 #endif
-			char *argv1 = "-cipher";
-			char *argv2 = "DHE-RSA-AES256-SHA";
-			char *argv3 = "-connect";
-			char *argv4 = "192.168.1.78:4433";
-			char *argv5 = "-debug";
-			char *argv6 = "-msg";
-	
-    //meth = SSLv3_client_method();
-	//meth= TLSv1_client_method();
-//	meth = SSLv2_client_method();
-	//token1=strtok(argv," ");
-	//while(token1!=NULL){printf("%s ",token1); token1=strtok(NULL," ");}
-    meth= TLSv1_1_client_method();
-	
-	argc = 7;
-	argv[0]=NULL;
-	argv[1]=argv1;
-	argv[2]=argv2;
-	argv[3]=argv3;
-	argv[4]=argv4;
-	argv[5]=argv5;
-	argv[6]=argv6;
+					
+					argc=atoi(str1);
+					if(argc>=10)
+					BIO_printf(bio_err,"WARNING: Max. Allowed Arg is 9");
+						 argv=largv;
+						 argv[0]=str2;
+						 argv[1]=str3;
+						 argv[2]=str4;
+						 argv[3]=str5;
+						 argv[4]=str6;
+						 argv[5]=str7;
+						 argv[6]=str8;
+						 argv[7]=str9;
+						 argv[8]=str10;
+						 
+						 //for(nm_i=0;nm_i<argc;nm_i++)
+						 //printf("%s\n",argv[nm_i]);  
 
+			
+    //meth= TLSv1_1_client_method();
+	
+	
     apps_startup();
     c_Pause = 0;
     c_quiet = 0;
@@ -739,8 +748,8 @@ int MAIN(int argc, char *argv[])
     c_nbio = 0;
 #endif
 
-    argc--;
-    argv++;
+    //argc--;
+    //argv++;
     while (argc >= 1) {
         if (strcmp(*argv, "-host") == 0) {
             if (--argc < 1)

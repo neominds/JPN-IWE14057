@@ -644,6 +644,8 @@ static void sv_usage(void)
 
 static int local_argc = 0;
 static char **local_argv;
+//static char *local_argv[10];
+
 
 #ifdef CHARSET_EBCDIC
 static int ebcdic_new(BIO *bi);
@@ -990,7 +992,10 @@ static int next_proto_cb(SSL *s, const unsigned char **data,
 
 #endif
 
+//int MAIN(int, char **);
 int MAIN(int, char **);
+
+int nm_server(char *str1,char *str2,char *str3,char *str4,char *str5,char *str6,char *str7,char *str8,char *str9,char *str10);
 
 #ifndef OPENSSL_NO_JPAKE
 static char *jpake_secret = NULL;
@@ -1002,26 +1007,28 @@ static srpsrvparm srp_callback_parm;
 static char *srtp_profiles = NULL;
 #endif
 
-int MAIN(int argc, char *argv[])
+unsigned int gargv_start=0, g_argc=0;
+
+int isprintable(char c) { return (c >= 32 && c<=126); }
+
+//int MAIN(int argc, char *argv[])
+
+int MAIN(int nm_arg,char *nm_ptr[])
 {
+return 0;
+}
+
+int nm_server(char *str1,char *str2,char *str3,char *str4,char *str5,char *str6,char *str7,char *str8,char *str9,char *str10)
+{
+	int argc;
+	char *largv[10],**argv;
     X509_VERIFY_PARAM *vpm = NULL;
     int badarg = 0;
     short port = PORT;
     char *CApath = NULL, *CAfile = NULL;
     unsigned char *context = NULL;
     char *dhfile = NULL;
-	int nm_i=0;
-
-		//int   argv0 = 4;
-		char *argv1 = "-cert";
-		char *argv2 = "sha256rsa.pem";
-		char *argv3 = "-key";
-		char *argv4 = "sha256rsakey.pem";
-		char *argv5 = "-debug";
-		char *argv6 = "-msg";
-
-
-	/*debug code*/
+	int nm_i=0,ii=0;
 
 #ifndef OPENSSL_NO_ECDH
     char *named_curve = NULL;
@@ -1062,33 +1069,32 @@ int MAIN(int argc, char *argv[])
     char *srpuserseed = NULL;
     char *srp_verifier_file = NULL;
 #endif
-	
+				argc=atoi(str1);
+				if(argc>=10)
+				BIO_printf(bio_err,"WARNING: Max. Allowed Arg is 9");
+				  	 argv=largv;	
+					 argv[0]=str2;
+					 argv[1]=str3;
+					 argv[2]=str4;
+					 argv[3]=str5;
+					 argv[4]=str6;
+					 argv[5]=str7;
+					 argv[6]=str8;
+					 argv[7]=str9;
+					 argv[8]=str10;
+					 
+					 //for(nm_i=0;nm_i<argc;nm_i++)
+					 //printf("%s\n",argv[nm_i]);  
+					local_argc = argc;
+					local_argv = argv;
 
-   // meth = SSLv23_server_method();
-	//printf("protocol_version:- %d\n",meth->version);
-	//meth= SSLv2_server_method();
-	//meth= TLSv1_server_method();
-	meth= TLSv1_2_server_method();
+				
+				
 
-	//meth= SSLv3_server_method();
+//meth= TLSv1_2_server_method();
+//meth= SSLv3_server_method();
 
-	
-
-	//argc = 5;
-	argc = 7;
-	argv[0]=NULL;
-	argv[1]=argv1;
-	argv[2]=argv2;
-	argv[3]=argv3;
-	argv[4]=argv4;
-	argv[5]=argv5;
-	argv[6]=argv6;
-    local_argc = argc;
-    local_argv = argv;
-	
-	printf("hello windriver1\n");
-
-    apps_startup();
+ apps_startup();
 #ifdef MONOLITH
     s_server_init();
 	printf("After the s_server_init func\n");
@@ -1107,13 +1113,8 @@ int MAIN(int argc, char *argv[])
     s_nbio_test = 0;
 
 	printf("hello windriver\n");
-
-	for(nm_i=1;nm_i<local_argc;nm_i++)
-		printf("%s\n",argv[nm_i]);
-
-
-    argc--;
-    argv++;
+    //argc--;
+    //argv++;
 
     while (argc >= 1) {
 		printf("Inside while loop\n");
@@ -2438,6 +2439,7 @@ static int init_ssl_connection(SSL *con)
     unsigned char *exportedkeymat;
 
     i = SSL_accept(con);
+	printf("After the ssl_accept function call in %s,i=%d\n ",__FILE__,i);
 #ifndef OPENSSL_NO_SRP
     while (i <= 0 && SSL_get_error(con, i) == SSL_ERROR_WANT_X509_LOOKUP) {
         BIO_printf(bio_s_out, "LOOKUP during accept %s\n",
