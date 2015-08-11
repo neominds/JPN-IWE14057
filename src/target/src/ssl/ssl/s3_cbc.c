@@ -53,9 +53,7 @@
  *
  */
 
-//#include "../crypto/constant_time_locl.h"
 #include "constant_time_locl.h"
-
 #include "ssl_locl.h"
 
 #include <openssl/md5.h>
@@ -317,14 +315,11 @@ void ssl3_cbc_copy_mac(unsigned char *out,
  */
 static void tls1_md5_final_raw(void *ctx, unsigned char *md_out)
 {
-		printf("tls1_md5_final_raw() - IWE14057 MD5 not supported\n");
-	
-	/* IWE14057 MD5 not supported
-		MD5_CTX *md5 = ctx;
-		u32toLE(md5->A, md_out);
-		u32toLE(md5->B, md_out);
-		u32toLE(md5->C, md_out);
-		u32toLE(md5->D, md_out); */
+    MD5_CTX *md5 = ctx;
+    u32toLE(md5->A, md_out);
+    u32toLE(md5->B, md_out);
+    u32toLE(md5->C, md_out);
+    u32toLE(md5->D, md_out);
 }
 
 static void tls1_sha1_final_raw(void *ctx, unsigned char *md_out)
@@ -380,10 +375,10 @@ char ssl3_cbc_record_digest_supported(const EVP_MD_CTX *ctx)
         return 0;
 #endif
     switch (EVP_MD_CTX_type(ctx)) {
-    //case NID_md5:
-    //case NID_sha1:
+    case NID_md5:
+    case NID_sha1:
 #ifndef OPENSSL_NO_SHA256
-    //case NID_sha224:
+    case NID_sha224:
     case NID_sha256:
 #endif
 #ifndef OPENSSL_NO_SHA512
@@ -456,48 +451,40 @@ void ssl3_cbc_digest_record(const EVP_MD_CTX *ctx,
      * This is a, hopefully redundant, check that allows us to forget about
      * many possible overflows later in this function.
      */
+     printf("Entring %s:%d\n",__FUNCTION__,__LINE__);
     OPENSSL_assert(data_plus_mac_plus_padding_size < 1024 * 1024);
-
+	printf("After the openssl_assert function call in %s\n",__FUNCTION__);
+	printf("EVP_MD_CTX_TYPE(CTX)IS:%x\n",EVP_MD_CTX_type(ctx));
     switch (EVP_MD_CTX_type(ctx)) {
     case NID_md5:
-      		/*	IWE14057 MD5 not supported
-        	MD5_Init((MD5_CTX *)md_state.c);
-        	md_final_raw = tls1_md5_final_raw;
-        	md_transform =
-            		(void (*)(void *ctx, const unsigned char *block))MD5_Transform;
-        	md_size = 16;
-        	sslv3_pad_length = 48;
-        	length_is_big_endian = 0;*/
-        printf("IWE14057 MD5 not supported\n");
+        MD5_Init((MD5_CTX *)md_state.c);
+        md_final_raw = tls1_md5_final_raw;
+        md_transform =
+            (void (*)(void *ctx, const unsigned char *block))MD5_Transform;
+        md_size = 16;
+        sslv3_pad_length = 48;
+        length_is_big_endian = 0;
         break;
     case NID_sha1:
-	/*	IWE14057  not supported
         SHA1_Init((SHA_CTX *)md_state.c);
         md_final_raw = tls1_sha1_final_raw;
         md_transform =
             (void (*)(void *ctx, const unsigned char *block))SHA1_Transform;
-        md_size = 20; */
+        md_size = 20;
         break;
 #ifndef OPENSSL_NO_SHA256
     case NID_sha224:
-		/*	IWE14057  not supported
         SHA224_Init((SHA256_CTX *)md_state.c);
         md_final_raw = tls1_sha256_final_raw;
-        //md_transform =
-         //   (void (*)(void *ctx, const unsigned char *block))SHA256_Transform;
         md_transform =
-            (void (*)(void *ctx, const unsigned char *block))SHA256Transform;
-        md_size = 224 / 8; */
+            (void (*)(void *ctx, const unsigned char *block))SHA256_Transform;
+        md_size = 224 / 8;
         break;
     case NID_sha256:
-		#define SHA256_Init ccip_default_SHA256_init
         SHA256_Init((SHA256_CTX *)md_state.c);
         md_final_raw = tls1_sha256_final_raw;
-        //md_transform =
-          //  (void (*)(void *ctx, const unsigned char *block))SHA256_Transform;
-          
-        //md_transform =
-            //(void (*)(void *ctx, const unsigned char *block))SHA256Transform;
+        md_transform =
+            (void (*)(void *ctx, const unsigned char *block))SHA256_Transform;
         md_size = 32;
         break;
 #endif

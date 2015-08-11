@@ -622,6 +622,7 @@ int MAIN(int argc, char *argv[])
 {
     unsigned int off = 0, clr = 0;
     SSL *con = NULL;
+	char *token1;
 #ifndef OPENSSL_NO_KRB5
     KSSL_CTX *kctx;
 #endif
@@ -689,14 +690,18 @@ int MAIN(int argc, char *argv[])
     SRP_ARG srp_arg = { NULL, NULL, 0, 0, 0, 1024 };
 #endif
 			char *argv1 = "-cipher";
-			char *argv2 = "RC4-SHA";
+			char *argv2 = "DHE-RSA-AES256-SHA";
 			char *argv3 = "-connect";
 			char *argv4 = "192.168.1.78:4433";
 			char *argv5 = "-debug";
 			char *argv6 = "-msg";
-	SSL_library_init();
-    meth = SSLv3_client_method();
-	//meth= TLSv1_1_client_method();
+	
+    //meth = SSLv3_client_method();
+	//meth= TLSv1_client_method();
+//	meth = SSLv2_client_method();
+	//token1=strtok(argv," ");
+	//while(token1!=NULL){printf("%s ",token1); token1=strtok(NULL," ");}
+    meth= TLSv1_1_client_method();
 	
 	argc = 7;
 	argv[0]=NULL;
