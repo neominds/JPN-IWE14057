@@ -873,7 +873,7 @@ static int RSA_cci_sign_verify
         }
     else
         {
-        cciStatus = cciPKIVerifyDigest (key, signType, (cci_b *)m, sigbuf, *siglen);
+        cciStatus = cciPKIVerifyDigest (key, signType, (cci_b *)m, (cci_b *)sigbuf, *siglen);
         }
 
     if (!CCISUCCESS (cciStatus))
