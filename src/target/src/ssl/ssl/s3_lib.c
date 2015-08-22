@@ -154,7 +154,7 @@
 #include "kssl_lcl.h"
 #ifndef OPENSSL_NO_TLSEXT
 # ifndef OPENSSL_NO_EC
-#  include "../crypto/ec/ec_lcl.h"
+#  include <openssl/ec_lcl.h>
 # endif                         /* OPENSSL_NO_EC */
 #endif                          /* OPENSSL_NO_TLSEXT */
 #include <openssl/md5.h>
@@ -2917,8 +2917,12 @@ int ssl3_num_ciphers(void)
 
 const SSL_CIPHER *ssl3_get_cipher(unsigned int u)
 {
-    if (u < SSL3_NUM_CIPHERS)
+	//printf("Inside ssl3_getcipher function u valu:=%d\n",u);
+    if (u < SSL3_NUM_CIPHERS){
+		SSL_CIPHER *t = &(ssl3_ciphers[SSL3_NUM_CIPHERS - 1 - u]);
+		//printf("[%s] Cipher-> %s Id = 0x%x\n", __FUNCTION__,t->name, t->id);
         return (&(ssl3_ciphers[SSL3_NUM_CIPHERS - 1 - u]));
+    	}
     else
         return (NULL);
 }

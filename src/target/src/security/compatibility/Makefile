@@ -31,6 +31,6 @@ else
     MAKE_INCLUDE_PATH=$(TGT_DIR)/h
 endif 
 
-SUBDIRS = bn dsa dh rsa hmac vxworks evp
+SUBDIRS = bn dsa dh rsa hmac vxworks evp ec ecdh ecdsa
 include $(MAKE_INCLUDE_PATH)/make/rules.library
 

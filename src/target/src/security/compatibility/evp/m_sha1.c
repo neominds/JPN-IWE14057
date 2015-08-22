@@ -84,6 +84,11 @@ static int final(EVP_MD_CTX *ctx, unsigned char *md)
 {
     return SHA1_Final(md, ctx->md_data);
 }
+int sha1_cleanup_ph(EVP_MD_CTX *ctx)
+{
+printf("sha1_cleanup_ph NOT YET IMPLEMENTED\n");
+return 0;
+}
 
 static const EVP_MD sha1_md = {
     NID_sha1,

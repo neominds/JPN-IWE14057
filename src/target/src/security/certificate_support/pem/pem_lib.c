@@ -776,3 +776,25 @@ err:
 	BUF_MEM_free(dataB);
 	return(0);
 	}
+	/*
+	 * Check pem string and return prefix length. If for example the pem_str ==
+	 * "RSA PRIVATE KEY" and suffix = "PRIVATE KEY" the return value is 3 for the
+	 * string "RSA".
+	 */
+	
+	int pem_check_suffix(const char *pem_str, const char *suffix)
+	{
+		int pem_len = strlen(pem_str);
+		int suffix_len = strlen(suffix);
+		const char *p;
+		if (suffix_len + 1 >= pem_len)
+			return 0;
+		p = pem_str + pem_len - suffix_len;
+		if (strcmp(p, suffix))
+			return 0;
+		p--;
+		if (*p != ' ')
+			return 0;
+		return p - pem_str;
+	}
+
