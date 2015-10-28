@@ -300,7 +300,7 @@ static char *s_dcert_file = NULL, *s_dkey_file = NULL;
 static int s_nbio = 0;
 #endif
 static int s_nbio_test = 0;
-int s_crlf = 0;
+int nm_s_crlf = 0;
 static SSL_CTX *ctx = NULL;
 #ifndef OPENSSL_NO_TLSEXT
 static SSL_CTX *ctx2 = NULL;
@@ -334,7 +334,7 @@ static int cert_chain = 0;
 
 #ifndef OPENSSL_NO_PSK
 static char *psk_identity = "Client_identity";
-char *psk_key = NULL;           /* by default PSK is not used */
+char *nm_psk_key = NULL;           /* by default PSK is not used */
 
 static unsigned int psk_server_cb(SSL *ssl, const char *identity,
                                   unsigned char *psk,
@@ -364,10 +364,10 @@ static unsigned int psk_server_cb(SSL *ssl, const char *identity,
         BIO_printf(bio_s_out, "PSK client identity found\n");
 
     /* convert the PSK key to binary */
-    ret = BN_hex2bn(&bn, psk_key);
+    ret = BN_hex2bn(&bn, nm_psk_key);
     if (!ret) {
         BIO_printf(bio_err, "Could not convert PSK key '%s' to BIGNUM\n",
-                   psk_key);
+                   nm_psk_key);
         if (bn)
             BN_free(bn);
         return 0;
@@ -1246,7 +1246,7 @@ int PROG(char *argv1,char *argv2,char *argv3,char *argv4, char *argv5, char *arg
         } else if (strcmp(*argv, "-state") == 0) {
             state = 1;
         } else if (strcmp(*argv, "-crlf") == 0) {
-            s_crlf = 1;
+            nm_s_crlf = 1;
         } else if (strcmp(*argv, "-quiet") == 0) {
             s_quiet = 1;
         } else if (strcmp(*argv, "-bugs") == 0) {
@@ -1271,9 +1271,9 @@ int PROG(char *argv1,char *argv2,char *argv3,char *argv4, char *argv5, char *arg
 
             if (--argc < 1)
                 goto bad;
-            psk_key = *(++argv);
-            for (i = 0; i < strlen(psk_key); i++) {
-                if (isxdigit((unsigned char)psk_key[i]))
+            nm_psk_key = *(++argv);
+            for (i = 0; i < strlen(nm_psk_key); i++) {
+                if (isxdigit((unsigned char)nm_psk_key[i]))
                     continue;
                 BIO_printf(bio_err, "Not a hex number '%s'\n", *argv);
                 goto bad;
@@ -1436,7 +1436,7 @@ int PROG(char *argv1,char *argv2,char *argv3,char *argv4, char *argv5, char *arg
 
 #if !defined(OPENSSL_NO_JPAKE) && !defined(OPENSSL_NO_PSK)
     if (jpake_secret) {
-        if (psk_key) {
+        if (nm_psk_key) {
             BIO_printf(bio_err, "Can't use JPAKE and PSK together\n");
             goto end;
         }
@@ -1811,9 +1811,9 @@ int PROG(char *argv1,char *argv2,char *argv3,char *argv4, char *argv5, char *arg
 
 #ifndef OPENSSL_NO_PSK
 # ifdef OPENSSL_NO_JPAKE
-    if (psk_key != NULL)
+    if (nm_psk_key != NULL)
 # else
-    if (psk_key != NULL || jpake_secret)
+    if (nm_psk_key != NULL || jpake_secret)
 # endif
     {
         if (s_debug)
@@ -2169,7 +2169,7 @@ static int sv_body(char *hostname, int s, unsigned char *context)
                 read_from_sslcon = 1;
         }
         if (read_from_terminal) {
-            if (s_crlf) {
+            if (nm_s_crlf) {
                 int j, lf_num;
 
                 i = raw_read_stdin(buf, bufsize / 2);
@@ -2526,7 +2526,7 @@ static DH *load_dh_param(const char *dhfile)
 }
 #endif
 #ifndef OPENSSL_NO_KRB5
-char *client_princ;
+char *nm_client_princ;
 #endif
 
 #if 0

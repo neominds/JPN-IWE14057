@@ -68,10 +68,9 @@ static int do_sigver_init(EVP_MD_CTX *ctx, EVP_PKEY_CTX **pctx,
                           const EVP_MD *type, ENGINE *e, EVP_PKEY *pkey,
                           int ver)
 {
-	printf("Inside do_sigver_init in m_sigver.c\n");
+
     if (ctx->pctx == NULL)
         ctx->pctx = EVP_PKEY_CTX_new(pkey, e);
-	printf("After evp_pkey_ctx-new func do_sigver_init in m_sigver.c\n");
     if (ctx->pctx == NULL)
         return 0;
 

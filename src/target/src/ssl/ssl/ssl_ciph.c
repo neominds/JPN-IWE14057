@@ -1392,7 +1392,6 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_list(const SSL_METHOD *ssl_method, STACK
     const SSL_CIPHER **ca_list = NULL;
 
 
-	printf("Inside ssl_create_cipher_list function in ssl_cipher.c file\n");
 	//printf("ssl_method version:%d");
 
     /*
@@ -1414,8 +1413,7 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_list(const SSL_METHOD *ssl_method, STACK
      * it is used for allocation.
      */
     num_of_ciphers = ssl_method->num_ciphers();
-	printf("TOT Number of ciphers are :%d\n",num_of_ciphers);
-#ifdef KSSL_DEBUG
+	#ifdef KSSL_DEBUG
     fprintf(stderr, "ssl_create_cipher_list() for %d ciphers\n",
             num_of_ciphers);
 #endif                          /* KSSL_DEBUG */
@@ -1560,7 +1558,6 @@ STACK_OF(SSL_CIPHER) *ssl_create_cipher_list(const SSL_METHOD *ssl_method, STACK
 #endif
         {
             sk_SSL_CIPHER_push(cipherstack, curr->cipher);
-			printf("Pushing to cipherstack:%s,id=%x\n",curr->cipher->name,curr->cipher->id);
 #ifdef CIPHER_DEBUG
             fprintf(stderr, "<%s>\n", curr->cipher->name);
 #endif

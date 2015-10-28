@@ -1359,7 +1359,6 @@ int ssl_cipher_list_to_bytes(SSL *s, STACK_OF(SSL_CIPHER) *sk,
     int i, j = 0;
     SSL_CIPHER *c;
     unsigned char *q;
-	printf("Entered ssl_cipher_list_to_bytes\n ");
 #ifndef OPENSSL_NO_KRB5
     int nokrb5 = !kssl_tgt_is_available(s->kssl_ctx);
 #endif                          /* OPENSSL_NO_KRB5 */
@@ -1369,14 +1368,10 @@ int ssl_cipher_list_to_bytes(SSL *s, STACK_OF(SSL_CIPHER) *sk,
     q = p;
     if (put_cb == NULL)
         put_cb = s->method->put_cipher_by_char;
-	printf("Before the for\n");
-	printf("value of sk_ssl_ciper_num  is =%d,",sk_SSL_CIPHER_num(sk));
-    for (i = 0; i < sk_SSL_CIPHER_num(sk); i++) {
+	    for (i = 0; i < sk_SSL_CIPHER_num(sk); i++) {
         c = sk_SSL_CIPHER_value(sk, i);
-		printf("%s\n",c->name);
-    	}
-	printf("****After the for***1377\n");
-    for (i = 0; i < sk_SSL_CIPHER_num(sk); i++) {
+	   	}
+	    for (i = 0; i < sk_SSL_CIPHER_num(sk); i++) {
         c = sk_SSL_CIPHER_value(sk, i);
         /* Skip TLS v1.2 only ciphersuites if lower than v1.2 */
         if ((c->algorithm_ssl & SSL_TLSV1_2) &&

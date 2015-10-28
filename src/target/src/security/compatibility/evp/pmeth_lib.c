@@ -110,11 +110,9 @@ const EVP_PKEY_METHOD *EVP_PKEY_meth_find(int type)
     EVP_PKEY_METHOD tmp;
     const EVP_PKEY_METHOD *t = &tmp, **ret;
     tmp.pkey_id = type;
-	printf("Entering evp_pkey_meth_find in pmeth_lib.c\n");
     if (app_pkey_methods) {
         int idx;
         idx = sk_EVP_PKEY_METHOD_find(app_pkey_methods, &tmp);
-		printf("pmeth_lib.c idx:%d\n",idx);
         if (idx >= 0)
             return sk_EVP_PKEY_METHOD_value(app_pkey_methods, idx);
     }
@@ -188,7 +186,6 @@ static EVP_PKEY_CTX *int_ctx_new(EVP_PKEY *pkey, ENGINE *e, int id)
             return NULL;
         }
     }
-	printf("Done with int_ctx_new in pmeth_lib.c\n");
     return ret;
 }
 

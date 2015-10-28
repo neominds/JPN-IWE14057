@@ -1097,7 +1097,6 @@ int nm_server(char *str1,char *str2,char *str3,char *str4,char *str5,char *str6,
  apps_startup();
 #ifdef MONOLITH
     s_server_init();
-	printf("After the s_server_init func\n");
 #endif
 
     if (bio_err == NULL)
@@ -1112,13 +1111,12 @@ int nm_server(char *str1,char *str2,char *str3,char *str4,char *str5,char *str6,
 #endif
     s_nbio_test = 0;
 
-	printf("hello windriver\n");
+	
     //argc--;
     //argv++;
 
     while (argc >= 1) {
-		printf("Inside while loop\n");
-        if ((strcmp(*argv, "-port") == 0) || (strcmp(*argv, "-accept") == 0)) {
+		    if ((strcmp(*argv, "-port") == 0) || (strcmp(*argv, "-accept") == 0)) {
             if (--argc < 1)
                 goto bad;
             if (!extract_port(*(++argv), &port))
@@ -1146,9 +1144,7 @@ int nm_server(char *str1,char *str2,char *str3,char *str4,char *str5,char *str6,
         } else if (strcmp(*argv, "-cert") == 0) {
             if (--argc < 1)
                 goto bad;
-			printf("At strcmp -cert condition\n");
             s_cert_file = *(++argv);
-			printf("certfile is %s\n",s_cert_file);
         } else if (strcmp(*argv, "-certform") == 0) {
             if (--argc < 1)
                 goto bad;
@@ -1579,8 +1575,7 @@ int nm_server(char *str1,char *str2,char *str3,char *str4,char *str5,char *str6,
                 bio_s_out = BIO_new_fp(stdout, BIO_NOCLOSE);
         }
     }
-	BIO_printf(bio_s_out,"from BIO_Printf\n");
-#if !defined(OPENSSL_NO_RSA) || !defined(OPENSSL_NO_DSA) || !defined(OPENSSL_NO_ECDSA)
+	#if !defined(OPENSSL_NO_RSA) || !defined(OPENSSL_NO_DSA) || !defined(OPENSSL_NO_ECDSA)
     if (nocert)
 #endif
     {
@@ -1923,12 +1918,10 @@ int nm_server(char *str1,char *str2,char *str3,char *str4,char *str5,char *str6,
     (void)BIO_flush(bio_s_out);
     if (www)
        {
-       printf("Inside IF condition, Before do_server func call in s_server.c\n");
-       do_server(port, socket_type, &accept_socket, www_body, context);
+         do_server(port, socket_type, &accept_socket, www_body, context);
 		}
     else
         {
-        printf("Inside ELSE condition, Before do_server func call in s_server.c\n");
         do_server(port, socket_type, &accept_socket, sv_body, context);
 	    print_stats(bio_s_out, ctx);
 		}
