@@ -60,13 +60,13 @@ extern "C" {
 #  define OPENSSL_NO_CAST
 #endif
 #ifndef OPENSSL_NO_EC
-//#  define OPENSSL_NO_EC
+/*#  define OPENSSL_NO_EC*/
 #endif
 #ifndef OPENSSL_NO_ECDSA
-//#  define OPENSSL_NO_ECDSA
+/*#  define OPENSSL_NO_ECDSA*/
 #endif
 #ifndef OPENSSL_NO_ECDH
-//#  define OPENSSL_NO_ECDH
+/*#  define OPENSSL_NO_ECDH*/
 #endif
 #ifndef OPENSSL_NO_MD2
 # define OPENSSL_NO_MD2
